@@ -1,0 +1,19 @@
+<% title "Types" %>
+
+<table>
+  <tr>
+    <th>Category</th>
+    <th>Offering</th>
+  </tr>
+  <% for type in @types %>
+    <tr>
+      <td><%=h type.category %></td>
+      <td><%=h type.offering %></td>
+      <td><%= link_to "Show", type %></td>
+      <td><%= link_to "Edit", edit_type_path(type) %></td>
+      <td><%= link_to "Destroy", type, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Type", new_type_path %></p>

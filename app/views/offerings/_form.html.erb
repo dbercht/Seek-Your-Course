@@ -1,0 +1,32 @@
+<% form_for @offering do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </p>
+  <p>
+    <%= f.label :state %><br />
+    <%= f.text_field :state %>
+  </p>
+  <p>
+    <%= f.label :registration_begins %><br />
+    <%= f.date_select :registration_begins %>
+  </p>
+  <p>
+    <%= f.label :registration_deadline %><br />
+    <%= f.date_select :registration_deadline %>
+  </p>
+  <p>
+    <%= f.label :link %><br />
+    <%= f.text_field :link %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

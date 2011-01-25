@@ -1,0 +1,527 @@
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (7.1ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `schema_migrations`[0m
+  [4;35;1mSQL (6.9ms)[0m   [0mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateOfferiings (20110125191435)
+  [4;36;1mSQL (4.2ms)[0m   [0;1mCREATE TABLE `offeriings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `location` varchar(255), `state` varchar(255), `registration_begins` date, `registration_deadline` date, `link` varchar(255), `description` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110125191435')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (2.4ms)[0m   [0mSHOW FIELDS FROM `offeriings`[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mdescribe `offeriings`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `offeriings`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateOfferiings (20110125191435)
+Migrating to CreateTypes (20110125191605)
+  [4;36;1mSQL (5.3ms)[0m   [0;1mCREATE TABLE `types` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `category` varchar(255), `offering_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110125191605')[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mSHOW FIELDS FROM `offeriings`[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mdescribe `offeriings`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `offeriings`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mSHOW FIELDS FROM `types`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `types`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `types`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateOfferiings (20110125191435)
+Migrating to CreateTypes (20110125191605)
+Migrating to CreateTopics (20110125191634)
+  [4;36;1mSQL (4.1ms)[0m   [0;1mCREATE TABLE `topics` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `category` varchar(255), `offering_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110125191634')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (2.2ms)[0m   [0mSHOW FIELDS FROM `offeriings`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mdescribe `offeriings`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW KEYS FROM `offeriings`[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mSHOW FIELDS FROM `topics`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mdescribe `topics`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `topics`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW FIELDS FROM `types`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mdescribe `types`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `types`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateOfferiings (20110125191435)
+Migrating to CreateTypes (20110125191605)
+Migrating to CreateTopics (20110125191634)
+Migrating to CreateInstructors (20110125191705)
+  [4;36;1mSQL (4.3ms)[0m   [0;1mCREATE TABLE `instructors` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `offering_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110125191705')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSHOW FIELDS FROM `instructors`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mdescribe `instructors`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW KEYS FROM `instructors`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mSHOW FIELDS FROM `offeriings`[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mdescribe `offeriings`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `offeriings`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `topics`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mdescribe `topics`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `topics`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `types`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `types`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `types`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateOfferiings (20110125191435)
+Migrating to CreateTypes (20110125191605)
+Migrating to CreateTopics (20110125191634)
+Migrating to CreateInstructors (20110125191705)
+Migrating to CreateContacts (20110125191926)
+  [4;36;1mSQL (6.4ms)[0m   [0;1mCREATE TABLE `contacts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `number` varchar(255), `email` varchar(255), `offering_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110125191926')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mSHOW FIELDS FROM `contacts`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mdescribe `contacts`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW KEYS FROM `contacts`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mSHOW FIELDS FROM `instructors`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mdescribe `instructors`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `instructors`[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSHOW FIELDS FROM `offeriings`[0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mdescribe `offeriings`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `offeriings`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mSHOW FIELDS FROM `topics`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mdescribe `topics`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW KEYS FROM `topics`[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mSHOW FIELDS FROM `types`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mdescribe `types`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `types`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateTypes (20110125191605)
+Migrating to CreateTopics (20110125191634)
+Migrating to CreateInstructors (20110125191705)
+Migrating to CreateContacts (20110125191926)
+Migrating to CreateOfferings (20110125192126)
+  [4;36;1mSQL (6.5ms)[0m   [0;1mCREATE TABLE `offerings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `location` varchar(255), `state` varchar(255), `registration_begins` date, `registration_deadline` date, `link` varchar(255), `description` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110125192126')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSHOW FIELDS FROM `contacts`[0m
+  [4;36;1mSQL (3.1ms)[0m   [0;1mdescribe `contacts`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `contacts`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW FIELDS FROM `instructors`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `instructors`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `instructors`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSHOW FIELDS FROM `offeriings`[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mdescribe `offeriings`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `offeriings`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW FIELDS FROM `offerings`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mdescribe `offerings`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW KEYS FROM `offerings`[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mSHOW FIELDS FROM `topics`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mdescribe `topics`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `topics`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `types`[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mdescribe `types`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `types`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateTypes (20110125191605)
+Migrating to CreateTopics (20110125191634)
+Migrating to CreateInstructors (20110125191705)
+Migrating to CreateContacts (20110125191926)
+Migrating to CreateOfferings (20110125192126)
+Migrating to AddReferenceToOffering (20110125192715)
+  [4;36;1mSQL (0.0ms)[0m   [0;1mMysql::Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'references' at line 1: ALTER TABLE `offerings` ADD `type` references[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateTypes (20110125191605)
+Migrating to CreateTopics (20110125191634)
+Migrating to CreateInstructors (20110125191705)
+Migrating to CreateContacts (20110125191926)
+Migrating to CreateOfferings (20110125192126)
+Migrating to AddReferenceToOffering (20110125192715)
+  [4;36;1mSQL (10.1ms)[0m   [0;1mALTER TABLE `offerings` ADD `type_id` int(11)[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110125192715')[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `contacts`[0m
+  [4;36;1mSQL (2.5ms)[0m   [0;1mdescribe `contacts`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `contacts`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mSHOW FIELDS FROM `instructors`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `instructors`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `instructors`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW FIELDS FROM `offeriings`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mdescribe `offeriings`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `offeriings`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW FIELDS FROM `offerings`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mdescribe `offerings`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `offerings`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW FIELDS FROM `topics`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mdescribe `topics`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `topics`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mSHOW FIELDS FROM `types`[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mdescribe `types`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW KEYS FROM `types`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateTypes (20110125191605)
+Migrating to CreateTopics (20110125191634)
+Migrating to CreateInstructors (20110125191705)
+Migrating to CreateContacts (20110125191926)
+Migrating to CreateOfferings (20110125192126)
+Migrating to AddReferenceToOffering (20110125192715)
+Migrating to AddTopicToOffering (20110125193007)
+  [4;36;1mSQL (11.7ms)[0m   [0;1mALTER TABLE `offerings` ADD `topic_id` int(11)[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110125193007')[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mSHOW FIELDS FROM `contacts`[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mdescribe `contacts`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `contacts`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSHOW FIELDS FROM `instructors`[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mdescribe `instructors`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW KEYS FROM `instructors`[0m
+  [4;35;1mSQL (2.2ms)[0m   [0mSHOW FIELDS FROM `offeriings`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mdescribe `offeriings`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `offeriings`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSHOW FIELDS FROM `offerings`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mdescribe `offerings`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `offerings`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW FIELDS FROM `topics`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mdescribe `topics`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `topics`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `types`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mdescribe `types`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `types`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateTypes (20110125191605)
+Migrating to CreateTopics (20110125191634)
+Migrating to CreateInstructors (20110125191705)
+Migrating to CreateContacts (20110125191926)
+Migrating to CreateOfferings (20110125192126)
+Migrating to AddReferenceToOffering (20110125192715)
+Migrating to AddTopicToOffering (20110125193007)
+Migrating to CreateTopicsOfferings (20110125193354)
+  [4;36;1mSQL (5.4ms)[0m   [0;1mCREATE TABLE `topics_offerings` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `topic_id` int(11), `offering_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110125193354')[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW FIELDS FROM `contacts`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mdescribe `contacts`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW KEYS FROM `contacts`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mSHOW FIELDS FROM `instructors`[0m
+  [4;35;1mSQL (2.9ms)[0m   [0mdescribe `instructors`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW KEYS FROM `instructors`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSHOW FIELDS FROM `offeriings`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mdescribe `offeriings`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `offeriings`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSHOW FIELDS FROM `offerings`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mdescribe `offerings`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `offerings`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mSHOW FIELDS FROM `topics`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mdescribe `topics`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW KEYS FROM `topics`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mSHOW FIELDS FROM `topics_offerings`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mdescribe `topics_offerings`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW KEYS FROM `topics_offerings`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW FIELDS FROM `types`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mdescribe `types`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `types`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mOffering Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `offerings`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mOffering Create (0.4ms)[0m   [0;1mINSERT INTO `offerings` (`location`, `created_at`, `title`, `updated_at`, `type_id`, `registration_begins`, `link`, `description`, `topic_id`, `state`, `registration_deadline`) VALUES(NULL, '2011-01-25 19:35:00', NULL, '2011-01-25 19:35:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL)[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mCOMMIT[0m
+  [4;36;1mOffering Load (0.5ms)[0m   [0;1mSELECT * FROM `offerings` [0m
+  [4;35;1mOffering Load (0.5ms)[0m   [0mSELECT * FROM `offerings` LIMIT 1[0m
+  [4;36;1mofferings_topics Columns (0.0ms)[0m   [0;1mMysql::Error: Table 'seek.offerings_topics' doesn't exist: SHOW FIELDS FROM `offerings_topics`[0m
+  [4;35;1mInstructor Load (0.5ms)[0m   [0mSELECT * FROM `instructors` WHERE (`instructors`.offering_id = 1) [0m
+  [4;36;1mContact Load (0.4ms)[0m   [0;1mSELECT * FROM `contacts` WHERE (`contacts`.offering_id = 1) LIMIT 1[0m
+  [4;35;1mTopic Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `topics`[0m
+  [4;36;1mofferings_topics Columns (0.0ms)[0m   [0;1mMysql::Error: Table 'seek.offerings_topics' doesn't exist: SHOW FIELDS FROM `offerings_topics`[0m
+  [4;35;1mofferings_topics Columns (0.0ms)[0m   [0mMysql::Error: Table 'seek.offerings_topics' doesn't exist: SHOW FIELDS FROM `offerings_topics`[0m
+  [4;36;1mofferings_topics Columns (0.0ms)[0m   [0;1mMysql::Error: Table 'seek.offerings_topics' doesn't exist: SHOW FIELDS FROM `offerings_topics`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mofferings_topics Columns (0.0ms)[0m   [0mMysql::Error: Table 'seek.offerings_topics' doesn't exist: SHOW FIELDS FROM `offerings_topics`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateTypes (20110125191605)
+Migrating to CreateTopics (20110125191634)
+Migrating to CreateInstructors (20110125191705)
+Migrating to CreateContacts (20110125191926)
+Migrating to CreateOfferings (20110125192126)
+Migrating to AddReferenceToOffering (20110125192715)
+Migrating to AddTopicToOffering (20110125193007)
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSHOW FIELDS FROM `contacts`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mdescribe `contacts`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `contacts`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW FIELDS FROM `instructors`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `instructors`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `instructors`[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mSHOW FIELDS FROM `offerings`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mdescribe `offerings`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `offerings`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `topics`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `topics`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `topics`[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSHOW FIELDS FROM `types`[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mdescribe `types`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `types`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mOffering Load (0.2ms)[0m   [0;1mSELECT * FROM `offerings` LIMIT 1[0m
+  [4;35;1mOffering Columns (1.3ms)[0m   [0mSHOW FIELDS FROM `offerings`[0m
+  [4;36;1mTopic Load (0.4ms)[0m   [0;1mSELECT * FROM `topics` LIMIT 1[0m
+  [4;35;1mTopic Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `topics`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mTopic Create (0.4ms)[0m   [0mINSERT INTO `topics` (`category`, `created_at`, `updated_at`, `offering_id`) VALUES(NULL, '2011-01-25 19:43:36', '2011-01-25 19:43:36', NULL)[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mofferings_topics Columns (0.0ms)[0m   [0mMysql::Error: Table 'seek.offerings_topics' doesn't exist: SHOW FIELDS FROM `offerings_topics`[0m
+  [4;36;1mofferings_topics Columns (0.0ms)[0m   [0;1mMysql::Error: Table 'seek.offerings_topics' doesn't exist: SHOW FIELDS FROM `offerings_topics`[0m
+  [4;35;1mofferings_topics Columns (0.0ms)[0m   [0mMysql::Error: Table 'seek.offerings_topics' doesn't exist: SHOW FIELDS FROM `offerings_topics`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateTypes (20110125191605)
+Migrating to CreateTopics (20110125191634)
+Migrating to CreateInstructors (20110125191705)
+Migrating to CreateContacts (20110125191926)
+Migrating to CreateOfferings (20110125192126)
+Migrating to AddReferenceToOffering (20110125192715)
+Migrating to AddTopicToOffering (20110125193007)
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `contacts`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mdescribe `contacts`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW KEYS FROM `contacts`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW FIELDS FROM `instructors`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mdescribe `instructors`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `instructors`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW FIELDS FROM `offerings`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mdescribe `offerings`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `offerings`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `topics`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `topics`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `topics`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW FIELDS FROM `types`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mdescribe `types`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `types`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to TopicsOfferingsJoinTable (20110121519345)
+  [4;36;1mSQL (7.5ms)[0m   [0;1mCREATE TABLE `topics_offerings` (`offering_id` int(11), `topic_id` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110121519345')[0m
+Migrating to CreateTypes (20110125191605)
+Migrating to CreateTopics (20110125191634)
+Migrating to CreateInstructors (20110125191705)
+Migrating to CreateContacts (20110125191926)
+Migrating to CreateOfferings (20110125192126)
+Migrating to AddReferenceToOffering (20110125192715)
+Migrating to AddTopicToOffering (20110125193007)
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `contacts`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mdescribe `contacts`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW KEYS FROM `contacts`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `instructors`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mdescribe `instructors`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `instructors`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW FIELDS FROM `offerings`[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mdescribe `offerings`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW KEYS FROM `offerings`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW FIELDS FROM `topics`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `topics`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `topics`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSHOW FIELDS FROM `topics_offerings`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mdescribe `topics_offerings`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `topics_offerings`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mSHOW FIELDS FROM `types`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `types`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `types`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mTopic Load (0.5ms)[0m   [0;1mSELECT * FROM `topics` LIMIT 1[0m
+  [4;35;1mTopic Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `topics`[0m
+  [4;36;1mOffering Load (0.2ms)[0m   [0;1mSELECT * FROM `offerings` LIMIT 1[0m
+  [4;35;1mOffering Columns (2.1ms)[0m   [0mSHOW FIELDS FROM `offerings`[0m
+  [4;36;1mofferings_topics Columns (0.0ms)[0m   [0;1mMysql::Error: Table 'seek.offerings_topics' doesn't exist: SHOW FIELDS FROM `offerings_topics`[0m
+  [4;35;1mofferings_topics Columns (0.0ms)[0m   [0mMysql::Error: Table 'seek.offerings_topics' doesn't exist: SHOW FIELDS FROM `offerings_topics`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to TopicsOfferingsJoinTable (20110121519345)
+Migrating to CreateTypes (20110125191605)
+Migrating to CreateTopics (20110125191634)
+Migrating to CreateInstructors (20110125191705)
+Migrating to CreateContacts (20110125191926)
+Migrating to CreateOfferings (20110125192126)
+Migrating to AddReferenceToOffering (20110125192715)
+Migrating to AddTopicToOffering (20110125193007)
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW FIELDS FROM `contacts`[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mdescribe `contacts`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `contacts`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW FIELDS FROM `instructors`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `instructors`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `instructors`[0m
+  [4;35;1mSQL (2.5ms)[0m   [0mSHOW FIELDS FROM `offerings`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mdescribe `offerings`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `offerings`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `topics`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `topics`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `topics`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mSHOW FIELDS FROM `types`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mdescribe `types`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `types`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to TopicsOfferingsJoinTable (20110121519347)
+  [4;36;1mSQL (5.3ms)[0m   [0;1mCREATE TABLE `offerings_topics` (`offering_id` int(11), `topic_id` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110121519347')[0m
+Migrating to CreateTypes (20110125191605)
+Migrating to CreateTopics (20110125191634)
+Migrating to CreateInstructors (20110125191705)
+Migrating to CreateContacts (20110125191926)
+Migrating to CreateOfferings (20110125192126)
+Migrating to AddReferenceToOffering (20110125192715)
+Migrating to AddTopicToOffering (20110125193007)
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSHOW FIELDS FROM `contacts`[0m
+  [4;36;1mSQL (2.8ms)[0m   [0;1mdescribe `contacts`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `contacts`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mSHOW FIELDS FROM `instructors`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mdescribe `instructors`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `instructors`[0m
+  [4;35;1mSQL (2.3ms)[0m   [0mSHOW FIELDS FROM `offerings`[0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mdescribe `offerings`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `offerings`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `offerings_topics`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mdescribe `offerings_topics`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `offerings_topics`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW FIELDS FROM `topics`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mdescribe `topics`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW KEYS FROM `topics`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `types`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `types`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `types`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mOffering Load (0.3ms)[0m   [0;1mSELECT * FROM `offerings` LIMIT 1[0m
+  [4;35;1mOffering Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `offerings`[0m
+  [4;36;1mofferings_topics Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `offerings_topics`[0m
+  [4;35;1mTopic Load (0.7ms)[0m   [0mSELECT * FROM `topics` INNER JOIN `offerings_topics` ON `topics`.id = `offerings_topics`.topic_id WHERE (`offerings_topics`.offering_id = 1 ) [0m
+  [4;36;1mTopic Load (0.2ms)[0m   [0;1mSELECT * FROM `topics` LIMIT 1[0m
+  [4;35;1mTopic Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `topics`[0m
+  [4;36;1mofferings_topics Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `offerings_topics`[0m
+  [4;35;1mOffering Load (0.6ms)[0m   [0mSELECT * FROM `offerings` INNER JOIN `offerings_topics` ON `offerings`.id = `offerings_topics`.offering_id WHERE (`offerings_topics`.topic_id = 1 ) [0m
+  [4;36;1mTopic Load (0.2ms)[0m   [0;1mSELECT * FROM `topics` LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mdescribe `offerings_topics`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO `offerings_topics` (`topic_id`, `offering_id`) VALUES (1, 1)[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mTopic Load (0.2ms)[0m   [0mSELECT * FROM `topics` LIMIT 1[0m
+  [4;36;1mOffering Load (0.6ms)[0m   [0;1mSELECT * FROM `offerings` INNER JOIN `offerings_topics` ON `offerings`.id = `offerings_topics`.offering_id WHERE (`offerings_topics`.topic_id = 1 ) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mInstructor Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `instructors`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mBEGIN[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mROLLBACK[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to TopicsOfferingsJoinTable (20110121519347)
+Migrating to CreateTypes (20110125191605)
+Migrating to CreateTopics (20110125191634)
+Migrating to CreateInstructors (20110125191705)
+Migrating to CreateContacts (20110125191926)
+Migrating to CreateOfferings (20110125192126)
+Migrating to AddReferenceToOffering (20110125192715)
+Migrating to AddTopicToOffering (20110125193007)
+Migrating to AddFirstnameToInstructor (20110125195733)
+  [4;36;1mSQL (10.0ms)[0m   [0;1mALTER TABLE `instructors` ADD `first_name` varchar(255)[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110125195733')[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSHOW FIELDS FROM `contacts`[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mdescribe `contacts`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `contacts`[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSHOW FIELDS FROM `instructors`[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mdescribe `instructors`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW KEYS FROM `instructors`[0m
+  [4;35;1mSQL (2.4ms)[0m   [0mSHOW FIELDS FROM `offerings`[0m
+  [4;36;1mSQL (2.3ms)[0m   [0;1mdescribe `offerings`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `offerings`[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mSHOW FIELDS FROM `offerings_topics`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mdescribe `offerings_topics`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `offerings_topics`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW FIELDS FROM `topics`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mdescribe `topics`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `topics`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW FIELDS FROM `types`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `types`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `types`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mInstructor Columns (1.3ms)[0m   [0;1mSHOW FIELDS FROM `instructors`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mInstructor Create (0.4ms)[0m   [0;1mINSERT INTO `instructors` (`created_at`, `updated_at`, `last_name`, `offering_id`, `first_name`) VALUES('2011-01-25 19:58:07', '2011-01-25 19:58:07', 'bercht', NULL, 'dan')[0m
+  [4;35;1mSQL (2.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mInstructor Load (0.5ms)[0m   [0;1mSELECT * FROM `instructors` LIMIT 1[0m
+  [4;35;1mOffering Load (0.3ms)[0m   [0mSELECT * FROM `offerings` LIMIT 1[0m
+  [4;36;1mOffering Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `offerings`[0m
+  [4;35;1mInstructor Load (0.2ms)[0m   [0mSELECT * FROM `instructors` LIMIT 1[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mInstructor Update (0.7ms)[0m   [0mUPDATE `instructors` SET `updated_at` = '2011-01-25 19:58:24', `offering_id` = 1 WHERE `id` = 1[0m
+  [4;36;1mSQL (2.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mInstructor Load (0.6ms)[0m   [0mSELECT * FROM `instructors` WHERE (`instructors`.offering_id = 1) [0m

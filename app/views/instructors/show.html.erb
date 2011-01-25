@@ -1,0 +1,16 @@
+<% title "Instructor" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @instructor.name %>
+</p>
+<p>
+  <strong>Offering:</strong>
+  <%=h @instructor.offering %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_instructor_path(@instructor) %> |
+  <%= link_to "Destroy", @instructor, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", instructors_path %>
+</p>
