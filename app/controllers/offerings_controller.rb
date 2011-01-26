@@ -9,6 +9,8 @@ class OfferingsController < ApplicationController
 
   def new
     @offering = Offering.new
+    @topics = Topic.find(:all, :order => 'category')
+    @types = Type.find(:all, :order => 'category')
   end
 
   def create
@@ -23,6 +25,8 @@ class OfferingsController < ApplicationController
 
   def edit
     @offering = Offering.find(params[:id])
+    @topics = Topic.find(:all, :order => 'category')
+    @types = Type.find(:all, :order => 'category')
   end
 
   def update

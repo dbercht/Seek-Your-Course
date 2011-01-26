@@ -1,0 +1,17 @@
+one:
+  title: MyString
+  location: MyString
+  state: MyString
+  registration_begins: 2011-01-25
+  registration_deadline: 2011-01-25
+  link: MyString
+  description: MyString
+
+two:
+  title: MyString
+  location: MyString
+  state: MyString
+  registration_begins: 2011-01-25
+  registration_deadline: 2011-01-25
+  link: MyString
+  description: MyString

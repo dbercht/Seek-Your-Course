@@ -5,12 +5,23 @@
   <%=h @offering.title %>
 </p>
 <p>
-  <strong>Location:</strong>
-  <%=h @offering.location %>
+  <strong>Type:</strong>
+  <%=h @offering.type.category %>
+</p>
+<p>
+  <strong>Topic/Medium(s):</strong>
+  |
+  <%for topic in @offering.topics do%>
+    <%=h "#{topic.category} | " %>
+  <%end%>
 </p>
 <p>
   <strong>State:</strong>
   <%=h @offering.state %>
+</p>
+<p>
+  <strong>Location:</strong>
+  <%=h @offering.location %>
 </p>
 <p>
   <strong>Registration Begins:</strong>

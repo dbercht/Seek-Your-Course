@@ -5,12 +5,23 @@
     <%= f.text_field :title %>
   </p>
   <p>
-    <%= f.label :location %><br />
-    <%= f.text_field :location %>
+    <%= f.label :type %><br />
+    <%= collection_select(:offering, :type_id, @types, :id, :category, {:prompt => true}, :selected => @offering.type) %>
   </p>
   <p>
-    <%= f.label :state %><br />
-    <%= f.text_field :state %>
+    <label for="offering_Topic/Medium">Topic/Medium</label><br />
+    <% @topics.each do |topic| -%>
+      <%= check_box_tag "offering[topic_ids][]", topic.id, @offering.topics.include?(topic) -%> 
+      <%= topic.category -%>
+    <% end -%>
+  </p>
+  <p>
+    <label for="offering_state">U.S State/Abroad</label><br />
+    <%= f.select :state, Offering::LOCATIONS %>
+  </p>
+  <p>
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
   </p>
   <p>
     <%= f.label :registration_begins %><br />
@@ -26,7 +37,7 @@
   </p>
   <p>
     <%= f.label :description %><br />
-    <%= f.text_field :description %>
+    <%= f.text_area :description %>
   </p>
   <p><%= f.submit %></p>
 <% end %>
