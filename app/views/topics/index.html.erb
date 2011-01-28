@@ -8,7 +8,7 @@
   <% for topic in @topics %>
     <tr>
       <td><%=h topic.category %></td>
-      <td><%=h topic.offering %></td>
+      <td><%=h topic.offerings %></td>
       <td><%= link_to "Show", topic %></td>
       <td><%= link_to "Edit", edit_topic_path(topic) %></td>
       <td><%= link_to "Destroy", topic, :confirm => 'Are you sure?', :method => :delete %></td>

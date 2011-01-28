@@ -1,6 +1,6 @@
 class OfferingsController < ApplicationController
   def index
-    @offerings = Offering.all
+    @offerings = Offering.find(:all, :conditions => ["validated=?", true])
   end
 
   def show
@@ -15,10 +15,13 @@ class OfferingsController < ApplicationController
 
   def create
     @offering = Offering.new(params[:offering])
+    @offering.validated = false
     if @offering.save
       flash[:notice] = "Successfully created offering."
       redirect_to @offering
     else
+      @topics = Topic.find(:all, :order => 'category')
+      @types = Type.find(:all, :order => 'category')
       render :action => 'new'
     end
   end

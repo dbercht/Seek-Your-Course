@@ -1,13 +1,19 @@
 <% title "Topic" %>
 
-<p>
+<h2>
   <strong>Category:</strong>
   <%=h @topic.category %>
-</p>
-<p>
-  <strong>Offering:</strong>
-  <%=h @topic.offering %>
-</p>
+</h2>
+<% for offering in @topic.offerings %>
+  <p>
+    <strong>Offering:</strong>
+    <%=h offering.title %>
+    <strong>Type:</strong>
+    <%=h offering.type.category %>
+    <strong>Link:</strong>
+    <%=h offering.link %>
+  </p>
+<%end%>
 
 <p>
   <%= link_to "Edit", edit_topic_path(@topic) %> |

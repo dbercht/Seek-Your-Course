@@ -8,7 +8,6 @@
   <% for type in @types %>
     <tr>
       <td><%=h type.category %></td>
-      <td><%=h type.offering %></td>
       <td><%= link_to "Show", type %></td>
       <td><%= link_to "Edit", edit_type_path(type) %></td>
       <td><%= link_to "Destroy", type, :confirm => 'Are you sure?', :method => :delete %></td>

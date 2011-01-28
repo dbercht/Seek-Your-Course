@@ -4,10 +4,14 @@
   <strong>Category:</strong>
   <%=h @type.category %>
 </p>
-<p>
-  <strong>Offering:</strong>
-  <%=h @type.offering %>
-</p>
+<%for offering in @type.offerings %>
+  <p>
+    <strong>Offering:</strong>
+    <%=h offering.title %>
+    <strong>Location:</strong>
+    <%=h offering.location %>
+  </p>
+<%end%>
 
 <p>
   <%= link_to "Edit", edit_type_path(@type) %> |

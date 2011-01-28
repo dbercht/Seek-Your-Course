@@ -29,10 +29,10 @@
   </p>
   <p>
     <%= f.label :registration_deadline %><br />
-    <%= f.date_select :registration_deadline %>
+    <%= f.date_select :registration_deadline, :include_blank => true %>
   </p>
   <p>
-    <%= f.label :link %><br />
+    <%= f.label "Link" %><br />
     <%= f.text_field :link %>
   </p>
   <p>
