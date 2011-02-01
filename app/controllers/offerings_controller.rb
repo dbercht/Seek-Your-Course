@@ -9,6 +9,7 @@ class OfferingsController < ApplicationController
 
   def new
     @offering = Offering.new
+    @contact = Contact.new
     @topics = Topic.find(:all, :order => 'category')
     @types = Type.find(:all, :order => 'category')
   end
@@ -16,7 +17,11 @@ class OfferingsController < ApplicationController
   def create
     @offering = Offering.new(params[:offering])
     @offering.validated = false
-    if @offering.save
+    @contact = Contact.new(params[:contact])
+    @offering.contact = @contact
+    if (@offering.valid? & @contact.valid?)
+      @contact.save!
+      @offering.save!
       flash[:notice] = "Successfully created offering."
       redirect_to @offering
     else
@@ -28,15 +33,23 @@ class OfferingsController < ApplicationController
 
   def edit
     @offering = Offering.find(params[:id])
+    @contact = @offering.contact
     @topics = Topic.find(:all, :order => 'category')
     @types = Type.find(:all, :order => 'category')
   end
 
   def update
     @offering = Offering.find(params[:id])
-    if @offering.update_attributes(params[:offering])
-      flash[:notice] = "Successfully updated offering."
-      redirect_to @offering
+    @contact = @offering.contact
+    @topics = Topic.find(:all, :order => 'category')
+    @types = Type.find(:all, :order => 'category')
+    if (@contact.update_attributes(params[:contact])  )    
+      if(@offering.update_attributes(params[:offering]))
+        flash[:notice] = "Successfully updated offering."
+        redirect_to @offering
+      else
+        render :action => 'edit'
+      end
     else
       render :action => 'edit'
     end
@@ -47,5 +60,9 @@ class OfferingsController < ApplicationController
     @offering.destroy
     flash[:notice] = "Successfully destroyed offering."
     redirect_to offerings_url
+  end
+  
+  def  locations
+    
   end
 end

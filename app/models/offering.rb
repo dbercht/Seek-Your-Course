@@ -1,7 +1,8 @@
 class Offering < ActiveRecord::Base
   attr_accessible :title, :location, :state, :registration_begins, :registration_deadline, :link, :description, :type_id, :topic_ids, :validated
  
-  validates_presence_of :title, :registration_begins, :link, :description
+  validates_presence_of :title, :registration_begins, :link, :description, :contact
+  
   validate
   
   belongs_to :type
