@@ -1,5 +1,6 @@
 class OfferingsController < ApplicationController
   def index
+    @title = "Offerings"
     @offerings = Offering.find(:all, :conditions => ["validated=?", true])
   end
 

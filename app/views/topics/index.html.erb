@@ -1,19 +1,15 @@
 <% title "Topics" %>
 
-<table>
-  <tr>
-    <th>Category</th>
-    <th>Offering</th>
-  </tr>
   <% for topic in @topics %>
-    <tr>
-      <td><%=h topic.category %></td>
-      <td><%=h topic.offerings %></td>
-      <td><%= link_to "Show", topic %></td>
-      <td><%= link_to "Edit", edit_topic_path(topic) %></td>
-      <td><%= link_to "Destroy", topic, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
+    <ul>
+      <li><%=h topic.category %></li>
+      <%= link_to "Show", topic %>
+      <%= link_to "Edit", edit_topic_path(topic) %>
+      <%= link_to "Destroy", topic, :confirm => 'Are you sure?', :method => :delete %>
+      <ul><% for offering in topic.offerings do %>
+        <li><%= offering.title %>, <%=offering.type.category %></li>
+      <% end %>
+    </ul></ul>
   <% end %>
-</table>
 
 <p><%= link_to "New Topic", new_topic_path %></p>

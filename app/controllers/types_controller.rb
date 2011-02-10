@@ -5,6 +5,9 @@ class TypesController < ApplicationController
 
   def show
     @type = Type.find(params[:id])
+    @offerings = @type.offerings
+    @title = @type.category
+    render "offerings/index"
   end
 
   def new

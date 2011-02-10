@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :instructors
   map.resources :topics
   map.resources :types
-  
+  map.resource :search
   map.namespace :search do |search|
     search.location "/location", :controller => "location"
   end

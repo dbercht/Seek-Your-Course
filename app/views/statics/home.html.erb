@@ -3,3 +3,4 @@
 <%=link_to "By Start Date", :controller => :offerings, :action => :start_date%><br />
 <%=link_to "By Location", :controller => :offerings, :action => :locations%><br />
 <%=form_tag "search"%>
+<%= render :partial => 'search_form' %>

@@ -1,0 +1,27 @@
+
+  <% form_for @offering do |f| %>
+  
+  
+  <p>
+      <%= f.label :title, "Title"%>
+      <%= f.text_field :title %>
+  </p>
+  
+  <p>
+    <label for="offering_Type">Type</label><br />
+    <% @types.each do |type| -%>
+      <%= check_box_tag "offering[type_ids][]", type.id-%> 
+      <%= type.category -%>
+    <% end -%>
+  </p>
+  
+  <p>
+    <label for="offering_Topic/Medium">Topic/Medium*</label><br />
+    <% @topics.each do |topic| -%>
+      <%= check_box_tag "offering[topic_ids][]", topic.id, @offering.topics.include?(topic) -%> 
+      <%= topic.category -%>
+    <% end -%>
+  </p>
+  
+  <%= f.submit %>
+  <%end%>
