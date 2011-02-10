@@ -9636,3 +9636,36 @@ Migrating to CreateSearches (20110128231918)
   [4;35;1mSQL (6.0ms)[0m   [0mSHOW FIELDS FROM `types`[0m
   [4;36;1mSQL (6.0ms)[0m   [0;1mdescribe `types`[0m
   [4;35;1mSQL (2.0ms)[0m   [0mSHOW KEYS FROM `types`[0m
+  [4;36;1mSQL (25.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (17.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing StaticsController#home (for 127.0.0.1 at 2011-02-09 19:11:41) [GET]
+Rendering template within layouts/application
+Rendering statics/home
+Completed in 10759ms (View: 10755, DB: 42) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing OfferingsController#index (for 127.0.0.1 at 2011-02-09 19:12:01) [GET]
+  [4;36;1mOffering Load (54.0ms)[0m   [0;1mSELECT * FROM `offerings` WHERE (validated=1) [0m
+Rendering template within layouts/application
+Rendering offerings/index
+Completed in 359ms (View: 64, DB: 55) | 200 OK [http://localhost/offerings]
+  [4;35;1mSQL (0.0ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing OfferingsController#new (for 127.0.0.1 at 2011-02-09 19:12:07) [GET]
+  [4;35;1mOffering Columns (26.0ms)[0m   [0mSHOW FIELDS FROM `offerings`[0m
+  [4;36;1mContact Columns (25.0ms)[0m   [0;1mSHOW FIELDS FROM `contacts`[0m
+  [4;35;1mTopic Load (6.0ms)[0m   [0mSELECT * FROM `topics` ORDER BY category[0m
+  [4;36;1mType Load (35.0ms)[0m   [0;1mSELECT * FROM `types` ORDER BY category[0m
+Rendering template within layouts/application
+Rendering offerings/new
+  [4;35;1mType Columns (6.0ms)[0m   [0mSHOW FIELDS FROM `types`[0m
+  [4;36;1mTopic Columns (5.0ms)[0m   [0;1mSHOW FIELDS FROM `topics`[0m
+  [4;35;1mTopic Load (31.0ms)[0m   [0mSELECT `topics`.id FROM `topics` INNER JOIN `offerings_topics` ON `topics`.id = `offerings_topics`.topic_id WHERE (`topics`.`id` = 1) AND (`offerings_topics`.offering_id = NULL ) LIMIT 1[0m
+Rendered offerings/_form (155.0ms)
+Completed in 330ms (View: 136, DB: 135) | 200 OK [http://localhost/offerings/new]
