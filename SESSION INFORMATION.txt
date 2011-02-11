@@ -1,0 +1,2 @@
+Created session[:offerings] in search controller, works while website is small, however not the best idea
+use this session[:offerings] in offerings controller > index
