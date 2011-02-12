@@ -1,6 +1,11 @@
 class OfferingsController < ApplicationController
   def index
-    @offerings = Offering.find(:all, :conditions => ["validated=?", true])
+    @title = "Offerings"
+    if(session[:offerings].nil?)
+      @offerings = Offering.find(:all, :conditions => ["validated=?", true])
+    else
+      @offerings = Offering.find session[:offerings]
+    end
   end
 
   def show

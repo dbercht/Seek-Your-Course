@@ -5,6 +5,9 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
+    @offerings = @topic.offerings
+    @title = @topic.category
+    render "offerings/index"
   end
 
   def new
