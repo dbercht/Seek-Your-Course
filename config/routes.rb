@@ -4,11 +4,12 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :instructors
   map.resources :topics
   map.resources :types
+  map.resources :locations
   
   map.search '/search', :controller => :searches
   map.results '/search/results', :controller => :searches, :action => :results
   
-  map.namespace :search do |search|
+   map.namespace :search do |search|
     search.location "/location", :controller => "location"
   end
   

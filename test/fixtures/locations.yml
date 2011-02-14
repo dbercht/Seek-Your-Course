@@ -1,0 +1,7 @@
+one:
+  state: MyString
+  us_location: false
+
+two:
+  state: MyString
+  us_location: false

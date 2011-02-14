@@ -17,14 +17,18 @@
   </p>
   <p>
     <label for="offering_state">U.S State/Abroad</label><br />
-    <%= f.select :state, Offering::LOCATIONS %>
+    <%= collection_select(:offering, :location_id, @locations, :id, :state, {:prompt => true}, :selected => @offering.location)%>
   </p>
   <p>
-    <%= f.label "Location*" %><br />
-    <%= f.text_field :location %>
+    <%= f.label "US City or non-US Location*" %><br />
+    <%= f.text_field :specific_location %>
+  </p>
+    <p>
+    <%= f.label "Start Date*" %><br />
+    <%= f.date_select :start_date %>
   </p>
   <p>
-    <%= f.label "Registration Beings*" %><br />
+    <%= f.label "Registration Begins*" %><br />
     <%= f.date_select :registration_begins %>
   </p>
   <p>
@@ -51,6 +55,9 @@
      <label for="contact_email">Contact E-Mail</label><br /> 
      <%= contact.text_field :email%>   </p>
   <% end%>
-  </p>
+  <%=f.radio_button :validated, true%><%= f.label :validated, "Yes"%>
+  <%=f.radio_button :validated, false%><%= f.label :validated, "No"%>
+  <%= link_to "Destroy Offering", @offering, :confirm => 'Are you sure?', :method => :delete %> 
+
   <p><%= f.submit %></p>
 <% end %>

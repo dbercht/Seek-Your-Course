@@ -16,6 +16,7 @@
 <%end%>
 
 <p>
+  <%= link_to "Back", :back %> |
   <%= link_to "Edit", edit_topic_path(@topic) %> |
   <%= link_to "Destroy", @topic, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", topics_path %>

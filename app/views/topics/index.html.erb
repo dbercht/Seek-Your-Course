@@ -1,15 +1,21 @@
-<% title "Topics" %>
+<% title "By Topic" %>
 
   <% for topic in @topics %>
     <ul>
-      <li><%=h topic.category %></li>
+      <li><h3><%=h link_to topic.category, topic_path(topic) %></h3></li>
       <%= link_to "Show", topic %>
       <%= link_to "Edit", edit_topic_path(topic) %>
       <%= link_to "Destroy", topic, :confirm => 'Are you sure?', :method => :delete %>
-      <ul><% for offering in topic.offerings do %>
-        <li><%= offering.title %>, <%=offering.type.category %></li>
+      <ul><% for offering in topic.upcoming_offerings do %>
+        <li>
+          <%= link_to offering.title, offering_path(offering) %> | 
+          <%=offering.start_date.strftime("%d %B %Y")%> | 
+          <%=offering.type.category %>
+        </li>
       <% end %>
     </ul></ul>
   <% end %>
+
+<p><%= link_to "Back", root_url %></p>
 
 <p><%= link_to "New Topic", new_topic_path %></p>

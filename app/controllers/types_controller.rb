@@ -1,6 +1,6 @@
 class TypesController < ApplicationController
   def index
-    @types = Type.all
+    @types = Type.find(:all, :order => 'category ASC')
   end
 
   def show
@@ -18,7 +18,7 @@ class TypesController < ApplicationController
     @type = Type.new(params[:type])
     if @type.save
       flash[:notice] = "Successfully created type."
-      redirect_to @type
+      redirect_to :action => :index
     else
       render :action => 'new'
     end
@@ -32,7 +32,7 @@ class TypesController < ApplicationController
     @type = Type.find(params[:id])
     if @type.update_attributes(params[:type])
       flash[:notice] = "Successfully updated type."
-      redirect_to @type
+      redirect_to :action => :index
     else
       render :action => 'edit'
     end
