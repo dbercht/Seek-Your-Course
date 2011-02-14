@@ -16,12 +16,19 @@
   <%end%>
 </p>
 <p>
-  <strong>State:</strong>
-  <%=h @offering.state %>
+  <strong>Location:</strong>
+  <%=h @offering.location.state%>
 </p>
 <p>
-  <strong>Location:</strong>
-  <%=h @offering.location %>
+<%if @offering.location.us_location%> 
+    <strong>US City:</strong>
+<%else%>
+    <strong>non-US location:</strong>
+<%end%>
+    <%=h @offering.specific_location %>
+<p>
+  <strong>Course Begins:</strong>
+  <%=h @offering.start_date%>
 </p>
 <p>
   <strong>Registration Begins:</strong>
@@ -41,6 +48,7 @@
 </p>
 
 <p>
+  <%= link_to "Back", :back %> |
   <%= link_to "Edit", edit_offering_path(@offering) %> |
   <%= link_to "Destroy", @offering, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", offerings_path %>

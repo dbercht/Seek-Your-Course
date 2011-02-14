@@ -1,29 +1,19 @@
 <%title @title %>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Location</th>
-    <th>State</th>
-    <th>Registration Begins</th>
-    <th>Registration Deadline</th>
-    <th>Link</th>
-    <th>Description</th>
-  </tr>
+<ul>
   <% for offering in @offerings %>
-    <tr>
-      <td><%=h offering.title %></td>
-      <td><%=h offering.location %></td>
-      <td><%=h offering.state %></td>
-      <td><%=h offering.registration_begins %></td>
-      <td><%=h offering.registration_deadline %></td>
-      <td><%=h offering.link %></td>
-      <td><%=h offering.description %></td>
-      <td><%= link_to "Show", offering %></td>
-      <td><%= link_to "Edit", edit_offering_path(offering) %></td>
-      <td><%= link_to "Destroy", offering, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
+    <li>
+      <%=h offering.title %> | 
+      <%=h offering.location.state %> | 
+      <%=h offering.specific_location %> | 
+      <%=h offering.registration_begins %> | 
+      <%=h offering.registration_deadline %>
+      <  
+      <%= link_to "Show", offering %> |
+      <%= link_to "Edit", edit_offering_path(offering) %> | 
+      <%= link_to "Destroy", offering, :confirm => 'Are you sure?', :method => :delete %>
+      >
+    </li>
   <% end %>
-</table>
 
+<p><%= link_to "Back", :back %></p>
 <p><%= link_to "New Offering", new_offering_path %></p>

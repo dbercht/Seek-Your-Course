@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   def index
-    @topics = Topic.all
+    @topics = Topic.find(:all)
   end
 
   def show
@@ -18,7 +18,7 @@ class TopicsController < ApplicationController
     @topic = Topic.new(params[:topic])
     if @topic.save
       flash[:notice] = "Successfully created topic."
-      redirect_to @topic
+      redirect_to :action => 'index'
     else
       render :action => 'new'
     end
@@ -32,7 +32,7 @@ class TopicsController < ApplicationController
     @topic = Topic.find(params[:id])
     if @topic.update_attributes(params[:topic])
       flash[:notice] = "Successfully updated topic."
-      redirect_to @topic
+      redirect_to :action => 'index'
     else
       render :action => 'edit'
     end

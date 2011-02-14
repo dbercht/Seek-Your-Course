@@ -1,0 +1,12 @@
+<% form_for @location do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :state %><br />
+    <%= f.text_field :state %>
+  </p>
+  <p>
+    <%= f.label :us_location %><br />
+    <%= f.check_box :us_location %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

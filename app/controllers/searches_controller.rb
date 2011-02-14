@@ -13,9 +13,9 @@ class SearchesController < ApplicationController
     clean_query(params[:offering][:title])
     logger.info "#{params[:offering][:title]}**************************"
     if (params[:offering][:type_ids] != nil) #If type was chosen
-      @offerings = Offering.find(:all, :conditions => ["type_id IN (?) and validated=? and (title like ? or state like ?)", params[:offering][:type_ids], true, "%" + params[:offering][:title]+"%", "%" + params[:offering][:title]+"%"], :order => 'registration_deadline, registration_begins')
+      @offerings = Offering.find(:all, :conditions => ["type_id IN (?) and validated=? and (title like ?)", params[:offering][:type_ids], true, "%" + params[:offering][:title]+"%"], :order => 'registration_deadline, registration_begins')
     else
-       @offerings = Offering.find(:all, :conditions => ["validated=? and (title like ? or state like ?)", true, "%" + params[:offering][:title]+"%",  "%" + params[:offering][:title]+"%"], :order => 'registration_deadline, registration_begins')
+       @offerings = Offering.find(:all, :conditions => ["validated=? and (title like ?)", true, "%" + params[:offering][:title]+"%"], :order => 'registration_deadline, registration_begins')
     end
     if (params[:offering][:topic_ids] != nil) #if no topic was chosen
       @topic_ids = params[:offering][:topic_ids].map{|i| i.to_i}
@@ -24,8 +24,7 @@ class SearchesController < ApplicationController
       end
       @offerings.delete_if{|x| ((x.topic_ids & @topic_ids) == []) }
     end
-    session[:offerings] = @offerings.map{|x| x.id}
-    logger.info session[:offerings]
+    #session[:offerings] = @offerings.map{|x| x.id}
     @title = "Search Results"
     render "offerings/index"
   end

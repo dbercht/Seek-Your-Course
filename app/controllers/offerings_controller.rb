@@ -1,11 +1,7 @@
 class OfferingsController < ApplicationController
   def index
     @title = "Offerings"
-    if(session[:offerings].nil?)
-      @offerings = Offering.find(:all, :conditions => ["validated=?", true])
-    else
-      @offerings = Offering.find session[:offerings]
-    end
+    @offerings = Offering.find(:all, :conditions => ["validated=?", true])
   end
 
   def show
@@ -15,8 +11,9 @@ class OfferingsController < ApplicationController
   def new
     @offering = Offering.new
     @contact = Contact.new
-    @topics = Topic.find(:all, :order => 'category')
-    @types = Type.find(:all, :order => 'category')
+    @topics = Topic.find(:all)
+    @types = Type.find(:all)
+    @locations = Location.find(:all)
   end
 
   def create
@@ -30,8 +27,8 @@ class OfferingsController < ApplicationController
       flash[:notice] = "Successfully created offering."
       redirect_to @offering
     else
-      @topics = Topic.find(:all, :order => 'category')
-      @types = Type.find(:all, :order => 'category')
+      @topics = Topic.find(:all)
+      @types = Type.find(:all)
       render :action => 'new'
     end
   end
@@ -39,8 +36,9 @@ class OfferingsController < ApplicationController
   def edit
     @offering = Offering.find(params[:id])
     @contact = @offering.contact
-    @topics = Topic.find(:all, :order => 'category')
-    @types = Type.find(:all, :order => 'category')
+    @locations = Location.find(:all)
+    @topics = Topic.find(:all)
+    @types = Type.find(:all)
   end
 
   def update
@@ -68,6 +66,6 @@ class OfferingsController < ApplicationController
   end
   
   def  locations
-    
   end
+  
 end

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110128231918) do
+ActiveRecord::Schema.define(:version => 20110212042738) do
 
   create_table "contacts", :force => true do |t|
     t.string   "name"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20110128231918) do
     t.integer  "type_id"
     t.integer  "topic_id"
     t.boolean  "validated"
+    t.date     "start_date"
   end
 
   create_table "offerings_topics", :id => false, :force => true do |t|
