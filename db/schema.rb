@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110212042738) do
+ActiveRecord::Schema.define(:version => 20110218205343) do
 
   create_table "contacts", :force => true do |t|
     t.string   "name"
@@ -28,10 +28,18 @@ ActiveRecord::Schema.define(:version => 20110212042738) do
     t.string   "first_name"
   end
 
+  create_table "locations", :force => true do |t|
+    t.string   "state"
+    t.boolean  "us_location"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "region_id"
+  end
+
   create_table "offerings", :force => true do |t|
     t.string   "title"
-    t.string   "location"
-    t.string   "state"
+    t.integer  "location_id"
+    t.string   "specific_location"
     t.date     "registration_begins"
     t.date     "registration_deadline"
     t.string   "link"
@@ -42,11 +50,25 @@ ActiveRecord::Schema.define(:version => 20110212042738) do
     t.integer  "topic_id"
     t.boolean  "validated"
     t.date     "start_date"
+    t.integer  "region_id"
+    t.integer  "plan_id"
   end
 
   create_table "offerings_topics", :id => false, :force => true do |t|
     t.integer "offering_id"
     t.integer "topic_id"
+  end
+
+  create_table "plans", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "regions", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "searches", :force => true do |t|

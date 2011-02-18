@@ -1,4 +1,6 @@
 class OfferingsController < ApplicationController
+  before_filter :load_variables, :only => [:new, :create, :edit, :update]
+  
   def index
     @title = "Offerings"
     @offerings = Offering.find(:all, :conditions => ["validated=?", true])
@@ -10,16 +12,10 @@ class OfferingsController < ApplicationController
 
   def new
     @offering = Offering.new
-    @contact = Contact.new
-    @topics = Topic.find(:all)
-    @types = Type.find(:all)
-    @locations = Location.find(:all)
   end
 
   def create
     @offering = Offering.new(params[:offering])
-    @offering.validated = false
-    @contact = Contact.new(params[:contact])
     @offering.contact = @contact
     if (@offering.valid? & @contact.valid?)
       @contact.save!
@@ -27,25 +23,16 @@ class OfferingsController < ApplicationController
       flash[:notice] = "Successfully created offering."
       redirect_to @offering
     else
-      @topics = Topic.find(:all)
-      @types = Type.find(:all)
       render :action => 'new'
     end
   end
 
   def edit
     @offering = Offering.find(params[:id])
-    @contact = @offering.contact
-    @locations = Location.find(:all)
-    @topics = Topic.find(:all)
-    @types = Type.find(:all)
   end
 
   def update
     @offering = Offering.find(params[:id])
-    @contact = @offering.contact
-    @topics = Topic.find(:all, :order => 'category')
-    @types = Type.find(:all, :order => 'category')
     if (@contact.update_attributes(params[:contact])  )    
       if(@offering.update_attributes(params[:offering]))
         flash[:notice] = "Successfully updated offering."
@@ -65,7 +52,14 @@ class OfferingsController < ApplicationController
     redirect_to offerings_url
   end
   
-  def  locations
+  protected
+  
+  def load_variables
+    @regions = Region.find(:all)
+    @topics = Topic.find(:all)
+    @types = Type.find(:all)
+    @locations = Location.all
+    @plans = Plan.find(:all)
   end
   
 end

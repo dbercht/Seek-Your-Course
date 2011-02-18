@@ -1,0 +1,17 @@
+<% title "Plans" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <% for plan in @plans %>
+    <tr>
+      <td><%=h plan.name %></td>
+      <td><%= link_to "Show", plan %></td>
+      <td><%= link_to "Edit", edit_plan_path(plan) %></td>
+      <td><%= link_to "Destroy", plan, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Plan", new_plan_path %></p>

@@ -5,6 +5,10 @@
     <%= f.text_field :state %>
   </p>
   <p>
+    <label for="location_region">Region</label><br />
+    <%= collection_select(:location, :region_id, @regions, :id, :name, {:prompt => true}, :selected => @location.region)%>
+  </p>
+  <p>
     <%= f.label :us_location %><br />
     <%= f.check_box :us_location %>
   </p>

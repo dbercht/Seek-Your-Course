@@ -1,4 +1,6 @@
 class LocationsController < ApplicationController
+  before_filter :load_variables, :only => [:new, :create, :edit, :update]
+  
   def index
     @us_locations = Location.us_locations
     @abroad_locations = Location.abroad_locations
@@ -38,4 +40,12 @@ class LocationsController < ApplicationController
       render :action => 'edit'
     end
   end
+  
+  protected 
+  
+    def load_variables
+      @regions = Region.all
+    end
+    
+  
 end

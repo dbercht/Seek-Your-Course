@@ -2,8 +2,8 @@ class CreateOfferings < ActiveRecord::Migration
   def self.up
     create_table :offerings do |t|
       t.string :title
-      t.string :location
-      t.string :state
+      t.integer :location_id
+      t.string :specific_location
       t.date :registration_begins
       t.date :registration_deadline
       t.string :link
