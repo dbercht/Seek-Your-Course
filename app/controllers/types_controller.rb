@@ -1,4 +1,5 @@
 class TypesController < ApplicationController
+  before_filter :require_admin, :only => [:new, :create, :edit, :update, :destroy]
   def index
     @types = Type.find(:all, :order => 'category ASC')
   end

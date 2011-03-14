@@ -1,4 +1,5 @@
 class LocationsController < ApplicationController
+  before_filter :require_admin, :only => [:new, :create, :edit, :update, :destroy]
   before_filter :load_variables, :only => [:new, :create, :edit, :update]
   
   def index

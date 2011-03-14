@@ -1,4 +1,5 @@
 class TopicsController < ApplicationController
+  before_filter :require_admin, :only => [:new, :create, :edit, :update, :destroy]
   def index
     @topics = Topic.find(:all)
   end

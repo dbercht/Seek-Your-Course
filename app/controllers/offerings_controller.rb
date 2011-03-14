@@ -1,6 +1,6 @@
 class OfferingsController < ApplicationController
   before_filter :load_variables, :only => [:new, :create, :edit, :update]
-  
+  before_filter :require_login, :only => [:new, :create]
   def index
     @title = "Offerings"
     @offerings = Offering.find(:all, :conditions => ["validated=?", true])
@@ -17,6 +17,7 @@ class OfferingsController < ApplicationController
   def create
     @offering = Offering.new(params[:offering])
     if (@offering.valid?)
+      @offering.coordinator = current_user
       @offering.save!
       flash[:notice] = "Successfully created offering."
       redirect_to @offering
@@ -27,6 +28,11 @@ class OfferingsController < ApplicationController
 
   def edit
     @offering = Offering.find(params[:id])
+    if !allowed_to_edit?(@offering)
+      render :show
+    end
+    logger.info "#{allowed_to_edit?(@offering)}**********************"
+    
   end
 
   def update

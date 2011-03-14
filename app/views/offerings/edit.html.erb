@@ -2,6 +2,8 @@
 
 <%= render :partial => 'form' %>
 
+<p><b>Coordinator:</b> <%=@offering.coordinator.last_name%>, <%=@offering.coordinator.first_name%></p>
+<p><b>E-mail:</b> <%=@offering.coordinator.email%></p>
 <p>
   <%= link_to "Show", @offering %> |
   <%= link_to "View All", offerings_path %>

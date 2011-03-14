@@ -1,4 +1,10 @@
 class RegionsController < ApplicationController
+  before_filter :require_admin, :only => [:new, :create, :edit, :update, :destroy]
+ 
+  def index
+    @regions = Region.all
+  end
+ 
   def new
     @region = Region.new
   end

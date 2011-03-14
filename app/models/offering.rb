@@ -13,7 +13,7 @@ class Offering < ActiveRecord::Base
   belongs_to  :plan
   
   has_and_belongs_to_many :topics
-  has_and_belongs_to_many :artists, :class_name => "User"
+  has_and_belongs_to_many :registered_artists, :class_name => "User"
   
   belongs_to :coordinator, :class_name => "User", :foreign_key => "coordinator_id"
 
