@@ -3,5 +3,5 @@ class Region < ActiveRecord::Base
   
   attr_accessible :name, :location
   has_many :locations
-  has_many :offerings
+  has_many :offerings, :through => :locations
 end

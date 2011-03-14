@@ -16,9 +16,7 @@ class OfferingsController < ApplicationController
 
   def create
     @offering = Offering.new(params[:offering])
-    @offering.contact = @contact
-    if (@offering.valid? & @contact.valid?)
-      @contact.save!
+    if (@offering.valid?)
       @offering.save!
       flash[:notice] = "Successfully created offering."
       redirect_to @offering
@@ -33,16 +31,12 @@ class OfferingsController < ApplicationController
 
   def update
     @offering = Offering.find(params[:id])
-    if (@contact.update_attributes(params[:contact])  )    
       if(@offering.update_attributes(params[:offering]))
         flash[:notice] = "Successfully updated offering."
         redirect_to @offering
       else
         render :action => 'edit'
       end
-    else
-      render :action => 'edit'
-    end
   end
 
   def destroy

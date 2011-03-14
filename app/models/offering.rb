@@ -1,20 +1,21 @@
 class Offering < ActiveRecord::Base
   default_scope :order => 'registration_deadline,registration_begins', :condition => {:validated => :true}
   
-  attr_accessible :title, :location_id, :specific_location, :registration_begins, :registration_deadline, :link, :description, :type_id, :topic_ids, :validated, :start_date, :region_id, :plan_id
+  attr_accessible :title, :location_id, :specific_location, :registration_begins, :registration_deadline, :link, :description, :type_id, :topic_ids, :validated, :start_date, :plan_id
  
   before_create :pend_offering
-  validates_presence_of :title, :registration_begins, :link, :description, :start_date, :region_id, :specific_location
+  validates_presence_of :title, :registration_begins, :link, :description, :start_date, :specific_location
   validate
   
-  belongs_to :type, :dependent => :destroy
-  belongs_to  :location, :dependent => :destroy
-  belongs_to  :region, :dependent => :destroy
+  belongs_to :type
+  belongs_to  :location
+  has_one :region, :through => :location
   belongs_to  :plan
   
   has_and_belongs_to_many :topics
+  has_and_belongs_to_many :artists, :class_name => "User"
   
-  has_many :instructors
+  belongs_to :coordinator, :class_name => "User", :foreign_key => "coordinator_id"
 
   def validate
     errors.add_to_base "Must select type" if type_id.blank?

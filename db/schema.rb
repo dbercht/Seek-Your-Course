@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110218205343) do
+ActiveRecord::Schema.define(:version => 20110225206201) do
 
   create_table "contacts", :force => true do |t|
     t.string   "name"
@@ -50,13 +50,19 @@ ActiveRecord::Schema.define(:version => 20110218205343) do
     t.integer  "topic_id"
     t.boolean  "validated"
     t.date     "start_date"
-    t.integer  "region_id"
     t.integer  "plan_id"
+    t.text     "note"
+    t.integer  "coordinator_id"
   end
 
   create_table "offerings_topics", :id => false, :force => true do |t|
     t.integer "offering_id"
     t.integer "topic_id"
+  end
+
+  create_table "offerings_users", :id => false, :force => true do |t|
+    t.integer "offering_id"
+    t.integer "user_id"
   end
 
   create_table "plans", :force => true do |t|
@@ -87,6 +93,17 @@ ActiveRecord::Schema.define(:version => 20110218205343) do
   create_table "types", :force => true do |t|
     t.string   "category"
     t.integer  "offering_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "username"
+    t.string   "email"
+    t.string   "crypted_password"
+    t.string   "password_salt"
+    t.string   "persistence_token"
+    t.boolean  "admin"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,15 +1,20 @@
 ActionController::Routing::Routes.draw do |map|
+
+  map.resources :user_sessions  
   map.resources :plans
-
   map.resources :regions
-
   map.resources :offerings
   map.resources :contacts
   map.resources :instructors
   map.resources :topics
   map.resources :types
   map.resources :locations
+  map.resources :users
   
+  
+  
+  map.login 'login', :controller => 'user_sessions', :action => 'new'  
+  map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'  
   map.search '/search', :controller => :searches
   map.results '/search/results', :controller => :searches, :action => :results
   

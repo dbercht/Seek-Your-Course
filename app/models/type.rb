@@ -5,6 +5,11 @@ class Type < ActiveRecord::Base
   
   validates_uniqueness_of :category
 
-  has_many :offerings, :dependent => :delete_all
+  has_many :offerings
   has_many :upcoming_offerings, :class_name => 'Offering', :order => 'start_date ASC', :limit => 4
+  
+  def before_destroy
+    self.offerings.destroy_all
+  end
+
 end

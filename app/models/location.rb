@@ -7,4 +7,8 @@ class Location < ActiveRecord::Base
   has_many :offerings
   belongs_to :region
   
+  def before_destroy
+    self.offerings.destroy_all
+  end
+  
 end
