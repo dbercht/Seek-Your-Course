@@ -42,12 +42,12 @@ class OfferingsController < ApplicationController
     if !allowed_to_edit?(@offering)
       render :show
     end
-    logger.info "#{allowed_to_edit?(@offering)}**********************"
-    
   end
 
   def update
     @offering = Offering.find(params[:id])
+    @offering.registered_artist_ids = params[:offering][:registered_artist_ids]
+    logger.info "#{params[:offering][:registered_artist_ids]}********************************"
       if(@offering.update_attributes(params[:offering]))
         flash[:notice] = "Successfully updated offering."
         redirect_to @offering
