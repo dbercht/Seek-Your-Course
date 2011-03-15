@@ -29,6 +29,18 @@ class SearchesController < ApplicationController
     render "offerings/index"
   end
     
+  
+  def users
+    if params[:q]
+      @users = User.find(:all, :conditions => ["last_name like ?", params[:q] + '%'])
+    end
+    @users_list = 
+      @users.map do |user|
+        user.first_name + " " + user.last_name + ": " + user.username
+      end
+      
+    render :text=> @users_list
+  end
     
     private
   
@@ -37,5 +49,6 @@ class SearchesController < ApplicationController
       search_param.gsub!(/(((ing)|(ed)|(er))\b)|[^A-Za-z0-9%]/, "")
       logger.info "#{params[:offering][:title]}**************************"\
     end
-    
+        
+
 end

@@ -31,6 +31,13 @@
 <%end%>
     <%=h @offering.specific_location %>
 <p>
+<p>
+  <strong>Artists:</strong>
+  <%for artist in @offering.registered_artists do%>
+    <%=h artist.to_label + ", "%>
+  <%end%>
+   <%= @offering.unregistered_artists %>
+</p>
   <strong>Course Begins:</strong>
   <%=h @offering.start_date%>
 </p>

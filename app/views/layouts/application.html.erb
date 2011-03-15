@@ -3,11 +3,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <title><%= h(yield(:title) || "Untitled") %></title>
-    <%= stylesheet_link_tag 'application' %>
+    <%= stylesheet_link_tag 'application', 'jquery.autocomplete', 'jquery-ui-1.8.10.custom' %>
+    <%= javascript_include_tag 'application', 'jquery-1.4.4.min', 'jquery-ui-1.8.10.custom.min', 'jquery.autocomplete'%>
     <%= yield(:head) %>
   </head>
   <body>
-<div id="user_nav">  
+ <div id="user_nav">  
   <% if current_user %>  
     <%= link_to "Edit profile", edit_user_path(:current) %>  
     <%= link_to "Logout", logout_path %>  

@@ -1,7 +1,7 @@
 class Offering < ActiveRecord::Base
   default_scope :order => 'registration_deadline,registration_begins', :condition => {:validated => :true}
   
-  attr_accessible :title, :location_id, :specific_location, :registration_begins, :registration_deadline, :link, :description, :type_id, :topic_ids, :validated, :start_date, :plan_id
+  attr_accessible :title, :location_id, :specific_location, :registration_begins, :registration_deadline, :link, :description, :type_id, :topic_ids, :validated, :start_date, :plan_id, :unregistered_artists, :registered_artist_ids
  
   before_create :pend_offering
   validates_presence_of :title, :registration_begins, :link, :description, :start_date, :specific_location
@@ -13,7 +13,7 @@ class Offering < ActiveRecord::Base
   belongs_to  :plan
   
   has_and_belongs_to_many :topics
-  has_and_belongs_to_many :registered_artists, :class_name => "User"
+  has_and_belongs_to_many :registered_artists, :join_table => 'offerings_users', :class_name => "User" 
   
   belongs_to :coordinator, :class_name => "User", :foreign_key => "coordinator_id"
 
@@ -23,11 +23,6 @@ class Offering < ActiveRecord::Base
     if !registration_deadline.blank?
       if (registration_begins > registration_deadline)
         errors.add_to_base "Deadline must be after initial registration date"
-      end
-    end
-    if(location_id.blank?)
-      if(region_id == 2)
-        errors.add_to_base "Please select a state"
       end
     end
     errors.add_to_base "Dates must not be in the past" if ((registration_begins < Date.today)|(start_date < Date.today))

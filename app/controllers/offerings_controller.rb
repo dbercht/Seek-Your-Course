@@ -1,7 +1,8 @@
 class OfferingsController < ApplicationController
   before_filter :load_variables, :only => [:new, :create, :edit, :update]
   before_filter :require_login, :only => [:new, :create]
-  def index
+ 
+ def index
     @title = "Offerings"
     @offerings = Offering.find(:all, :conditions => ["validated=?", true])
   end
@@ -12,6 +13,7 @@ class OfferingsController < ApplicationController
 
   def new
     @offering = Offering.new
+    @artists = []
   end
 
   def create
@@ -25,9 +27,18 @@ class OfferingsController < ApplicationController
       render :action => 'new'
     end
   end
-
+  
+  def add_registered_artist
+    @username = params[:username].split(' ').last.to_s
+    @artist = User.find(:first, :conditions => ['username = ?', @username])
+    @artist_text = @artist.to_json
+    logger.info @artist_text
+    render :text => @artist_text
+  end
+  
   def edit
     @offering = Offering.find(params[:id])
+    @artists = @offering.registered_artists
     if !allowed_to_edit?(@offering)
       render :show
     end
@@ -41,6 +52,7 @@ class OfferingsController < ApplicationController
         flash[:notice] = "Successfully updated offering."
         redirect_to @offering
       else
+        @artists = @offering.registered_artists
         render :action => 'edit'
       end
   end

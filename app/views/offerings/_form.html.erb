@@ -1,3 +1,35 @@
+<script>
+  $(document).ready(function(){
+    $('#user_last_name').autocompletePlugin("/search/user/autocomplete");
+    
+    $("#user_last_name_button").button();
+    
+    $("input#offering_submit").button();
+    
+    //Links/Actions
+    
+    $("#user_last_name_button").click(function(){
+      $.get("/offerings/add_registered_artist", 
+        { "username": $("input#user_last_name").val() },
+          function(data){
+            var input = $("<input/>");
+            input.attr("id", "offering_registered_artists_ids_");
+            input.attr({
+              name: "offering[registered_artist_ids][]",
+              type: "checkbox",
+              value: data.user.id,
+              checked: true
+              })
+            var userName = data.user.first_name + " " + data.user.last_name + " | ";
+            $("#registered_artists").append(input).append(userName);
+          },
+        "json"
+      );
+    });
+    
+  });
+</script>
+
 <% form_for @offering do |f| %>
   <%= error_messages_for :object => [@offering] %>
   <p>
@@ -30,6 +62,24 @@
     <label for="offering_specific_location">US City or non-US Location*</label<br />
     <%= f.text_field :specific_location %>
   </p>
+  <p>
+    <%= f.label "Contributing Artists*"%><br />    
+    <%= f.label "Search for Registered Artists"%><br />
+    <input id="user_last_name" name="autocomplete" size="30" type="text" />
+    <span id="user_last_name_button">Add Registered Artist</span><br />
+    <label for="offering_Registered_Artists">Registred Artists*</label><br />
+    <div id='registered_artists' style="width:100%;">
+    </div>
+  </p>
+    <p>
+    <% @artists.each do |artist| -%>
+      <%= check_box_tag "offering[registered_artist_ids][]", artist.id, @offering.registered_artists.include?(artist) -%><%= artist.first_name + " " + artist.last_name + " | "-%>
+    <% end -%>
+  </p>
+
+    <%= f.label "Un-registered Artists"%><br />
+    <%= f.text_area :unregistered_artists, :size => "40x5" %>
+  </p>
     <p>
     <%= f.label "Start Date*" %><br />
     <%= f.date_select :start_date %>
@@ -48,7 +98,7 @@
   </p>
   <p>
     <%= f.label "Description*"%><br />
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :size => "60x10" %>
   </p>
   <%=f.radio_button :validated, true%><%= f.label :validated, "Yes"%>
   <%=f.radio_button :validated, false%><%= f.label :validated, "No"%>
