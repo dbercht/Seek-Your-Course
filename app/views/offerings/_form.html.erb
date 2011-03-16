@@ -3,15 +3,16 @@
     $('#user_last_name').autocompletePlugin("/search/user/autocomplete");
     
     $("#user_last_name_button").button();
-    
     $("input#offering_submit").button();
-    
     $("#location h3").button();
+    
     $("#region").hide();
     $("#state").hide();
     $("#specific_location").hide();
     $("#date select").hide();
+    
     $(".date").datepicker({minDate: new Date()});
+    
     //Links/Actions
     
     $("#user_last_name_button").click(function(){
