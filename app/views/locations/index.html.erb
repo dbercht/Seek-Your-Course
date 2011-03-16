@@ -13,4 +13,7 @@
 </div>
 <div style="clear:both"></div>
 
-<p><%= link_to "New Location", new_location_path %></p>
+<% if current_admin %>
+  <p><%= link_to "New Location", new_location_path %></p>
+<%end%>
+  

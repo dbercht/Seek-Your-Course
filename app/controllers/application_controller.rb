@@ -4,7 +4,7 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
-  helper_method :current_user, :logged_in?, :admin_logged_in?
+  helper_method :current_user, :logged_in?, :admin_logged_in?, :current_admin
   
   def require_login
     unless logged_in?
@@ -16,10 +16,18 @@ class ApplicationController < ActionController::Base
   def require_admin
     unless admin_logged_in?
       flash[:error] = "You must be an admin to access this page." 
-      redirect_to :back # Prevents the current action from running
+      redirect_to root_url # Prevents the current action from running
     end
   end
-
+ 
+  def current_admin
+    if admin_logged_in?
+      true
+    else
+      false
+    end
+  end
+  
 
   def allowed_to_edit?(offering)
     if(!logged_in?)

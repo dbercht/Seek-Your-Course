@@ -6,7 +6,9 @@ ActionController::Routing::Routes.draw do |map|
   map.search '/search', :controller => :searches
   map.results '/search/results', :controller => :searches, :action => :results
   
-  map.add_registered_artists 'offerings/add_registered_artist', :controller => 'offerings', :action => 'add_registered_artist'
+  map.add_registered_artists '/offerings/add_registered_artist', :controller => 'offerings', :action => 'add_registered_artist'
+  map.change_regions'/offerings/change_region', :controller => 'offerings', :action => 'change_region'
+  map.unvalidated_offerings 'offerings/unvalidated_offerings', :controller => 'offerings', :action => 'unvalidated_offerings'
   
    map.namespace :search do |search|
     search.location "/location", :controller => "location"

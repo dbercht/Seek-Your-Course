@@ -1,5 +1,10 @@
 <% title "Regions" %>
   <% for region in @regions %>
-    <%=region.name%> | <%= link_to "Edit", edit_region_url(region)%>
-  <% end %>
-<p><%= link_to "New Region", new_region_path %></p>
+    <%=region.name%> 
+    <% if current_admin %>
+      | <%= link_to "Edit", edit_region_url(region)%>
+    <% end %>
+<% end %>
+<% if current_admin %>
+  <p><%= link_to "New Region", new_region_path %></p>
+<% end %>

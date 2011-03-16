@@ -1,0 +1,5 @@
+
+  <p>
+    <label for="offering_state">U.S State</label><br />
+    <%= collection_select(:offering, :location_id, @locations, :id, :state, :prompt => true)%>
+  </p>

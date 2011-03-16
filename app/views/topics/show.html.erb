@@ -3,6 +3,10 @@
 <h2>
   <strong>Category:</strong>
   <%=h @topic.category %>
+  <%= image_tag @topic.image.url %>
+  <%= image_tag @topic.image.url(:medium) %>
+  <%= image_tag @topic.image.url(:thumb) %>
+
 </h2>
 <% for offering in @topic.offerings %>
   <p>
@@ -17,7 +21,9 @@
 
 <p>
   <%= link_to "Back", :back %> |
-  <%= link_to "Edit", edit_topic_path(@topic) %> |
-  <%= link_to "Destroy", @topic, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", topics_path %>
+  <%if current_admin %>    
+    <%= link_to "Edit", edit_topic_path(@topic) %> |
+    <%= link_to "Destroy", @topic, :confirm => 'Are you sure?', :method => :delete %> |
+  <%end%>
 </p>

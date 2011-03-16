@@ -1,12 +1,18 @@
 class OfferingsController < ApplicationController
   before_filter :load_variables, :only => [:new, :create, :edit, :update]
   before_filter :require_login, :only => [:new, :create]
+  before_filter :require_admin, :only => :unvalidated_offerings
  
  def index
     @title = "Offerings"
-    @offerings = Offering.find(:all, :conditions => ["validated=?", true])
+    @offerings = Offering.validated
   end
-
+  
+  def unvalidated_offerings
+    @offerings = Offering.unvalidated
+    render :action => 'index'
+end
+  
   def show
     @offering = Offering.find(params[:id])
   end
@@ -14,10 +20,12 @@ class OfferingsController < ApplicationController
   def new
     @offering = Offering.new
     @artists = []
+    @locations = []
   end
 
   def create
     @offering = Offering.new(params[:offering])
+    @locations = []
     if (@offering.valid?)
       @offering.coordinator = current_user
       @offering.save!
@@ -39,6 +47,7 @@ class OfferingsController < ApplicationController
   def edit
     @offering = Offering.find(params[:id])
     @artists = @offering.registered_artists
+    @locations = @offering.region.locations
     if !allowed_to_edit?(@offering)
       render :show
     end
@@ -46,9 +55,9 @@ class OfferingsController < ApplicationController
 
   def update
     @offering = Offering.find(params[:id])
-    @offering.registered_artist_ids = params[:offering][:registered_artist_ids]
-    logger.info "#{params[:offering][:registered_artist_ids]}********************************"
-      if(@offering.update_attributes(params[:offering]))
+    @offering.registered_artist_ids = params[:offering][:registered_artist_ids]    
+    @locations = @offering.region.locations
+    if(@offering.update_attributes(params[:offering]))
         flash[:notice] = "Successfully updated offering."
         redirect_to @offering
       else
@@ -63,15 +72,27 @@ class OfferingsController < ApplicationController
     flash[:notice] = "Successfully destroyed offering."
     redirect_to offerings_url
   end
-  
-  protected
+    
+  def change_region
+    logger.info "#{params[:region_id]}************************"
+    if (params[:region_id] == 0)
+      @locations = []
+    else
+      @locations = Region.find(params[:region_id].to_i).locations
+    end
+    logger.info @locations.to_json
+    render :text => @locations.to_json
+    
+  end
+
+protected
   
   def load_variables
     @regions = Region.find(:all)
     @topics = Topic.find(:all)
     @types = Type.find(:all)
-    @locations = Location.all
     @plans = Plan.find(:all)
   end
+
   
 end

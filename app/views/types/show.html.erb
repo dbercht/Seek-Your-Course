@@ -15,7 +15,9 @@
 
 <p>
   <%= link_to "Back", :back %> |
-  <%= link_to "Edit", edit_type_path(@type) %> |
-  <%= link_to "Destroy", @type, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", types_path %>
+  <% if current_admin %>
+    <%= link_to "Edit", edit_type_path(@type) %> |
+    <%= link_to "Destroy", @type, :confirm => 'Are you sure?', :method => :delete %> |
+  <% end %>
 </p>
