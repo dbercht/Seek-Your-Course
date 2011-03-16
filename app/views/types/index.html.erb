@@ -4,8 +4,10 @@
   <% for type in @types %>
     <ul>
       <li><h3><%=h link_to type.category, type_path(type) %></h3>
-      <%= link_to "Edit", edit_type_path(type) %>
-      <%= link_to "Destroy", type, :confirm => 'Are you sure?', :method => :delete %></li>
+      <%if current_admin %>
+        <%= link_to "Edit", edit_type_path(type) %>
+        <%= link_to "Destroy", type, :confirm => 'Are you sure?', :method => :delete %></li>
+      <% end %>
       <ul><% for offering in type.upcoming_offerings do %>
         <li>
           <%= link_to offering.title, offering_path(offering) %> | 
@@ -15,6 +17,9 @@
       <% end %>
     </ul></ul>
   <% end %>
+  
+  <p><%= link_to "Back", root_url %></p>
 
-<p><%= link_to "Back", root_url %></p>
-<p><%= link_to "New Type", new_type_path %></p>
+  <%if current_admin %>
+    <p><%= link_to "New Type", new_type_path %></p>
+  <% end %>

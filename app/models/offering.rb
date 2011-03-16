@@ -1,5 +1,7 @@
 class Offering < ActiveRecord::Base
-  default_scope :order => 'registration_deadline,registration_begins', :condition => {:validated => :true}
+  default_scope  :order => 'registration_deadline,registration_begins'
+  named_scope :validated, :order => 'registration_deadline', :conditions => {:validated => true}
+  named_scope :unvalidated, :order => 'created_at', :conditions => {:validated => false}
   
   attr_accessible :title, :location_id, :specific_location, :registration_begins, :registration_deadline, :link, :description, :type_id, :topic_ids, :validated, :start_date, :plan_id, :unregistered_artists, :registered_artist_ids
  

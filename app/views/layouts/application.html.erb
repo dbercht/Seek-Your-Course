@@ -4,7 +4,7 @@
   <head>
     <title><%= h(yield(:title) || "Untitled") %></title>
     <%= stylesheet_link_tag 'application', 'jquery.autocomplete', 'jquery-ui-1.8.10.custom' %>
-    <%= javascript_include_tag 'application', 'jquery-1.4.4.min', 'jquery-ui-1.8.10.custom.min', 'jquery.autocomplete'%>
+    <%= javascript_include_tag 'jrails', 'application', 'jquery-1.4.4.min', 'jquery-ui-1.8.10.custom.min', 'jquery.autocomplete'%>
     <%= yield(:head) %>
   </head>
   <body>

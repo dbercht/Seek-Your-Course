@@ -3,9 +3,11 @@
   <% for topic in @topics %>
     <ul>
       <li><h3><%=h link_to topic.category, topic_path(topic) %></h3></li>
-      <%= link_to "Show", topic %>
-      <%= link_to "Edit", edit_topic_path(topic) %>
-      <%= link_to "Destroy", topic, :confirm => 'Are you sure?', :method => :delete %>
+      <% if current_admin %>
+        <%= link_to "Show", topic %>
+        <%= link_to "Edit", edit_topic_path(topic) %>
+        <%= link_to "Destroy", topic, :confirm => 'Are you sure?', :method => :delete %>
+      <% end %>
       <ul><% for offering in topic.upcoming_offerings do %>
         <li>
           <%= link_to offering.title, offering_path(offering) %> | 
@@ -16,6 +18,10 @@
     </ul></ul>
   <% end %>
 
-<p><%= link_to "Back", root_url %></p>
-
-<p><%= link_to "New Topic", new_topic_path %></p>
+  <p><%= link_to "Back", root_url %></p>
+  
+  <%logger.info "***********IN VIEW****************"%>
+  <%logger.info current_admin%>
+  <% if current_admin %>
+    <p><%= link_to "New Topic", new_topic_path %></p>
+  <% end %>

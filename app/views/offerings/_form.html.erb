@@ -6,6 +6,12 @@
     
     $("input#offering_submit").button();
     
+    $("#location h3").button();
+    $("#region").hide();
+    $("#state").hide();
+    $("#specific_location").hide();
+    $("#date select").hide();
+    $(".date").datepicker({minDate: new Date()});
     //Links/Actions
     
     $("#user_last_name_button").click(function(){
@@ -27,7 +33,72 @@
       );
     });
     
+    $("#location h3").toggle(function(){
+      $("#region").show();
+      $("#state").show();
+    }, function(){
+      $("#region").hide();
+      $("#state").hide();
+    });
+    
+    $("select#offering_region").change(function(){
+      if($(this).val() != 0){
+        $("select#offering_location_id").children().remove();
+        var option = $("<option/>");
+        option.attr("value", "");
+        option.text("Please select");
+        $("select#offering_location_id").append(option);
+        $.get("/offerings/change_region", 
+          { "region_id": $(this).val() },
+            function(data){
+              $.each(data, function() {
+                var option = $("<option/>");
+                option.attr("value", this.location.id);
+                option.text(this.location.state);
+                $("select#offering_location_id").append(option);
+              });
+            },
+          "json"
+        );
+      }else{
+        $("#specific_location").hide();
+      }
+    });
+    
+    $("select#offering_location_id").change(function(){
+      if($(this).val() != 0){
+        $("#specific_location").show();
+      }else{
+        $("#specific_location").hide();
+      }
+    });
+    
+    $("#start_date").change(function () {
+        $(this).next().val(parseInt($(this).val().split("/")[2]));
+        $(this).next().next().val(parseInt($(this).val().split("/")[0]));
+        $(this).next().next().next().val(parseInt($(this).val().split("/")[1]));
+        $("#registration_begins").datepicker("option", "maxDate", new Date($(this).val()));
+    });
+    
+        
+    $("#registration_begins").change(function () {
+        $(this).next().val(parseInt($(this).val().split("/")[2]));
+        $(this).next().next().val(parseInt($(this).val().split("/")[0]));
+        $(this).next().next().next().val(parseInt($(this).val().split("/")[1]));
+        $("#registration_deadline").datepicker("option", "minDate", new Date($(this).val()));
+        $("#registration_deadline").datepicker("option", "maxDate", new Date($("#start_date").val()));
+    });
+    
+        
+    $("#registration_deadline").change(function () {
+        $(this).next().val(parseInt($(this).val().split("/")[2]));
+        $(this).next().next().val(parseInt($(this).val().split("/")[0]));
+        $(this).next().next().next().val(parseInt($(this).val().split("/")[1]));
+    })
+    
+    
   });
+  
 </script>
 
 <% form_for @offering do |f| %>
@@ -36,6 +107,7 @@
     <%= f.label "Title*" %><br />
     <%= f.text_field :title %>
   </p>
+  <hr/>
   <p>
     <%= f.label "Type*" %><br />
     <%= collection_select(:offering, :type_id, @types, :id, :category, :prompt => true) %>
@@ -46,24 +118,34 @@
       <%= check_box_tag "offering[topic_ids][]", topic.id, @offering.topics.include?(topic) -%><%= topic.category -%>
     <% end -%>
   </p>
+  <hr/>
     <p>
     <label for="offering_plan">Plan*</label><br />
        <%= collection_select(:offering, :plan_id, @plans, :id, :name)%>
    </p>
+  <hr/>
+  <div id="location">  
+    <h3>Location Information</h3>
+     <div id="region">
+        <p>
+          <label for="offering_region">Region</label><br />
+          <%= collection_select(:offering, :region, @regions, :id, :name, :prompt => true)%>
+        </p>
+      </div>
+     <div id="state">
+        <%=render :partial => 'offering_state' %>
+    </div>
+    <div id="specific_location">
+      <p>
+        <label for="offering_specific_location">US City or non-US Location*</label<br />
+        <%= f.text_field :specific_location %>
+      </p>
+    </div>
+  </div>
+  
+  <hr/>
   <p>
-    <label for="offering_region">Region</label><br />
-    <%= collection_select(:offering, :region, @regions, :name, :name, :prompt => true)%>
-  </p>
-  <p>
-    <label for="offering_state">U.S State</label><br />
-    <%= collection_select(:offering, :location_id, @locations, :id, :state, :prompt => true)%>
-  </p>
-  <p>
-    <label for="offering_specific_location">US City or non-US Location*</label<br />
-    <%= f.text_field :specific_location %>
-  </p>
-  <p>
-    <%= f.label "Contributing Artists*"%><br />    
+    <h3>Contributing Artists</h3>    
     <%= f.label "Search for Registered Artists"%><br />
     <input id="user_last_name" name="autocomplete" size="30" type="text" />
     <span id="user_last_name_button">Add Registered Artist</span><br />
@@ -76,22 +158,30 @@
       <%= check_box_tag "offering[registered_artist_ids][]", artist.id, @offering.registered_artists.include?(artist) -%><%= artist.first_name + " " + artist.last_name + " | "-%>
     <% end -%>
   </p>
-
     <%= f.label "Un-registered Artists"%><br />
     <%= f.text_area :unregistered_artists, :size => "40x5" %>
   </p>
+  
+  <hr/>
+  <div id="date">
     <p>
     <%= f.label "Start Date*" %><br />
-    <%= f.date_select :start_date %>
+    <input type='text'  id='start_date' class='date' value="Start Date"/>
+    <%= f.date_select :start_date, :class => "date" %>
   </p>
   <p>
     <%= f.label "Registration Begins*" %><br />
-    <%= f.date_select :registration_begins %>
+    <input type='text'  id='registration_begins' class='date' value="Registration Begins"/>
+    <%= f.date_select :registration_begins, :class => "date" %>
   </p>
   <p>
     <%= f.label :registration_deadline %><br />
-    <%= f.date_select :registration_deadline, :include_blank => true %>
+    <input type='text'  id='registration_deadline' class='date' value="Registration Deadline"/>
+    <%= f.date_select :registration_deadline, :include_blank => true, :class => "date" %>
   </p>
+  </div>
+  
+  <hr/>
   <p>
     <%= f.label "Link*" %><br />
     <%= f.text_field :link %>
@@ -100,9 +190,14 @@
     <%= f.label "Description*"%><br />
     <%= f.text_area :description, :size => "60x10" %>
   </p>
-  <%=f.radio_button :validated, true%><%= f.label :validated, "Yes"%>
-  <%=f.radio_button :validated, false%><%= f.label :validated, "No"%>
-  <%= link_to "Destroy Offering", @offering, :confirm => 'Are you sure?', :method => :delete %> 
-
+  <%if current_admin %>
+    <%=f.radio_button :validated, true%><%= f.label :validated, "Validated"%>
+    <%=f.radio_button :validated, false%><%= f.label :validated, "Not Validated"%><br />
+    <%= f.label "Notes*"%><br />
+    <%= f.text_area :note, :size => "60x10" %>
+    <%= link_to "Destroy Offering", @offering, :confirm => 'Are you sure?', :method => :delete %> 
+  <%else%>
+    <p>To delete this offering, please contact the site administrator </p>
+  <% end %>
   <p><%= f.submit %></p>
 <% end %>
