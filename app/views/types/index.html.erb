@@ -1,0 +1,24 @@
+<%title "Offerings by Type" %>
+<table>
+  <tr>
+    <th>Category</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @types.each do |type| %>
+  <tr>
+    <td><%= type.category %></td>
+    <td><%= link_to 'Show', type %></td>
+    <% if current_admin %>
+      <td><%= link_to 'Edit', edit_type_path(type) %></td>
+      <td><%= link_to 'Destroy', type, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Type', new_type_path %>

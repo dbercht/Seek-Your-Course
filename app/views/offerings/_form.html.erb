@@ -1,0 +1,77 @@
+<%= form_for(@offering) do |f| %>
+  <% if @offering.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@offering.errors.count, "error") %> prohibited this offering from being saved:</h2>
+
+      <ul>
+      <% @offering.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% if current_admin%>
+    <div class="field">
+      <%= f.label :validated %><br />
+      <%= f.check_box :validated %>
+    </div>
+    <div class="field">
+      <%= f.label :note %><br />
+      <%= f.text_area :note %>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <label for="offering_plan">Plan*</label><br />
+    <%= collection_select(:offering, :plan_id, @plans, :id, :name)%>
+  </div>
+  <div class="field">
+    <label for="offering_state">Location</label><br />
+    <%= collection_select(:offering, :location_id, @locations, :id, :state, :prompt => true)%>
+  </div>
+  <div class="field">
+    <%= f.label :specific_location %><br />
+    <%= f.text_field :specific_location %>
+  </div>
+  <div class="field">
+    <%= f.label :registration_begins %><br />
+    <%= f.date_select :registration_begins %>
+  </div>
+  <div class="field">
+    <%= f.label :registration_deadline %><br />
+    <%= f.date_select :registration_deadline %>
+  </div>
+  <div class="field">
+    <%= f.label :start_date %><br />
+    <%= f.date_select :start_date %>
+  </div>
+  <div class="field">
+    <%= f.label :link %><br />
+    <%= f.text_field :link %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label "Type*" %><br />
+    <%= collection_select(:offering, :type_id, @types, :id, :category, :prompt => true) %>
+  </div>
+  <div>
+    <label for="offering_Topic/Medium">Topic/Medium*</label><br />
+    <% @topics.each do |topic| -%>
+      <%= check_box_tag "offering[topic_ids][]", topic.id, @offering.topics.include?(topic) -%><%= topic.category -%>
+    <% end -%>
+  </div>
+  <div class="field">
+    <%= f.label :unregistered_artists %><br />
+    <%= f.text_area :unregistered_artists %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,76 @@
+<% title "Edit Offering"%>
+<p id="notice"><%= notice %></p>
+<% if @offering.validated == false %>
+  <p>
+    <b>Validated:</b>
+    <%= @offering.validated %>
+  </p>
+
+  <p>
+    <b>Note:</b>
+    <%= @offering.note %>
+  </p>
+<% end %>
+<p>
+  <b>Title:</b>
+  <%= @offering.title %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @offering.location.state %>
+</p>
+
+<p>
+  <b>Specific location:</b>
+  <%= @offering.specific_location %>
+</p>
+
+<p>
+  <b>Registration begins:</b>
+  <%= @offering.registration_begins %>
+</p>
+
+<p>
+  <b>Registration deadline:</b>
+  <%= @offering.registration_deadline %>
+</p>
+
+<p>
+  <b>Start date:</b>
+  <%= @offering.start_date %>
+</p>
+
+<p>
+  <b>Link:</b>
+  <%= @offering.link %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @offering.description %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @offering.type.category %>
+</p>
+
+<p>
+  <b>Plan:</b>
+  <%= @offering.plan.name %>
+</p>
+
+<p>
+  <b>Coordinator:</b>
+  <%= @offering.coordinator.username %>
+</p>
+
+<p>
+  <b>Unregistered artists:</b>
+  <%= @offering.unregistered_artists %>
+</p>
+
+
+<%= link_to 'Edit', edit_offering_path(@offering) %> |
+<%= link_to 'Back', offerings_path %>

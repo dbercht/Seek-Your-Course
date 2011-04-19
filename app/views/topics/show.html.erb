@@ -1,0 +1,16 @@
+<%title @topic.category %>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Category:</b>
+  <%= @topic.category %>
+</p>
+<% for @offering in @offerings do %>
+  <%= render @offering %>
+<% end %>
+
+
+<% if current_admin %>
+  <%= link_to 'Edit', edit_topic_path(@topic) %> |
+ <% end %>
+<%= link_to 'Back', topics_path %>

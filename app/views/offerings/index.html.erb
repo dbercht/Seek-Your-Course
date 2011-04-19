@@ -1,0 +1,41 @@
+<%title @title%>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Location</th>
+    <th>Specific location</th>
+    <th>Registration begins</th>
+    <th>Registration deadline</th>
+    <th>Start date</th>
+    <th>Link</th>
+    <th>Unregistered artists</th>
+    <th></th>  
+    <% if current_admin %>
+      <th></th>
+      <th></th>
+    <% end %>
+  </tr>
+
+<% @offerings.each do |offering| %>
+  <tr>
+    <td><%= offering.title %></td>
+    <td><%= offering.location.state %></td>
+    <td><%= offering.specific_location %></td>
+    <td><%= offering.registration_begins %></td>
+    <td><%= offering.registration_deadline %></td>
+    <td><%= offering.start_date %></td>
+    <td><%= offering.link %></td>
+    <td><%= offering.unregistered_artists %></td>
+    <td><%= link_to 'Show', offering %></td>
+    <% if current_admin %>
+      <td><%= link_to 'Edit', edit_offering_path(offering) %></td>
+      <td><%= link_to 'Destroy', offering, :confirm => 'Are you sure?', :method => :delete %></td>
+    <%  end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Offering', new_offering_path %>

@@ -1,0 +1,27 @@
+<%title "Offerings by Region" %>
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @regions.each do |region| %>
+  <tr>
+    <td><%= region.name %></td>
+    <td><%= link_to 'Show', region %></td>
+
+    <% if current_admin %>
+      <td><%= link_to 'Edit', edit_region_path(region) %></td>
+      <td><%= link_to 'Destroy', region, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<% if current_admin %>
+  <%= link_to 'New Region', new_region_path %>
+<% end %>

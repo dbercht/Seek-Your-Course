@@ -1,0 +1,27 @@
+<%title "Offerings by Topic" %>
+
+<table>
+  <tr>
+    <th>Category</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @topics.each do |topic| %>
+  <tr>
+    <td><%= topic.category %></td>
+    <td><%= link_to 'Show', topic %></td>
+    <% if current_admin %>
+      <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
+      <td><%= link_to 'Destroy', topic, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<% if current_admin %>
+  <%= link_to 'New Topic', new_topic_path %>
+<% end %>
