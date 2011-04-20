@@ -15,7 +15,8 @@ class PlansController < ApplicationController
   # GET /plans/1.xml
   def show
     @plan = Plan.find(params[:id])
-
+    @pending_offerings = @plan.offerings.pending
+    @validated_offerings = @plan.offerings.validated
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @plan }

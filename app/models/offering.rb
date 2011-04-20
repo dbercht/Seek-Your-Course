@@ -1,8 +1,8 @@
 class Offering < ActiveRecord::Base
   default_scope order('start_date')
-
-  scope :validated, where(:validated => true)
-  scope :pending, where(:validated => false)
+  scope :future_offerings, where("start_date > ?", Date.today)
+  scope :validated, future_offerings.where(:validated => true)
+  scope :pending, future_offerings.where(:validated => false)
 
   attr_protected :validated, :note
   validates_presence_of :title, :registration_begins, :link, :description, :start_date, :specific_location

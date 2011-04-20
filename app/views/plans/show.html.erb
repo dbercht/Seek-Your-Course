@@ -5,6 +5,16 @@
   <%= @plan.name %>
 </p>
 
+<% for @offering in @pending_offerings do %>
+  <%= render @offering %>
+<% end %>
+
+<hr />
+
+<% for @offering in @validated_offerings do %>
+  <%= render @offering %>
+<% end %>
+
 
 <%= link_to 'Edit', edit_plan_path(@plan) %> |
 <%= link_to 'Back', plans_path %>

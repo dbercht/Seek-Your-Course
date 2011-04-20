@@ -8,6 +8,7 @@ class OfferingsController < ApplicationController
   # GET /offerings.xml
   def index
     @offerings = Offering.validated(:all, :include => [:location])
+    logger.debug @offerings
     respond_to do |format|
       format.html {@title = "Offerings"} # index.html.erb
       format.xml  { render :xml => @offerings }

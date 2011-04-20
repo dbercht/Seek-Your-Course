@@ -6,8 +6,9 @@ SeekYourCourse::Application.routes.draw do
   resources :topics 
   resources :types
 
-  resources :regions
-  resources :locations
+  resources :regions do
+    resources :locations
+  end
 
   match 'user/edit' => 'users#edit', :as => :edit_current_user
   match 'signup' => 'users#new', :as => :signup

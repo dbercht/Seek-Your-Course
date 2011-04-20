@@ -70,7 +70,7 @@
   <b>Unregistered artists:</b>
   <%= @offering.unregistered_artists %>
 </p>
-
-<%= link_to 'Edit', edit_offering_path(@offering) %> |
-
+<% if current_admin %>
+  <%= link_to 'Edit', edit_offering_path(@offering) %> |
+<% end %>
 <hr />

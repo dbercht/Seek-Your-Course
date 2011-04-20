@@ -9,8 +9,7 @@
 
 <% @regions.each do |region| %>
   <tr>
-    <td><%= region.name %></td>
-    <td><%= link_to 'Show', region %></td>
+    <td><%= link_to region.name, region_locations_path(region) %></td>
 
     <% if current_admin %>
       <td><%= link_to 'Edit', edit_region_path(region) %></td>
@@ -22,6 +21,7 @@
 
 <br />
 
+<%= link_to 'Back', regions_path %>
 <% if current_admin %>
   <%= link_to 'New Region', new_region_path %>
 <% end %>

@@ -4,13 +4,11 @@
     <th>Category</th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
 
 <% @types.each do |type| %>
   <tr>
-    <td><%= type.category %></td>
-    <td><%= link_to 'Show', type %></td>
+    <td><%= link_to type.category, type %></td>
     <% if current_admin %>
       <td><%= link_to 'Edit', edit_type_path(type) %></td>
       <td><%= link_to 'Destroy', type, :confirm => 'Are you sure?', :method => :delete %></td>
