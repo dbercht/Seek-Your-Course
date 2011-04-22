@@ -18,5 +18,6 @@
 </table>
 
 <br />
-
-<%= link_to 'New Type', new_type_path %>
+<% if current_admin %>
+  <%= link_to 'New Type', new_type_path %>
+<% end %>

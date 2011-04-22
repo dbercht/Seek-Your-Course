@@ -3,7 +3,6 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.7.rc2'
 gem "nifty-generators", :group => :development
 
-
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

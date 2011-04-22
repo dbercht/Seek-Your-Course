@@ -13,7 +13,7 @@
     <td><%= link_to location.state, region_location_path(location.region, location) %></td>
     <% if current_admin %>
       <td><%= link_to 'Edit', edit_region_location_path(location.region, location) %></td>
-      <td><%= link_to 'Destroy', region_location_path(location.region, location), :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to 'Destroy',  region_location_path(location.region, location), :confirm => 'Are you sure?', :method => :delete %></td>
     <%end%>
   </tr>
 <% end %>

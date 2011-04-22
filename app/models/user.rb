@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
   attr_protected :is_admin
   acts_as_authentic
 

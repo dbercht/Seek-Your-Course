@@ -16,9 +16,8 @@ class LocationsController < ApplicationController
   # GET /locations/1
   # GET /locations/1.xml
   def show
-    @region = Region.find(params[:region_id])
-    @location = @region.locations.find(params[:id])
-    @offerings = @location.offerings
+    @location = Location.includes(:region).find(params[:id])
+    @offerings = Offering.includes(:plan, :topics, :type, :location, :coordinator).where("location_id = ?", @location.id).validated
 
     respond_to do |format|
       format.html # show.html.erb

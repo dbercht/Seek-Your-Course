@@ -15,7 +15,7 @@ class TypesController < ApplicationController
   # GET /types/1.xml
   def show
     @type = Type.find(params[:id])
-    @offerings = @type.offerings.validated
+    @offerings = @type.offerings.includes(:plan, :topics, :type, :location, :coordinator).validated
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @type }

@@ -4,6 +4,10 @@ class OfferingsController < ApplicationController
   before_filter :load_variables, :except => [:show, :index]
   before_filter :admin_required, :only => [:pending_index]
   
+  
+  def home
+  end
+
   # GET /offerings
   # GET /offerings.xml
   def index

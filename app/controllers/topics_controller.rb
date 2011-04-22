@@ -15,7 +15,7 @@ class TopicsController < ApplicationController
   # GET /topics/1.xml
   def show
     @topic = Topic.find(params[:id])
-    @offerings = @topic.offerings.where("validated = ?", true)
+    @offerings = @topic.offerings.includes(:plan, :topics, :type, :location, :coordinator).validated
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @topic }
