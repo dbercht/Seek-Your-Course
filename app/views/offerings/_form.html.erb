@@ -67,6 +67,12 @@
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </div>
+  <div>
+    <%= f.label :registered_artist_ids %><br />
+    <% @artists.each do |artist| -%>
+      <%= check_box_tag "offering[registered_artist_ids][]", artist.id, @offering.registered_artists.include?(artist) -%><%= artist.name + " | "-%>
+    <% end -%>
+  </div>
   <div class="field">
     <%= f.label :unregistered_artists %><br />
     <%= f.text_area :unregistered_artists %>

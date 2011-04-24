@@ -3,7 +3,7 @@ class OfferingsController < ApplicationController
   before_filter :authorize, :only => [:edit, :update]
   before_filter :load_variables, :except => [:show, :index]
   before_filter :admin_required, :only => [:pending_index]
-  
+  before_filter :editable_offering, :only => [:edit, :index]
   
   def home
   end
@@ -55,7 +55,7 @@ class OfferingsController < ApplicationController
 
   # GET /offerings/1/edit
   def edit
-    @offering = Offering.find(params[:id])
+    logger.debug @artists
   end
 
   # POST /offerings
@@ -106,7 +106,15 @@ class OfferingsController < ApplicationController
   end
   
   private
+    def editable_offering
+      @offering = Offering.find(params[:id], :include => [:location, :region, :coordinator, :type, :topics, :registered_artists])
+      if(@offering.start_date < Date.today)
+        redirect_to (@offering, :notice => 'Cannot edit past offerings.')
+      end
+    end
+
     def load_variables
+      @artists = User.artists
       @types = Type.all
       @topics = Topic.all
       @locations = Location.all

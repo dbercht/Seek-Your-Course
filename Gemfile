@@ -12,6 +12,9 @@ gem "authlogic"
 
 gem 'mysql2'
 
+#gem "rmagick"
+#gem "carrierwave"
+
 group :test, :development do
   gem "rspec-rails", "~> 2.4"
 end

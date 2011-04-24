@@ -3,3 +3,13 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        offering:
+          attributes:
+            start_date:
+              after: "cannot start before registration begin date"
+            registration_begins:
+              before: "cannot be before offering start date"
+              after: "must not be in past"
