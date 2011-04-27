@@ -6,7 +6,7 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
-      redirect_to_target_or_default root_url, :notice => "Logged in successfully."
+      redirect_to_target_or_default new_offering_url, :notice => "Logged in successfully."
     else
       render :action => 'new'
     end

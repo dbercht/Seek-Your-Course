@@ -73,3 +73,20 @@ a {
 .error_messages ul {
   margin: 0;
 }
+
+//User nav!
+#container{
+  width: 80%;
+}
+
+#user_nav{
+  float: right;
+}
+
+#admin_nav{
+  float: left;
+}
+
+.clear{
+  clear: both;
+}

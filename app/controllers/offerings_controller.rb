@@ -3,8 +3,7 @@ class OfferingsController < ApplicationController
   before_filter :authorize, :only => [:edit, :update]
   before_filter :load_variables, :except => [:show, :index]
   before_filter :admin_required, :only => [:pending_index]
-  before_filter :editable_offering, :only => [:edit, :index]
-  
+  before_filter :editable_offering, :only => [:edit, :update, :index]
   def home
   end
 
@@ -108,8 +107,15 @@ class OfferingsController < ApplicationController
   private
     def editable_offering
       @offering = Offering.find(params[:id], :include => [:location, :region, :coordinator, :type, :topics, :registered_artists])
-      if(@offering.start_date < Date.today)
-        redirect_to (@offering, :notice => 'Cannot edit past offerings.')
+      if(@offering.start_date > Date.today)
+        #redirect_to (@offering, :notice => 'Cannot edit past offerings.')
+        logger.debug("WRONG IF STATEMENT")
+        @offering.update_attribute(:editable, true)
+      else
+        @offering.update_attribute(:editable, false)
+        if !current_admin         
+          redirect_to @offering, :notice => "Cannot edit past offerings"
+        end
       end
     end
 

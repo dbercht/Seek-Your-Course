@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110422205057) do
+ActiveRecord::Schema.define(:version => 20110426230946) do
 
   create_table "locations", :force => true do |t|
     t.string   "state"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20110422205057) do
     t.boolean  "validated",             :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "editable",              :default => true
   end
 
   create_table "offerings_topics", :id => false, :force => true do |t|
@@ -64,6 +65,10 @@ ActiveRecord::Schema.define(:version => 20110422205057) do
     t.string   "category"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "types", :force => true do |t|

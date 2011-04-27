@@ -1,5 +1,5 @@
 class Offering < ActiveRecord::Base
-  attr_protected :validated, :note
+  attr_protected :validated, :note, :editable
 
   #SCOPES
 
@@ -36,17 +36,20 @@ class Offering < ActiveRecord::Base
     DESCRIPTION_LENGTH_FOR_PLAN[plan.name]
   end
   
-   validates :topics, :presence => true
+  validates :topics, :presence => true
   validates :type, :presence => true
   validates :link, :presence => true
   validates :title, :presence => true
   validates :description, :presence => true
   validates :location, :presence => true
-  validates :start_date, :presence => true, 
-                         :date => {:after => :registration_begins} 
-  validates :registration_begins, :presence => true,
-                                  :date => {:after => Date.today}
+
+  validates_presence_of :start_date, :registration_begins, :registration_deadline
   validates :registration_deadline, :date => {:after => :registration_begins}
+
+  with_options :if => :editable? do |o|
+    o.validates :start_date, :date => {:after => :registration_begins}
+    o.validates :registration_begins, :date => {:after => Date.today}
+  end
 
   def validate
     #errors[:base] = "#{plan.name} only allows for #{DESCRIPTION_LENGTH_FOR_PLAN[plan.name]} characters." if validate_plan_description_length?

@@ -36,10 +36,6 @@ GEM
       ZenTest (>= 4.4.1)
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
-    carrierwave (0.5.3)
-      activesupport (~> 3.0)
-    date_validator (0.6.1)
-      activemodel (~> 3.0.0)
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
@@ -53,6 +49,9 @@ GEM
     mocha (0.9.12)
     mysql2 (0.2.7)
     nifty-generators (0.4.6)
+    paperclip (2.3.11)
+      activerecord (>= 2.3.0)
+      activesupport (>= 2.3.2)
     polyglot (0.3.1)
     rack (1.2.2)
     rack-mount (0.6.14)
@@ -99,11 +98,10 @@ DEPENDENCIES
   authlogic
   autotest
   bcrypt-ruby
-  carrierwave
-  date_validator
   mocha
   mysql2
   nifty-generators
+  paperclip (~> 2.3)
   rails (= 3.0.7.rc2)
   rmagick
   rspec-rails (~> 2.4)
