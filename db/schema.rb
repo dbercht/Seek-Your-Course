@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20110426230946) do
     t.string   "description"
     t.text     "note"
     t.text     "unregistered_artists"
-    t.date     "registration_begins",   :default => '2011-04-18'
+    t.date     "registration_begins",   :default => '2011-04-28'
     t.date     "registration_deadline"
     t.date     "start_date"
     t.boolean  "validated",             :default => false

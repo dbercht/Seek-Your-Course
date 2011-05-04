@@ -41,7 +41,7 @@
     </div>
     <div class="field">
       <label for="offering_state">Location</label><br />
-      <%= collection_select(:offering, :location_id, @locations, :id, :state, :prompt => true)%>
+      <%= grouped_collection_select(:offering, :location_id, @regions, :locations, :name, :id, :state, :prompt => true)%>
     </div>
     <div class="field">
       <%= f.label :specific_location %><br />

@@ -67,7 +67,10 @@
 
 <p>
   <b>Unregistered artists:</b>
-  <%= @offering.unregistered_artists %>
+  <% @offering.registered_artists.each do |user| %>
+    <%= link_to(user.name, user_path(user)) %> - 
+  <% end %>
+  <%= @offering.unregistered_artists.gsub(",", " -") %>
 </p>
 
 

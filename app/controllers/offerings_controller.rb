@@ -19,7 +19,7 @@ class OfferingsController < ApplicationController
   end
 
   def pending_index
-    @offerings = Offering.pending(:all, :include => [:location])
+    @offerings = Offering.pending(:include => [:location])
     respond_to do |format|
       format.html do
         @title = "Pending Offerings"
@@ -81,6 +81,7 @@ class OfferingsController < ApplicationController
       @offering.validated = params[:offering][:validated]
       @offering.note = params[:offering][:note]
     end
+    @offering.registered_artist_ids = params[:registered_artist_ids]
     respond_to do |format|
       if @offering.update_attributes(params[:offering])
         format.html { redirect_to(@offering, :notice => 'Offering was successfully updated.') }
@@ -123,7 +124,7 @@ class OfferingsController < ApplicationController
       @artists = User.artists
       @types = Type.all
       @topics = Topic.all
-      @locations = Location.all
+      @regions = Region.find(:all, :include => [:locations])
       @plans = Plan.all
     end
 
