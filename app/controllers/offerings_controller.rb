@@ -3,15 +3,16 @@ class OfferingsController < ApplicationController
   before_filter :authorize, :only => [:edit, :update]
   before_filter :load_variables, :except => [:show, :index]
   before_filter :admin_required, :only => [:pending_index]
-  before_filter :editable_offering, :only => [:edit, :update, :index]
+  before_filter :editable_offering, :only => [:edit, :update, :show]
   def home
+    render :layout => "home"
   end
 
   # GET /offerings
   # GET /offerings.xml
   def index
-    @offerings = Offering.validated(:all, :include => [:location])
-    logger.debug @offerings
+    @offerings = Offering.validated(:all, :include => [:location, :users]).paginate(:page => params[:page], :per_page => 10)
+    logger.debug @offerings.size
     respond_to do |format|
       format.html {@title = "Offerings"} # index.html.erb
       format.xml  { render :xml => @offerings }

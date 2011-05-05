@@ -1,0 +1,18 @@
+  <div class="field">
+    <p>
+      <%= profile.label :phone_number %><br />
+      <%= profile.number_field :phone_number %>
+    </p>
+  </div>
+  <div class="field">
+    <p>    
+      <%= profile.label :address %><br />
+      <%= profile.text_field :address %>
+    </p>
+  </div>
+  <% if @profile.picture.exists? then %>
+    <td><%= image_tag @profile.picture.url(:thumb) %></td>
+  <% end %>
+  <div class="field">
+    <%= profile.file_field :picture %>
+  </div>

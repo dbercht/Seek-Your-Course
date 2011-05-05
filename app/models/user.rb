@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   ROLES = %w[artist coordinator]
   
-  
   attr_accessible :name, :role
   attr_protected :is_admin
   acts_as_authentic
@@ -13,5 +12,7 @@ class User < ActiveRecord::Base
 
   has_many :coordinated_offerings, :class_name => 'Offering', :foreign_key => 'coordinator_id'
 
+  has_one :profile
+  accepts_nested_attributes_for :profile
 
 end

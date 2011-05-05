@@ -67,9 +67,13 @@
 </p>
 
 <p>
-  <b>Unregistered artists:</b>
-  <%= @offering.unregistered_artists %>
+  <b>Contributing artists:</b>
+  <% @offering.registered_artists.each do |user| %>
+    <%= link_to(user.name, user_path(user)) %> -
+  <% end %>
+  <%= @offering.unregistered_artists.gsub(",", " -") if !@offering.unregistered_artists.nil? %>
 </p>
+
 <% if current_admin || (@offering.coordinator == current_user) %>
   <%= link_to 'Edit', edit_offering_path(@offering) %> |
 <% end %>

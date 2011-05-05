@@ -1,6 +1,9 @@
 SeekYourCourse::Application.routes.draw do
+
   resources :offerings
+
   match 'pending_offerings', :to => 'offerings#pending_index', :as => 'pending_offerings'
+
 
   resources :plans
   resources :topics 
@@ -14,6 +17,8 @@ SeekYourCourse::Application.routes.draw do
   match 'signup' => 'users#new', :as => :signup
   match 'logout' => 'user_sessions#destroy', :as => :logout
   match 'login' => 'user_sessions#new', :as => :login
+
+  resource :profiles
 
   resources :user_sessions
   resources :users

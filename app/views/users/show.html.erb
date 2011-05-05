@@ -1,0 +1,15 @@
+<%title @user.name %>
+
+<div id="user_profile">
+  <%= content_tag :label, "#{@user.role.humanize}'s name:", :class => "strong" %>
+  <%= content_tag :p, @user.name %>
+</div>
+
+  <%if (@user.profile.nil?) %>
+    <%if current_user == @user %>
+
+      <p>You do not have a profile yet, if you wish to create one click <%=link_to 'here', new_profiles_path %>.</p>
+    <% end %>
+  <% else %> 
+    <%= render :partial => "profiles/profile", :locals => {:profile => @user.profile} %>
+  <% end %>

@@ -17,7 +17,7 @@ class LocationsController < ApplicationController
   # GET /locations/1.xml
   def show
     @location = Location.includes(:region).find(params[:id])
-    @offerings = Offering.includes(:plan, :topics, :type, :location, :coordinator).where("location_id = ?", @location.id).validated
+    @offerings = Offering.includes(:plan, :topics, :type, :location, :coordinator).where("location_id = ?", @location.id).validated.paginate(:page => params[:page], :per_page => 10)
 
     respond_to do |format|
       format.html # show.html.erb

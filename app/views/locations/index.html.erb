@@ -10,7 +10,7 @@
 
 <% @locations.each do |location| %>
   <tr>
-    <td><%= link_to location.state, region_location_path(location.region, location) %></td>
+    <td><%= link_to location.state, region_location_path(location.region, location) %><%=location.offerings.size%></td>
     <% if current_admin %>
       <td><%= link_to 'Edit', edit_region_location_path(location.region, location) %></td>
       <td><%= link_to 'Destroy',  region_location_path(location.region, location), :confirm => 'Are you sure?', :method => :delete %></td>

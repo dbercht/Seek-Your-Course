@@ -1,4 +1,4 @@
-<%= form_for @user do |f| %>
+<%= form_for( @user, :html => {:multipart => true}) do |f| %>
   <%= f.error_messages %>
   <p>
     <%= f.label :name %><br />
@@ -23,5 +23,15 @@
     <%= f.label :password_confirmation, "Confirm Password" %><br />
     <%= f.password_field :password_confirmation %>
   </p>
+   
+   <%= f.fields_for :profile do |profile| %>
+      
+   <% unless @user.profile.nil? %>
+     <%=render :partial => 'profiles/form_attributes', :locals => {:profile => profile} %>
+   <% end %>
+    
+  <% end %>
+
+
   <p><%= f.submit (@user.new_record? ? "Sign up" : "Update") %></p>
 <% end %>

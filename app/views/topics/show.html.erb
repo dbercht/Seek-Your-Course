@@ -5,15 +5,20 @@
 <%title @topic.category %>
     
 <p id="notice"><%= notice %></p>
-
 <p>
   <b>Category:</b>
   <%= @topic.category %>
 </p>
+
+<%= will_paginate @offerings %>
+<%= page_entries_info @offerings %>
+
 <% for @offering in @offerings do %>
   <%= render @offering %>
 <% end %>
 
+<%= will_paginate @offerings %>
+<%= page_entries_info @offerings %>
 
 <% if current_admin %>
   <%= link_to 'Edit', edit_topic_path(@topic) %> |

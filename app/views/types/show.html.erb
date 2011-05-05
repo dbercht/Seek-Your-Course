@@ -5,10 +5,16 @@
   <b>Category:</b>
   <%= @type.category %>
 </p>
+
+<%= will_paginate @offerings %>
+<%= page_entries_info @offerings %>
+
 <% for @offering in @offerings do %>
   <%= render @offering %>
 <% end %>
 
+<%= will_paginate @offerings %>
+<%= page_entries_info @offerings %>
 
 <% if current_admin %>
   <%= link_to 'Edit', edit_type_path(@type) %> |

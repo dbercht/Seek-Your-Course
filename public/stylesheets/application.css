@@ -1,5 +1,4 @@
 body {
-  background-color: #4B7399;
   font-family: Verdana, Helvetica, Arial;
   font-size: 14px;
 }
@@ -9,7 +8,8 @@ a img {
 }
 
 a {
-  color: #0000FF;
+  color: #226;
+  text-decoration: none;
 }
 
 .clear {
@@ -18,13 +18,19 @@ a {
   overflow: hidden;
 }
 
+.right{
+  float: right;
+}
+
+.left{
+  float: left;
+}
 #container {
-  width: 75%;
+  width: 840px;
   margin: 0 auto;
   background-color: #FFF;
-  padding: 20px 40px;
-  border: solid 1px black;
-  margin-top: 20px;
+  border: solid 0px black;
+  margin-top: 0px;
 }
 
 #flash_notice, #flash_error, #flash_alert {
@@ -81,12 +87,150 @@ a {
 
 #user_nav{
   float: right;
+  margin-bottom: 15px;
+  font-size: .9em;
 }
 
-#admin_nav{
+#user_nav a{
+  padding-left: 10px;
+  text-decoration: none;
+  color: #338;
+}
+
+#site_nav, #admin_nav{
   float: left;
+  margin: 5px;
 }
 
 .clear{
   clear: both;
 }
+
+.strong{
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.box{
+  margin-top: 15px;
+}
+#browse_content{
+  width: 190px;
+  height: 200px;
+  background: #6b5;
+  margin-right: 15px;
+}
+#browse_content img{
+  margin: 5px;
+  margin-bottom: 0px;
+}
+
+#browse_content ul{
+  margin-left: -10px;
+  list-style-type: none;
+}
+#browse_content li{
+  margin-bottom: 5px;
+}
+#browse_content a{
+  color: #333;
+  font-size: .9em;
+}
+#about_content{
+  width: 623px;
+  height: 200px;
+  background: #449;
+  font-size: .9em;
+}
+
+.lower_box{
+  width: 270px;
+  height: 200px;
+  background: #499;
+  margin-top: 15px;
+}
+
+//Jess Cutom Css
+.header_container{
+  width: 90%; 
+  height: 80px;
+}
+
+.logo_container{
+  width:540px
+}
+.social_media_icons{
+  80px;
+}
+.social_media{
+  width:260px;
+}
+#tagline3.bottom{
+  position: relative;
+  top: 80px;
+ 
+}
+
+#social_media_icons a img{
+  border: 2px black solid;
+}
+
+#social_media_icons a:hover img{
+  border: 2px #A44 solid;
+}
+
+#nav_bar{
+  margin-top: 6px;
+  padding: 4px;
+  background: #444;
+  width: 100%;
+  height: 16px;
+}
+
+#nav_bar a{
+  margin-left: 18px;
+  color: #FFF;
+  font-size: .9em;
+  text-decoration: none;
+}
+
+#nav_bar a:hover{
+  text-decoration: underline;
+}
+/* Clear Floated Elements
+----------------------------------------------------------------------------------------------------*/
+
+
+.clear {
+	clear: both;
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+
+.clearfix:after {
+	clear: both;
+	content: ' ';
+	display: block;
+	font-size: 0;
+	line-height: 0;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+.clearfix {
+	display: inline-block;
+}
+
+* html .clearfix {
+	height: 1%;
+}
+
+.clearfix {
+	display: block;
+}
+

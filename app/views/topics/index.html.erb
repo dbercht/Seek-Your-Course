@@ -1,28 +1,18 @@
 <%title "Offerings by Topic" %>
 
-<table>
-  <tr>
-    <th>Category</th>
-    <th>Image</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
 <% @topics.each do |topic| %>
-  <tr>
-    <td><%= topic.category %></td>
-    <% if topic.image.exists? then %>
-	<td><%= image_tag topic.image.url(:thumb) %></td>
+    <%= topic.category %>
+    <% if topic.image.exists? %>
+      <%= link_to image_tag(topic.image.url(:thumb)), topic %>
+    <% else %>
+      <%= link_to 'Show', topic %>
     <% end %>
-    <td><%= link_to 'Show', topic %></td>
     <% if current_admin %>
-      <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
-      <td><%= link_to 'Destroy', topic, :confirm => 'Are you sure?', :method => :delete %></td>
+      | <%= link_to 'Edit', edit_topic_path(topic) %>
+      | <%= link_to 'Destroy', topic, :confirm => 'Are you sure?', :method => :delete %>
     <% end %>
-  </tr>
 <% end %>
-</table>
 
 <br />
 

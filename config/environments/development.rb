@@ -3,6 +3,7 @@ SeekYourCourse::Application.configure do
 
   #Pointed Paperclip gem to proper dir
   Paperclip.options[:command_path] = "/usr/bin/"
+  
 
   # In the development environment your application's code is reloaded on
   # every request.  This slows down response time but is perfect for development

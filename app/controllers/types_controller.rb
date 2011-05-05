@@ -15,7 +15,7 @@ class TypesController < ApplicationController
   # GET /types/1.xml
   def show
     @type = Type.find(params[:id])
-    @offerings = @type.offerings.includes(:plan, :topics, :type, :location, :coordinator).validated
+    @offerings = Offering.validated.includes(:plan, :topics, :type, :location, :coordinator).where("type_id = ?", @type.id).paginate(:page => params[:page], :per_page => 10)
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @type }

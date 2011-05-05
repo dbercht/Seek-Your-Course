@@ -1,7 +1,17 @@
-<h2>Seek Ya Course </h2>
+<% content_for :title do %>
+  Seek Your Course | Navigation for Creative Learning and Living
+<% end %>
 
-<%= link_to "Types", types_path%><br />
-<%= link_to "Topics", topics_path%><br />
-<%= link_to "Region", regions_path%><br />
-<%= link_to "Start Date", offerings_path%><br />
-<%= link_to 'New Offering', new_offering_path %>
+<% content_for :browse do %>
+  <div id="browse_content" class='box left'>
+      
+    <%=image_tag('/images/browse.png') %>
+    <ul>
+      <li><%= link_to "by type", types_path%></li>
+      <li><%= link_to "by topic", topics_path%></li>
+      <li><%= link_to "by start date", offerings_path %></li>
+      <li><%= link_to "by location", regions_path%></li>
+      <li><%= link_to 'New Offering', new_offering_path %></li>
+    </ul>
+  </div>
+<% end %>

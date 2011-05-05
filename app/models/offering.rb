@@ -1,4 +1,8 @@
 class Offering < ActiveRecord::Base
+  cattr_reader :per_page
+  @@per_page = 10
+
+
   attr_protected :validated, :note, :editable
 
   #SCOPES

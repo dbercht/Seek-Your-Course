@@ -1,8 +1,17 @@
 class UsersController < ApplicationController
-  before_filter :login_required, :except => [:new, :create]
+  before_filter :login_required, :except => [:new, :create, :index, :show]
+  before_filter :load_profile, :only => [:edit, :update]
+  
+  def index
+    @users = User.where('role = ?', params[:role]).order('name')
+  end
 
   def new
     @user = User.new
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   def create
@@ -20,10 +29,15 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    if @user.update_attributes(params[:user])
+    if @user.update_attributes(params[:user]) && @user.profile.update_attributes(params[:profile_attributes])
       redirect_to root_url, :notice => "Your profile has been updated."
     else
       render :action => 'edit'
     end
   end
+  
+  private
+    def load_profile
+      @profile = current_user.profile
+    end
 end
