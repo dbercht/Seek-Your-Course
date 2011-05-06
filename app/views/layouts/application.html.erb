@@ -21,12 +21,22 @@
         <%= link_to('Artist Profiles', users_path(:role => 'artist'))%>
         <%= link_to('Retreat & Conference Profiles', users_path(:role => 'coordinator'))%>
         <a href="">Interviews</a>
-        <a href="">Blog</a>
+        <a href="">Blogs</a>
       </div>
-      <%= yield :browse%>
+      <div id="browse_content_main">
+        <h3>Browse</h3>
+        <ul>
+          <li>List</li>
+          <li>List</li>
+          <li>List</li>
+        </ul>
+        <h3>Filter Results</h3>
+      </div>
       <div id="content">
         <%= yield %>
       </div>
     </div>
   </body>
 </html>
+
+

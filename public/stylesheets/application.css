@@ -114,31 +114,50 @@ a {
 .box{
   margin-top: 15px;
 }
+
+#content{
+  width: 660px;
+  float: right;
+}
+
 #browse_content{
   width: 190px;
-  height: 200px;
+  height: 220px;
   background: #6b5;
   margin-right: 15px;
+  overflow: hidden;
+}
+#browse_content_main{
+  width: 150px;
+  background: #6b5;
+  margin-right: 15px;
+  overflow: hidden;
+  float: left;
 }
 #browse_content img{
   margin: 5px;
   margin-bottom: 0px;
 }
 
-#browse_content ul{
+#browse_content_main h3, #browse_content h3{
+  margin: 5px;
+  font-size: 1.5em;
+}
+
+#browse_content_main ul, #browse_content ul{
   margin-left: -10px;
   list-style-type: none;
 }
-#browse_content li{
+#browse_content_main li, #browse_content li{
   margin-bottom: 5px;
 }
-#browse_content a{
+#browse_content_main a, #browse_content a{
   color: #333;
-  font-size: .9em;
+  font-size: .85em;
 }
 #about_content{
   width: 623px;
-  height: 200px;
+  height: 220px;
   background: #449;
   font-size: .9em;
 }
