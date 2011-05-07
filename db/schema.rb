@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110505024547) do
+ActiveRecord::Schema.define(:version => 20110506180138) do
 
   create_table "locations", :force => true do |t|
     t.string   "state"
@@ -30,13 +30,26 @@ ActiveRecord::Schema.define(:version => 20110505024547) do
     t.string   "description"
     t.text     "note"
     t.text     "unregistered_artists"
-    t.date     "registration_begins",   :default => '2011-04-28'
+    t.date     "registration_begins",               :default => '2011-04-28'
     t.date     "registration_deadline"
     t.date     "start_date"
-    t.boolean  "validated",             :default => false
+    t.boolean  "validated",                         :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "editable",              :default => true
+    t.boolean  "editable",                          :default => true
+    t.date     "end_date"
+    t.string   "picture_main_file_name"
+    t.string   "picture_main_content_type"
+    t.integer  "picture_main_file_size"
+    t.datetime "picture_main_updated_at"
+    t.string   "picture_footer_left_file_name"
+    t.string   "picture_footer_left_content_type"
+    t.integer  "picture_footer_left_file_size"
+    t.datetime "picture_footer_left_updated_at"
+    t.string   "picture_footer_right_file_name"
+    t.string   "picture_footer_right_content_type"
+    t.integer  "picture_footer_right_file_size"
+    t.datetime "picture_footer_right_updated_at"
   end
 
   create_table "offerings_topics", :id => false, :force => true do |t|

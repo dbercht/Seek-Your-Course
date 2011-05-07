@@ -2,13 +2,13 @@ class Offering < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 10
 
-
   attr_protected :validated, :note, :editable
 
   #SCOPES
 
   default_scope order('start_date')
   scope :future_offerings, where("start_date > ?", Date.today)
+  scope :past_offerings, where("start_date <= ?", Date.today)
   scope :validated, future_offerings.where(:validated => true)
   scope :pending, future_offerings.where(:validated => false)
   
@@ -20,9 +20,27 @@ class Offering < ActiveRecord::Base
   has_one :region, :through => :location
   
   has_and_belongs_to_many :topics
-  has_and_belongs_to_many :registered_artists, :join_table => 'offerings_users', :class_name => "User" 
+  has_and_belongs_to_many :registered_artists, :join_table => 'offerings_users', :class_name => "User" , :uniq => true
 
   belongs_to :coordinator, :class_name => "User", :foreign_key => "coordinator_id"
+
+  has_attached_file :picture_main,
+    :styles => {
+    :thumb=>   ["250x500", "png"]},
+ :url => "/assets/:class/:id/:attachment/:style.:extension",
+                    :path => ":rails_root/public/assets/:class/:id/:attachment/:style.:extension"
+
+  has_attached_file :picture_footer_left,
+    :styles => {
+    :thumb=>   ["250x500", "png"]},
+ :url => "/assets/:class/:id/:attachment/:style.:extension",
+                    :path => ":rails_root/public/assets/:class/:id/:attachment/:style.:extension"
+
+  has_attached_file :picture_footer_right,
+    :styles => {
+    :thumb=>   ["250x500", "png"]},
+ :url => "/assets/:class/:id/:attachment/:style.:extension",
+                    :path => ":rails_root/public/assets/:class/:id/:attachment/:style.:extension"
   
   #VALIDATIONS
 
@@ -45,13 +63,17 @@ class Offering < ActiveRecord::Base
   validates :link, :presence => true
   validates :title, :presence => true
   validates :description, :presence => true
-  validates :location, :presence => true
 
-  validates_presence_of :start_date, :registration_begins, :registration_deadline
+  validates_presence_of :start_date, :end_date, :registration_begins, :registration_deadline
   validates :registration_deadline, :date => {:after => :registration_begins}
+
+  with_options :if => lambda {return type.category != "E-course"} do |o|
+    o.validates :specific_location, :presence => true
+  end
 
   with_options :if => :editable? do |o|
     o.validates :start_date, :date => {:after => :registration_begins}
+    o.validates :end_date, :date => {:after => :start_date}
     o.validates :registration_begins, :date => {:after => Date.today}
   end
 

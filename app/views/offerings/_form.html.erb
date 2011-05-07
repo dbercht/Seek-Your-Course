@@ -1,13 +1,12 @@
 
-<%= form_for(@offering) do |f| %>
+<%= form_for(@offering, :html => {:multipart => true}) do |f| %>
   <% if @offering.errors.any? %>
-    <div id="error_explanation">
+    <div id="flash_error">
       <h2><%= pluralize(@offering.errors.count, "error") %> prohibited this offering from being saved:</h2>
-
       <ul>
-      <% @offering.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <% @offering.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -31,7 +30,7 @@
     </div>
     <div class="field">
       <%= f.label "Type*" %><br />
-      <%= collection_select(:offering, :type_id, @types, :id, :category, :prompt => true) %>
+      <%= collection_select(:offering, :type_id, @types, :id, :category) %>
     </div>
     <div>
       <label for="offering_Topic/Medium">Topic/Medium*</label><br />
@@ -39,6 +38,19 @@
         <%= check_box_tag "offering[topic_ids][]", topic.id, @offering.topics.include?(topic) -%><%= topic.category -%>
       <% end -%>
     </div>
+  <div class="field">
+    <%= f.label :picture_main %><br />
+    <%= f.file_field :picture_main %>
+  </div>
+  <div class="field">
+    <%= f.label :picture_footer_left %><br />
+    <%= f.file_field :picture_footer_left %>
+  </div>
+  <div class="field">
+    <%= f.label :picture_footer_right %><br />
+    <%= f.file_field :picture_footer_right %>
+  </div>
+
     <div class="field">
       <label for="offering_state">Location</label><br />
       <%= grouped_collection_select(:offering, :location_id, @regions, :locations, :name, :id, :state, :prompt => true)%>
@@ -60,6 +72,10 @@
       <%= f.label :start_date %><br />
       <%= f.date_select :start_date %>
     </div>
+    <div class="field">
+      <%= f.label :end_date %><br />
+      <%= f.date_select :end_date %>
+    </div>
   <div class="field">
     <%= f.label :link %><br />
     <%= f.text_field :link %>
@@ -70,9 +86,12 @@
   </div>
   <div>
     <%= f.label :registered_artist_ids %><br />
-    <% @artists.each do |artist| -%>
-      <%= check_box_tag "offering[registered_artist_ids][]", artist.id, @offering.registered_artists.include?(artist) -%><%= artist.name + " | "-%>
-    <% end -%>
+
+    <div id="registered_artists" style="height:40px;overflow:scroll;">
+      <% @artists.each do |artist| -%>
+        <%= check_box_tag "offering[registered_artist_ids][]", artist.id, @offering.registered_artists.include?(artist) -%><%= artist.name-%><br /> 
+      <% end -%>
+    </div>
   </div>
   <div class="field">
     <%= f.label :unregistered_artists %><br />

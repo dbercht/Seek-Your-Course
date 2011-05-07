@@ -12,6 +12,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @future_offerings = @user.offerings.future_offerings.includes(:plan, :topics, :type, :location, :coordinator, :region, :registered_artists).limit(3)
+    @past_offerings = @user.offerings.past_offerings.includes(:plan, :topics, :type, :location, :coordinator, :region, :registered_artists).limit(3)
+    @offerings = @user.coordinated_offerings.future_offerings.includes(:plan, :topics, :type, :location, :coordinator, :region, :registered_artists).limit(3)
   end
 
   def create

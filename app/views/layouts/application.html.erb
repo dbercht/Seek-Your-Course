@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -6,6 +8,13 @@
     <%= javascript_include_tag "jquery-1.5.1.min", "jquery-ui-1.8.11.custom.min", :defaults %>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
+
+    <script>
+      jQuery(document).ready( function() {
+        jQuery("#flash_notice").delay(5000).hide('blind');
+        jQuery("#flash_error").delay(5000).hide('blind');
+      });
+    </script>
   </head>
   <body>
     <div id="container">
@@ -14,6 +23,7 @@
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
       <% end %>
+      <!--<%= content_tag :h1, yield(:title) if show_title? %> -->
       <%=render :partial => 'layouts/header' %>
       <div class="clear"></div>
       <div id="nav_bar">
@@ -21,22 +31,30 @@
         <%= link_to('Artist Profiles', users_path(:role => 'artist'))%>
         <%= link_to('Retreat & Conference Profiles', users_path(:role => 'coordinator'))%>
         <a href="">Interviews</a>
-        <a href="">Blogs</a>
+        <a href="">Blog</a>
       </div>
-      <div id="browse_content_main">
-        <h3>Browse</h3>
-        <ul>
-          <li>List</li>
-          <li>List</li>
-          <li>List</li>
-        </ul>
-        <h3>Filter Results</h3>
-      </div>
+      <% if (request.path != '/') then %>
+        <% content_for :browse do %>
+          <div id="browse_content_main" class="box">
+            <h3>Browse</h3>
+            <ul>
+              <li><%= link_to "by type", types_path%></li>
+              <li><%= link_to "by topic", topics_path%></li>
+              <li><%= link_to "by start date", offerings_path %></li>
+              <li><%= link_to "by location", regions_path%></li>
+            </ul>
+            <%= yield :filter_results %>
+          </div>
+        <% end %>
+        <%= render :partial => "layouts/ads" %>
+      <% end %>
+      <%= yield :browse %>
       <div id="content">
         <%= yield %>
       </div>
+      <div class="clear"></div>
+      <%= render :partial => "layouts/footer" %>
     </div>
   </body>
 </html>
-
 

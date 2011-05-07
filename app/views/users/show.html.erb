@@ -13,3 +13,19 @@
   <% else %> 
     <%= render :partial => "profiles/profile", :locals => {:profile => @user.profile} %>
   <% end %>
+<div id="future_offerings">
+
+<h3>Offerings <%= @user.name %> Will Contribute To</h3>
+  <%= render @future_offerings %>
+</div>
+
+<div id="past_offerings">
+  <h3>Past Offerings</h3>
+  <%= render @past_offerings %>
+</div>
+
+<div id="coordinated_offerings">
+  <h3>Offerings <%= @user.name %> is Coordinating</h3>
+  <%= render @future_offerings %>
+</div>
+

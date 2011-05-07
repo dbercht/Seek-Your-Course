@@ -3,16 +3,7 @@
 
 <%title @title%>
 
-<%= will_paginate @offerings %>
-<%= page_entries_info @offerings %>
-
-<% @offerings.each do |@offering| %>
-  <%= render :partial => @offering %>
-<% end %>
-<br />
-
-<%= will_paginate @offerings %>
-<%= page_entries_info @offerings %>
+<%= render :partial => 'offerings_list' %>
 
 
 <%= link_to 'New Offering', new_offering_path %>

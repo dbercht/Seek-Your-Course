@@ -1,21 +1,31 @@
 <%title "Offerings by Topic" %>
+<div class="topics">
+  <h2>Browse > by Topic</h2>
+  <div class="clear"></div> 
 
+  <% @topics.each do |topic| %>
+      <span class="topic" id="<%=topic.category%>">
+        <% if topic.image.exists? %>
+          <%= link_to image_tag(topic.image.url(:thumb)), topic %>
+        <% else %>
+          <%= link_to 'Show', topic %>
+        <% end %>
+	<br />
+        <div class="topic_title">
+          <%= topic.category %>
+          <br  />
+          <% if current_admin %> 
+            <%= link_to 'Edit', edit_topic_path(topic) %>
+            | <%= link_to 'Destroy', topic, :confirm => 'Are you sure?', :method => :delete %>
+          <% end %>
+        </div>
+      </span>
+  <% end %>
 
-<% @topics.each do |topic| %>
-    <%= topic.category %>
-    <% if topic.image.exists? %>
-      <%= link_to image_tag(topic.image.url(:thumb)), topic %>
-    <% else %>
-      <%= link_to 'Show', topic %>
-    <% end %>
-    <% if current_admin %>
-      | <%= link_to 'Edit', edit_topic_path(topic) %>
-      | <%= link_to 'Destroy', topic, :confirm => 'Are you sure?', :method => :delete %>
-    <% end %>
-<% end %>
+  <div class="clear"></div>
+  <br />
 
-<br />
-
-<% if current_admin %>
-  <%= link_to 'New Topic', new_topic_path %>
-<% end %>
+  <% if current_admin %>
+    <%= link_to 'New Topic', new_topic_path %>
+  <% end %>
+</div>

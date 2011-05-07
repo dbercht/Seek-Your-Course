@@ -1,0 +1,15 @@
+
+<%= will_paginate @offerings %>
+<%= page_entries_info @offerings %>
+
+<% @offerings.each do |@offering| %>
+  <%= render :partial => @offering %>
+<% end %>
+<br />
+
+<%= will_paginate @offerings %>
+<%= page_entries_info @offerings %>
+
+<% content_for :filter_results do %>
+  <h2> Filter Results </h2>
+<% end %>

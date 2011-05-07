@@ -4,14 +4,31 @@
 
 <% content_for :browse do %>
   <div id="browse_content" class='box left'>
+    <div id="browse_content" class='box left'>
       
-    <%=image_tag('/images/browse.png') %>
-    <ul>
-      <li><%= link_to "by type", types_path%></li>
-      <li><%= link_to "by topic", topics_path%></li>
-      <li><%= link_to "by start date", offerings_path %></li>
-      <li><%= link_to "by location", regions_path%></li>
-      <li><%= link_to 'New Offering', new_offering_path %></li>
-    </ul>
+      <%=image_tag('/images/browse.png') %>
+      <ul>
+        <li><%= link_to "by type", types_path%></li>
+        <li><%= link_to "by topic", topics_path%></li>
+        <li><%= link_to "by start date", offerings_path %></li>
+        <li><%= link_to "by location", regions_path%></li>
+        <li><%= link_to 'New Offering', new_offering_path %></li>
+      </ul>
+    </div>
   </div>
+  <div id="about_content" class='box right'>
+       
+  </div>
+  <div class="clear"></div>
+
+  <div class='lower_box box left'>
+
+  </div> 
+  <div class='lower_box box left' style="margin-right: 15px;margin-left: 15px; background:#994;">
+
+  </div> 
+  <div class='lower_box box left'>
+
+   </div> 
 <% end %>
+      

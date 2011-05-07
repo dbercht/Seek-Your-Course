@@ -10,6 +10,8 @@ en:
           attributes:
             start_date:
               after: "cannot start before registration begin date"
+            end_date:
+              after: "cannot be before start_date"
             registration_begins:
               before: "cannot be before offering start date"
               after: "must not be in past"

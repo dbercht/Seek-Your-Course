@@ -4,8 +4,8 @@ class OfferingsController < ApplicationController
   before_filter :load_variables, :except => [:show, :index]
   before_filter :admin_required, :only => [:pending_index]
   before_filter :editable_offering, :only => [:edit, :update, :show]
+  
   def home
-    render :layout => "home"
   end
 
   # GET /offerings
@@ -20,7 +20,7 @@ class OfferingsController < ApplicationController
   end
 
   def pending_index
-    @offerings = Offering.pending(:include => [:location])
+    @offerings = Offering.pending(:include => [:location]).paginate(:page => params[:page], :per_page => 10)
     respond_to do |format|
       format.html do
         @title = "Pending Offerings"
@@ -34,7 +34,7 @@ class OfferingsController < ApplicationController
   # GET /offerings/1
   # GET /offerings/1.xml
   def show
-    @offering = Offering.find(params[:id], :include => [:location, :region, :coordinator])
+    @offering = Offering.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
