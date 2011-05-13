@@ -4,7 +4,7 @@
 <html>
   <head>
     <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
-    <%= stylesheet_link_tag "application", "jquery-ui-1.8.11.custom" %>
+    <%= stylesheet_link_tag "application", "jquery-ui-1.8.11.custom", "960" %>
     <%= javascript_include_tag "jquery-1.5.1.min", "jquery-ui-1.8.11.custom.min", :defaults %>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>

@@ -1,1 +1,5 @@
-<%= image_tag @user.profile.picture.url(:thumb) %>
+<% if @user.role = User::ROLES[0] %>
+  <%= render :partial => 'profiles/instructor_profile' %>
+<% else %>
+  <%= render :partial => 'profiles/coordinator_profile' %>
+<% end %>

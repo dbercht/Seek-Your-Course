@@ -1,30 +1,85 @@
+<script>
+  jQuery(document).ready( function(){
+    if(jQuery('.role').find("select").val() == "instructor"){
+        jQuery(".institution_name").hide();
+      } else {
+        jQuery(".institution_name").show();
+     }
+     if(jQuery(".twitter_inexistant").attr("checked")){
+        jQuery(".twitter").hide();
+     } else {
+       jQuery(".twitter").show();
+     }
+     
+     if(jQuery(".facebook_inexistant").attr("checked")){
+        jQuery(".facebook").hide();
+     } else {
+       jQuery(".facebook").show();
+     }
+     
+
+    jQuery(".role").find("select").change(function() {
+      if(jQuery(this).val() == "instructor"){
+        jQuery(".institution_name").hide();
+      } else {
+        jQuery(".institution_name").show();
+      }
+     });
+
+    jQuery(".facebook_inexistant").click(function() {
+      
+      if(jQuery(this).attr("checked")){
+        jQuery(".facebook").hide();
+      } else {
+        jQuery(".facebook").show();
+      }
+      
+    });
+    jQuery(".twitter_inexistant").click(function() {
+      
+      if(jQuery(this).attr("checked")){
+        jQuery(".twitter").hide();
+      } else {
+        jQuery(".twitter").show();
+      }
+      
+    });
+
+  });
+</script>
+
 <%= form_for( @user, :html => {:multipart => true}) do |f| %>
   <%= f.error_messages %>
    <table>
     <%=content_tag(:tr, content_tag(:td, f.label(:first_name)) << content_tag(:td, f.text_field( :first_name, :size => 20))) %>
     <%=content_tag(:tr, content_tag(:td, f.label(:last_name)) << content_tag(:td, f.text_field( :last_name, :size => 20)))%>
-    <%=content_tag(:tr, content_tag(:td, f.label(:role)) << content_tag(:td, f.collection_select( :role, User::ROLES, :to_s, :humanize))) %>
     <%=content_tag(:tr, content_tag(:td, f.label(:username)) << content_tag(:td, f.text_field( :username))) %>
-    <%=content_tag(:tr, content_tag(:td, f.label(:email)) << content_tag(:td, f.text_field( :email))) %>
-    <%=content_tag(:tr, content_tag(:td, f.label(:institution_name)) << content_tag(:td, f.text_field( :institution_name))) %>
+    <%=content_tag(:tr, content_tag(:td, f.label(:email)) << content_tag(:td, f.email_field( :email))) %>
+    <%=content_tag(:tr, content_tag(:td, f.label(:role)) << content_tag(:td, f.collection_select( :role, User::ROLES, :to_s, :humanize), :class => 'role')) %>
+    <%=content_tag(:tr, content_tag(:td, f.label(:institution_name)) << content_tag(:td, f.text_field( :institution_name)), :class =>"institution_name") %>
 
     <%= f.fields_for :location do |o| %>
 
       <%=content_tag(:tr, content_tag(:td, o.label(:street_address)) << content_tag(:td, o.text_field( :street_address, :value => @user.location[:street_address]))) %>
       <%=content_tag(:tr, content_tag(:td, o.label(:city_address)) << content_tag(:td, o.text_field( :city_address, :value => @user.location[:city_address]))) %>
-      <%=content_tag(:tr, content_tag(:td, o.label(:country)) << content_tag(:td, o.grouped_collection_select(:country, @regions, :locations, :name, :state, :state))) %>
+      <%=content_tag(:tr, content_tag(:td, o.label(:country)) << content_tag(:td, f.collection_select(:country, @locations, :state, :state ))) %>
       <%=content_tag(:tr, content_tag(:td, o.label(:postal_code)) << content_tag(:td, o.text_field( :postal_code, :value => @user.location[:postal_code]))) %>
       <%=content_tag(:tr, content_tag(:td, o.label(:phone_number)) << content_tag(:td, o.text_field( :phone_number, :value => @user.location[:phone_number]))) %>
 
   <% end %>
 
-  <%= f.fields_for :profile do |profile| %>
-      
-    <% unless @user.profile.nil? %>
-      <%=render :partial => 'profiles/form_attributes', :locals => {:profile => profile} %>
-    <% end %>
-    
+    <%= f.fields_for :websites do |o| %>
+
+      <%=content_tag(:tr, content_tag(:td, o.label(:website)) << content_tag(:td, o.text_field( :website, :value => @user.websites[:website]))) %>
+      <%=content_tag(:tr, content_tag(:td, o.label(:blog)) << content_tag(:td, o.text_field( :blog, :value => @user.websites[:blog]))) %>
+      <%=content_tag(:tr, content_tag(:td, o.label(:facebook)) << content_tag(:td, f.text_field( :facebook, :value => @user.facebook)), :class => 'facebook') %>
+      <%=content_tag(:tr, content_tag(:td, o.label(:facebook_inexistant?, "I don't have a facebook account")) << content_tag(:td, o.check_box( :facebook_inexistant?, {:checked => (@user.websites[:facebook] == ""), :class => "facebook_inexistant"}, "true", "false"))) %>
+      <%=content_tag(:tr, content_tag(:td, o.label(:twitter)) << content_tag(:td, o.text_field( :twitter, :value => @user.websites[:twitter])), :class => 'twitter') %>
+      <%=content_tag(:tr, content_tag(:td, o.label(:twitter_inexistant?, "I don't have a twitter account")) << content_tag(:td, o.check_box( :twitter_inexistant?, {:checked => (@user.websites[:twitter] == ""), :class => "twitter_inexistant"}, "true", "false"))) %>
+
   <% end %>
+
+
 
   <%= content_tag(:tr, content_tag( :td, content_tag(:h3, :password.to_s.humanize))) %>
   <%=content_tag(:tr, content_tag(:td, f.label(:password)) << content_tag(:td, f.password_field( :password))) %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110511184307) do
+ActiveRecord::Schema.define(:version => 20110513205819) do
 
   create_table "locations", :force => true do |t|
     t.string   "state"
@@ -78,6 +78,31 @@ ActiveRecord::Schema.define(:version => 20110511184307) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+    t.string   "type"
+    t.string   "location"
+    t.string   "focus"
+    t.string   "preferences"
+    t.string   "other_links"
+    t.text     "description"
+    t.string   "testimonials"
+    t.string   "frequency"
+    t.string   "specific_location"
+    t.string   "picture1_file_name"
+    t.string   "picture1_content_type"
+    t.integer  "picture1_file_size"
+    t.datetime "picture1_updated_at"
+    t.string   "picture2_file_name"
+    t.string   "picture2_content_type"
+    t.integer  "picture2_file_size"
+    t.datetime "picture2_updated_at"
+    t.string   "picture3_file_name"
+    t.string   "picture3_content_type"
+    t.integer  "picture3_file_size"
+    t.datetime "picture3_updated_at"
+    t.string   "picture4_file_name"
+    t.string   "picture4_content_type"
+    t.integer  "picture4_file_size"
+    t.datetime "picture4_updated_at"
   end
 
   create_table "regions", :force => true do |t|
@@ -116,6 +141,7 @@ ActiveRecord::Schema.define(:version => 20110511184307) do
     t.string   "last_name"
     t.string   "location"
     t.string   "institution_name"
+    t.string   "websites"
   end
 
 end

@@ -1,5 +1,22 @@
+  <%if(current_user.role == 'instructor')%>
+    <%= render :partial => 'instructor_attributes', :locals => {:instructor => profile} %>
+  <%else%>
+    <%= render :partial => 'coordinator_attributes', :locals => {:instructor => profile}%>
+  <% end %>
 
-  <%= content_tag(:tr,  content_tag(:td) << content_tag(:td, image_tag( @profile.picture.url(:thumb)))) if @profile.picture.exists? %>
-  
-  <%=content_tag(:tr, content_tag(:td, profile.label(:profile_picture)) << content_tag(:td, profile.file_field( :picture))) %>
- 
+  <table>
+    <%=content_tag(:tr,  content_tag(:td) << content_tag(:td, image_tag( @profile.picture.url(:thumb)))) if @profile.picture.exists? %> 
+    <%=content_tag(:tr, content_tag(:td, profile.label(:profile_picture)) << content_tag(:td, profile.file_field( :picture))) %>
+
+    <%=content_tag(:tr,  content_tag(:td) << content_tag(:td, image_tag( @profile.picture1.url(:thumb)))) if @profile.picture1.exists? %> 
+    <%=content_tag(:tr, content_tag(:td) << content_tag(:td, profile.file_field( :picture1))) %>
+
+    <%=content_tag(:tr,  content_tag(:td) << content_tag(:td, image_tag( @profile.picture2.url(:thumb)))) if @profile.picture2.exists? %> 
+    <%=content_tag(:tr, content_tag(:td) << content_tag(:td, profile.file_field( :picture2))) %>
+
+    <%=content_tag(:tr,  content_tag(:td) << content_tag(:td, image_tag( @profile.picture3.url(:thumb)))) if @profile.picture3.exists? %> 
+    <%=content_tag(:tr, content_tag(:td) << content_tag(:td, profile.file_field( :picture3))) %>
+
+    <%=content_tag(:tr,  content_tag(:td) << content_tag(:td, image_tag( @profile.picture4.url(:thumb)))) if @profile.picture4.exists? %> 
+    <%=content_tag(:tr, content_tag(:td) << content_tag(:td, profile.file_field( :picture4))) %>
+   </table> 

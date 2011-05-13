@@ -1,0 +1,26 @@
+<table>
+    <%=content_tag(:tr, content_tag(:td, instructor.label(:country)) << content_tag(:td, @user.country)) %>
+    <%=content_tag(:tr, content_tag(:td, instructor.label(:specific_location)) << content_tag(:td, instructor.text_field( :specific_location)))%>
+    <%=content_tag(:tr, content_tag(:td, instructor.label(:focus)) << content_tag(:td, instructor.text_area( :focus, :rows => 3)))%>
+    <%=content_tag(:tr, content_tag(:td, instructor.label(:description)) << content_tag(:td, instructor.text_area( :description, :rows => 4)))%>
+    <%=content_tag(:tr, content_tag(:td, instructor.label(:testimonials)) << content_tag(:td, instructor.text_area( :testimonials, :rows => 5)))%>
+    
+</table>
+    <%=content_tag(:hr)%>
+
+<table>
+    <%=content_tag(:tr, content_tag(:td, "") << content_tag(:td, "Check to make information visible"))%>
+    <%=content_tag(:tr, content_tag(:td, "Always visible")<< content_tag(:td, instructor.label(:website, @user.website)))%>
+    <%=content_tag(:tr, content_tag(:td, instructor.check_box(:email)) << content_tag(:td, instructor.label(:email)))%>
+    
+    <%=content_tag(:tr, content_tag(:td, instructor.check_box(:blog)) << content_tag(:td, instructor.label(:blog))) %>
+    <%=content_tag(:tr,  content_tag(:td, instructor.check_box(:facebook)) << content_tag(:td, instructor.label(:facebook)))%>
+    <%=content_tag(:tr, content_tag(:td, instructor.check_box(:twitter)) << content_tag(:td, instructor.label(:twitter)))%>
+</table>
+<table>
+    <%=content_tag(:tr, content_tag(:td, instructor.label(:other_links, "Other Links (comma separated)")) << content_tag(:td, instructor.text_area( :other_links, :rows => 4)))%>
+</table>
+
+    <%=content_tag(:hr)%>
+
+

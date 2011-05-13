@@ -4,9 +4,12 @@ class ProfilesController < ApplicationController
   
   def new
     @profile = Profile.new
+    @user = current_user
+    @profile.preferences = Hash.new
   end
 
   def create
+    @user = current_user
     @profile = Profile.create(params[:profile])
     respond_to do |format|
       if @profile.save
@@ -21,6 +24,7 @@ class ProfilesController < ApplicationController
   end
 
   def edit
+    @user = current_user
     if current_user.profile.nil?
       redirect_to :action => "new"
     else
@@ -29,6 +33,7 @@ class ProfilesController < ApplicationController
   end
   
   def update
+    @user = current_user
     @profile = current_user.profile
     respond_to do |format|
       if @profile.update_attributes(params[:profile])

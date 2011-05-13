@@ -1,30 +1,10 @@
 <%title( @name = @user.name) %>
 
-<div id="user_profile">
-  <%= content_tag :label, "#{@user.role.humanize}'s name:", :class => "strong" %>
-  <%= content_tag :p, @name %>
-  <%= content_tag( :div, link_to("Edit Information", edit_user_path(current_user) ) ) if (@user == current_user) %>
-  <%= content_tag( :div, link_to("Edit Privacy Settings", edit_profiles_path(current_user) ) ) if (@user == current_user) %>
-</div>
-
-  <%if (@user.profile.nil?) %>
-    <%= content_tag (:p, "You do not have a profile yet, if you wish to create one click #{link_to 'here', new_profiles_path}.") if current_user == @user%>
+ <%if (@user.profile.nil?) %>
+    <%= link_to ('Create a profilehere', new_profiles_path) if current_user == @user%>
+    <%= content_tag(:p, @name << " still does not have a profile") %>
   <% else %> 
     <%= render :partial => "profiles/profile", :locals => {:profile => @user.profile} %>
   <% end %>
 <div id="future_offerings">
-
-<h3>Offerings <%= @name %> Will Contribute To</h3>
-  <%= render @future_offerings %>
-</div>
-
-<div id="past_offerings">
-  <h3>Past Offerings</h3>
-  <%= render @past_offerings %>
-</div>
-
-<div id="coordinated_offerings">
-  <h3>Offerings <%= @user.name %> is Coordinating</h3>
-  <%= render @future_offerings %>
-</div>
 
