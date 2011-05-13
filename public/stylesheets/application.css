@@ -109,6 +109,20 @@ a {
   margin: 5px;
 }
 // End User nav
+
+/***************** USER ADMIN SECTIONS **/
+#user_manage{
+}
+
+#user_manage{
+  margin-right: 10px;
+  float: left;
+  background: #FFCC67;
+  width: 150px;
+}
+#user_manage ul{
+  list-style: none;
+}
 .clear{
   clear: both;
 }

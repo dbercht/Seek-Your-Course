@@ -5,7 +5,7 @@ class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.xml
   def index
-    @region = Region.find(params[:region_id])
+    @region = Region.where("name = ?", params[:region_id].gsub("-", " ")).first
     @locations = @region.locations
     respond_to do |format|
       format.html # index.html.erb
@@ -28,7 +28,7 @@ class LocationsController < ApplicationController
   # GET /locations/new
   # GET /locations/new.xml
   def new
-    @region = Region.find(params[:region_id])
+    @region = Region.where("name = ?", params[:region_id].gsub("-", " ")).first
     @location = @region.locations.build
 
     respond_to do |format|
@@ -39,14 +39,14 @@ class LocationsController < ApplicationController
 
   # GET /locations/1/edit
   def edit
-    @region = Region.find(params[:region_id])
+    @region = Region.where("name = ?", params[:region_id].gsub("-", " ")).first
     @location = @region.locations.find(params[:id])
   end
 
   # POST /locations
   # POST /locations.xml
   def create
-    @region = Region.find(params[:region_id])
+    @region = Region.where("name = ?", params[:region_id].gsub("-", " ")).first
     @location = @region.locations.build(params[:location])
 
     respond_to do |format|
@@ -63,7 +63,7 @@ class LocationsController < ApplicationController
   # PUT /locations/1
   # PUT /locations/1.xml
   def update
-    @region = Region.find(params[:region_id])
+    @region = Region.where("name = ?", params[:region_id].gsub("-", " ")).first
     @location = @region.locations.find(params[:id])
 
     respond_to do |format|
@@ -80,7 +80,7 @@ class LocationsController < ApplicationController
   # DELETE /locations/1
   # DELETE /locations/1.xml
   def destroy
-    @region = Region.find(params[:region_id])
+    @region = Region.where("name = ?", params[:region_id].gsub("-", " ")).first
     @location = @region.locations.find(params[:id])
     @location.destroy
 

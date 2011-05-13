@@ -28,8 +28,8 @@
       <div class="clear"></div>
       <div id="nav_bar">
         <%= link_to('Learning Opportunities', offerings_path) %>
-        <%= link_to('Artist Profiles', users_path(:role => 'artist'))%>
-        <%= link_to('Retreat & Conference Profiles', users_path(:role => 'coordinator'))%>
+        <%= link_to('Artist Profiles', users_path(:role => User::ROLES[0]))%>
+        <%= link_to('Retreat & Conference Profiles', users_path(:role => User::ROLES[1]))%>
         <a href="">Interviews</a>
         <a href="">Blog</a>
       </div>
@@ -48,7 +48,9 @@
         <% end %>
         <%= render :partial => "layouts/ads" %>
       <% end %>
-      <%= yield :browse %>
+      <%= yield :browse unless current_user %>
+      <%= render :partial => "users/user_admin"  unless !current_user %>
+      <%= yield :user_admin unless !current_user %>
       <div id="content">
         <%= yield %>
       </div>

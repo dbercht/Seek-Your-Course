@@ -3,15 +3,17 @@ class UsersController < ApplicationController
   before_filter :load_profile, :only => [:edit, :update]
   
   def index
-    @users = User.where('role = ?', params[:role]).order('name')
+    @users = User.where('role = ?', params[:role]).order('last_name')
   end
 
   def new
     @user = User.new
+    @user.location = Hash.new
+    @regions = Region.all
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.where("username = ?", params[:id]).first
     @future_offerings = @user.offerings.future_offerings.includes(:plan, :topics, :type, :location, :coordinator, :region, :registered_artists).limit(3)
     @past_offerings = @user.offerings.past_offerings.includes(:plan, :topics, :type, :location, :coordinator, :region, :registered_artists).limit(3)
     @offerings = @user.coordinated_offerings.future_offerings.includes(:plan, :topics, :type, :location, :coordinator, :region, :registered_artists).limit(3)
@@ -22,12 +24,14 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to root_url, :notice => "Thank you for signing up! You are now logged in."
     else
+      @regions = Region.all
       render :action => 'new'
     end
   end
 
   def edit
-    @user = current_user
+    @user = current_user 
+    @regions = Region.all
   end
 
   def update
@@ -35,6 +39,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:user]) && @user.profile.update_attributes(params[:profile_attributes])
       redirect_to root_url, :notice => "Your profile has been updated."
     else
+      @regions = Region.all
       render :action => 'edit'
     end
   end

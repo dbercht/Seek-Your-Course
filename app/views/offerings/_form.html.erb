@@ -52,7 +52,7 @@
   </div>
 
     <div class="field">
-      <label for="offering_state">Location</label><br />
+      <label for="offering_state">Country</label><br />
       <%= grouped_collection_select(:offering, :location_id, @regions, :locations, :name, :id, :state, :prompt => true)%>
     </div>
     <div class="field">
@@ -87,7 +87,7 @@
   <div>
     <%= f.label :registered_artist_ids %><br />
 
-    <div id="registered_artists" style="height:40px;overflow:scroll;">
+    <div id="registered_artists" style="height:40px;width:600px;overflow:auto;">
       <% @artists.each do |artist| -%>
         <%= check_box_tag "offering[registered_artist_ids][]", artist.id, @offering.registered_artists.include?(artist) -%><%= artist.name-%><br /> 
       <% end -%>

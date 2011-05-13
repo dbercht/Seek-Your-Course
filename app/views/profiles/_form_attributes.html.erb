@@ -1,18 +1,5 @@
-  <div class="field">
-    <p>
-      <%= profile.label :phone_number %><br />
-      <%= profile.number_field :phone_number %>
-    </p>
-  </div>
-  <div class="field">
-    <p>    
-      <%= profile.label :address %><br />
-      <%= profile.text_field :address %>
-    </p>
-  </div>
-  <% if @profile.picture.exists? then %>
-    <td><%= image_tag @profile.picture.url(:thumb) %></td>
-  <% end %>
-  <div class="field">
-    <%= profile.file_field :picture %>
-  </div>
+
+  <%= content_tag(:tr,  content_tag(:td) << content_tag(:td, image_tag( @profile.picture.url(:thumb)))) if @profile.picture.exists? %>
+  
+  <%=content_tag(:tr, content_tag(:td, profile.label(:profile_picture)) << content_tag(:td, profile.file_field( :picture))) %>
+ 

@@ -1,37 +1,35 @@
 <%= form_for( @user, :html => {:multipart => true}) do |f| %>
   <%= f.error_messages %>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
-  </p>
-  <p>
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
-  </p>
-  <p>
-    <%= f.label :email, "Email Address" %><br />
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </p>
-  <p>
-    <%= f.label :password_confirmation, "Confirm Password" %><br />
-    <%= f.password_field :password_confirmation %>
-  </p>
-   
-   <%= f.fields_for :profile do |profile| %>
+   <table>
+    <%=content_tag(:tr, content_tag(:td, f.label(:first_name)) << content_tag(:td, f.text_field( :first_name, :size => 20))) %>
+    <%=content_tag(:tr, content_tag(:td, f.label(:last_name)) << content_tag(:td, f.text_field( :last_name, :size => 20)))%>
+    <%=content_tag(:tr, content_tag(:td, f.label(:role)) << content_tag(:td, f.collection_select( :role, User::ROLES, :to_s, :humanize))) %>
+    <%=content_tag(:tr, content_tag(:td, f.label(:username)) << content_tag(:td, f.text_field( :username))) %>
+    <%=content_tag(:tr, content_tag(:td, f.label(:email)) << content_tag(:td, f.text_field( :email))) %>
+    <%=content_tag(:tr, content_tag(:td, f.label(:institution_name)) << content_tag(:td, f.text_field( :institution_name))) %>
+
+    <%= f.fields_for :location do |o| %>
+
+      <%=content_tag(:tr, content_tag(:td, o.label(:street_address)) << content_tag(:td, o.text_field( :street_address, :value => @user.location[:street_address]))) %>
+      <%=content_tag(:tr, content_tag(:td, o.label(:city_address)) << content_tag(:td, o.text_field( :city_address, :value => @user.location[:city_address]))) %>
+      <%=content_tag(:tr, content_tag(:td, o.label(:country)) << content_tag(:td, o.grouped_collection_select(:country, @regions, :locations, :name, :state, :state))) %>
+      <%=content_tag(:tr, content_tag(:td, o.label(:postal_code)) << content_tag(:td, o.text_field( :postal_code, :value => @user.location[:postal_code]))) %>
+      <%=content_tag(:tr, content_tag(:td, o.label(:phone_number)) << content_tag(:td, o.text_field( :phone_number, :value => @user.location[:phone_number]))) %>
+
+  <% end %>
+
+  <%= f.fields_for :profile do |profile| %>
       
-   <% unless @user.profile.nil? %>
-     <%=render :partial => 'profiles/form_attributes', :locals => {:profile => profile} %>
-   <% end %>
+    <% unless @user.profile.nil? %>
+      <%=render :partial => 'profiles/form_attributes', :locals => {:profile => profile} %>
+    <% end %>
     
   <% end %>
 
+  <%= content_tag(:tr, content_tag( :td, content_tag(:h3, :password.to_s.humanize))) %>
+  <%=content_tag(:tr, content_tag(:td, f.label(:password)) << content_tag(:td, f.password_field( :password))) %>
+  <%=content_tag(:tr, content_tag(:td, f.label(:password_confirmation)) << content_tag(:td, f.password_field( :password_confirmation))) %>
+  </table>
 
   <p><%= f.submit (@user.new_record? ? "Sign up" : "Update") %></p>
 <% end %>

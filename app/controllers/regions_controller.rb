@@ -15,7 +15,7 @@ class RegionsController < ApplicationController
   # GET /regions/1
   # GET /regions/1.xml
   def show
-    @region = Region.find(params[:id])
+    @region = Region.where("name = ?", params[:id].gsub("-", " "))
 
     respond_to do |format|
       format.html # show.html.erb
