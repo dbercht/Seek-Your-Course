@@ -20,6 +20,13 @@ class User < ActiveRecord::Base
   has_one :profile
   accepts_nested_attributes_for :profile
 
+  validates_presence_of :first_name, :last_name, :street_address, :city_address, :postal_code, :country, :phone_number, :website
+
+  with_options :if => lambda{ role == ROLES[1] } do |o|
+    o.validates :institution_name, :presence => true
+  end
+
+
   def to_param
     username
   end

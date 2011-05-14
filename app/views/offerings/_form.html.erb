@@ -87,11 +87,10 @@
   <div>
     <%= f.label :registered_artist_ids %><br />
 
-    <div id="registered_artists" style="height:40px;width:600px;overflow:auto;">
-      <% @artists.each do |artist| -%>
-        <%= check_box_tag "offering[registered_artist_ids][]", artist.id, @offering.registered_artists.include?(artist) -%><%= artist.name-%><br /> 
-      <% end -%>
-    </div>
+    <%= f.collection_select :registered_artist_ids,
+        @artists, :id, :name, {},
+        :multiple => true,
+        :name => 'offering[registered_artist_ids][]' %>
   </div>
   <div class="field">
     <%= f.label :unregistered_artists %><br />

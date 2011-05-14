@@ -1,4 +1,4 @@
-<% if @user.role = User::ROLES[0] %>
+<% if @user.role == User::ROLES[0] %>
   <%= render :partial => 'profiles/instructor_profile' %>
 <% else %>
   <%= render :partial => 'profiles/coordinator_profile' %>

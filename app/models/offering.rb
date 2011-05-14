@@ -26,19 +26,19 @@ class Offering < ActiveRecord::Base
 
   has_attached_file :picture_main,
     :styles => {
-    :thumb=>   ["250x500", "png"]},
+    :thumb=>   ["200x500", "png"]},
  :url => "/assets/:class/:id/:attachment/:style.:extension",
                     :path => ":rails_root/public/assets/:class/:id/:attachment/:style.:extension"
 
   has_attached_file :picture_footer_left,
     :styles => {
-    :thumb=>   ["250x500", "png"]},
+    :thumb=>   ["200x500", "png"]},
  :url => "/assets/:class/:id/:attachment/:style.:extension",
                     :path => ":rails_root/public/assets/:class/:id/:attachment/:style.:extension"
 
   has_attached_file :picture_footer_right,
     :styles => {
-    :thumb=>   ["250x500", "png"]},
+    :thumb=>   ["200x500", "png"]},
  :url => "/assets/:class/:id/:attachment/:style.:extension",
                     :path => ":rails_root/public/assets/:class/:id/:attachment/:style.:extension"
   
@@ -49,6 +49,8 @@ class Offering < ActiveRecord::Base
 	"Pro 1" => 200,
 	"Pro 2" => 300
   }
+
+  DESCRIPTION_LENGTH = [50, 200, 300]
 
   def validate_plan_description_length?
     description.length > DESCRIPTION_LENGTH_FOR_PLAN[plan.name]
@@ -62,14 +64,16 @@ class Offering < ActiveRecord::Base
   validates :type, :presence => true
   validates :link, :presence => true
   validates :title, :presence => true
-  validates :description, :presence => true
+  validates :description, :presence => true, :length => {:maximum => 200}
 
   validates_presence_of :start_date, :end_date, :registration_begins, :registration_deadline
   validates :registration_deadline, :date => {:after => :registration_begins}
 
+
   with_options :if => lambda {return type.category != "E-course"} do |o|
     o.validates :specific_location, :presence => true
   end
+
 
   with_options :if => :editable? do |o|
     o.validates :start_date, :date => {:after => :registration_begins}

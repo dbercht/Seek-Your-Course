@@ -1,5 +1,9 @@
 <div id="offering">
   <p id="notice"><%= notice %></p>
+  <h4>
+    <%=link_to offering.title, offering_path(offering) %> | 
+    <%= link_to offering.type.category, type_path(offering.type) %>
+  </h4>
   <% if offering.validated == false %>
     <p>
       <b>Validated:</b>
@@ -11,10 +15,6 @@
       <%= offering.note %>
     </p>
   <% end %>
-  <h4>
-    <%=link_to offering.title, offering_path(offering) %> | 
-    <%= link_to offering.type.category, type_path(offering.type) %>
-  </h4>
 
   <p>
     <b>Location:</b>

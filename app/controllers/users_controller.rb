@@ -38,8 +38,8 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    if @user.update_attributes(params[:user]) && @user.profile.update_attributes(params[:profile_attributes])
-      redirect_to root_url, :notice => "Your profile has been updated."
+    if @user.update_attributes(params[:user])
+      redirect_to edit_profiles_path(current_user), :notice => "Your information has been updated."
     else
       @locations = Location.all
       render :action => 'edit'

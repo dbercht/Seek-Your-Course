@@ -1,8 +1,9 @@
 <table>
-    <%=content_tag(:tr, content_tag(:td, instructor.label(:country)) << content_tag(:td, @user.country)) %>
-    <%=content_tag(:tr, content_tag(:td, instructor.label(:specific_location)) << content_tag(:td, instructor.text_field( :specific_location)))%>
-    <%=content_tag(:tr, content_tag(:td, instructor.label(:focus)) << content_tag(:td, instructor.text_area( :focus, :rows => 3)))%>
-    <%=content_tag(:tr, content_tag(:td, instructor.label(:description)) << content_tag(:td, instructor.text_area( :description, :rows => 4)))%>
+    <%=content_tag(:tr, content_tag(:td, instructor.label(:type)) << content_tag(:td, instructor.collection_select( :coordinating, Profile::CoordinatorType, :humanize, :humanize)))%>
+    <%=content_tag(:tr, content_tag(:td, instructor.label(:frequency)) << content_tag(:td, instructor.text_field( :frequency, :value => "Varies")))%>
+    <%=content_tag(:tr, content_tag(:td, instructor.label(:location)) << content_tag(:td, instructor.text_field( :specific_location)))%>
+    <%=content_tag(:tr, content_tag(:td, instructor.label(:focus, "Focus of Retreat/Conference (Mediums/Modes of Expression)")) << content_tag(:td, instructor.text_area( :focus, :rows => 3)))%>
+    <%=content_tag(:tr, content_tag(:td, instructor.label(:description, "Description of the Retreat/Conference")) << content_tag(:td, instructor.text_area( :description, :rows => 4)))%>
     <%=content_tag(:tr, content_tag(:td, instructor.label(:testimonials)) << content_tag(:td, instructor.text_area( :testimonials, :rows => 5)))%>
     
 </table>

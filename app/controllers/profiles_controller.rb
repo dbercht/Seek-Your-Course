@@ -11,6 +11,7 @@ class ProfilesController < ApplicationController
   def create
     @user = current_user
     @profile = Profile.create(params[:profile])
+    @profile.role = @user.role
     respond_to do |format|
       if @profile.save
         current_user.profile = @profile
@@ -35,6 +36,7 @@ class ProfilesController < ApplicationController
   def update
     @user = current_user
     @profile = current_user.profile
+    @profile.role = @user.role
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
         format.html { redirect_to(current_user, :id => current_user.id, :notice => 'Profile was successfully updated.') }

@@ -2,9 +2,9 @@
   <h1>Profile: <%=@name %> </h1>
   <p>
       <%=content_tag(:tr,  content_tag(:td) << content_tag(:td, image_tag( @profile.picture.url(:regular), :align => 'left'))) if @profile.picture.exists? %>   
-      <strong>Type</strong>: <%= @profile.type %><br />
+      <strong>Type</strong>: <%= @profile.coordinating.humanize %><br />
       <strong>Frequency</strong>: <%= @profile.frequency %> <br />
-      <strong>Location</strong>: <%= @profile.specific_location %> <%= ',' unless (@profile.specific_location == nil || @profile.specific_location.size == 0)%> <%= @user.country %> <br />
+      <strong>Location</strong>: <%= @profile.specific_location %> <br />
       <strong>Focus of Retreat</strong>: <%= @profile.focus %> <br />
     </p>
     <p>
@@ -13,7 +13,7 @@
     </p>
     <p>
       <%= content_tag (:strong, "Testimonials <br />".html_safe) unless (@profile.testimonials == nil || @profile.testimonials.size == 0) %>
-      <%= content_tag (:p, @profile.testimonials.html_safe  << "<br />".html_safe) unless (@profile.testimonials == nil || @profile.testimonials.size == 0) %>
+      <%= content_tag (:p, sanitize(@profile.testimonials.html_safe, :tags => %w(a))  << "<br />".html_safe) unless (@profile.testimonials == nil || @profile.testimonials.size == 0) %>
     <p><strong>Upcoming Listings:</strong><br />
     <% @offerings.each do |offering| %>
       <%= render :partial => 'offerings/offering_snippet', :locals =>{:offering => offering} %> 

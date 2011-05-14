@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110513205819) do
+ActiveRecord::Schema.define(:version => 20110514191007) do
 
   create_table "locations", :force => true do |t|
     t.string   "state"
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(:version => 20110513205819) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
-    t.string   "type"
+    t.string   "coordinating"
     t.string   "location"
     t.string   "focus"
     t.string   "preferences"
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(:version => 20110513205819) do
     t.string   "picture4_content_type"
     t.integer  "picture4_file_size"
     t.datetime "picture4_updated_at"
+    t.string   "role"
   end
 
   create_table "regions", :force => true do |t|
