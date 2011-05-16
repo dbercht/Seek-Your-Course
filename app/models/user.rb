@@ -18,7 +18,6 @@ class User < ActiveRecord::Base
   has_many :coordinated_offerings, :class_name => 'Offering', :foreign_key => 'coordinator_id'
 
   has_one :profile
-  accepts_nested_attributes_for :profile
 
   validates_presence_of :first_name, :last_name, :street_address, :city_address, :postal_code, :country, :phone_number, :website
 

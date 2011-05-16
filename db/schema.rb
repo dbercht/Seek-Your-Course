@@ -10,7 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110514191007) do
+ActiveRecord::Schema.define(:version => 20110514202101) do
+
+  create_table "ads", :force => true do |t|
+    t.string   "url"
+    t.string   "tag"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.string   "image_file_size"
+    t.datetime "image_updated_at"
+  end
 
   create_table "locations", :force => true do |t|
     t.string   "state"

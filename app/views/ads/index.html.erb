@@ -1,0 +1,26 @@
+<%title "Ads" %>
+<div class="topics">
+  <div class="clear"></div> 
+
+  <% @ads.each do |ad| %>
+      <span class="ad" id="<%=ad.tag%>">
+        <%= image_tag(ad.image.url(:thumb)) %>
+	<br />
+        <div class="topic_title">
+          <%= ad.tag %>
+          <br  />
+          <% if current_admin %> 
+            <%= link_to 'Edit', edit_ad_path(ad) %>
+            | <%= link_to 'Destroy', ad, :confirm => 'Are you sure?', :method => :delete %>
+          <% end %>
+        </div>
+      </span>
+  <% end %>
+
+  <div class="clear"></div>
+  <br />
+
+  <% if current_admin %>
+    <%= link_to 'New Ad', new_ad_path %>
+  <% end %>
+</div>

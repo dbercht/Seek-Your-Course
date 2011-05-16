@@ -34,7 +34,7 @@ class OfferingsController < ApplicationController
   # GET /offerings/1
   # GET /offerings/1.xml
   def show
-    @offering = Offering.find(params[:id])
+    @offering = Offering.find(params[:id], :include => [:location, :region, :plan, :registered_artists, :topics, :type ])
 
     respond_to do |format|
       format.html # show.html.erb

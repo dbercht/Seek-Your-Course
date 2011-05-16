@@ -1,6 +1,11 @@
 SeekYourCourse::Application.routes.draw do
 
+  get "ads/new"
+
+  get "ads/edit"
+
   resources :offerings
+  resources :ads
 
   match 'pending_offerings', :to => 'offerings#pending_index', :as => 'pending_offerings'
 

@@ -68,7 +68,7 @@ class Offering < ActiveRecord::Base
 
   validates_presence_of :start_date, :end_date, :registration_begins, :registration_deadline
   validates :registration_deadline, :date => {:after => :registration_begins}
-
+  validate :validate_length_of_description
 
   with_options :if => lambda {return type.category != "E-course"} do |o|
     o.validates :specific_location, :presence => true
@@ -81,8 +81,8 @@ class Offering < ActiveRecord::Base
     o.validates :registration_begins, :date => {:after => Date.today}
   end
 
-  def validate
-    #errors[:base] = "#{plan.name} only allows for #{DESCRIPTION_LENGTH_FOR_PLAN[plan.name]} characters." if validate_plan_description_length?
+  def validate_length_of_description
+    errors[:base] = "#{plan.name} only allows for #{DESCRIPTION_LENGTH_FOR_PLAN[plan.name]} characters." if validate_plan_description_length?
   end
 
 end
