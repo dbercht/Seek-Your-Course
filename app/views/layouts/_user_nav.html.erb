@@ -5,23 +5,23 @@
 
 <div id="nav-top" class="clearfix">
         <% if logged_in? %>
-          Logged in as <%= current_user.username %>.
-          <%= link_to "Manage your listings", user_path(current_user) %> 
-          <%= link_to "Log out", logout_path %>
+          <span class='buttons-top'>Welcome, <%= current_user.name %>.</span>
+          <%= link_to "Manage your listings", user_path(current_user), :class => "buttons-top" %> 
+          <%= link_to "Log out", logout_path, :class => "buttons-top" %>
         <% else %>
-          <%= link_to "Sign up", signup_path %>
-          <%= link_to "Log in", login_path %>
+          <%= link_to "Sign up", signup_path, :class => "buttons-top" %>
+          <%= link_to "Log in", login_path, :class => "buttons-top" %>
         <% end %>
       <% if admin_logged_in? %>
         <div id="admin_nav">
-          <%= link_to "View Pending Offerings", pending_offerings_path %>
-          <%= link_to "Ads", ads_path %>
+          <%= link_to "View Pending Offerings", pending_offerings_path, :class => "buttons-top" %>
+          <%= link_to "Ads", ads_path, :class => "buttons-top" %>
         </div>
       <% end %>
 
-        <%= link_to "Advertise", root_url%>
-        <%= link_to "Contact", root_url%>
-        <%= link_to "About", root_url%>
+        <%= link_to "Advertise", root_url, :class => "buttons-top"%>
+        <%= link_to "Contact", root_url, :class => "buttons-top"%>
+        <%= link_to "About", root_url, :class => "buttons-top"%>
 </div>
 
 </div>

@@ -161,26 +161,26 @@
       <%= f.text_field :specific_location %>
     </div>
  <div id="date">
-  <p>
+  <div class="field">
     <%= f.label "Registration Begins*" %><br />
-    <input type='text' id='registration_begins' class='date' value="<%=@offering.registration_begins.strftime('%Y-%h-%d')%>"/>
+    <input type='text' id='registration_begins' class='date' value="<%=@offering.registration_begins.strftime('%Y-%h-%d') unless @offering.registration_begins.nil?%>"/>
     <%= f.date_select :registration_begins, :class => "date" %>
-  </p>
-  <p>
+  </div>
+  <div class="field">
     <%= f.label :registration_deadline %><br />
-    <input type='text' id='registration_deadline' class='date' value="<%=@offering.registration_deadline.strftime('%Y-%h-%d')%>"/>
+    <input type='text' id='registration_deadline' class='date' value="<%=@offering.registration_deadline.strftime('%Y-%h-%d') unless @offering.registration_deadline.nil? %>"/>
     <%= f.date_select :registration_deadline, :include_blank => true, :class => "date" %>
-  </p>
-    <p>
+  </div>
+  <div class="field">
     <%= f.label "Start Date*" %><br />
-    <input type='text' id='start_date' class='date' value="<%=@offering.start_date.strftime('%Y-%h-%d')%>"/>
+    <input type='text' id='start_date' class='date' value="<%=@offering.start_date.strftime('%Y-%h-%d') unless @offering.start_date.nil?%>"/>
     <%= f.date_select :start_date, :class => "date" %>
-  </p>
-  <p>
+  </div>
+  <div class="field">
     <%= f.label "End Date*" %><br />
-    <input type='text' id='end_date' class='date' value="<%=@offering.end_date.strftime('%Y-%h-%d')%>"/>
+    <input type='text' id='end_date' class='date' value="<%=@offering.end_date.strftime('%Y-%h-%d')  unless @offering.end_date.nil? %>"/>
     <%= f.date_select :end_date, :class => "date" %>
-  </p>
+  </div>
 </div>
   <div class="field">
     <%= f.label :link %><br />
@@ -191,15 +191,16 @@
     <%= f.text_area :description %>
   </div>
   <div>
-    <%= f.label :registered_artist_ids %><br />
+    <%= f.label :registered_artist_ids, "Registered contributing instructors" %><br /><i>Hold control to select multiple artists</i><br />
 
     <%= f.collection_select :registered_artist_ids,
         @artists, :id, :name, {},
         :multiple => true,
+        :size => 10,
         :name => 'offering[registered_artist_ids][]' %>
   </div>
   <div class="field">
-    <%= f.label :unregistered_artists %><br />
+    <%= f.label :unregistered_artists, "Unregistered contributing instructors (Comma separated)" %><br />
     <%= f.text_area :unregistered_artists %>
   </div>
 

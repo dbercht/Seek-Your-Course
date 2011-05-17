@@ -1,9 +1,12 @@
 <%title "Offerings by Topic" %>
-<div class="topics">
-  <h2>Browse > by Topic</h2>
+
+<div class="learning-results clearfix">
+  <h1>BROWSE &gt; by TOPIC</h1>
   <div class="clear"></div> 
 
   <% @topics.each do |topic| %>
+
+    <div class="grid-gallery">
       <span class="topic" id="<%=topic.category%>">
         <% if topic.image.exists? %>
           <%= link_to image_tag(topic.image.url(:thumb)), topic %>
@@ -11,15 +14,15 @@
           <%= link_to 'Show', topic %>
         <% end %>
 	<br />
-        <div class="topic_title">
           <%= topic.category %>
           <br  />
           <% if current_admin %> 
             <%= link_to 'Edit', edit_topic_path(topic) %>
             | <%= link_to 'Destroy', topic, :confirm => 'Are you sure?', :method => :delete %>
           <% end %>
-        </div>
       </span>
+   </div>
+      
   <% end %>
 
   <div class="clear"></div>

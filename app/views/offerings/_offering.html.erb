@@ -1,10 +1,8 @@
-<div id="offering">
+<div class="single-result">
   <p id="notice"><%= notice %></p>
-  <div id="snippet_picture">
     <% if offering.picture_main.exists? then %>
-      <span class="right"><%= image_tag @offering.picture_main.url(:snippet) %></span>
+      <%= image_tag @offering.picture_main.url(:snippet), :class=> "result-img" %>
     <% end %>
-  </div>
   <h5>
     <%= artists_for_offering(@offering) %>
     <%=link_to offering.title, offering_path(offering) %>
@@ -12,26 +10,26 @@
 
   <% if offering.validated == false %>
     <p>
-      <b>Validated:</b>
+      <strong>Validated:</strong>
       <%= offering.validated %>
     </p>
     <% if current_admin %>
   
       <p>
-        <b>Note:</b>
+        <strong>Note:</strong>
         <%= offering.note %>
       </p>
     <% end %>
   <% end %>
-
-    <b>Starts: </b>
+<p>
+    <strong>Starts: </strong>
     <%= offering.start_date.strftime('%B %e, %Y') %> | 
 
     <%if offering.type.category == "E-course"%>
-      <b>Location:</b>
+      <strong>Location:</strong>
       <%= "Online" %>
     <% else %>
-      <b>Location:</b>
+      <strong>Location:</strong>
       <%= offering.specific_location %>, 
       <%unless offering.us_state.nil? %>
        <%= offering.us_state %>,
@@ -39,11 +37,11 @@
       <%= offering.location.state %>,
       <%= offering.location.region.name %>
    <% end %>
-   <br />
-   <b>Topics: </b>
+<br />
+   <strong>Topics: </strong>
    <%= show_topics_for(@offering) %>
 <br />
-
+</p>
   <% if current_admin || (offering.coordinator == current_user) %>
     <%= link_to 'Edit', edit_offering_path(offering) %>
   <% end %>

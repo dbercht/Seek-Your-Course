@@ -1,21 +1,16 @@
 <%title "Offerings by Type" %>
-<table>
-  <tr>
-    <th>Category</th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="learning-results clearfix">
+  
+  <h1>BROWSE &gt; by TYPE</h1>
 
-<% @types.each do |type| %>
-  <tr>
-    <td><%= link_to type.category, type %></td>
-    <% if current_admin %>
-      <td><%= link_to 'Edit', edit_type_path(type) %></td>
-      <td><%= link_to 'Destroy', type, :confirm => 'Are you sure?', :method => :delete %></td>
-    <% end %>
-  </tr>
-<% end %>
-</table>
+  <% @types.each do |type| %>
+    <div class="bytype">
+      <h4><%= link_to type.category, type %>
+      <% if current_admin %>
+        <%= link_to 'Edit', edit_type_path(type) %>
+        <%= link_to 'Destroy', type, :confirm => 'Are you sure?', :method => :delete %>
+      <% end %>
+  <% end %>
 
 <br />
 <% if current_admin %>

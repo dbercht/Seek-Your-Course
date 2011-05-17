@@ -619,8 +619,8 @@ a:hover {
 	font-size:22px;
 	color:#414042;
 	letter-spacing:1px;
-	font-weight:100;
 	display:block;
+	font-weight:100;
 }
 
 .single-result {
@@ -707,26 +707,6 @@ a:hover {
 	margin-bottom: 15px;
 }
 
-.profilephoto {
-	margin-right:10px;
-	margin-bottom:10px;
-}
-
-
-.contentlearning-profile {
-	padding: 20px 0px 0px 10px;
-}
-
-.contentlearning-profile h1 {
-	margin:0px 0px 20px 0px;
-	font-size:22px;
-	color:#414042;
-	letter-spacing:1px;
-	font-weight:100;
-	display:block;
-}
-
-
 
 /* Coming Soon
 ----------------------------------------------------------------------------------------------------*/
@@ -765,5 +745,5 @@ a:hover {
 }
 
 .manage-nav p {
-	margin:0px;
+	margin:10px 0px 10px 10px;
 }
