@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Welcome to SeekYourCourse.com, <%= @user.name %></h1>
+    <p>
+      You have successfully signed up to Seek Your Course,
+      your username is: <%= @user.username %>.<br/>
+    </p>
+    <p>
+      To login to the site, just follow this link: http://localhost.com:3000/login.<br />
+      You can login using <%= @user.username %> or <%= @user.email %>.
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>

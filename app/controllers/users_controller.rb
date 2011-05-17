@@ -24,6 +24,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
+      UserMailer.welcome_email(@user).deliver
       redirect_to root_url, :notice => "Thank you for signing up! You are now logged in."
     else
       @locations = Location.all

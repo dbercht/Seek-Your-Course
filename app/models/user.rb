@@ -10,14 +10,14 @@ class User < ActiveRecord::Base
   attr_protected :is_admin
   acts_as_authentic
 
-  scope :artists, 	where(:role => ROLES[0]).order('username')
-  scope :coordinators, 	where(:role => ROLES[1]).order('username') 
+  scope :artists, 	where(:role => ROLES[0]).order('last_name')
+  scope :coordinators, 	where(:role => ROLES[1]).order('last_name') 
 
   has_and_belongs_to_many :offerings
 
-  has_many :coordinated_offerings, :class_name => 'Offering', :foreign_key => 'coordinator_id'
+  has_many :coordinated_offerings, :class_name => 'Offering', :foreign_key => 'coordinator_id', :dependent => :destroy
 
-  has_one :profile
+  has_one :profile, :dependent => :destroy
 
   validates_presence_of :first_name, :last_name, :address_line_1, :postal_code, :country, :phone_number, :website
 
