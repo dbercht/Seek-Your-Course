@@ -1,63 +1,6 @@
 <% title @offering.title%>
-<div class="offering_info">
-
-  <h2> <%= @offering.title %> </h2>
-    <% if @offering.picture_main.exists? then %>
-      <span class="right"><%= image_tag @offering.picture_main.url(:thumb) %></span>
-    <% end %>
-  
-  <h3>
-    <b>Instructor:</b>
-    <%= link_to @offering.coordinator.name, user_path(@offering.coordinator)%>
-  </h3>
-  <p>
-    <b>Type:</b>
-    <%= @offering.type.category %><br />
-    <b>Location:</b>
-    <%= "#{@offering.specific_location}, #{@offering.location.state}, #{@offering.region.name}" %><br />
-    <b>Topics:</b>
-    <%= @offering.topics.map{|k| k.category}.join(', ') %>
-
-  </p>
-    
-  <p>
-    <b>Instructors:</b>
-    <% @offering.registered_artists.each do |user| %>
-      <%= link_to(user.name, user_path(user)) %>,
-    <% end %>
-    <%= @offering.unregistered_artists %>
-  </p>
-
-  <p>
-    <b>Starts:</b>
-    <%= @offering.start_date %><br />
-    <b>Ends:</b>
-    <%= @offering.end_date %><br />
-    <b>Registration Begins:</b>
-    <%= @offering.registration_begins %><br />
-    <b>Registration Deadline:</b>
-    <%= @offering.registration_begins %>
-  </p>
-
-
-  <p>
-    <b>Description:</b>
-    <%=h @offering.description%>
-  </p>
-
-  <% if @offering.picture_footer_left.exists? then %>
-    <%= image_tag @offering.picture_footer_left.url(:thumb) %>
-  <% end %>
-  <% if @offering.picture_footer_right.exists? then %>
-    <%= image_tag @offering.picture_footer_right.url(:thumb) %>
-  <% end %>
-
-  <p>
-    <b>Website:</b>
-    <%=link_to url_with_protocol(@offering.link), url_with_protocol(@offering.link)%>
-  </p>
-
-  <% if current_admin || (current_user == @offering.coordinator) %>
-    <%= link_to('Edit Offering', edit_offering_path(@offering))%>
-  <% end %>
-</div>
+<% if @offering.type.category == "E-course" %>
+  <%= render :partial => "e-course"%>
+<% else %>
+  <%= render :partial => "conf-ret"%>
+<% end %>

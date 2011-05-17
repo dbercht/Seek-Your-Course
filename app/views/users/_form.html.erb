@@ -60,10 +60,10 @@
 
     <%= f.fields_for :location do |o| %>
 
-      <%=content_tag(:tr, content_tag(:td, o.label(:street_address)) << content_tag(:td, o.text_field( :street_address, :value => @user.location[:street_address]))) %>
-      <%=content_tag(:tr, content_tag(:td, o.label(:city_address)) << content_tag(:td, o.text_field( :city_address, :value => @user.location[:city_address]))) %>
-      <%=content_tag(:tr, content_tag(:td, o.label(:country)) << content_tag(:td, f.collection_select(:country, @locations, :state, :state ))) %>
+      <%=content_tag(:tr, content_tag(:td, o.label(:adress_line_1, "Address Line 1")) << content_tag(:td, o.text_field( :address_line_1, :value => @user.location[:address_line_1]))) %>
+      <%=content_tag(:tr, content_tag(:td, o.label(:address_line_2, "Address Line 2")) << content_tag(:td, o.text_field( :address_line_2, :value => @user.location[:address_line_2]))) %>
       <%=content_tag(:tr, content_tag(:td, o.label(:postal_code)) << content_tag(:td, o.text_field( :postal_code, :value => @user.location[:postal_code]))) %>
+      <%=content_tag(:tr, content_tag(:td, o.label(:country)) << content_tag(:td, f.collection_select(:country, @locations, :state, :state ))) %>
       <%=content_tag(:tr, content_tag(:td, o.label(:phone_number)) << content_tag(:td, o.text_field( :phone_number, :value => @user.location[:phone_number]))) %>
 
   <% end %>

@@ -9,12 +9,15 @@ class TypesController < ApplicationController
       format.html # index.html.erb
       format.xml  { render :xml => @types }
     end
+    
   end
 
   # GET /types/1
   # GET /types/1.xml
   def show
     @type = Type.find(params[:id])
+    @types = Type.all
+    @topics = Topic.all
     @offerings = Offering.validated.includes(:plan, :topics, :type, :location, :coordinator, :region, :registered_artists).where("type_id = ?", @type.id).paginate(:page => params[:page], :per_page => 10)
     respond_to do |format|
       format.html # show.html.erb

@@ -12,18 +12,18 @@
     <p>
       <%= content_tag (:strong, "Testimonials <br />".html_safe) unless (@profile.testimonials == nil || @profile.testimonials.size == 0) %>
       <%= content_tag (:p, @profile.testimonials.html_safe  << "<br />".html_safe) unless (@profile.testimonials == nil || @profile.testimonials.size == 0) %>
-    <p><strong>Upcoming Classes:</strong><br />
-    <% @offerings.each do |offering| %>
-      <%= render :partial => 'offerings/offering_snippet', :locals =>{:offering => offering} %> 
+    <% unless @offerings.size == 0 %>
+      <p><strong>Upcoming Listings:</strong><br />
+      <% @offerings.each do |offering| %>
+        <%= render :partial => 'offerings/offering_snippet', :locals =>{:offering => offering} %> 
+      <% end %>
     <% end %>
-    <% @future_offerings.each do |offering| %>
-      <%= render :partial => 'offerings/offering_snippet', :locals =>{:offering => offering} %> 
+    <% unless @past_offerings.size == 0 %>
+      <p><strong>Past Classes:</strong><br />
+      <% @past_offerings.each do |offering| %>
+        <%= render :partial => 'offerings/offering_snippet', :locals =>{:offering => offering} %> 
+      <% end %>
     <% end %>
-    <p><strong>Past Classes:</strong><br />
-    <% @past_offerings.each do |offering| %>
-      <%= render :partial => 'offerings/offering_snippet', :locals =>{:offering => offering} %> 
-    <% end %>
-
 <p><strong>Contact Info</strong>: <br />
 
   <%= content_tag(:p, link_to("Website", url_with_protocol(@user.website)) ) %>

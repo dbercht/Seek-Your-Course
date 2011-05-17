@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   ROLES = %w[instructor coordinator]
   CustomSites = %w[website facebook twitter blog]
-  CustomLocations = %w[country postal_code street_address city_address phone_number]
+  CustomLocations = %w[country postal_code address_line_1 address_line_2 phone_number]
 
   serialize :location, Hash
   serialize :websites, Hash
@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 
   has_one :profile
 
-  validates_presence_of :first_name, :last_name, :street_address, :city_address, :postal_code, :country, :phone_number, :website
+  validates_presence_of :first_name, :last_name, :address_line_1, :postal_code, :country, :phone_number, :website
 
   with_options :if => lambda{ role == ROLES[1] } do |o|
     o.validates :institution_name, :presence => true
@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
   end
 
   def name
-    first_name << " " << last_name
+    [first_name, last_name].join(' ')
   end
 
   

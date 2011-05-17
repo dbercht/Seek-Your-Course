@@ -1,7 +1,3 @@
-<% if @topic.image.exists? then %>
-  <span class="right"><%= image_tag @topic.image.url(:thumb) %></span>
-<% end %>
-
 <%title @topic.category %>
     
 <p id="notice"><%= notice %></p>

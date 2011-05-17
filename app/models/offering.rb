@@ -11,7 +11,7 @@ class Offering < ActiveRecord::Base
   scope :past_offerings, where("start_date <= ?", Date.today)
   scope :validated, future_offerings.where(:validated => true)
   scope :pending, future_offerings.where(:validated => false)
-  
+
   #ASSOCIATIONS                      
   
   belongs_to :type
@@ -26,6 +26,7 @@ class Offering < ActiveRecord::Base
 
   has_attached_file :picture_main,
     :styles => {
+    :snippet => ["50x50#"],
     :thumb=>   ["200x500", "png"]},
  :url => "/assets/:class/:id/:attachment/:style.:extension",
                     :path => ":rails_root/public/assets/:class/:id/:attachment/:style.:extension"
@@ -78,11 +79,12 @@ class Offering < ActiveRecord::Base
   with_options :if => :editable? do |o|
     o.validates :start_date, :date => {:after => :registration_begins}
     o.validates :end_date, :date => {:after => :start_date}
-    o.validates :registration_begins, :date => {:after => Date.today}
+    o.validates :registration_begins, :date => {:after => Date.today - 1.days}
   end
 
   def validate_length_of_description
     errors[:base] = "#{plan.name} only allows for #{DESCRIPTION_LENGTH_FOR_PLAN[plan.name]} characters." if validate_plan_description_length?
   end
+
 
 end

@@ -5,7 +5,7 @@
         <ul>
           <li><%= link_to "Manage Home", user_path(current_user)%></li>
           <li><%= link_to "Create a New Listing", new_offering_path%></li>
-          <li><%= link_to "Manage Listings", user_path(current_user) %></li>
+          <li><%= link_to "Manage Listings", offerings_path( :coordinated => true) %></li>
           <li><%= link_to "Edit Personal Information", edit_user_path(current_user)%></li>
           <li><%= link_to "Edit Profile", edit_profiles_path(current_user.profile)%></li>
         </ul>

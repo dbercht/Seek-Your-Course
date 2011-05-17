@@ -1,52 +1,51 @@
 <div id="offering">
   <p id="notice"><%= notice %></p>
-  <h4>
-    <%=link_to offering.title, offering_path(offering) %> | 
-    <%= link_to offering.type.category, type_path(offering.type) %>
-  </h4>
+  <div id="snippet_picture">
+    <% if offering.picture_main.exists? then %>
+      <span class="right"><%= image_tag @offering.picture_main.url(:snippet) %></span>
+    <% end %>
+  </div>
+  <h5>
+    <%= artists_for_offering(@offering) %>
+    <%=link_to offering.title, offering_path(offering) %>
+  </h5>
+
   <% if offering.validated == false %>
     <p>
       <b>Validated:</b>
       <%= offering.validated %>
     </p>
-
-    <p>
-      <b>Note:</b>
-      <%= offering.note %>
-    </p>
+    <% if current_admin %>
+  
+      <p>
+        <b>Note:</b>
+        <%= offering.note %>
+      </p>
+    <% end %>
   <% end %>
 
-  <p>
-    <b>Location:</b>
-    <%= offering.specific_location %>, 
-    <%= offering.location.state %>,
-    <%= offering.location.region.name %>
-  </p>
+    <b>Starts: </b>
+    <%= offering.start_date.strftime('%B %e, %Y') %> | 
 
-  <p>
-    <b>Registration begins:</b>
-    <%= offering.registration_begins %> |
-    <b>Start date:</b>
-    <%= offering.start_date %> | 
-    <b>End date:</b>
-    <%= offering.end_date %>
-  </p>
-
-  <p>
-    <b><%=offering.coordinator.role.humanize%>:</b>
-    <%= offering.coordinator.username %>
-  </p>
-
-  <p>
-    <b>Contributing artists:</b>
-    <% offering.registered_artists.each do |user| %>
-      <%= link_to(user.name, user_path(user)) %>,
-    <% end %>
-    <%= offering.unregistered_artists %>
-  </p>
+    <%if offering.type.category == "E-course"%>
+      <b>Location:</b>
+      <%= "Online" %>
+    <% else %>
+      <b>Location:</b>
+      <%= offering.specific_location %>, 
+      <%unless offering.us_state.nil? %>
+       <%= offering.us_state %>,
+      <% end %> 
+      <%= offering.location.state %>,
+      <%= offering.location.region.name %>
+   <% end %>
+   <br />
+   <b>Topics: </b>
+   <%= show_topics_for(@offering) %>
+<br />
 
   <% if current_admin || (offering.coordinator == current_user) %>
-    <%= link_to 'Edit', edit_offering_path(offering) %> |
+    <%= link_to 'Edit', edit_offering_path(offering) %>
   <% end %>
   <hr />
 </div>

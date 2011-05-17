@@ -2,10 +2,8 @@ class Profile < ActiveRecord::Base
   CustomFields = %w(email blog facebook twitter)
   CoordinatorType = %w(retreat conference)
 
-  
-
   belongs_to :user
-  has_attached_file :picture, :styles => {:thumb => ["150x150#", :png], :regular => ["200x200#", :png]}
+  has_attached_file :picture, :styles => {:thumb => ["115x115#", :png], :regular => ["200x200#", :png]}
   has_attached_file :picture1, :styles => {:thumb => ["150x150#", :png], :regular => ["200x200", :png]}
   has_attached_file :picture2, :styles => {:thumb => ["150x150#", :png], :regular => ["200x200", :png]}
   has_attached_file :picture3, :styles => {:thumb => ["150x150#", :png], :regular => ["200x200", :png]}
@@ -15,7 +13,8 @@ class Profile < ActiveRecord::Base
 
   validates_attachment_presence :picture
   
-  validates_presence_of :focus, :description
+  validates :description, :length => {:maximum => 100}
+  validates :focus, :length => {:maximum => 90}
 
   with_options :if => lambda {return role == User::ROLES[1]} do |o|
     o.validates :type, :presence => true

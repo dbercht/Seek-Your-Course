@@ -14,6 +14,8 @@ class TopicsController < ApplicationController
   # GET /topics/1
   # GET /topics/1.xml
   def show
+    @types = Type.all
+    @topics = Topic.all
     @topic = Topic.find(params[:id])
     @offerings = @topic.offerings.validated.includes(:plan, :topics, :type, :location, :coordinator, :region, :registered_artists).paginate(:page => params[:page], :per_page => 10)
     respond_to do |format|

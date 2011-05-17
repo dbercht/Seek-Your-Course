@@ -1,3 +1,13 @@
+<%= will_paginate @users %>
+<%= page_entries_info @users %><br />
 <% @users.each do |@user| %>
-  <%=link_to @user.name, user_path(@user) %><br />
+  <%unless @user.profile.nil? %>
+    <%=link_to image_tag(@user.profile.picture.url(:thumb)), user_path(@user) %>
+  <%else%>
+    <%=link_to @user.name, user_path(@user) %>
+  <%end%>
+
 <%end%>
+<br />
+<%= will_paginate @users %>
+<%= page_entries_info @users %>

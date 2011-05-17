@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110514202101) do
+ActiveRecord::Schema.define(:version => 20110516173253) do
 
   create_table "ads", :force => true do |t|
     t.string   "url"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20110514202101) do
     t.string   "picture_footer_right_content_type"
     t.integer  "picture_footer_right_file_size"
     t.datetime "picture_footer_right_updated_at"
+    t.string   "us_state"
   end
 
   create_table "offerings_topics", :id => false, :force => true do |t|

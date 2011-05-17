@@ -1,3 +1,5 @@
 <div id="ads">
- <%= image_tag('/images/ads/krr-ads130.png') %>
+  <% @ads.each do |ads| %>
+    <%= render ads%>
+  <%end%>
 </div>

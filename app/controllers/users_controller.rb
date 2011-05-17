@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :load_profile, :only => [:edit, :update]
   
   def index
-    @users = User.where('role = ?', params[:role]).order('last_name')
+    @users = User.where('role = ?', params[:role]).order('last_name').paginate(:page => params[:page], :per_page => 10)
   end
 
   def new
@@ -16,9 +16,9 @@ class UsersController < ApplicationController
   def show
     @user = User.where("username = ?", params[:id]).first
     @profile = @user.profile
-    @offerings = @user.coordinated_offerings.future_offerings.includes(:plan, :topics, :type, :location, :coordinator, :region, :registered_artists).limit(3)
-    @future_offerings = @user.offerings.future_offerings.includes(:plan, :topics, :type, :location, :coordinator, :region, :registered_artists).limit(3)
-    @past_offerings = @user.offerings.past_offerings.includes(:plan, :topics, :type, :location, :coordinator, :region, :registered_artists).limit(3)
+    @offerings = @user.coordinated_offerings.validated.future_offerings.includes(:plan, :topics, :type, :location, :coordinator, :region, :registered_artists).limit(3)
+    @future_offerings = @user.offerings.validated.future_offerings.includes(:plan, :topics, :type, :location, :coordinator, :region, :registered_artists).limit(3)
+    @past_offerings = @user.offerings.validated.past_offerings.includes(:plan, :topics, :type, :location, :coordinator, :region, :registered_artists).limit(3)
   end
 
   def create

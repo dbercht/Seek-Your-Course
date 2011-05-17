@@ -11,8 +11,13 @@ class OfferingsController < ApplicationController
   # GET /offerings
   # GET /offerings.xml
   def index
-    @offerings = Offering.validated(:all, :include => [:location, :users]).paginate(:page => params[:page], :per_page => 10)
-    logger.debug @offerings.size
+    @types = Type.all
+    @topics = Topic.all
+    if(params[:coordinated] == true)
+      @offerings = current_user.coordinated_offerings.paginate(:page => params[:page], :per_page => 10)
+    else
+      @offerings = Offering.validated(:all, :include => [:location, :coordinator, :registered_artists, :plan, :users]).paginate(:page => params[:page], :per_page => 10)
+    end
     respond_to do |format|
       format.html {@title = "Offerings"} # index.html.erb
       format.xml  { render :xml => @offerings }
@@ -34,8 +39,7 @@ class OfferingsController < ApplicationController
   # GET /offerings/1
   # GET /offerings/1.xml
   def show
-    @offering = Offering.find(params[:id], :include => [:location, :region, :plan, :registered_artists, :topics, :type ])
-
+    @offering = Offering.find(params[:id], :include => [:location, :region, :plan, :registered_artists, :topics, :type ])  
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @offering }
@@ -81,6 +85,8 @@ class OfferingsController < ApplicationController
     if(current_admin)
       @offering.validated = params[:offering][:validated]
       @offering.note = params[:offering][:note]
+    else
+      @offering.update_attribute(:validated, false)
     end
     @offering.registered_artist_ids = params[:registered_artist_ids]
     respond_to do |format|
