@@ -43,6 +43,7 @@ class OfferingsController < ApplicationController
     @offering = Offering.find(params[:id], :include => [:location, :region, :plan, :registered_artists, :topics, :type ])  
     respond_to do |format|
       format.html # show.html.erb
+      format.js {render :partial => "offering_info"}
       format.xml  { render :xml => @offering }
     end
   end

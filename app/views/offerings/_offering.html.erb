@@ -1,7 +1,7 @@
 <div class="single-result">
   <p id="notice"><%= notice %></p>
     <% if offering.picture_main.exists? then %>
-      <%= image_tag @offering.picture_main.url(:snippet), :class=> "result-img" %>
+      <%= link_to(image_tag( @offering.picture_main.url(:snippet)), offering_path(offering)<<".js", :rel =>"content-480-400", :class => "pirobox_gall result-img") %>
     <% end %>
   <h5>
     <%= artists_for_offering(@offering) %>
@@ -45,5 +45,6 @@
   <% if current_admin || (offering.coordinator == current_user) %>
     <%= link_to 'Edit', edit_offering_path(offering) %>
   <% end %>
+  <br />
   <hr />
 </div>

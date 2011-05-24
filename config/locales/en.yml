@@ -4,6 +4,7 @@
 en:
   hello: "Hello world"
   activerecord:
+    attributes:
     errors:
       models:
         offering:
@@ -14,4 +15,4 @@ en:
               after: "cannot be before start_date"
             registration_begins:
               before: "cannot be before offering start date"
-              after: "must not be in past"
+              after: "must not be in past"  

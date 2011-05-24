@@ -1,0 +1,33 @@
+<table>
+   <%=content_tag(:tr, content_tag(:td,  label(:first_name, "Name")) << content_tag(:td,  @user.name)) %>
+
+    <%=content_tag(:tr, content_tag(:td,  label(:username, "Username*")) << content_tag(:td,  @user.username)) %>
+    <%=content_tag(:tr, content_tag(:td,  label(:email, "E-mail")) << content_tag(:td,  @user.email)) %>
+</table>
+<hr />
+<table>
+    <%=content_tag(:tr, content_tag(:td,  label(:role, "Role (Please choose one)")) << content_tag(:td,  @user.role)) %>
+    <%=content_tag(:tr, content_tag(:td,  label(:institution_name, "Name of Retreat/Conference")) << content_tag(:td,  @user.institution_name)) %>
+</table>
+<hr />
+<table>
+    <%=  fields_for :location do |o| %>
+
+      <%=content_tag(:tr, content_tag(:td, o.label(:adress_line_1, "Address Line 1")) << content_tag(:td, @user.address_line_1)) %>
+      <%=content_tag(:tr, content_tag(:td, o.label(:address_line_2, "Address Line 2")) << content_tag(:td, @user.address_line_2)) %>
+      <%=content_tag(:tr, content_tag(:td, o.label(:postal_code, "Postal Code")) << content_tag(:td, @user.postal_code)) %>
+      <%=content_tag(:tr, content_tag(:td, o.label(:country, "Country")) << content_tag(:td,  @user.country)) %>
+      <%=content_tag(:tr, content_tag(:td, o.label(:phone_number, "Phone Number*")) << content_tag(:td, @user.phone_number)) %>
+
+  <% end %>
+</table>
+<hr />
+<table>
+    <%=  fields_for :websites do |o| %>
+
+      <%=content_tag(:tr, content_tag(:td, o.label(:website, "Website*")) << content_tag(:td, @user.website)) %>
+      <%=content_tag(:tr, content_tag(:td, o.label(:blog)) << content_tag(:td, @user.blog)) %>
+      <%=content_tag(:tr, content_tag(:td, o.label(:facebook)) << content_tag(:td,  @user.facebook)) %>
+      <%=content_tag(:tr, content_tag(:td, o.label(:twitter)) << content_tag(:td,  @user.twitter)) %>
+    <% end %>
+</table>

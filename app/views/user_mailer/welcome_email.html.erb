@@ -2,15 +2,20 @@
 <html>
   <head>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <style type="text/css">
+      p {margin-left:20px; 
+         font-family:Arial,Helvetica,sans-serif;}  
+    </style>
   </head>
   <body>
+    <%= image_tag attachments['seekyourcourse.png'].url %>
     <h1>Welcome to SeekYourCourse.com, <%= @user.name %></h1>
     <p>
       You have successfully signed up to Seek Your Course,
       your username is: <%= @user.username %>.<br/>
     </p>
     <p>
-      To login to the site, just follow this link: http://localhost.com:3000/login.<br />
+      To login to the site, just follow this link: <%= login_url %>.<br />
       You can login using <%= @user.username %> or <%= @user.email %>.
     </p>
     <p>Thanks for joining and have a great day!</p>

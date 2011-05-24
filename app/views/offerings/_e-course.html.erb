@@ -1,59 +1,13 @@
-<div class="offering_info">
-
-  <h2> <%= @offering.title %> </h2>
-    <% if @offering.picture_main.exists? then %>
-      <span class="right"><%= image_tag @offering.picture_main.url(:thumb) %></span>
+  <h2><%= @offering.title %></h2>
+<br />
+	  <h5>Instructor: 
+    <%= link_to @offering.coordinator.name, user_path(@offering.coordinator)%></h5>
+    <p>    <% if @offering.picture_main.exists? then %>
+      <span class="right"><%= link_to(image_tag(@offering.picture_main.url(:thumb)), @offering.picture_main.url, :rel =>"gallery", :class => "pirobox_gall")%></span>
     <% end %>
-  
-  <h3>
-    <b>Instructor:</b>
-    <%= link_to @offering.coordinator.name, user_path(@offering.coordinator)%>
-  </h3>
-  <p>
-    <b>Type:</b>
-    <%= @offering.type.category %><br />
-    <b>Location:</b>
-    <%= @offering.location.state %><br />
-    <b>Topics:</b>
-    <%= @offering.topics.map{|k| k.category}.join(', ') %>
-  </p>
+    <strong>Type</strong>: <%= @offering.type.category %> <br />
+      <strong>Location</strong>: Online<br />
+      <strong>Topics</strong>: <%= @offering.topics.map{|k| k.category}.join(', ') %></p>
+<br />
 
 
-  <p>
-    <b>Starts:</b>
-    <%= @offering.start_date.strftime('%d %h, %Y') %> - 
-    <%= distance_of_time_in_words_to_now(@offering.start_date)%><br />
-    <b>Ends:</b>
-    <%= @offering.end_date.strftime('%d %h, %Y') %><br />
-    <b>Registration Begins:</b>
-    <%= @offering.registration_begins.strftime('%d %g, %Y') %><br />
-   <%unless @offering.registration_deadline.nil? %>
-      <b>Registration Deadline:</b>
-      <%= @offering.registration_deadline.strftime('%B %g, %Y') %> - 
-    <%= distance_of_time_in_words_to_now(@offering.registration_deadline)%>
-    <%end%> 
-  </p>
-
-
-
-  <p>
-    <b>Description:</b>
-    <%=h @offering.description%>
-  </p>
-
-  <% if @offering.picture_footer_left.exists? then %>
-    <%= image_tag @offering.picture_footer_left.url(:thumb) %>
-  <% end %>
-  <% if @offering.picture_footer_right.exists? then %>
-    <%= image_tag @offering.picture_footer_right.url(:thumb) %>
-  <% end %>
-
-  <p>
-    <b>Website:</b>
-    <%=link_to url_with_protocol(@offering.link), url_with_protocol(@offering.link)%>
-  </p>
-
-  <% if current_admin || (current_user == @offering.coordinator) %>
-    <%= link_to('Edit Offering', edit_offering_path(@offering))%>
-  <% end %>
-</div>

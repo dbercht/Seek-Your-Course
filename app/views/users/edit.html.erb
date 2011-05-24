@@ -1,6 +1,7 @@
 <% title "Update Profile" %>
-
-<%= render 'form' %>
-
+<div class="contentlearning-profile clearfix">
+  <h1>Update Personal Information</h1> <%= content_tag(:span, link_to("Create a Public Profile", edit_profiles_path), :class=>'ui-button') if current_user.profile.nil? %>
+  <%= render 'form' %>
+</div>
 
 <%= content_for(:span, render(:partial => 'users/user_admin')) if current_user %>

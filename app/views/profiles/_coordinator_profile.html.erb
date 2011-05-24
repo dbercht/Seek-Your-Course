@@ -1,49 +1,19 @@
-<div class="contentlearning-profile clearfix">
-  <h1>Profile: <%=@name %> </h1>
-  <p>
-      <%=content_tag(:span, image_tag( @profile.picture.url(:regular), :align => 'left')) if @profile.picture.exists? %>   
+
+  <h1>Profile: <%=@profile.user.institution_name %> </h1>
+  <p><%=content_tag(:span, link_to(image_tag(@profile.picture.url(:regular)), @profile.picture.url, :rel =>"gallery", :class => "pirobox_gall left")) if @profile.picture.exists? %> 
+    
       <strong>Type</strong>: <%= @profile.coordinating.humanize %><br />
       <strong>Frequency</strong>: <%= @profile.frequency %> <br />
       <strong>Location</strong>: <%= @profile.specific_location %> <br />
       <strong>Focus of Retreat</strong>: <%= @profile.focus %> <br />
     </p>
+
+<br />
     <p>
       <strong>Description</strong>: <br />
       <%= @profile.description %>
     </p>
-    <p>
-      <%= content_tag (:strong, "Testimonials <br />".html_safe) unless (@profile.testimonials == nil || @profile.testimonials.size == 0) %>
-      <%= content_tag (:p, sanitize(@profile.testimonials.html_safe, :tags => %w(a))  << "<br />".html_safe) unless (@profile.testimonials == nil || @profile.testimonials.size == 0) %>
-    <% unless @offerings.size == 0 %>
-      <p><strong>Upcoming Listings:</strong><br />
-      <% @offerings.each do |offering| %>
-        <%= render :partial => 'offerings/offering_snippet', :locals =>{:offering => offering} %> 
-      <% end %>
-    <% end %>
-    <% unless @past_offerings.size == 0 %>
-      <p><strong>Past Classes:</strong><br />
-      <% @past_offerings.each do |offering| %>
-        <%= render :partial => 'offerings/offering_snippet', :locals =>{:offering => offering} %> 
-      <% end %>
-    <% end %>
 
-<p><strong>Contact Info</strong>: <br />
+<br />
 
-  <%= content_tag(:p, link_to("Website", url_with_protocol(@user.website)) ) %>
-  <%= content_tag(:p, mail_to( @user.email, "E-mail me")) if ((@profile.email == "1"))  %>
-  <%= content_tag(:p, link_to("Blog", url_with_protocol(@user.blog))) if (@profile.blog == "1")  %>
-  <%= content_tag(:p, link_to("Facebook", url_with_protocol(@user.facebook))) if ((@profile.facebook == "1"))  %>
-  <%= content_tag(:p, link_to("Twitter", url_with_protocol(@user.twitter))) if ((@profile.twitter == "1"))  %>
-  
-<p><strong>Blog Feed:</strong></p>
-<p>&gt;&gt;&gt;RSS Feed </p>
-<p><br />
-</p>
-
-      <%=content_tag(:tr,  content_tag(:td) << content_tag(:td, image_tag( @profile.picture1.url(:regular)))) if @profile.picture1.exists? %> 
-      <%=content_tag(:tr,  content_tag(:td) << content_tag(:td, image_tag( @profile.picture2.url(:regular)))) if @profile.picture2.exists? %> 
-      <%=content_tag(:tr,  content_tag(:td) << content_tag(:td, image_tag( @profile.picture3.url(:regular)))) if @profile.picture3.exists? %> 
-      <%=content_tag(:tr,  content_tag(:td) << content_tag(:td, image_tag( @profile.picture4.url(:regular)))) if @profile.picture4.exists? %> 
-    </div>
-    
 

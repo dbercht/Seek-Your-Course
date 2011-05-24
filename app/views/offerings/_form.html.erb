@@ -46,17 +46,19 @@
     });
   });
 </script>
+<div class="criteria-gallery clearfix">
 <%= form_for(@offering, :html => {:multipart => true}) do |f| %>
   <% if @offering.errors.any? %>
-    <div id="flash_error">
+    <div id="flash_error" class="error_messages">
       <h2><%= pluralize(@offering.errors.count, "error") %> prohibited this offering from being saved:</h2>
       <ul>
         <% @offering.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+          <p><%= msg %></p>
         <% end %>
       </ul>
     </div>
   <% end %>
+<br />
   <% if current_admin%>
     <div class="field">
       <%= f.label :validated %><br />
@@ -67,19 +69,23 @@
       <%= f.text_area :note %>
     </div>
 <hr />
+<br />
   <% end %>
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
+<br />
     <div>
       <label for="offering_plan">Plan*</label><br />
       <%= collection_select(:offering, :plan_id, @plans, :id, :name)%>
     </div>
+<br />
     <div class="field" id="type">
       <%= f.label "Type*" %><br />
       <%= collection_select(:offering, :type_id, @types, :id, :category) %>
     </div>
+<br />
     <div>
       <label for="offering_Topic/Medium">Topic/Medium*</label><br />
       <% @topics.each do |topic| -%>
@@ -87,23 +93,28 @@
       <% end -%>
     </div>
 <hr />
+<br />
   <div class="field">
     <%= f.label :picture_main, "Main Picture" %><br />
     <%= f.file_field :picture_main %>
   </div>
+<br />
   <div class="field">
     <%= f.label :picture_footer_left, "Left Footer Picture" %><br />
     <%= f.file_field :picture_footer_left %>
   </div>
+<br />
   <div class="field">
     <%= f.label :picture_footer_right, "Right Footer Picture" %><br />
     <%= f.file_field :picture_footer_right %>
   </div>
 <hr />
+<br />
     <div class="field" id="country">
       <label for="offering_state">Country</label><br />
       <%= grouped_collection_select(:offering, :location_id, @regions, :locations, :name, :id, :state, :prompt => true)%>
     </div>
+<br />
     <div id="us_states">
       <%= f.label :us_state %><br />
   <%= f.select( :us_state, [ 	
@@ -165,22 +176,26 @@
       <%= f.text_field :specific_location %>
     </div>
 <hr />
+<br />
  <div id="date">
   <div class="field">
     <%= f.label "Registration Begins*" %><br />
     <input type='text' id='registration_begins' class='date' value="<%=@offering.registration_begins.strftime('%Y-%h-%d') unless @offering.registration_begins.nil?%>"/>
     <%= f.date_select :registration_begins, :class => "date" %>
   </div>
+<br />
   <div class="field">
     <%= f.label :registration_deadline %><br />
     <input type='text' id='registration_deadline' class='date' value="<%=@offering.registration_deadline.strftime('%Y-%h-%d') unless @offering.registration_deadline.nil? %>"/>
     <%= f.date_select :registration_deadline, :include_blank => true, :class => "date" %>
   </div>
+<br />
   <div class="field">
     <%= f.label "Start Date*" %><br />
     <input type='text' id='start_date' class='date' value="<%=@offering.start_date.strftime('%Y-%h-%d') unless @offering.start_date.nil?%>"/>
     <%= f.date_select :start_date, :class => "date" %>
   </div>
+<br />
   <div class="field">
     <%= f.label "End Date*" %><br />
     <input type='text' id='end_date' class='date' value="<%=@offering.end_date.strftime('%Y-%h-%d')  unless @offering.end_date.nil? %>"/>
@@ -189,15 +204,19 @@
 </div>
 
 <hr />
+<br />
   <div class="field">
     <%= f.label :link %><br />
     <%= f.text_field :link %>
   </div>
+<br />
   <div class="field">
     <%= f.label :description %><br />
     <%= f.text_area :description, :rows => 10 %>
   </div>
+<br />
 <hr />
+<br />
   <div>
     <%= f.label :registered_artist_ids, "Registered contributing instructors" %><br /><i>Hold control to select multiple artists</i><br />
 
@@ -207,11 +226,13 @@
         :size => 10,
         :name => 'offering[registered_artist_ids][]' %>
   </div>
+<br />
   <div class="field">
     <%= f.label :unregistered_artists, "Unregistered contributing instructors (Comma separated)" %><br />
     <%= f.text_area :unregistered_artists %>
   </div>
 
+<br />
   <div class="actions">
     <%if params[:action] = "edit"%>
       <%= f.submit :confirm => "By editing this offering it will become pending until administrator revision" %>
@@ -221,6 +242,6 @@
   </div>
 
 <% end %>
-
+</div>
 <%= render :partial => 'users/user_admin' %>
 

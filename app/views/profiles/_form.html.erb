@@ -1,7 +1,16 @@
-
+<script>
+  jQuery(document).ready(function(){
+    jQuery("#profile_description").keyup(function(){
+      jQuery(this).parents("tr").find(".count").html(jQuery(this).val().split(/\b[\s,\.-:;]*/).length + " out of 100 words");
+    });
+    jQuery("#profile_focus").keyup(function(){
+      jQuery(this).parents("tr").find(".count").html(jQuery(this).val().length + " out of 90 characters");
+    });
+  });
+</script>
 <%= form_for(@profile, :url=>profiles_path, :html => {:multipart => true}) do |profile| %>
   <% if @profile.errors.any? %>
-    <div id="error_notice">
+    <div id="error_notice" class="error_messages">
       <ul>
       <% @profile.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -10,10 +19,16 @@
     </div>
   <% end %>
 
+<div class="contentlearning-profile clearfix">
+  <h1>Edit Profile</h1>
   <%=render :partial => 'form_attributes', :locals => {:profile => profile} %>
+</div>
 
+<hr/>
   <div class="actions">
-    <%= profile.submit %>
+    <%= profile.submit :class =>"ui-button" %>
   </div>
 
 <% end %>
+
+<%=render :partial => "users/user_admin"%>

@@ -3,13 +3,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <meta name="generator" content=
-  "HTML Tidy for Linux/x86 (vers 11 February 2007), see www.w3.org" />
+  <meta name="Seek Your Course" content="listings,offerings,artistic,retreats,conferences,seekyourcourse" />
 
   <title>
   <%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
-  <%= stylesheet_link_tag "application", "960", "jquery-ui-1.8.11.custom", "prettyPhoto" %>
-  <%= javascript_include_tag "jquery-1.5.1.min", "jquery-ui-1.8.11.custom.min", "jquery.prettyPhoto", :defaults %>
+  <%= stylesheet_link_tag "application", "960", "jquery-ui-1.8.11.custom", "pirobox" %>
+  <%= javascript_include_tag "jquery-1.5.1.min", "jquery-ui-1.8.11.custom.min", "pirobox_extended", :defaults %>
   <%= csrf_meta_tag %>
   <%= yield(:head) %>
   <script type="text/javascript">
@@ -18,6 +17,11 @@
         jQuery(".ui-button").button();
         jQuery("#flash_notice").delay(5000).hide('blind');
         //jQuery("#flash_error").delay(5000).hide('blind');
+       jQuery().piroBox_ext({
+        piro_speed : 900,
+        bg_alpha : 0.1,
+        piro_scroll : true //pirobox always positioned at the center of the page
+        });
       });
   //]]>
   </script>

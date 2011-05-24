@@ -8,7 +8,7 @@
 <div class="syc_pagination">
   <%= will_paginate @offerings, :container => false %>
   <div class="page_info">
-    <%= "("<< Offering.all.size.to_s << " Listings)" %>
+    <%= "(#{Offering.all.size.to_s} Listings)" unless params[:coordinated] %>
   </div>
 </div>
 </div>

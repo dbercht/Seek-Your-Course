@@ -1,5 +1,49 @@
+<div class="contentlearning-profile clearfix">
 <% if @user.role == User::ROLES[0] %>
   <%= render :partial => 'profiles/instructor_profile' %>
 <% else %>
   <%= render :partial => 'profiles/coordinator_profile' %>
 <% end %>
+   <%= content_tag (:strong, "<p>Testimonials <br />".html_safe) unless (@profile.testimonials == nil || @profile.testimonials.size == 0) %>
+      <%= content_tag (:p, @profile.testimonials.html_safe  << "</p><br />".html_safe) unless (@profile.testimonials == nil || @profile.testimonials.size == 0) %>
+
+    <% unless @offerings.size == 0 %>
+      <p><strong>Upcoming Classes:</strong><br />
+      <% @offerings.each do |offering| %>
+        <%= render :partial => 'offerings/offering_snippet', :locals =>{:offering => offering} %> 
+      <% end %>
+      </p>
+<br />
+    <% end %>
+    <% unless @past_offerings.size == 0 %>
+      <p><strong>Past Classes:</strong><br />
+      <% @past_offerings.each do |offering| %>
+        <%= render :partial => 'offerings/offering_snippet', :locals =>{:offering => offering} %> 
+      <% end %>
+      </p>
+<br />
+    <% end %>
+
+  <p><strong>Contact Info</strong>: <br />
+
+  <%= content_tag(:p, link_to("Website", url_with_protocol(@user.website)) ) %>
+  <%= content_tag(:p, mail_to( @user.email, "E-mail me")) if ((@profile.email == "1"))  %>
+  <%= content_tag(:p, link_to("Facebook", url_with_protocol(@user.facebook))) if ((@profile.facebook == "1"))  %>
+  <%= content_tag(:p, link_to("Twitter", url_with_protocol(@user.twitter))) if ((@profile.twitter == "1"))  %>
+
+<br />  
+  <p><strong>Blog Feed:</strong></p>
+  <%= content_tag(:p, render(:partial => "profiles/rss_feed")) if (@profile.blog == "1")  %>
+
+<br />
+
+            <%=content_tag(:span, link_to(image_tag(@profile.picture1.url(:regular)), @profile.picture1.url, :rel =>"gallery", :class => "pirobox_gall")) if @profile.picture1.exists? %> 
+
+      <%=content_tag(:span, link_to(image_tag(@profile.picture2.url(:regular)), @profile.picture2.url, :rel =>"gallery", :class => "pirobox_gall")) if @profile.picture2.exists? %> 
+
+      <%=content_tag(:span, link_to(image_tag(@profile.picture3.url(:regular)), @profile.picture3.url, :rel =>"gallery", :class => "pirobox_gall")) if @profile.picture3.exists? %> 
+
+      <%=content_tag(:span, link_to(image_tag(@profile.picture4.url(:regular)), @profile.picture4.url, :rel =>"gallery", :class => "pirobox_gall")) if @profile.picture4.exists? %> 
+ 
+    </div>
+    

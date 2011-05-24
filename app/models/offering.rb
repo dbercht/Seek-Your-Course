@@ -54,7 +54,7 @@ class Offering < ActiveRecord::Base
   DESCRIPTION_LENGTH = [50, 200, 300]
 
   def validate_plan_description_length?
-    description.length > DESCRIPTION_LENGTH_FOR_PLAN[plan.name]
+    description.scan(/\w+/).length > DESCRIPTION_LENGTH_FOR_PLAN[plan.name]
   end
 
   def plan_description_length?
@@ -65,10 +65,10 @@ class Offering < ActiveRecord::Base
   validates :type, :presence => true
   validates :link, :presence => true
   validates :title, :presence => true
-  validates :description, :presence => true, :length => {:maximum => 200}
 
   validates_presence_of :start_date, :end_date, :registration_begins, :registration_deadline
-  validates :registration_deadline, :date => {:after => :registration_begins}
+  validates :registration_deadline, :date => {:after => :registration_begins}, :unless => lambda {registration_deadline.nil?}
+
   validate :validate_length_of_description
 
   with_options :if => lambda {return type.category != "E-course"} do |o|
@@ -83,7 +83,7 @@ class Offering < ActiveRecord::Base
   end
 
   def validate_length_of_description
-    errors[:base] = "#{plan.name} only allows for #{DESCRIPTION_LENGTH_FOR_PLAN[plan.name]} characters." if validate_plan_description_length?
+    errors[:base] = "#{plan.name} only allows for #{DESCRIPTION_LENGTH_FOR_PLAN[plan.name]} words." if validate_plan_description_length?
   end
 
 

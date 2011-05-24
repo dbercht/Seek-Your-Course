@@ -7,7 +7,7 @@
 }
 
 .left{
-  float: right;
+  float: left;
 }
 
 a img{
@@ -45,9 +45,13 @@ a img{
   width: 200px;
 }
 
-.error_messages{
+.error_messages, .error_notice{
   border: 1px solid red;
   padding: 10px;
   font-size: .8em;
   background: #FEE;
+}
+
+.field_with_errors{
+  background: #FDD;
 }

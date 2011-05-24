@@ -11,16 +11,21 @@ class Profile < ActiveRecord::Base
 
   serialize :preferences, Hash  
 
-  validates_attachment_presence :picture
-  
-  validates :description, :length => {:maximum => 100}
-  validates :focus, :length => {:maximum => 90}
+  validates_length_of :description, :maximum => 100, :tokenizer => lambda { |str| str.scan(/\w+/) }
+  validates :description, :presence => true
+  validates :focus, :length => {:maximum => 90}, :presence => true
 
   with_options :if => lambda {return role == User::ROLES[1]} do |o|
     o.validates :type, :presence => true
     o.validates :frequency, :presence => true
     o.validates :specific_location, :presence => true
   end
+  validates_attachment_size :picture, :less_than => 5.megabyte
+  validates_attachment_size :picture1, :less_than => 5.megabyte
+  validates_attachment_size :picture2, :less_than => 5.megabyte
+  validates_attachment_size :picture3, :less_than => 5.megabyte
+  validates_attachment_size :picture4, :less_than => 5.megabyte
+  validates_attachment_presence :picture
 
   CustomFields.each do |method_name|
     define_method(method_name) do

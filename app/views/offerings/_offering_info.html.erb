@@ -1,0 +1,20 @@
+  <h2><%= @offering.title %></h2>
+<br />
+<p>    <strong>Type</strong>: <%= @offering.type.category %> <br />
+      <strong>Location</strong>: Online<br />
+      <strong>Topics</strong>: <%= @offering.topics.map{|k| k.category}.join(', ') %></p>
+    <p><strong>Starts</strong>: <%= @offering.start_date.strftime('%d %h, %Y') %> - 
+    <%= distance_of_time_in_words_to_now(@offering.start_date)%> <br />
+      <strong>Ends</strong>:<%= @offering.end_date.strftime('%d %h, %Y') %><br />
+      <strong>Registration Begins</strong>: <%= @offering.registration_begins.strftime('%d %g, %Y') %><br />
+     <%unless @offering.registration_deadline.nil? %>
+        <strong>Registration Deadline:</strong>
+        <%= @offering.registration_deadline.strftime('%B %g, %Y') %> - 
+        <%= distance_of_time_in_words_to_now(@offering.registration_deadline)%>
+    <%end%> </p>
+<br />
+
+    <p><strong>Description</strong>:<br />
+      <%=h @offering.description%>
+     </p>
+<br />

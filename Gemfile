@@ -17,6 +17,7 @@ gem "will_paginate", "3.0.pre2"
 gem "rmagick"
 gem "paperclip", "~> 2.3"
 
+
 gem 'factory_girl_rails'
 group :test, :development do
   gem "rspec-rails", "~> 2.4"
