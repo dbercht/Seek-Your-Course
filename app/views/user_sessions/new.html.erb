@@ -1,5 +1,6 @@
 <% title "Log in" %>
 
+<div class="contentlearning-profile clearfix">
 <p>Don't have an account? <%= link_to "Sign up!", signup_path %></p>
 
 <%= form_for @user_session do |f| %>
@@ -12,5 +13,8 @@
     <%= f.label :password %><br />
     <%= f.password_field :password %>
   </p>
-  <p><%= f.submit "Log in" %></p>
+  <p><%= f.submit "Log in", :class => "ui-button" %></p>
 <% end %>
+</div>
+
+<%= render :partial => "users/registration_info" %>

@@ -13,7 +13,8 @@ class OfferingsController < ApplicationController
   def index
     @types = Type.all
     @topics = Topic.all
-    if(params[:coordinated] == true)
+    if(params[:coordinated] == "true")
+      logger.debug"*****************************************"
       @offerings = current_user.coordinated_offerings.paginate(:page => params[:page], :per_page => 10)
     else
       @offerings = Offering.validated(:all, :include => [:location, :coordinator, :registered_artists, :plan, :users]).paginate(:page => params[:page], :per_page => 10)

@@ -1,17 +1,23 @@
 <div class="learning-results clearfix">
    	  <h1>RESULTS</h1>
-          <%= will_paginate @offerings %>
-          <%= page_entries_info @offerings %>
+  
           <% @offerings.each do |@offering| %>
              <%= render :partial => @offering %>
           <% end %>
-  <%= will_paginate @offerings %>
-  <%= page_entries_info @offerings %>
+
+<div class="syc_pagination">
+  <%= will_paginate @offerings, :container => false %>
+  <div class="page_info">
+    <%= "("<< Offering.all.size.to_s << " Listings)" %>
+  </div>
+</div>
 </div>
 
 
+<%= render :partial => 'offerings/browse' %>
 
 <% content_for :filter_results do %>
+
   <h2> Filter Results </h2>
    <h3>Topic</h3>
     <%@topics.each do |topic| %>
@@ -21,4 +27,5 @@
     <%@types.each do |type| %>
       <%= link_to type.category, (request.path + "?type=" +type.id.to_s) %>
     <% end %>
+
 <% end %>

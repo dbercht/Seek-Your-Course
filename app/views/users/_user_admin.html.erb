@@ -1,14 +1,13 @@
 <% content_for :user_admin do %>
-  <div id='user_manage' class="box">
-    <div>
-      <h3>User</h3>
-        <ul>
-          <li><%= link_to "Manage Home", user_path(current_user)%></li>
-          <li><%= link_to "Create a New Listing", new_offering_path%></li>
-          <li><%= link_to "Manage Listings", offerings_path( :coordinated => true) %></li>
-          <li><%= link_to "Edit Personal Information", edit_user_path(current_user)%></li>
-          <li><%= link_to "Edit Profile", edit_profiles_path(current_user.profile)%></li>
-        </ul>
+<div id="" class="grid_navleft">
+   <div class="manage-nav clearfix">
+        <p>
+          <%= link_to "Manage Home", user_path(current_user)%><br />
+          <%= link_to "Create a New Listing", new_offering_path%><br />
+          <%= link_to "Manage Listings", offerings_path( :coordinated => true) %><br />
+          <%= link_to "Edit Personal Information", edit_user_path(current_user)%><br />
+          <%= link_to "Edit Profile", edit_profiles_path(current_user.profile)%>
+        </p>
     </div>
    </div>
 <% end %>

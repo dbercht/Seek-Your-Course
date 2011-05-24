@@ -48,29 +48,39 @@
   });
 </script>
 
+<%= render :partial => "user_admin"%>
+
 <%= form_for( @user, :html => {:multipart => true}) do |f| %>
   <%= f.error_messages %>
+   <hr />
    <table>
-    <%=content_tag(:tr, content_tag(:td, f.label(:first_name)) << content_tag(:td, f.text_field( :first_name, :size => 20))) %>
-    <%=content_tag(:tr, content_tag(:td, f.label(:last_name)) << content_tag(:td, f.text_field( :last_name, :size => 20)))%>
-    <%=content_tag(:tr, content_tag(:td, f.label(:username)) << content_tag(:td, f.text_field( :username))) %>
-    <%=content_tag(:tr, content_tag(:td, f.label(:email)) << content_tag(:td, f.email_field( :email))) %>
-    <%=content_tag(:tr, content_tag(:td, f.label(:role)) << content_tag(:td, f.collection_select( :role, User::ROLES, :to_s, :humanize), :class => 'role')) %>
-    <%=content_tag(:tr, content_tag(:td, f.label(:institution_name)) << content_tag(:td, f.text_field( :institution_name)), :class =>"institution_name") %>
-
+    <%=content_tag(:tr, content_tag(:td, f.label(:first_name, "First name*")) << content_tag(:td, f.text_field( :first_name, :size => 20))) %>
+    <%=content_tag(:tr, content_tag(:td, f.label(:last_name, "Last Name*")) << content_tag(:td, f.text_field( :last_name, :size => 20)))%>
+    <%=content_tag(:tr, content_tag(:td, f.label(:username, "Username*")) << content_tag(:td, f.text_field( :username))) %>
+    <%=content_tag(:tr, content_tag(:td, f.label(:email, "E-mail*")) << content_tag(:td, f.email_field( :email))) %>
+</table>
+<hr />
+<table>
+    <%=content_tag(:tr, content_tag(:td, f.label(:role, "Role* (Please choose one)")) << content_tag(:td, f.collection_select( :role, User::ROLES, :to_s, :humanize), :class => 'role')) %>
+    <%=content_tag(:tr, content_tag(:td, f.label(:institution_name, "Name of Retreat/Conference*")) << content_tag(:td, f.text_field( :institution_name)), :class =>"institution_name") %>
+</table>
+<hr />
+<table>
     <%= f.fields_for :location do |o| %>
 
-      <%=content_tag(:tr, content_tag(:td, o.label(:adress_line_1, "Address Line 1")) << content_tag(:td, o.text_field( :address_line_1, :value => @user.location[:address_line_1]))) %>
+      <%=content_tag(:tr, content_tag(:td, o.label(:adress_line_1, "Address Line 1*")) << content_tag(:td, o.text_field( :address_line_1, :value => @user.location[:address_line_1]))) %>
       <%=content_tag(:tr, content_tag(:td, o.label(:address_line_2, "Address Line 2")) << content_tag(:td, o.text_field( :address_line_2, :value => @user.location[:address_line_2]))) %>
-      <%=content_tag(:tr, content_tag(:td, o.label(:postal_code)) << content_tag(:td, o.text_field( :postal_code, :value => @user.location[:postal_code]))) %>
-      <%=content_tag(:tr, content_tag(:td, o.label(:country)) << content_tag(:td, f.collection_select(:country, @locations, :state, :state ))) %>
-      <%=content_tag(:tr, content_tag(:td, o.label(:phone_number)) << content_tag(:td, o.text_field( :phone_number, :value => @user.location[:phone_number]))) %>
+      <%=content_tag(:tr, content_tag(:td, o.label(:postal_code, "Postal Code*")) << content_tag(:td, o.text_field( :postal_code, :value => @user.location[:postal_code]))) %>
+      <%=content_tag(:tr, content_tag(:td, o.label(:country, "Country*")) << content_tag(:td, f.collection_select(:country, @locations, :state, :state ))) %>
+      <%=content_tag(:tr, content_tag(:td, o.label(:phone_number, "Phone Number*")) << content_tag(:td, o.text_field( :phone_number, :value => @user.location[:phone_number]))) %>
 
   <% end %>
-
+</table>
+<hr />
+<table>
     <%= f.fields_for :websites do |o| %>
 
-      <%=content_tag(:tr, content_tag(:td, o.label(:website)) << content_tag(:td, o.text_field( :website, :value => @user.websites[:website]))) %>
+      <%=content_tag(:tr, content_tag(:td, o.label(:website, "Website*")) << content_tag(:td, o.text_field( :website, :value => @user.websites[:website]))) %>
       <%=content_tag(:tr, content_tag(:td, o.label(:blog)) << content_tag(:td, o.text_field( :blog, :value => @user.websites[:blog]))) %>
       <%=content_tag(:tr, content_tag(:td, o.label(:facebook)) << content_tag(:td, f.text_field( :facebook, :value => @user.facebook)), :class => 'facebook') %>
       <%=content_tag(:tr, content_tag(:td, o.label(:facebook_inexistant?, "I don't have a facebook account")) << content_tag(:td, o.check_box( :facebook_inexistant?, {:checked => (@user.websites[:facebook] == ""), :class => "facebook_inexistant"}, "true", "false"))) %>

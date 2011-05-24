@@ -1,22 +1,5 @@
-body {
-  font-family: Verdana, Helvetica, Arial;
-  font-size: 14px;
-}
-
-
-a img {
+.header a, .header img{
   border: none;
-}
-
-a {
-  color: #226;
-  text-decoration: none;
-}
-
-.clear {
-  clear: both;
-  height: 0;
-  overflow: hidden;
 }
 
 .right{
@@ -24,290 +7,47 @@ a {
 }
 
 .left{
-  float: left;
-}
-#container {
-  width: 860px;
-  margin: 0 auto;
-  background-color: #FFF;
-  border: solid 0px black;
-  margin-top: 0px;
-}
-
-#flash_notice, #flash_error, #flash_alert {
-  padding: 5px 8px;
-  margin: 10px 0 auto;
-}
-
-#flash_notice {
-  position: fixed;
-  top: 0px;
-  background-color: #CFC;
-  border: solid 1px #6C6;
-}
-
-#flash_error, #flash_alert {
-  background-color: #FCC;
-  border: solid 1px #C66;
-}
-
-.fieldWithErrors {
-  display: inline;
-}
-
-.error_messages {
-  width: 400px;
-  border: 2px solid #CF0000;
-  padding: 0px;
-  padding-bottom: 12px;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
-  font-size: 12px;
-}
-
-.error_messages h2 {
-  text-align: left;
-  font-weight: bold;
-  padding: 5px 10px;
-  font-size: 12px;
-  margin: 0;
-  background-color: #c00;
-  color: #fff;
-}
-
-.error_messages p {
-  margin: 8px 10px;
-}
-
-.error_messages ul {
-  margin: 0;
-}
-
-//User nav
-
-#container{
-  width: 83%;
-}
-
-#user_nav{
   float: right;
-  margin-bottom: 15px;
-  font-size: .9em;
 }
 
-#user_nav a{
-  padding-left: 10px;
-  text-decoration: none;
-  color: #338;
+a img{
+  border: none;
 }
 
-#site_nav, #admin_nav{
-  float: left;
-  margin: 5px;
-}
-// End User nav
-
-/***************** USER ADMIN SECTIONS **/
-#user_manage{
-}
-
-#user_manage{
-  margin-right: 10px;
-  float: left;
-  background: #FFCC67;
-  width: 150px;
-}
-#user_manage ul{
-  list-style: none;
-}
-.clear{
-  clear: both;
-}
-
-.strong{
-  font-weight: bold;
-  font-size: 1.2em;
-}
-
-.box{
-  margin-top: 15px;
-}
-
-#content{
-  margin: 20px;
-  width: 530px;
-  float: left;
-}
-
-#browse_content{
-  width: 190px;
-  height: 220px;
-  background: #9c6;
-  margin-right: 15px;
-  overflow: hidden;
-}
-#browse_content_main{
-  width: 150px;
-  background: #9c6;
-  margin-right: 10px;
-  overflow: hidden;
-  float: left;
-  color: #333;
-}
-#browse_content img{
-  margin: 5px;
-  margin-bottom: 0px;
-}
-
-#browse_content_main h3, #browse_content h3{
-  margin: 5px;
-  font-size: 1.5em;
-}
-
-#browse_content_main ul, #browse_content ul{
-  margin-left: -10px;
-  list-style-type: none;
-}
-#browse_content_main li, #browse_content li{
-  margin-bottom: 5px;
-}
-#browse_content_main a, #browse_content a{
-  color: #333;
-  font-size: .85em;
-}
-#about_content{
-  width: 623px;
-  height: 220px;
-  background: #449;
-  font-size: .9em;
-}
-
-.lower_box{
-  width: 270px;
-  height: 200px;
-  background: #499;
-  margin-top: 15px;
-}
-
-//Jess Cutom Css
-
-//Header And social media
-.header_container{
-  width: 90%; 
-  height: 80px;
-}
-
-.logo_container{
-  width:540px
-}
-.social_media_icons{
-  80px;
-}
-.social_media{
-  width:260px;
-}
-#tagline3.bottom{
-  position: relative;
-  top: 80px;
- 
-}
-
-#social_media_icons a img{
-  border: 2px black solid;
-}
-
-#social_media_icons a:hover img{
-  border: 2px #A44 solid;
-}
-
-#nav_bar{
-  margin-top: 6px;
-  padding: 4px;
-  background: #333;
-  width: 100%;
-  height: 16px;
-}
-
-#nav_bar a{
-  margin-left: 18px;
-  color: #FFF;
-  font-size: .9em;
-  text-decoration: none;
-}
-
-#nav_bar a:hover{
-  text-decoration: underline;
-}
-
-/* Footer
-----------------------------------------------------------------------------------------------------*/
-#footer{
+.syc_pagination {
   font-size: .8em;
   text-align: center;
+  padding: .3em; }
+  .syc_pagination a, .syc_pagination span {
+    padding: .2em .5em; }
+  .syc_pagination span.disabled {
+    color: #0B91A3; }
+  .syc_pagination span.current {
+    font-weight: bold;
+    color: #0B91A3; }
+  .syc_pagination a {
+    color: #0063DC;
+    text-decoration: none; }
+    .syc_pagination a:hover, .syc_pagination a:focus {
+      border-color: #414042;
+      background: #FFCC67;}
+  .syc_pagination .page_info {
+    color: #aaa;
+    padding-top: .8em; }
+  .syc_pagination .prev_page, .syc_pagination .next_page {
+    border-width: 2px; }
+  .syc_pagination .prev_page {
+    margin-right: 1em; }
+  .syc_pagination .next_page {
+    margin-left: 1em; }
+
+.new_user td, .edit_user td{
+  width: 200px;
 }
 
-/* Ads
-----------------------------------------------------------------------------------------------------*/
-#ads{
-  width: 130px;
-  float: right;
+.error_messages{
+  border: 1px solid red;
+  padding: 10px;
+  font-size: .8em;
+  background: #FEE;
 }
-
-#ads img{
-  margin: 0px auto;
-}
-
-/* Offerings Page
-----------------------------------------------------------------------------------------------------*/
-.offering_info{
-  font-size: .9em;
-}
-
-/* Topics Page
-----------------------------------------------------------------------------------------------------*/
-.topic{
-  width:165px;
-  float:left;
-  margin:5px;
-}
-.topic_title{
-  margin: 1px auto;
-  text-align: center;
-}
-/* Clear Floated Elements
-----------------------------------------------------------------------------------------------------*/
-
-
-.clear {
-	clear: both;
-	display: block;
-	overflow: hidden;
-	visibility: hidden;
-	width: 0;
-	height: 0;
-}
-
-
-.clearfix:after {
-	clear: both;
-	content: ' ';
-	display: block;
-	font-size: 0;
-	line-height: 0;
-	visibility: hidden;
-	width: 0;
-	height: 0;
-}
-
-.clearfix {
-	display: inline-block;
-}
-
-* html .clearfix {
-	height: 1%;
-}
-
-.clearfix {
-	display: block;
-}
-

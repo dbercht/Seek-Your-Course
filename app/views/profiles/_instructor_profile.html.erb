@@ -1,30 +1,31 @@
+
+    
 <div class="contentlearning-profile clearfix">
   <h1>Profile: <%=@name %> </h1>
-  <p>
-      <%=content_tag(:tr,  content_tag(:td) << content_tag(:td, image_tag( @profile.picture.url(:regular), :align => 'left'))) if @profile.picture.exists? %>   
-      <strong>Where I Live</strong>: <%= @profile.specific_location %> <%= ',' unless (@profile.specific_location == nil || @profile.specific_location.size == 0)%> <%= @user.country %> <br />
-      <strong>What I Do</strong>: <%= @profile.focus %> <br />
+   <p><%=content_tag(:span, image_tag(@profile.picture.url(:regular), :align => 'left')) if @profile.picture.exists? %>   
+   <strong>Where I Live</strong>: <%= @profile.specific_location %> <%= ',' unless (@profile.specific_location == nil || @profile.specific_location.size == 0)%> <%= @user.country %> <br />
+        <strong>What I Do</strong>: <%= @profile.focus %> <br />
     </p>
-    <p>
-      <strong>About My Work</strong>: <br />
-      <%= @profile.description %>
-    </p>
-    <p>
-      <%= content_tag (:strong, "Testimonials <br />".html_safe) unless (@profile.testimonials == nil || @profile.testimonials.size == 0) %>
-      <%= content_tag (:p, @profile.testimonials.html_safe  << "<br />".html_safe) unless (@profile.testimonials == nil || @profile.testimonials.size == 0) %>
+    <p><strong>About My Work</strong>: <br />
+      <%= @profile.description %></p>
+    <%= content_tag (:strong, "<p>Testimonials <br />".html_safe) unless (@profile.testimonials == nil || @profile.testimonials.size == 0) %>
+      <%= content_tag (:p, @profile.testimonials.html_safe  << "</p>".html_safe) unless (@profile.testimonials == nil || @profile.testimonials.size == 0) %>
     <% unless @offerings.size == 0 %>
-      <p><strong>Upcoming Listings:</strong><br />
+      <p><strong>Upcoming Classes:</strong><br />
       <% @offerings.each do |offering| %>
         <%= render :partial => 'offerings/offering_snippet', :locals =>{:offering => offering} %> 
       <% end %>
+      </p>
     <% end %>
     <% unless @past_offerings.size == 0 %>
       <p><strong>Past Classes:</strong><br />
       <% @past_offerings.each do |offering| %>
         <%= render :partial => 'offerings/offering_snippet', :locals =>{:offering => offering} %> 
       <% end %>
+      </p>
     <% end %>
-<p><strong>Contact Info</strong>: <br />
+
+  <p><strong>Contact Info</strong>: <br />
 
   <%= content_tag(:p, link_to("Website", url_with_protocol(@user.website)) ) %>
   <%= content_tag(:p, mail_to( @user.email, "E-mail me")) if ((@profile.email == "1"))  %>
@@ -32,11 +33,10 @@
   <%= content_tag(:p, link_to("Facebook", url_with_protocol(@user.facebook))) if ((@profile.facebook == "1"))  %>
   <%= content_tag(:p, link_to("Twitter", url_with_protocol(@user.twitter))) if ((@profile.twitter == "1"))  %>
   
-<p><strong>Blog Feed:</strong></p>
-<p>&gt;&gt;&gt;RSS Feed </p>
-<p><br />
-</p>
-
+  <p><strong>Blog Feed:</strong></p>
+  <p>&gt;&gt;&gt;RSS Feed </p>
+  <p><br />
+  </p>
       <%=content_tag(:tr,  content_tag(:td) << content_tag(:td, image_tag( @profile.picture1.url(:regular)))) if @profile.picture1.exists? %> 
       <%=content_tag(:tr,  content_tag(:td) << content_tag(:td, image_tag( @profile.picture2.url(:regular)))) if @profile.picture2.exists? %> 
       <%=content_tag(:tr,  content_tag(:td) << content_tag(:td, image_tag( @profile.picture3.url(:regular)))) if @profile.picture3.exists? %> 

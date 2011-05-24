@@ -1,0 +1,10 @@
+<%content_for :browse do%>
+  <div id="" class="grid_navleft">
+   <div class="filter clearfix">
+     <p>
+          <strong><%= link_to 'Instructor Profiles', users_path(:role => User::ROLES[0])%></strong><br />
+          <strong><%= link_to 'Retreat/Conference Profiles', users_path(:role => User::ROLES[1])%></strong><br />
+     </p>
+   </div>
+  </div>
+<% end %>

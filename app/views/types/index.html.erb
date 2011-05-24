@@ -5,14 +5,19 @@
 
   <% @types.each do |type| %>
     <div class="bytype">
-      <h4><%= link_to type.category, type %>
+      <h4><%= link_to type.category, type %></h4>
       <% if current_admin %>
         <%= link_to 'Edit', edit_type_path(type) %>
         <%= link_to 'Destroy', type, :confirm => 'Are you sure?', :method => :delete %>
       <% end %>
+    </div>
   <% end %>
 
 <br />
 <% if current_admin %>
   <%= link_to 'New Type', new_type_path %>
 <% end %>
+
+</div>
+<%= content_for(:span, render(:partial => 'offerings/browse'))%>
+

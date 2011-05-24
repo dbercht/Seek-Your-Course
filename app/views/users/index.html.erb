@@ -1,7 +1,5 @@
 
 <div class="learning-results clearfix">
-<%= will_paginate @users %>
-<%= page_entries_info @users %><br />
 
 <% @users.each do |@user| %>
   <div class="grid-gallery">
@@ -14,6 +12,12 @@
 
 <br />
 <div class="clearfix"></div>
-<%= will_paginate @users %>
-<%= page_entries_info @users %>
+
+<div class="syc_pagination">
+  <%= will_paginate @users, :container => false %>
+  <div class="page_info">
+      <%= "("<< User.where("role = ?", params[:role]).size.to_s << " Results)" %> 
+  </div>
 </div>
+</div>
+<%= content_for(:span, render(:partial => 'offerings/browse')) %>

@@ -1,3 +1,6 @@
 <% title "Update Profile" %>
 
 <%= render 'form' %>
+
+
+<%= content_for(:span, render(:partial => 'users/user_admin')) if current_user %>

@@ -7,3 +7,6 @@
     <%= render :partial => "profiles/profile", :locals => {:profile => @user.profile} %>
   <% end %>
 
+<%= content_for(:span, render(:partial => 'users/user_admin')) if current_user %>
+<%= content_for(:span, render(:partial => 'users/browse')) if !current_user %>
+

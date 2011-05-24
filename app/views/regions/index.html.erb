@@ -1,27 +1,23 @@
 <%title "Offerings by Region" %>
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
 <% @regions.each do |region| %>
-  <tr>
-    <td><%= link_to region.name, region_locations_path(region) %></td>
+    <% if region.name == "Online" %>
+      <%= link_to "Online", type_path(Type.where("category = ?", "E-course").first) %>
+    <% else %>
+      <%= link_to region.name, region_locations_path(region) %>
+    <% end %>
 
     <% if current_admin %>
-      <td><%= link_to 'Edit', edit_region_path(region) %></td>
-      <td><%= link_to 'Destroy', region, :confirm => 'Are you sure?', :method => :delete %></td>
+      | <%= link_to 'Edit', edit_region_path(region) %>
+      | <%= link_to 'Destroy', region, :confirm => 'Are you sure?', :method => :delete %>
     <% end %>
-  </tr>
+    <br />
 <% end %>
-</table>
 
 <br />
 
-<%= link_to 'Back', root_url %>
 <% if current_admin %>
   <%= link_to 'New Region', new_region_path %>
 <% end %>
+
+<%= render :partial => 'offerings/browse' %>

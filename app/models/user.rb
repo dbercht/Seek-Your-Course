@@ -19,8 +19,14 @@ class User < ActiveRecord::Base
 
   has_one :profile, :dependent => :destroy
 
-  validates_presence_of :first_name, :last_name, :address_line_1, :postal_code, :country, :phone_number, :website
-
+  validates_presence_of :postal_code, :country, :phone_number, :website
+  validates :first_name, :presence => true,
+                         :length => {:maximum => 20}
+ validates :last_name, :presence => true,
+                         :length => {:maximum => 20}
+ validates :address_line_1, :presence => true,
+                         :length => {:maximum => 50}
+ validates :address_line_1, :length => {:maximum => 50}
   with_options :if => lambda{ role == ROLES[1] } do |o|
     o.validates :institution_name, :presence => true
   end

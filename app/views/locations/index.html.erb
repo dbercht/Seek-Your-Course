@@ -1,23 +1,14 @@
 <%title "Offerings by Location" %>
 
-<table>
-  <tr>
-    <th>State</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
 <% @locations.each do |location| %>
-  <tr>
-    <td><%= link_to location.state, region_location_path(location.region, location) %><%=location.offerings.size%></td>
+  
+    <%= link_to ((location.state << "<br />").html_safe, region_location_path(location.region, location)) unless location.offerings.size == 0%>
     <% if current_admin %>
-      <td><%= link_to 'Edit', edit_region_location_path(location.region, location) %></td>
-      <td><%= link_to 'Destroy',  region_location_path(location.region, location), :confirm => 'Are you sure?', :method => :delete %></td>
+      | <%= link_to 'Edit', edit_region_location_path(location.region, location) %>
+      | <%= link_to 'Destroy',  region_location_path(location.region, location), :confirm => 'Are you sure?', :method => :delete %>
     <%end%>
-  </tr>
 <% end %>
-</table>
 
 <br />
 
@@ -25,3 +16,4 @@
 <% if current_admin %>
   <%= link_to 'New Location', new_region_location_path %>
 <% end %>
+<%= content_for(:span, render(:partial => 'offerings/browse'))%>

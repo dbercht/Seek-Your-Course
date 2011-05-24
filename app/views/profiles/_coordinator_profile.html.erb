@@ -1,7 +1,7 @@
 <div class="contentlearning-profile clearfix">
   <h1>Profile: <%=@name %> </h1>
   <p>
-      <%=content_tag(:tr,  content_tag(:td) << content_tag(:td, image_tag( @profile.picture.url(:regular), :align => 'left'))) if @profile.picture.exists? %>   
+      <%=content_tag(:span, image_tag( @profile.picture.url(:regular), :align => 'left')) if @profile.picture.exists? %>   
       <strong>Type</strong>: <%= @profile.coordinating.humanize %><br />
       <strong>Frequency</strong>: <%= @profile.frequency %> <br />
       <strong>Location</strong>: <%= @profile.specific_location %> <br />

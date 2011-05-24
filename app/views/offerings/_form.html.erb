@@ -6,7 +6,6 @@
     jQuery(".date").datepicker({minDate: new Date()});
     
     jQuery("#start_date").change(function () {
-        alert(jQuery(this).val());
         jQuery(this).next().val(parseInt(jQuery(this).val().split("/")[2]));
         jQuery(this).next().next().val(parseInt(jQuery(this).val().split("/")[0]));
         jQuery(this).next().next().next().val(parseInt(jQuery(this).val().split("/")[1]));
@@ -15,7 +14,6 @@
         jQuery("#end_date").datepicker("option", "minDate", new Date(jQuery(this).val()));
     });
     jQuery("#registration_begins").change(function () {
-        alert(jQuery(this).val());
         jQuery(this).next().val(parseInt(jQuery(this).val().split("/")[2]));
         jQuery(this).next().next().val(parseInt(jQuery(this).val().split("/")[0]));
         jQuery(this).next().next().next().val(parseInt(jQuery(this).val().split("/")[1]));
@@ -23,17 +21,21 @@
         jQuery("#registration_deadline").datepicker("option", "maxDate", new Date(jQuery("#start_date").val()));
     });
     jQuery("#end_date").change(function () {
-        alert(jQuery(this).val());
         jQuery(this).next().val(parseInt(jQuery(this).val().split("/")[2]));
         jQuery(this).next().next().val(parseInt(jQuery(this).val().split("/")[0]));
         jQuery(this).next().next().next().val(parseInt(jQuery(this).val().split("/")[1]));
     });         
     jQuery("#registration_deadline").change(function () {
-        alert(jQuery(this).val());
         jQuery(this).next().val(parseInt(jQuery(this).val().split("/")[2]));
         jQuery(this).next().next().val(parseInt(jQuery(this).val().split("/")[0]));
         jQuery(this).next().next().next().val(parseInt(jQuery(this).val().split("/")[1]));
     })
+
+    jQuery("#type").find("select").change(function() {
+      if(jQuery(this).find("option:selected").text() == "E-course"){
+        jQuery("#country").find("select").val(1);
+      }
+    });
 
     jQuery("#country").find("select").change(function() {
       if(jQuery(this).find("option:selected").text() == "USA"){
@@ -64,6 +66,7 @@
       <%= f.label :note %><br />
       <%= f.text_area :note %>
     </div>
+<hr />
   <% end %>
   <div class="field">
     <%= f.label :title %><br />
@@ -73,7 +76,7 @@
       <label for="offering_plan">Plan*</label><br />
       <%= collection_select(:offering, :plan_id, @plans, :id, :name)%>
     </div>
-    <div class="field">
+    <div class="field" id="type">
       <%= f.label "Type*" %><br />
       <%= collection_select(:offering, :type_id, @types, :id, :category) %>
     </div>
@@ -83,19 +86,20 @@
         <%= check_box_tag "offering[topic_ids][]", topic.id, @offering.topics.include?(topic) -%><%= topic.category -%>
       <% end -%>
     </div>
+<hr />
   <div class="field">
-    <%= f.label :picture_main %><br />
+    <%= f.label :picture_main, "Main Picture" %><br />
     <%= f.file_field :picture_main %>
   </div>
   <div class="field">
-    <%= f.label :picture_footer_left %><br />
+    <%= f.label :picture_footer_left, "Left Footer Picture" %><br />
     <%= f.file_field :picture_footer_left %>
   </div>
   <div class="field">
-    <%= f.label :picture_footer_right %><br />
+    <%= f.label :picture_footer_right, "Right Footer Picture" %><br />
     <%= f.file_field :picture_footer_right %>
   </div>
-
+<hr />
     <div class="field" id="country">
       <label for="offering_state">Country</label><br />
       <%= grouped_collection_select(:offering, :location_id, @regions, :locations, :name, :id, :state, :prompt => true)%>
@@ -160,6 +164,7 @@
       <%= f.label :specific_location %><br />
       <%= f.text_field :specific_location %>
     </div>
+<hr />
  <div id="date">
   <div class="field">
     <%= f.label "Registration Begins*" %><br />
@@ -182,14 +187,17 @@
     <%= f.date_select :end_date, :class => "date" %>
   </div>
 </div>
+
+<hr />
   <div class="field">
     <%= f.label :link %><br />
     <%= f.text_field :link %>
   </div>
   <div class="field">
     <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :rows => 10 %>
   </div>
+<hr />
   <div>
     <%= f.label :registered_artist_ids, "Registered contributing instructors" %><br /><i>Hold control to select multiple artists</i><br />
 
@@ -213,3 +221,6 @@
   </div>
 
 <% end %>
+
+<%= render :partial => 'users/user_admin' %>
+

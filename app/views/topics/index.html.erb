@@ -32,3 +32,5 @@
     <%= link_to 'New Topic', new_topic_path %>
   <% end %>
 </div>
+
+<%= content_for(:span, render(:partial => 'offerings/browse'))%>
