@@ -1,7 +1,3 @@
-body{
-  margin: 5px;
-}
-
 /* Containers
 ----------------------------------------------------------------------------------------------------*/
 .container_12 {
@@ -12,7 +8,7 @@ body{
 	width: 840px;
 	
 	
-}
+} 
 
 /* Grid >> Children (Alpha ~ First, Omega ~ Last)
 ----------------------------------------------------------------------------------------------------*/
@@ -383,15 +379,13 @@ body{
 
 .grid_adsright{
 	display:inline;
-	float: left;
+	float: right;
 	position: relative;
 	margin-left: 5px;
 	margin-right: 10.0px;
 	padding:0px 0px 0px 0px;
 
 }
-
-
 
 
 
@@ -431,6 +425,12 @@ h4 {
 
 h5 {
 	font-size:14px;
+}
+
+
+.wideheader {
+	letter-spacing: 2px;
+	size: 16px;
 }
 
 a {
@@ -608,9 +608,47 @@ a:hover {
 	text-align:left;
 }
 
+.orange {
+	color:#BC582B;
+	font-weight:500;
+}
 
 
-/* Learning Oppotunities
+
+#table h5 {
+	margin-top:0;
+	margin-bottom:0px;
+
+}
+	
+
+#table p {
+	margin-top:0;
+	margin-bottom:0px;
+
+}
+
+td {
+	vertical-align:top;
+	text-align:left;
+}
+
+.rightimg200 {
+	float:right;
+	margin-left:5px;
+	margin-top:5px;
+	margin-bottom:5px;
+	margin-right:0px;
+	font-size:10px;
+	width:200px;
+
+}
+	
+
+
+
+
+/* Learning Opportunities
 ----------------------------------------------------------------------------------------------------*/
 
 
@@ -714,6 +752,7 @@ a:hover {
 .profilephoto {
 	margin-right:10px;
 	margin-bottom:10px;
+	float:left;
 }
 
 
@@ -753,6 +792,31 @@ a:hover {
 	padding: 5px 5px 5px 5px;
 	background-color:#99CC66;
 }
+
+.templeft {
+	background-color:#FFCC67;
+	padding: 8px;
+	height: 350px;
+	color:#333333;
+	vertical-align:middle;
+	
+}
+
+.tempcenter {
+	padding: 8px;
+	height: 346px;
+	color:#333333;
+	border:2px solid #99cc66;	
+}
+
+.tempright {
+	padding: 8px;
+	height: 346px;
+	color:#333333;
+	border:2px solid #99cc66;	
+	
+}
+
 	
 
 /* Listings Back-End

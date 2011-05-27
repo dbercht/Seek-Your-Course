@@ -1,10 +1,8 @@
 <%title( @name = @user.name) %>
-<div class="contentlearning-profile clearfix">
- <%= content_tag(:span, render(:partial => "user_info")) if current_admin %>
-</div>  
+<%= content_tag(:div, render(:partial => "user_info"), :class => "contentlearning-profile clearfix") if current_admin %>
  <%if (@user.profile.nil?) %>
-    <%= link_to ('Create a profile here', new_profiles_path, :class=>"ui-button") if current_user == @user%>
-    <%= content_tag(:p, @name << " still does not have a profile") %>
+    <%= content_tag(:div, content_tag(:p, link_to ('Create a profile', new_profiles_path, :class=>"ui-button")), :class=>"ui-button-container") if current_user == @user%>
+    <%= content_tag(:p, @name << " still does not have a profile", :style =>"text-align:center;") %>
   <% else %> 
     <%= render :partial => "profiles/profile", :locals => {:profile => @user.profile} %>
   <% end %>

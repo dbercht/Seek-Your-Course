@@ -65,13 +65,14 @@ class Offering < ActiveRecord::Base
   validates :type, :presence => true
   validates :link, :presence => true
   validates :title, :presence => true
+  validates_acceptance_of :terms_of_use, :on => 'create'
 
   validates_presence_of :start_date, :end_date, :registration_begins, :registration_deadline
   validates :registration_deadline, :date => {:after => :registration_begins}, :unless => lambda {registration_deadline.nil?}
 
   validate :validate_length_of_description
 
-  with_options :if => lambda {return type.category != "Ecourse"} do |o|
+  with_options :if => lambda {return type.category != "eCourse"} do |o|
     o.validates :specific_location, :presence => true
   end
 

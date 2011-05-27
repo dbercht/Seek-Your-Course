@@ -1,6 +1,6 @@
 <% title "Update Profile" %>
 <div class="contentlearning-profile clearfix">
-  <h1>Update Personal Information</h1> <%= content_tag(:span, link_to("Create a Public Profile", edit_profiles_path), :class=>'ui-button') if current_user.profile.nil? %>
+  <h1>Update Personal Information</h1> <%= content_tag(:div, content_tag(:p, link_to ('Create a profile', new_profiles_path, :class=>"ui-button")), :class=>"ui-button-container ")  if current_user.profile.nil? %>
   <%= render 'form' %>
 </div>
 

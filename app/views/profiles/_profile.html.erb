@@ -4,8 +4,8 @@
 <% else %>
   <%= render :partial => 'profiles/coordinator_profile' %>
 <% end %>
-   <%= content_tag (:strong, "<p>Testimonials <br />".html_safe) unless (@profile.testimonials == nil || @profile.testimonials.size == 0) %>
-      <%= content_tag (:p, @profile.testimonials.html_safe  << "</p><br />".html_safe) unless (@profile.testimonials == nil || @profile.testimonials.size == 0) %>
+   <%= content_tag (:strong, "<p>Testimonials".html_safe) unless (@profile.testimonials == nil || @profile.testimonials.size == 0) %>
+      <%= content_tag (:p, @profile.testimonials.html_safe  << "</p>".html_safe) unless (@profile.testimonials == nil || @profile.testimonials.size == 0) %>
 
     <% unless @offerings.size == 0 %>
       <p><strong>Upcoming Classes:</strong><br />
@@ -13,7 +13,6 @@
         <%= render :partial => 'offerings/offering_snippet', :locals =>{:offering => offering} %> 
       <% end %>
       </p>
-<br />
     <% end %>
     <% unless @past_offerings.size == 0 %>
       <p><strong>Past Classes:</strong><br />
@@ -21,22 +20,19 @@
         <%= render :partial => 'offerings/offering_snippet', :locals =>{:offering => offering} %> 
       <% end %>
       </p>
-<br />
     <% end %>
 
-  <p><strong>Contact Info</strong>: <br />
+  <p><strong>Contact Info</strong>:
 
-  <%= content_tag(:p, link_to("Website", url_with_protocol(@user.website), :target => "_blank") ) %>
-  <%= content_tag(:p, mail_to( @user.email, "E-mail me")) if ((@profile.email == "1"))  %>
-  <%= content_tag(:p, link_to("Facebook", url_with_protocol(@user.facebook), :target => "_blank")) if ((@profile.facebook == "1"))  %>
-  <%= content_tag(:p, link_to("Twitter", url_with_protocol(@user.twitter), :target => "_blank")) if ((@profile.twitter == "1"))  %>
-  <%= content_tag(:p, link_to("Flickr", url_with_protocol(@user.flickr), :target => "_blank")) if ((@profile.flickr == "1"))  %>
-  <%= content_tag(:p, other_links_tag(@profile.other_links)) %>
-<br />  
-  <%= content_tag(:p, "<strong>Blog Feed:</strong>".html_safe) if ((@profile.blog == "1") && (@profile.blog.size != 0))  %>
- <%= content_tag(:p, render(:partial => "profiles/rss_feed")) if ((@profile.blog == "1") && (@profile.blog.size != 0))  %>
+  <%= content_tag(:br, link_to("Website", url_with_protocol(@user.website), :target => "_blank") ) %>
+  <%= content_tag(:br, mail_to( @user.email, "E-mail me")) if ((@profile.email == "1"))  %>
+  <%= content_tag(:br, link_to("Facebook", url_with_protocol(@user.facebook), :target => "_blank")) if ((@profile.facebook == "1"))  %>
+  <%= content_tag(:br, link_to("Twitter", url_with_protocol(@user.twitter), :target => "_blank")) if ((@profile.twitter == "1"))  %>
+  <%= content_tag(:br, link_to("Flickr", url_with_protocol(@user.flickr), :target => "_blank")) if ((@profile.flickr == "1"))  %>
+  <%= content_tag(:br, other_links_tag(@profile.other_links)) %><br />
+  <%= content_tag(:br, "<strong>Blog Feed:</strong>".html_safe) if ((@profile.blog == "1") && (@profile.blog.size != 0))  %>
+ <%= content_tag(:p, render(:partial => "profiles/rss_feed")) if ((@profile.blog == "1") && (@profile.blog.size != 0))  %></p>
 
-<br />
 
             <%=content_tag(:span, link_to(image_tag(@profile.picture1.url(:regular)), @profile.picture1.url, :rel =>"gallery", :class => "pirobox_gall"), :class => 'listingphotos2-3') if @profile.picture1.exists? %> 
 

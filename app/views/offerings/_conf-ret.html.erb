@@ -1,24 +1,19 @@
 
   <h2> <%= @offering.title %> </h2>
-<br />
         <p><% if @offering.picture_main.exists? then %>
 
       <span class="right"><%= link_to(image_tag(@offering.picture_main.url(:thumb)), @offering.picture_main.url, :rel =>"gallery", :class => "pirobox_gall")%></span>
     <% end %>
 
       <strong>Type</strong>:  <%= @offering.type.category %><br />
-
       <strong>Loction</strong>: <%= "#{@offering.specific_location}, #{@offering.us_state unless @offering.us_state.nil?} #{@offering.location.state}" %><br />
-
       <strong>Topics</strong>: 
     <%= @offering.topics.map{|k| k.category}.join(', ') %></p>
-<br />
 
     <p><strong>Instructors</strong>: <% @offering.registered_artists.each do |user| %>
       <%= link_to(user.name, user_path(user)) %>,
     <% end %>
 
     <%= @offering.unregistered_artists %></p>
-<br />
 
  

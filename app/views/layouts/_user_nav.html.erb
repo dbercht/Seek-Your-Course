@@ -5,8 +5,7 @@
 
 <div id="nav-top" class="clearfix">
         <% if logged_in? %>
-          <span class='buttons-top'>Welcome, <%= current_user.name %>.</span>
-          <%= link_to "Manage your listings", user_path(current_user), :class => "buttons-top" %> 
+          <%= link_to "Manage your listings", manage_home_path, :class => "buttons-top" %> 
           <%= link_to "Log out", logout_path, :class => "buttons-top" %>
         <% else %>
           <%= link_to "Sign up", signup_path, :class => "buttons-top" %>
@@ -19,9 +18,10 @@
         </div>
       <% end %>
 
-        <%= link_to "Advertise", root_url, :class => "buttons-top"%>
-        <%= link_to "Contact", root_url, :class => "buttons-top"%>
-        <%= link_to "About", root_url, :class => "buttons-top"%>
+        <%= link_to "Advertise", ads_index_url, :class => "buttons-top"%>
+        <%= link_to "Contact", contact_url, :class => "buttons-top"%>
+        <%= link_to "About", about_index_url, :class => "buttons-top"%>
+        <%= content_tag(:span, "Welcome #{current_user.name}", :class=>"buttons-top") if logged_in?%>
 </div>
 
 </div>

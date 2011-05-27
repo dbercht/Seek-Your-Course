@@ -2,14 +2,15 @@ a img, img{
   border: none;
   margin-left: 5px;
   margin-right: 5px;
-}
-
-a img{
-  border: none;
+  padding: 0px;
 }
 
 table{
   margin: 5px;
+}
+
+table tr td{
+  padding: 5px;
 }
 
 .ui-widget-content h5{
@@ -21,11 +22,12 @@ hr{
 }
 
 label{
-  text-decoration: underline;
+  font-weight: bold;
+  font-size: .9em;
 }
 
 .ui-button-container{
-  width: 100px;
+  width: 150px;
   margin: 5px auto;
 }
 .right{
@@ -67,6 +69,23 @@ label{
   width: 200px;
 }
 
+.error_messages, .error_notice, #flash_notice, #flash_alert{
+  position: fixed;
+  max-width: 300px;
+  left: 5px;
+  top: 40px;
+}
+.error_messages h2, .error_notice h2, #flash_notice h2{
+  font-size: 1em;
+}
+#flash_alert, #flash_notice{
+  border: 1px solid blue;
+  padding: 10px;
+  font-size: .8em;
+  background: #EEF;
+  margin: 5px;
+}
+
 .error_messages, .error_notice{
   border: 1px solid red;
   padding: 10px;
@@ -83,7 +102,6 @@ label{
 .field_with_errors{
   background: #FDD;
 }
-
 
 .signup{
   margin: 5px;

@@ -40,12 +40,17 @@ class OfferingsController < ApplicationController
   # GET /offerings/1
   # GET /offerings/1.xml
   def show
-    @offering = Offering.find(params[:id], :include => [:location, :region, :plan, :registered_artists, :topics, :type ])  
-    respond_to do |format|
-      format.html # show.html.erb
-      format.js {render :partial => "offering_info"}
-      format.xml  { render :xml => @offering }
-    end
+    @offering = Offering.find(params[:id], :include => [:location, :region, :plan, :registered_artists, :topics, :type ])
+    unless(!@offering.validated && ((current_user == @offering.coordinator) || (current_admin)))
+     flash[:notice] = "This listing is still pending." 
+     redirect_to offerings_path
+    else 
+      respond_to do |format|
+        format.html # show.html.erb
+        format.js {render :partial => "offering_info"}
+        format.xml  { render :xml => @offering }
+      end
+    end  
   end
 
   # GET /offerings/new

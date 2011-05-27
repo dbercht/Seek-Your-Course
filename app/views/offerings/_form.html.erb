@@ -2,9 +2,9 @@
   jQuery(document).ready(function(){
     
     jQuery("#us_states").hide();
-    jQuery("table tr.date_select").hide();    
+    jQuery(".date_select").hide();    
     jQuery(".date").datepicker({minDate: new Date()});
-    if(jQuery("#type").find("option:selected").text() == "Ecourse"){
+    if(jQuery("#type").find("option:selected").text() == "eCourse"){
       jQuery("#specific_location").hide();
     }
     jQuery("#offering_description").keyup(function(){
@@ -12,33 +12,35 @@
     });
 
     jQuery("#start_date").change(function () {
-        jQuery(this).next().val(parseInt(jQuery(this).val().split("/")[2]));
-        jQuery(this).next().next().val(parseInt(jQuery(this).val().split("/")[0]));
-        jQuery(this).next().next().next().val(parseInt(jQuery(this).val().split("/")[1]));
+        jQuery(this).parents("td").find(".date_select select:first").val(parseInt(jQuery(this).val().split("/")[2]));
+        jQuery(this).parents("td").find(".date_select select:first").next().val(parseInt(jQuery(this).val().split("/")[0]));
+        jQuery(this).parents("td").find(".date_select select:first").next().next().val(parseInt(jQuery(this).val().split("/")[1]));
         jQuery("#registration_begins").datepicker("option", "maxDate", new Date(jQuery(this).val()));
-        jQuery("#registration_deadline").datepicker("option", "maxDate", new Date(jQuery(this).val()));
-        jQuery("#end_date").datepicker("option", "minDate", new Date(jQuery(this).val()));
+        if(jQuery("#registration_deadline") > jQuery(this).val()){
+          jQuery("#registration_deadline").datepicker("option", "maxDate", new Date(jQuery(this).val()));
+        }
+	jQuery("#end_date").datepicker("option", "minDate", new Date(jQuery(this).val()));
     });
     jQuery("#registration_begins").change(function () {
-        jQuery(this).next().val(parseInt(jQuery(this).val().split("/")[2]));
-        jQuery(this).next().next().val(parseInt(jQuery(this).val().split("/")[0]));
-        jQuery(this).next().next().next().val(parseInt(jQuery(this).val().split("/")[1]));
+       jQuery(this).parents("td").find(".date_select select:first").val(parseInt(jQuery(this).val().split("/")[2]));
+        jQuery(this).parents("td").find(".date_select select:first").next().val(parseInt(jQuery(this).val().split("/")[0]));
+        jQuery(this).parents("td").find(".date_select select:first").next().next().val(parseInt(jQuery(this).val().split("/")[1]));
         jQuery("#registration_deadline").datepicker("option", "minDate", new Date(jQuery(this).val()));
         jQuery("#registration_deadline").datepicker("option", "maxDate", new Date(jQuery("#start_date").val()));
     });
     jQuery("#end_date").change(function () {
-        jQuery(this).next().val(parseInt(jQuery(this).val().split("/")[2]));
-        jQuery(this).next().next().val(parseInt(jQuery(this).val().split("/")[0]));
-        jQuery(this).next().next().next().val(parseInt(jQuery(this).val().split("/")[1]));
+       jQuery(this).parents("td").find(".date_select select:first").val(parseInt(jQuery(this).val().split("/")[2]));
+        jQuery(this).parents("td").find(".date_select select:first").next().val(parseInt(jQuery(this).val().split("/")[0]));
+        jQuery(this).parents("td").find(".date_select select:first").next().next().val(parseInt(jQuery(this).val().split("/")[1]));
     });         
     jQuery("#registration_deadline").change(function () {
-        jQuery(this).next().val(parseInt(jQuery(this).val().split("/")[2]));
-        jQuery(this).next().next().val(parseInt(jQuery(this).val().split("/")[0]));
-        jQuery(this).next().next().next().val(parseInt(jQuery(this).val().split("/")[1]));
+       jQuery(this).parents("td").find(".date_select select:first").val(parseInt(jQuery(this).val().split("/")[2]));
+        jQuery(this).parents("td").find(".date_select select:first").next().val(parseInt(jQuery(this).val().split("/")[0]));
+        jQuery(this).parents("td").find(".date_select select:first").next().next().val(parseInt(jQuery(this).val().split("/")[1]));
     })
 
     jQuery("#type").find("select").change(function() {
-      if(jQuery(this).find("option:selected").text() == "Ecourse"){
+      if(jQuery(this).find("option:selected").text() == "eCourse"){
         jQuery("#country").find("select").val(1);
         jQuery("#specific_location").hide();
       }else{
@@ -200,6 +202,13 @@
 
 <hr />
 <br />
+<%if @offering.new_record?%>
+  <div id="acceptance">
+    <%= f.check_box(:terms_of_use) %>I agree with the conditions of creating an account with Seek Your Course as specified by the Terms of Use.
+  </div>
+<hr />
+<br />
+<% end %>
   <div class="actions">
     <div class="ui-button-container">
      <p><%if params[:action] = "edit"%>

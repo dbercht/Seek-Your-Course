@@ -3,6 +3,7 @@ db/*.sqlite3
 log/*.log
 tmp/
 config/database.yml
+public/assets/*
 public/system/*
 config/initializers/setup_mailer.rb
 

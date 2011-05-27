@@ -2,7 +2,7 @@
 <div id="" class="grid_navleft">
    <div class="manage-nav clearfix">
         <p>
-          <%= link_to "Manage Home", user_path(current_user)%><br />
+          <%= link_to "Manage Home", manage_home_path%><br />
           <%= link_to "Create a New Listing", new_offering_path%><br />
           <%= link_to "Manage Listings", offerings_path( :coordinated => true) %><br />
           <%= link_to "View Profile", user_path(current_user.username)%><br />

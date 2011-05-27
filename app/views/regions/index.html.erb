@@ -2,7 +2,7 @@
 
 <% @regions.each do |region| %>
     <% if region.name == "Online" %>
-      <%= link_to "Online", type_path(Type.where("category = ?", "Ecourse").first) %>
+      <%= link_to "Online", type_path(Type.where("category = ?", "eCourse").first) %>
     <% else %>
       <%= link_to region.name, region_locations_path(region) %>
     <% end %>

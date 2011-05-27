@@ -17,7 +17,10 @@ class User < ActiveRecord::Base
 
   has_many :coordinated_offerings, :class_name => 'Offering', :foreign_key => 'coordinator_id', :dependent => :destroy
 
+
   has_one :profile, :dependent => :destroy
+
+  validates_acceptance_of :terms_of_use, :on => 'create'
 
   validates_presence_of :postal_code, :country, :phone_number, :website
   validates :first_name, :presence => true,

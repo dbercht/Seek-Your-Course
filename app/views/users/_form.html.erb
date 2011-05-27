@@ -110,6 +110,11 @@
 
 <hr />
 <br />
+<%if @user.new_record?%>
+  <div id="acceptance">
+    <%= f.check_box(:terms_of_use) %>I agree with the conditions of creating an account with Seek Your Course as specified by the Terms of Use.
+  </div>
+<% end %>
    <div class="ui-button-container"><p><%= f.submit((@user.new_record? ? "Sign up" : "Update"), :class=>'ui-button' )%></p></div>
 <% end %>
 </div>

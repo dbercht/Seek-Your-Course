@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Seek Your Course | Navigation for Creative Learning and Living</title>
+  <%= stylesheet_link_tag "jquery-ui-1.8.11.custom", "pirobox", "application", "960"  %>
+  <%= javascript_include_tag "jquery-1.5.1.min", "jquery-ui-1.8.11.custom.min", "pirobox_extended", :defaults %>
+  <%= csrf_meta_tag %>
+  <%= yield(:head) %>
+  <script type="text/javascript">
+//<![CDATA[
+      jQuery(document).ready( function() {
+        jQuery(".ui-button").button();
+        jQuery("#flash_notice").delay(5000).hide('slide');
+        jQuery("#flash_alert").delay(5000).hide('slide');
+        jQuery(".error_messages").delay(5000).hide('slide');
+        jQuery(".error_notice").delay(5000).hide('slide');
+       jQuery().piroBox_ext({
+        piro_speed : 900,
+        bg_alpha : 0.1,
+        piro_scroll : true //pirobox always positioned at the center of the page
+        });
+      });
+  //]]>
+  </script>
+</head>
+<body>
+                
+
+<%=render :partial => "layouts/user_nav"%>
+
+<% flash.each do |name, msg| %><%= content_tag :div, msg, :id => "flash_#{name}" %><% end %><!--<%= content_tag :h1, yield(:title) if show_title? %> -->
+
+
+
+<div id="header2" class="container_12">
+
+<div id="" class="grid_8 "> <a href="/"><img src="images/logo-finalweb.png" alt="" width="500" height="180" /></a>
+</div>
+
+
+    <div id="" class="grid_4 ">
+	  <div id="socialmedia" class="clearfix">
+     		<a href="https://www.facebook.com/seekyourcourse"><img src="images/facebook_30px.png" alt="facebook" class="socialmedia" /></a>
+     		<a href="http://twitter.com/#!/seekyourcourse"><img src="images/twitter_30px.png" alt="twitter" class="socialmedia" /></a>
+      </div>
+      <img src="images/tagline3.png" alt="Navigation for Creative Learning and Living" />
+    </div>
+
+</div>
+
+
+
+<div id="" class="container_12">
+
+<div id="" class="grid_12 ">
+	<div id="nav-main" class="clearfix">
+ 
+    </div>
+    
+</div>
+
+</div>
+
+                
+
+<div id="" class="container_12">
+
+<div id="" class="grid_navleft">
+   <div class="filter clearfix">
+     <h4>Have you joined the <a href="http://eepurl.com/dX4_z">mailing list</a>?</h4>
+     <h4>Have a story about a life-changing creative class you took? <a href="mailto:info@seekyourcourse.com">Contact us. </a></h4>
+     <h4>Have you <br />
+      liked us on <a href="https://www.facebook.com/seekyourcourse">Facebook</a>? </h4>
+     <h4>Followed <br />
+       the  <a href="http://twitter.com/#!/seekyourcourse">Twitter feed</a>?</h4>
+   </div>
+
+</div>
+
+<div id="" class="grid_content">
+
+	<div class="learning-results clearfix">
+   	  <h1>ABOUT SYC</h1>
+    	
+      
+        <div class="rightimg200">
+        <img src="images/jess.jpg" alt="Jess Greene" />
+			<a href="http://www.jetfuellines.wordpress.com">Jess Greene</a>, Creator of Seek Your Course
+           </div>
+           
+        <h5>That tingly feeling you get when you have a really great idea.</h5>
+
+   	  <p>One weekday in January 2011 I was home sick lying in bed finally catching up on some blogs when I discovered three new ecourses being taught by artists I love that I had not known about. Those of us with blog feeds or Google Reader know that staying current is really a part-time job. The announcement for these new courses had gotten buried and slipped through. Suddenly in my state of half-delirium I had an idea: we need one place to go to find out what creative workshops and courses are being taught. Bam! My nerves got all electrified and my eyes widened. That was it. I had to do it. </p>
+    	<p>Inspired by my own experiences with passionate and encouraging creative people I moved forward through my fears and negative voices to network, build a database, and design the site you see in front of you. A few months later the ball was rolling over bumps and holes and I was running alongside it into a bright new future.    	</p>
+    	<h5>What Seek Your Course is all about. </h5>
+    	<p>I am always amazed at how many wonderful and inspiring people are making a living at putting their creative energy out into the world and yet how many people have no idea anything like it exists. </p>
+    	<p>Seek Your Course is a database and resource for connecting learning opportunities with those desiring to live creatively. Whether you offer the experiences or want to participate in them, Seek Your Course was built for you. </p>
+   	  <p>Seek Your Course works to inspire those who need encouragement, connect those searching for like minds, teach those who want to get their hands dirty, and promote those who want to light a creative spark in others. Whoever you are and whatever your needs we hope to fuel your desire to create and help you reach your creative dreams.</p>
+    	<p>Seek Your Course is a portal based on the belief that the desire to ignite and fuel passion in others will draw in those that need refueling and organically grow the online art community in exponential directions. By following links to learning opportunities every new person becomes a vital part of the web that can support the art we all need in  our lives and in our world.    	</p>
+    	<h5>The importance of finding your key.<br />
+    </h5>
+    	<p>Many people say that art heals and art saves. I think the best way to understand art is as a key to a door inside yourself. Much of ourselves is locked away for one reason or another and free-flowing, non-judgmental creating gives us a way to unlock and sort through the hidden-away parts of ourselves. Sometimes that key can be hard to find. Seek Your Course is the navigation system that will help lead you to your key.</p>
+    	<p>In my own life I can already see where the journeys of others so bravely posted on blogs and the readiness of artists to share their techniques and passions have inspired me to nurture my own creative desires. In that sense art has saved me, as it has countless others. </p>
+    	<p>I didn't always have my key either. A few years back I started reading art blogs and went to an art retreat. I hadn't painted since I was a kid. Then when I found I needed a way to process life, another way of looking at the world had already manifested itself in me. I had the whispers in my head: &quot;You can be an artist.&quot; &quot;There is room for you.&quot; &quot;There are no mistakes, only happy accidents.&quot; &quot;This is your journey. Fly!&quot; And the community and opportunities I had were the catalysts I needed to believe in myself and follow a life-long passion for creating that would lead me here. </p>
+    	<p>Sometimes life works in circles. It is so fitting that the goal of Seek Your Course is to connect people with creative learning opportunities, because the connection to the art community that I experienced has brought me to this place of connecting all of you with your future. </p>
+    	<p>Thank you for being here. Best wishes as you explore. <br />
+  	  </p>
+    	<p>Feel like sharing your story of how a class or retreat impacted your life? <a href="mailto:info@seekyourcourse.com">Contact us</a> to submit it to the blog!</p>
+    </div>
+    
+</div>
+
+
+<div class="grid_adsright"><%= render :partial => 'layouts/ads'%></div>
+
+
+
+</div>
+
+
+
+<div id="" class="container_12">
+
+    <div id="" class="grid_12 ">
+    
+        <div id="footer" class="clearfix">
+        <p>&copy; 2011 Seek Your Course</p> 
+        
+        </div>
+    
+    </div>
+
+</div>
+
+
+            
+</body>
+</html>

@@ -1,5 +1,4 @@
   <h2><%= @offering.title %></h2>
-<br />
 	  <h5>Instructor: 
     <%= link_to @offering.coordinator.name, user_path(@offering.coordinator)%></h5>
     <p>    <% if @offering.picture_main.exists? then %>
@@ -8,6 +7,3 @@
     <strong>Type</strong>: <%= @offering.type.category %> <br />
       <strong>Location</strong>: Online<br />
       <strong>Topics</strong>: <%= @offering.topics.map{|k| k.category}.join(', ') %></p>
-<br />
-
-

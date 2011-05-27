@@ -1,7 +1,7 @@
 module OfferingsHelper
   def artists_for_offering(offering)
     html = Array.new
-    if(offering.type.category == "Ecourse")
+    if(offering.type.category == "eCourse")
       html << link_to(offering.coordinator.name, offering.coordinator)
     else
       if(offering.registered_artists.size == 0)
@@ -43,9 +43,11 @@ module OfferingsHelper
   def list_topics(topics, offering)
     html = Array.new
     topics.each do |topic|
+        html << "<div>"
         html << check_box_tag("offering[topic_ids][]", topic.id, @offering.topics.include?(topic))
         html << topic.category
-        html << "|"
+        html << "</div>"
+       
      end
     html.join(" ").html_safe
   end
@@ -63,8 +65,7 @@ module OfferingsHelper
     end
     input = "<input type='text' id='#{attribute}' class='date' value='#{value_date}'/>".html_safe
     html = Array.new
-    html << content_tag(:tr, content_tag(:td, f.label("#{attribute_label}")) << content_tag(:td, input))
-    html << content_tag(:tr, content_tag(:td, f.label("#{attribute_label}")) << content_tag(:td, f.date_select(attribute)), :class=>'date_select')
+    html << content_tag(:tr, content_tag(:td, f.label("#{attribute_label}")) << content_tag(:td, input << content_tag(:span, f.date_select(attribute), :class=>'date_select')))
     html.join("").html_safe
   end
 

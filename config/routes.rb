@@ -1,11 +1,9 @@
 SeekYourCourse::Application.routes.draw do
 
   resources :offerings
-  resources :ads
 
   match 'pending_offerings', :to => 'offerings#pending_index', :as => 'pending_offerings'
-
-
+  match 'manage_home', :to => 'users#manage_home', :as => "manage_home"
   resources :plans
   resources :topics 
   resources :types
@@ -24,7 +22,14 @@ SeekYourCourse::Application.routes.draw do
   resources :user_sessions
   resources :users
 
-  root :to => "offerings#home"
+  match "ads" => "static#ads", :as => 'ads_index'
+  match "about" => "static#about", :as => 'about_index'
+  match "contact" => "static#contact", :as => 'contact'
+
+  resources :ads
+  match "admin_ads" => "ads#index", :as => "ads"
+
+  root :to => "static#home"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

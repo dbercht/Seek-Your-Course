@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Seek Your Course | Navigation for Creative Learning and Living</title>
+  <%= stylesheet_link_tag "jquery-ui-1.8.11.custom", "pirobox", "application", "960"  %>
+  <%= javascript_include_tag "jquery-1.5.1.min", "jquery-ui-1.8.11.custom.min", "pirobox_extended", :defaults %>
+  <%= csrf_meta_tag %>
+  <%= yield(:head) %>
+  <script type="text/javascript">
+//<![CDATA[
+      jQuery(document).ready( function() {
+        jQuery(".ui-button").button();
+        jQuery("#flash_notice").delay(5000).hide('slide');
+        jQuery("#flash_alert").delay(5000).hide('slide');
+        jQuery(".error_messages").delay(5000).hide('slide');
+        jQuery(".error_notice").delay(5000).hide('slide');
+       jQuery().piroBox_ext({
+        piro_speed : 900,
+        bg_alpha : 0.1,
+        piro_scroll : true //pirobox always positioned at the center of the page
+        });
+      });
+  //]]>
+  </script>
+</head>
+<body>
+                
+                
+
+<%=render :partial => "layouts/user_nav"%>
+
+<% flash.each do |name, msg| %><%= content_tag :div, msg, :id => "flash_#{name}" %><% end %><!--<%= content_tag :h1, yield(:title) if show_title? %> -->
+<div id="header2" class="container_12">
+
+<div id="" class="grid_8 "> <a href="/"><img src="images/logo-finalweb.png" alt="" width="500" height="180" /></a>
+</div>
+
+
+    <div id="" class="grid_4 ">
+	  <div id="socialmedia" class="clearfix">
+     		<a href="https://www.facebook.com/seekyourcourse"><img src="images/facebook_30px.png" alt="facebook" class="socialmedia" /></a>
+     		<a href="http://twitter.com/#!/seekyourcourse"><img src="images/twitter_30px.png" alt="twitter" class="socialmedia" /></a>
+      </div>
+      <img src="images/tagline3.png" alt="Navigation for Creative Learning and Living" />
+    </div>
+
+</div>
+
+
+
+<div id="" class="container_12">
+
+<div id="" class="grid_12 ">
+	<div id="nav-main" class="clearfix">
+ 
+    </div>
+    
+</div>
+
+</div>
+
+                
+
+<div id="" class="container_12">
+
+<div id="" class="grid_navleft">
+   <div class="filter clearfix">
+     <h4>Have you joined the <a href="http://eepurl.com/dX4_z">mailing list</a>?</h4>
+     <h4>Have a story about a life-changing creative class you took? <a href="mailto:info@seekyourcourse.com">Contact us. </a></h4>
+     <h4>Have you <br />
+      liked us on <a href="https://www.facebook.com/seekyourcourse">Facebook</a>? </h4>
+     <h4>Followed <br />
+       the  <a href="http://twitter.com/#!/seekyourcourse">Twitter feed</a>?</h4>
+   </div>
+
+</div>
+
+<div id="" class="grid_content">
+
+	<div class="learning-results clearfix">
+   	  <h1>ADVERTISE</h1>
+    	<p>Seek Your Course provides prime advertising space for creative business owners. All types of creative people are being drawn to Seek Your Course for up-to-date information about the online arts community. </p>
+    	<p>Advertisements are available to promote <strong>creative products, blogs, online or brick-and-mortar stores, magazines and websites</strong>. Advertisments are <strong>not</strong> available for ecourses, retreats or conferences...that's what listings are for!    	</p>
+    	<p>Advertisements will rotate through (above and below the fold), so while your ad may not appear on every page the ads will change as users navigate through the site.</p>
+    	<p>&nbsp;</p>
+    	<table id="table" width="100%" border="0" cellpadding="5">
+    	  <tr>
+            <td width="33%"><h5>All Ads Include:</h5></td>
+    	    <td width="33%"><h5>Premium Package Also Includes:</h5></td>
+    	    <td width="33%"><h5>Professional Package Also Includes:</h5></td>
+  	    </tr>
+    	  <tr>
+    	    <td><p><strong>Twitter announcement </strong>when ad starts.</p></td>
+			<td><p>Feature in <strong>sponsor spotlight </strong>about once every two months. <br />
+		    You send us the basic info on your business.</p></td>
+    	    <td><p><strong>Above the fold</strong> positioning (in the top 520px of the sidebar).</p></td>
+  	    </tr>
+    	  <tr>
+    	    <td><p><strong>Facebook announcement </strong>when ad starts.</p></td>
+			<td><p>Two pictures plus your logo in your sponsor spotlight. Spotlight announced to Facebook and Twiiter.</p></td>
+    	    <td><p>Sponsor spotlight appears on <strong>front page</strong> and in the <strong>monthly newsletter</strong>.</p></td>
+  	    </tr>
+  	  </table>
+   	  <p><strong>Additional Promotion: </strong>Long-term advertisers (6+consecutive months) will receive an interview feature on the blog!   	  </p>
+   	  <p><span class="orange">Submit your ads in May or June, but the ad terms will officially start July 1.</span></p>
+   	  <p>&nbsp;</p>
+   	  <p><strong>Initial Launch Pricing: </strong><span class="orange">We are offering a 40% discount for those of you wanting to be among the first to join us. </span>Pre-pay for 2-12 months in order to lock-in at this price! Prices will never be this low again. <strong>Sale ends August 1.</strong>    </p>
+   	  <table id="table" border="0" cellpadding="5" width="100%" class="adtable">
+    	  <tr>
+    	    <td><h5>Size</h5></td>
+    	    <td><h5>Just an Ad<br />
+    	      (per month)</h5></td>
+    	    <td><h5>Premium Package<br />
+   	        (per month)</h5></td>
+    	    <td><h5>Professional Package<br />
+    	      (per month)*</h5></td>
+  	      </tr>
+    	  <tr>
+    	    <td><p>130x130px</p></td>
+    	    <td><p><s>$20</s><span class="orange"> $12</span></p></td>
+    	    <td><p><s>$50</s> <span class="orange">$30</span></p></td>
+    	    <td><p><s>$70</s> <span class="orange">$42</span></p></td>
+  	      </tr>
+    	  <tr>
+    	    <td><p>130x260px</p></td>
+    	    <td><p><s>$30</s><span class="orange"> $18</span></p></td>
+    	    <td><p><s>$65</s> <span class="orange">$39</span></p></td>
+    	    <td><p><s>$90</s> <span class="orange">$54</span></p></td>
+  	      </tr>
+       	  <tr>
+    	    <td><p>130x390px</p></td>
+    	    <td><p><s>$40</s> <span class="orange">$24</span></p></td>
+    	    <td><p><s>$80</s> <span class="orange">$48</span></p></td>
+    	    <td><p><s>$110</s> <span class="orange">$66</span></p></td>
+  	      </tr>
+  	  </table>
+    <p>*Only 4 slots available per month, but may be reserved for more than one month at a time. First come, first served.</p>
+    	<p><strong>Seek Your Course will also consider participating in affliate programs.<a href="mailto:info@seekyourcourse.com"> Contact us.</a></strong></p>
+   	  <p>&nbsp;</p>
+
+      <h5>SUBMITTING AN AD:</h5>
+<p><strong>Email Us (in ONE email) at <a href="mailto:ads@seekyourcourse.com">ads@seekyourcourse.com</a></strong>:</p>
+<p>Full Name<br />
+  Phone #<br />
+  Email Address
+  <br />
+  Paypal Email Address (if different from above)
+  <br />
+  URL
+  for ad link<br />
+  Duration of ad (and start date if not on the 1st of the next month)<br />
+  Package  you would like (Just an Ad, Premium, or Professional)</p>
+<p>and <strong>Attach Your Image</strong>:  must be in gif or jpeg form; must be 72dpi and a size specified above.<br />
+</p>
+<p>&nbsp;</p>
+<h5>The Fine Print:</h5>
+<p>- Ads will start on the 1st  of the next month, unless you specify a specific month to start. When we receive your email requesting ad space we will send you a paypal invoice for the amount of time, package, and size of ad you have chosen. We must receive payment within 3 days, or your advertising request will be cancelled. </p>
+<p>- If the 1st of the month passes between the time we send the invoice and the invoice is paid, we will hold your ad until the 1st of the next month.</p>
+<p>- A week before your ad expires we will send you an invoice for renewing your ad. This must also be paid within 3 days to continue your ad. Please let us know at this time if you will not be continuing your ad. If unpaid, we will cancel your ad. </p>
+<p>- If you pay for a Premium or Professional Package, we will email you a couple questions and requirements for the pictures for your blog spotlight. If this is not receieved back within 3 days of sending, we reserve the right to not run your blog spotlight for that 2 month cycle.</p>
+<p>- If you would like to change your ad image during your ad campaign, you may do so by emailing us at <a href="mailto:ads@seekyourcourse.com">ads@seekyourcourse.com</a>. We will change it for you up to once a month.</p>
+<p>- We reserve the right to change the prices of ads at any time, effective the next time you renew your ad.</p>
+<p>- We reserve the right to decline running your ad if it does not fit with the image or focus of the site. In general we will take only ads for creative products, blogs, online or brick-and-mortar stores, magazines and websites, but each ad will be reviewed on a case by case basis.</p>
+<p>- Advertising fees are non-refundable.</p>
+   	  <p>&nbsp;</p>
+    </div>
+    
+</div>
+
+
+<div class="grid_adsright">
+<%=render :partial => "layouts/ads"%></div>
+
+</div>
+
+
+
+<div id="" class="container_12">
+
+    <div id="" class="grid_12 ">
+    
+        <div id="footer" class="clearfix">
+        <p>&copy; 2011 Seek Your Course</p> 
+        
+        </div>
+    
+    </div>
+
+</div>
+
+
+            
+</body>
+</html>

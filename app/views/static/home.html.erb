@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Seek Your Course | Navigation for Creative Learning and Living</title>
+  <%= stylesheet_link_tag "jquery-ui-1.8.11.custom", "pirobox", "application", "960"  %>
+  <%= javascript_include_tag "jquery-1.5.1.min", "jquery-ui-1.8.11.custom.min", "pirobox_extended", :defaults %>
+  <%= csrf_meta_tag %>
+  <%= yield(:head) %>
+  <script type="text/javascript">
+//<![CDATA[
+      jQuery(document).ready( function() {
+        jQuery(".ui-button").button();
+        jQuery("#flash_notice").delay(5000).hide('slide');
+        jQuery("#flash_alert").delay(5000).hide('slide');
+        jQuery(".error_messages").delay(5000).hide('slide');
+        jQuery(".error_notice").delay(5000).hide('slide');
+       jQuery().piroBox_ext({
+        piro_speed : 900,
+        bg_alpha : 0.1,
+        piro_scroll : true //pirobox always positioned at the center of the page
+        });
+      });
+  //]]>
+  </script>
+</head>
+<body>
+                
+
+<%=render :partial => "layouts/user_nav"%>
+
+<% flash.each do |name, msg| %><%= content_tag :div, msg, :id => "flash_#{name}" %><% end %><!--<%= content_tag :h1, yield(:title) if show_title? %> -->
+
+
+<div id="header2" class="container_12">
+
+<div id="" class="grid_8 ">
+<img src="images/logo-finalweb.png" alt="" width="500" height="180" />
+</div>
+
+
+    <div id="" class="grid_4 ">
+	  <div id="socialmedia" class="clearfix">
+     		<a href="http://facebook.com/seekyourcourse"><img src="images/facebook_30px.png" alt="facebook" class="socialmedia" /></a>
+     		<a href="http://twitter.com/#!/seekyourcourse"><img src="images/twitter_30px.png" alt="twitter" class="socialmedia" /></a>
+      </div>
+      <img src="images/tagline3.png" alt="Navigation for Creative Learning and Living" />
+    </div>
+
+</div>
+
+
+
+<div id="" class="container_12">
+
+<div id="" class="grid_12 ">
+	<div id="nav-main" class="clearfix">
+		<a href="/offerings" class="buttons">Learning Opportunities </a> 
+		<a href="/users?role=instructor" class="buttons">Instructor Profiles</a>
+		<a href="/users?role=coordinator" class="buttons">Retreat &amp; Conference Profiles</a> 
+		<a href="#" class="buttons">Interviews</a> 
+        <a href="#" class="buttons">Blog </a> 
+
+    </div>
+    
+</div>
+
+</div>
+
+                
+
+<div id="" class="container_12">
+  <div id="" class="grid_3 ">
+   <div class="browse">
+<img src="images/headers/browse.png" alt="browse learning opportunities" width="175" height="45"/>
+	 <div class="browse-buttons"><a href="/types">by TYPE</a></div>
+     <div class="browse-buttons"><a href="/topics">by TOPIC</a></div>
+     <div class="browse-buttons"><a href="/offerings">by START DATE</a></div>
+     <div class="browse-buttons"><a href="/regions">by LOCATION</a></div>
+     
+    
+   </div>
+
+</div>
+
+<div id="" class="grid_9 ">
+	<div class="intro">
+    </div>
+    
+</div>
+
+</div>
+
+                
+
+<div id="" class="container_12">
+
+<div id="" class="grid_4 ">
+	<div class="blogfeed">
+    <img src="images/headers/blogfeed.png" class="header_center" alt="seek your course blog feed" />
+    </div>
+</div>
+
+<div id="" class="grid_4 ">
+	<div class="slideshow">
+    </div>
+</div>
+
+<div id="" class="grid_4 ">
+	<div class="spotlight">
+    <img src="images/headers/spotlight.png" class="header_center" alt="seek your course blog feed" />
+    </div>
+</div>
+
+</div>
+
+
+<div id="" class="container_12">
+
+    <div id="" class="grid_12 ">
+    
+        <div id="footer" class="clearfix">
+        <p>&copy; 2011 Seek Your Course</p> 
+        
+        </div>
+    
+    </div>
+
+</div>
+
+
+
+
+            
+</body>
+</html>

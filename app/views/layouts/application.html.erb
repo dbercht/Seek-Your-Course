@@ -15,8 +15,10 @@
 //<![CDATA[
       jQuery(document).ready( function() {
         jQuery(".ui-button").button();
-        jQuery("#flash_notice").delay(5000).hide('blind');
-        jQuery(".error_messages").delay(5000).hide('blind');
+        jQuery("#flash_notice").delay(5000).hide('slide');
+        jQuery("#flash_alert").delay(5000).hide('slide');
+        jQuery(".error_messages").delay(5000).hide('slide');
+        jQuery(".error_notice").delay(5000).hide('slide');
        jQuery().piroBox_ext({
         piro_speed : 900,
         bg_alpha : 0.1,
