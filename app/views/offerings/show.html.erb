@@ -4,20 +4,20 @@
 </script>
 
 <div class="criteria-gallery clearfix">
-  <% if @offering.type.category == "E-course" %>
+  <% if @offering.type.category == "Ecourse" %>
     <%= render :partial => "e-course"%>
   <% else %>
     <%= render :partial => "conf-ret"%>
   <% end %>
 
     <p><strong>Starts</strong>: <%= @offering.start_date.strftime('%d %h, %Y') %> - 
-    <%= distance_of_time_in_words_to_now(@offering.start_date)%> <br />
-      <strong>Ends</strong>:<%= @offering.end_date.strftime('%d %h, %Y') %><br />
+    <%= distance_of_time_in_words_to_now(@offering.start_date)%> until start date. <br />
+      <strong>Ends</strong>: <%= @offering.end_date.strftime('%d %h, %Y') %><br />
       <strong>Registration Begins</strong>: <%= @offering.registration_begins.strftime('%d %g, %Y') %><br />
      <%unless @offering.registration_deadline.nil? %>
         <strong>Registration Deadline:</strong>
         <%= @offering.registration_deadline.strftime('%B %g, %Y') %> - 
-        <%= distance_of_time_in_words_to_now(@offering.registration_deadline)%>
+        <%= distance_of_time_in_words_to_now(@offering.registration_deadline)%> until registration deadline.
     <%end%> </p>
 <br />
 
@@ -25,13 +25,13 @@
       <%=h @offering.description%>
      </p>
 <br />
-    <p><strong>More Information</strong>: <%=link_to url_with_protocol(@offering.link), url_with_protocol(@offering.link)%></p>
+    <p><strong>More Information</strong>: <%=link_to url_with_protocol(@offering.link), url_with_protocol(@offering.link), :target => "_blank"%></p>
 <br />
 <% if @offering.picture_footer_left.exists? then %>
-    <%= link_to(image_tag(@offering.picture_footer_left.url(:thumb)), @offering.picture_footer_left.url, :rel =>"gallery", :class => "pirobox_gall") %>
+    <%= link_to(image_tag(@offering.picture_footer_left.url(:thumb)), @offering.picture_footer_left.url, :rel =>"gallery", :class => "pirobox_gall listingphotos2-3") %>
   <% end %>
   <% if @offering.picture_footer_right.exists? then %>
-    <%= link_to(image_tag(@offering.picture_footer_right.url(:thumb)), @offering.picture_footer_right.url, :rel =>"gallery", :class => "pirobox_gall") %>
+    <%= link_to(image_tag(@offering.picture_footer_right.url(:thumb)), @offering.picture_footer_right.url, :rel =>"gallery", :class => "pirobox_gall listingphotos2-3") %>
   <% end %>
 
 
@@ -39,5 +39,8 @@
     <%= link_to('Edit Offering', edit_offering_path(@offering))%>
   <% end %>
 </div>
-
-<%= render :partial => 'browse' %>
+<% if current_user %>
+  <%= render :partial => 'users/user_admin' %>
+<%else%>
+  <%= render :partial => 'browse' %>
+<% end %>

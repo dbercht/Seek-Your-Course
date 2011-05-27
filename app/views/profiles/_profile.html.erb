@@ -26,24 +26,25 @@
 
   <p><strong>Contact Info</strong>: <br />
 
-  <%= content_tag(:p, link_to("Website", url_with_protocol(@user.website)) ) %>
+  <%= content_tag(:p, link_to("Website", url_with_protocol(@user.website), :target => "_blank") ) %>
   <%= content_tag(:p, mail_to( @user.email, "E-mail me")) if ((@profile.email == "1"))  %>
-  <%= content_tag(:p, link_to("Facebook", url_with_protocol(@user.facebook))) if ((@profile.facebook == "1"))  %>
-  <%= content_tag(:p, link_to("Twitter", url_with_protocol(@user.twitter))) if ((@profile.twitter == "1"))  %>
-
+  <%= content_tag(:p, link_to("Facebook", url_with_protocol(@user.facebook), :target => "_blank")) if ((@profile.facebook == "1"))  %>
+  <%= content_tag(:p, link_to("Twitter", url_with_protocol(@user.twitter), :target => "_blank")) if ((@profile.twitter == "1"))  %>
+  <%= content_tag(:p, link_to("Flickr", url_with_protocol(@user.flickr), :target => "_blank")) if ((@profile.flickr == "1"))  %>
+  <%= content_tag(:p, other_links_tag(@profile.other_links)) %>
 <br />  
-  <p><strong>Blog Feed:</strong></p>
-  <%= content_tag(:p, render(:partial => "profiles/rss_feed")) if (@profile.blog == "1")  %>
+  <%= content_tag(:p, "<strong>Blog Feed:</strong>".html_safe) if ((@profile.blog == "1") && (@profile.blog.size != 0))  %>
+ <%= content_tag(:p, render(:partial => "profiles/rss_feed")) if ((@profile.blog == "1") && (@profile.blog.size != 0))  %>
 
 <br />
 
-            <%=content_tag(:span, link_to(image_tag(@profile.picture1.url(:regular)), @profile.picture1.url, :rel =>"gallery", :class => "pirobox_gall")) if @profile.picture1.exists? %> 
+            <%=content_tag(:span, link_to(image_tag(@profile.picture1.url(:regular)), @profile.picture1.url, :rel =>"gallery", :class => "pirobox_gall"), :class => 'listingphotos2-3') if @profile.picture1.exists? %> 
 
-      <%=content_tag(:span, link_to(image_tag(@profile.picture2.url(:regular)), @profile.picture2.url, :rel =>"gallery", :class => "pirobox_gall")) if @profile.picture2.exists? %> 
+      <%=content_tag(:span, link_to(image_tag(@profile.picture2.url(:regular)), @profile.picture2.url, :rel =>"gallery", :class => "pirobox_gall"), :class => 'listingphotos2-3') if @profile.picture2.exists? %> 
 
-      <%=content_tag(:span, link_to(image_tag(@profile.picture3.url(:regular)), @profile.picture3.url, :rel =>"gallery", :class => "pirobox_gall")) if @profile.picture3.exists? %> 
+      <%=content_tag(:span, link_to(image_tag(@profile.picture3.url(:regular)), @profile.picture3.url, :rel =>"gallery", :class => "pirobox_gall"), :class => 'listingphotos2-3') if @profile.picture3.exists? %> 
 
-      <%=content_tag(:span, link_to(image_tag(@profile.picture4.url(:regular)), @profile.picture4.url, :rel =>"gallery", :class => "pirobox_gall")) if @profile.picture4.exists? %> 
+      <%=content_tag(:span, link_to(image_tag(@profile.picture4.url(:regular)), @profile.picture4.url, :rel =>"gallery", :class => "pirobox_gall"), :class => 'listingphotos2-3') if @profile.picture4.exists? %> 
  
     </div>
     

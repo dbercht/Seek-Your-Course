@@ -47,8 +47,8 @@ class Offering < ActiveRecord::Base
 
   DESCRIPTION_LENGTH_FOR_PLAN = {
 	"Basic" => 50,
-	"Pro 1" => 200,
-	"Pro 2" => 300
+	"Premium" => 200,
+	"Professional" => 300
   }
 
   DESCRIPTION_LENGTH = [50, 200, 300]
@@ -71,15 +71,14 @@ class Offering < ActiveRecord::Base
 
   validate :validate_length_of_description
 
-  with_options :if => lambda {return type.category != "E-course"} do |o|
+  with_options :if => lambda {return type.category != "Ecourse"} do |o|
     o.validates :specific_location, :presence => true
   end
 
 
-  with_options :if => :editable? do |o|
+  with_options :if => (:editable?) do |o|
     o.validates :start_date, :date => {:after => :registration_begins}
     o.validates :end_date, :date => {:after => :start_date}
-    o.validates :registration_begins, :date => {:after => Date.today - 1.days}
   end
 
   def validate_length_of_description

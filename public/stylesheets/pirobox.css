@@ -7,6 +7,12 @@
 .piro_html table,.piro_html tbody,.piro_html tr,.piro_html th,.piro_html td{margin:0;padding:0;border:none;}
 .piro_html img{ margin:0; padding:0; border:none;}
 
+.pirobox_gall img{
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+
 .piro_html .h_t_l{ width:10px; height:10px; background: url(/images/pirobox/caption.png);}
 .piro_html .h_t_r{ width:10px; height:10px; background: url(/images/pirobox/caption.png);}
 .piro_html .h_t_c{ cursor:move; height:10px;background: url(/images/pirobox/caption.png);}

@@ -6,6 +6,7 @@
   <% @types.each do |type| %>
     <div class="bytype">
       <h4><%= link_to type.category, type %></h4>
+      <p><%= type.description%></p>
       <% if current_admin %>
         <%= link_to 'Edit', edit_type_path(type) %>
         <%= link_to 'Destroy', type, :confirm => 'Are you sure?', :method => :delete %>

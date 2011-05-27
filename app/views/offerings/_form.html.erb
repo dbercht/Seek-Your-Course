@@ -2,9 +2,15 @@
   jQuery(document).ready(function(){
     
     jQuery("#us_states").hide();
-    jQuery("#date select").hide();    
+    jQuery("table tr.date_select").hide();    
     jQuery(".date").datepicker({minDate: new Date()});
-    
+    if(jQuery("#type").find("option:selected").text() == "Ecourse"){
+      jQuery("#specific_location").hide();
+    }
+    jQuery("#offering_description").keyup(function(){
+      jQuery(this).parents("tr").find(".count").html(jQuery(this).val().split(/\b[\s,\.-:;]*/).length + " out of " + + (-25*jQuery("#offering_plan_id").val() + 225*jQuery("#offering_plan_id").val() - 150*jQuery("#offering_plan_id").val()) + " words");
+    });
+
     jQuery("#start_date").change(function () {
         jQuery(this).next().val(parseInt(jQuery(this).val().split("/")[2]));
         jQuery(this).next().next().val(parseInt(jQuery(this).val().split("/")[0]));
@@ -32,8 +38,11 @@
     })
 
     jQuery("#type").find("select").change(function() {
-      if(jQuery(this).find("option:selected").text() == "E-course"){
+      if(jQuery(this).find("option:selected").text() == "Ecourse"){
         jQuery("#country").find("select").val(1);
+        jQuery("#specific_location").hide();
+      }else{
+        jQuery("#specific_location").show();
       }
     });
 
@@ -46,7 +55,15 @@
     });
   });
 </script>
-<div class="criteria-gallery clearfix">
+<div class="contentlearning-profile clearfix">
+<%if params[:action]=='new'%>
+  <h1>Create Listing</h1>
+<% else %>
+  <h1>Edit Listing</h1>
+<% end %>
+</div>
+
+<div class="criteria-gallery ui-widget-content clearfix">
 <%= form_for(@offering, :html => {:multipart => true}) do |f| %>
   <% if @offering.errors.any? %>
     <div id="flash_error" class="error_messages">
@@ -71,53 +88,18 @@
 <hr />
 <br />
   <% end %>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
+ <table>
+    <%=content_tag(:tr, content_tag(:td, f.label(:title, "Title*")) << content_tag(:td, f.text_field( :title, :size => 20))) %>
+    <%=content_tag(:tr, content_tag(:td, f.label(:plan, "Plan*")) << content_tag(:td, collection_select(:offering, :plan_id, @plans, :id, :name)))%>
+    <%=content_tag(:tr, content_tag(:td, f.label(:type, "Type of Listing*")) << content_tag(:td, collection_select(:offering, :type_id, @types, :id, :category), :id =>"type")) %>
+    <%=content_tag(:tr, content_tag(:td, f.label(:topics, "Topics*"))<< content_tag(:td, list_topics(@topics, @offering))) %>
+</table>
+
 <br />
-    <div>
-      <label for="offering_plan">Plan*</label><br />
-      <%= collection_select(:offering, :plan_id, @plans, :id, :name)%>
-    </div>
-<br />
-    <div class="field" id="type">
-      <%= f.label "Type*" %><br />
-      <%= collection_select(:offering, :type_id, @types, :id, :category) %>
-    </div>
-<br />
-    <div>
-      <label for="offering_Topic/Medium">Topic/Medium*</label><br />
-      <% @topics.each do |topic| -%>
-        <%= check_box_tag "offering[topic_ids][]", topic.id, @offering.topics.include?(topic) -%><%= topic.category -%>
-      <% end -%>
-    </div>
 <hr />
-<br />
-  <div class="field">
-    <%= f.label :picture_main, "Main Picture" %><br />
-    <%= f.file_field :picture_main %>
-  </div>
-<br />
-  <div class="field">
-    <%= f.label :picture_footer_left, "Left Footer Picture" %><br />
-    <%= f.file_field :picture_footer_left %>
-  </div>
-<br />
-  <div class="field">
-    <%= f.label :picture_footer_right, "Right Footer Picture" %><br />
-    <%= f.file_field :picture_footer_right %>
-  </div>
-<hr />
-<br />
-    <div class="field" id="country">
-      <label for="offering_state">Country</label><br />
-      <%= grouped_collection_select(:offering, :location_id, @regions, :locations, :name, :id, :state, :prompt => true)%>
-    </div>
-<br />
-    <div id="us_states">
-      <%= f.label :us_state %><br />
-  <%= f.select( :us_state, [ 	
+ <table>
+    <%=content_tag(:tr, content_tag(:td, f.label(:country, "Country*")) << content_tag(:td, grouped_collection_select(:offering, :location_id, @regions, :locations, :name, :id, :state, :prompt => true)), :id=>"country") %>
+    <%=content_tag(:tr, content_tag(:td, f.label(:us_state, "US State")) << content_tag(:td, f.select( :us_state, [ 	
 	['Select a State', 'None'],
 	['Alabama', 'AL'], 
 	['Alaska', 'AK'],
@@ -169,59 +151,35 @@
 	['Washington', 'WA'], 
 	['West Virginia', 'WV'], 
 	['Wisconsin', 'WI'], 
-	['Wyoming', 'WY']]) %>
-    </div>
-    <div class="field">
-      <%= f.label :specific_location %><br />
-      <%= f.text_field :specific_location %>
-    </div>
+	['Wyoming', 'WY']])), :id => "us_states")%>
+    <%=content_tag(:tr, content_tag(:td, f.label(:specific_location)) << content_tag(:td, f.text_field(:specific_location)), :id=> 'specific_location') %>
+</table>
 <hr />
 <br />
  <div id="date">
-  <div class="field">
-    <%= f.label "Registration Begins*" %><br />
-    <input type='text' id='registration_begins' class='date' value="<%=@offering.registration_begins.strftime('%Y-%h-%d') unless @offering.registration_begins.nil?%>"/>
-    <%= f.date_select :registration_begins, :class => "date" %>
-  </div>
-<br />
-  <div class="field">
-    <%= f.label :registration_deadline %><br />
-    <input type='text' id='registration_deadline' class='date' value="<%=@offering.registration_deadline.strftime('%Y-%h-%d') unless @offering.registration_deadline.nil? %>"/>
-    <%= f.date_select :registration_deadline, :include_blank => true, :class => "date" %>
-  </div>
-<br />
-  <div class="field">
-    <%= f.label "Start Date*" %><br />
-    <input type='text' id='start_date' class='date' value="<%=@offering.start_date.strftime('%Y-%h-%d') unless @offering.start_date.nil?%>"/>
-    <%= f.date_select :start_date, :class => "date" %>
-  </div>
-<br />
-  <div class="field">
-    <%= f.label "End Date*" %><br />
-    <input type='text' id='end_date' class='date' value="<%=@offering.end_date.strftime('%Y-%h-%d')  unless @offering.end_date.nil? %>"/>
-    <%= f.date_select :end_date, :class => "date" %>
-  </div>
-</div>
+ <table>
+    <%= date_input_for(f, @offering, :registration_begins, "Registration Begins*")%>
+    <%= date_input_for(f, @offering, :registration_deadline, "Registration Deadline")%>
+    <%= date_input_for(f, @offering, :start_date, "Start Date*")%>
+    <%= date_input_for(f, @offering, :end_date, "End Date*")%>
+ </table>
+ <br />
+ </div>
 
 <hr />
 <br />
-  <div class="field">
-    <%= f.label :link %><br />
-    <%= f.text_field :link %>
-  </div>
-<br />
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description, :rows => 10 %>
-  </div>
+<table>
+    <%=content_tag(:tr, content_tag(:td, f.label(:link, "Listing website*")) << content_tag(:td, f.text_field(:link))) %>
+    <%=content_tag(:tr, content_tag(:td, f.label(:description, "Listing description*")) << content_tag(:td, f.text_area( :description, :rows => 3) << "<div class='count'> </div>".html_safe)) %>
+</table>
 <br />
 <hr />
 <br />
   <div>
-    <%= f.label :registered_artist_ids, "Registered contributing instructors" %><br /><i>Hold control to select multiple artists</i><br />
+    <%= f.label :registered_artist_ids, "Registered contributing instructors" %><br /><i>Hold control on Windows or command on Mac to select multiple artists</i><br />
 
     <%= f.collection_select :registered_artist_ids,
-        @artists, :id, :name, {},
+        @artists, :id, :list_name, {},
         :multiple => true,
         :size => 10,
         :name => 'offering[registered_artist_ids][]' %>
@@ -229,16 +187,27 @@
 <br />
   <div class="field">
     <%= f.label :unregistered_artists, "Unregistered contributing instructors (Comma separated)" %><br />
-    <%= f.text_area :unregistered_artists %>
+    <%= f.text_area :unregistered_artists, :cols => 60, :rows => 5 %>
   </div>
+<hr />
+<br />
 
+ <table>
+    <%=content_tag(:tr, content_tag(:td, f.label(:picture_main, "Main Picture")) << content_tag(:td, f.file_field(:picture_main))) %>
+    <%=content_tag(:tr, content_tag(:td, f.label(:picture_footer_left, "Left Footer Picture")) << content_tag(:td, f.file_field(:picture_footer_left)))%>
+    <%=content_tag(:tr, content_tag(:td, f.label(:picture_footer_right, "Right Footer Picture")) << content_tag(:td, f.file_field(:picture_footer_right))) %>
+</table>
+
+<hr />
 <br />
   <div class="actions">
-    <%if params[:action] = "edit"%>
-      <%= f.submit :confirm => "By editing this offering it will become pending until administrator revision" %>
+    <div class="ui-button-container">
+     <p><%if params[:action] = "edit"%>
+      <%= f.submit "Update Listing",  :onclick => "return confirm('Your listing will be pending until further administrator revision.')", :class=>"ui-button"  %>
     <% else%>
-      <%=f.submit%>
-    <%end%>
+      <%=f.submit "Create Listing",  :onclick => "return alert('Your listing will be pending until further administrator revision.')", :class=>"ui-button" %>
+    <%end%></p>
+   </div>
   </div>
 
 <% end %>

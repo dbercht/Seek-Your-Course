@@ -8,27 +8,30 @@
     });
   });
 </script>
+<div class="contentlearning-profile clearfix">
+  <h1>Edit Profile</h1>
+</div>
+
 <%= form_for(@profile, :url=>profiles_path, :html => {:multipart => true}) do |profile| %>
   <% if @profile.errors.any? %>
     <div id="error_notice" class="error_messages">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
       <ul>
       <% @profile.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+        <p><%= msg %></p>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-<div class="contentlearning-profile clearfix">
-  <h1>Edit Profile</h1>
-  <%=render :partial => 'form_attributes', :locals => {:profile => profile} %>
-</div>
+<div class='ui-widget-content'>
+    <%=render :partial => 'form_attributes', :locals => {:profile => profile} %>
 
-<hr/>
   <div class="actions">
-    <%= profile.submit :class =>"ui-button" %>
+    <div class='ui-button-container'><p><%= profile.submit :class =>"ui-button" %></p></div>
   </div>
-
+</div>
 <% end %>
 
 <%=render :partial => "users/user_admin"%>

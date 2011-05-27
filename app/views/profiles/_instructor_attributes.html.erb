@@ -1,11 +1,13 @@
-<h5>NOTE: this should be general information, not specific to one class/workshop</h5>
+<h5>NOTE: this should be general information, not specific to one class/workshop</h5><br />
 
+<h4>Please enter the required (*) information</h4>
+<hr />
 <h5>About Me:   </h5><br />
 <table>
     <%=content_tag(:tr, content_tag(:td, instructor.label(:country)) << content_tag(:td, @user.country)) %>
     <%=content_tag(:tr, content_tag(:td, instructor.label(:specific_location)) << content_tag(:td, instructor.text_field( :specific_location)))%>
     <%=content_tag(:tr, content_tag(:td, instructor.label(:focus, "What I do (Mediums/Modes of Expression)*")) << content_tag(:td, instructor.text_area( :focus, :rows => 3) << "<div class='count'></div>".html_safe))%>
-    <%=content_tag(:tr, content_tag(:td, instructor.label(:description, "Description of Your Work and Classes")) << content_tag(:td, instructor.text_area( :description, :rows => 4) << "<div class='count'></div>".html_safe))%>
+    <%=content_tag(:tr, content_tag(:td, instructor.label(:description, "Description of Your Work and Classes*")) << content_tag(:td, instructor.text_area( :description, :rows => 4) << "<div class='count'></div>".html_safe))%>
     <%=content_tag(:tr, content_tag(:td, instructor.label(:testimonials)) << content_tag(:td, instructor.text_area( :testimonials, :rows => 5)))%>
     
 </table>
@@ -13,15 +15,16 @@
     <h5>Ways to Contact Me:   </h5>
     <i><p>Select the checkboxes to make the information visible to viewers.</p></i><br />
 <table>
-    <%=content_tag(:tr, content_tag(:td, "")<< content_tag(:td,  "(Always visible)")<< content_tag(:td, instructor.label(:website, @user.website)) )%>
+    <%=content_tag(:tr, content_tag(:td, "")<< content_tag(:td,  "(Always visible)")<< content_tag(:td, instructor.label(:website, @user.website) ) )%>
     <%=content_tag(:tr, content_tag(:td, instructor.check_box(:email)) << content_tag(:td, "E-mail: ") << content_tag(:td, @user.email))%>
     
     <%=content_tag(:tr,  content_tag(:td, instructor.check_box(:facebook)) << content_tag(:td, "Facebook: ") << content_tag(:td, @user.facebook)) unless @user.facebook.size == 0%>
     <%=content_tag(:tr, content_tag(:td, instructor.check_box(:twitter)) << content_tag(:td, "Twitter: ") << content_tag(:td, @user.twitter)) unless @user.twitter.size == 0%>
+    <%=content_tag(:tr, content_tag(:td, instructor.check_box(:flickr)) << content_tag(:td, "Flickr: ") << content_tag(:td, @user.flickr)) unless @user.flickr.size == 0%>
     <%=content_tag(:tr, content_tag(:td, instructor.check_box(:blog)) << content_tag(:td, "Show RSS feed:") << content_tag(:td, @user.blog, :text_align => "right")) unless @user.blog.size == 0 %>
 </table>
 <table>
-    <%=content_tag(:tr, content_tag(:td, instructor.label(:other_links, "Other Links (comma separated)")) << content_tag(:td, instructor.text_area( :other_links, :rows => 4)))%>
+    <%=content_tag(:tr, content_tag(:td, instructor.label(:other_links, ("Other Social Media <br />(comma separated)").html_safe)) << content_tag(:td, instructor.text_area( :other_links, :rows => 4)))%>
 </table>
 
     <%=content_tag(:hr)%>

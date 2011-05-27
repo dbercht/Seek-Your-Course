@@ -14,7 +14,11 @@
 </div>
 
 
-<%= render :partial => 'offerings/browse' %>
+<% if current_user %>
+  <%= render :partial => 'users/user_admin' %>
+<%else%>
+  <%= render :partial => 'offerings/browse' %>
+<% end %>
 
 <% content_for :filter_results do %>
 

@@ -1,13 +1,23 @@
 class Profile < ActiveRecord::Base
-  CustomFields = %w(email blog facebook twitter)
+  CustomFields = %w(email blog facebook twitter flickr)
   CoordinatorType = %w(retreat conference)
 
   belongs_to :user
-  has_attached_file :picture, :styles => {:thumb => ["115x115#", :png], :regular => ["200x200#", :png]}
-  has_attached_file :picture1, :styles => {:thumb => ["150x150#", :png], :regular => ["200x200", :png]}
-  has_attached_file :picture2, :styles => {:thumb => ["150x150#", :png], :regular => ["200x200", :png]}
-  has_attached_file :picture3, :styles => {:thumb => ["150x150#", :png], :regular => ["200x200", :png]}
-  has_attached_file :picture4, :styles => {:thumb => ["150x150#", :png], :regular => ["200x200", :png]}
+  has_attached_file :picture, :styles => {:thumb => ["115x115#", :png], :regular => ["200x200#", :png]},
+ :url => "/assets/:class/:id/:attachment/:style.:extension",
+                    :path => ":rails_root/public/assets/:class/:id/:attachment/:style.:extension"
+  has_attached_file :picture1, :styles => {:thumb => ["150x150#", :png], :regular => ["200x200", :png]},
+ :url => "/assets/:class/:id/:attachment/:style.:extension",
+                    :path => ":rails_root/public/assets/:class/:id/:attachment/:style.:extension"
+  has_attached_file :picture2, :styles => {:thumb => ["150x150#", :png], :regular => ["200x200", :png]},
+ :url => "/assets/:class/:id/:attachment/:style.:extension",
+                    :path => ":rails_root/public/assets/:class/:id/:attachment/:style.:extension"
+  has_attached_file :picture3, :styles => {:thumb => ["150x150#", :png], :regular => ["200x200", :png]},
+ :url => "/assets/:class/:id/:attachment/:style.:extension",
+                    :path => ":rails_root/public/assets/:class/:id/:attachment/:style.:extension"
+  has_attached_file :picture4, :styles => {:thumb => ["150x150#", :png], :regular => ["200x200", :png]},
+ :url => "/assets/:class/:id/:attachment/:style.:extension",
+                    :path => ":rails_root/public/assets/:class/:id/:attachment/:style.:extension"
 
   serialize :preferences, Hash  
 

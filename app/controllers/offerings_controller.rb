@@ -130,7 +130,7 @@ class OfferingsController < ApplicationController
     end
 
     def load_variables
-      @artists = User.artists
+      @artists = User.artists.order("last_name")
       @types = Type.all
       @topics = Topic.all
       @regions = Region.find(:all, :include => [:locations])

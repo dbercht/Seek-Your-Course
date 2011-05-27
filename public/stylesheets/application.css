@@ -1,17 +1,39 @@
-.header a, .header img{
+a img, img{
+  border: none;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+a img{
   border: none;
 }
 
+table{
+  margin: 5px;
+}
+
+.ui-widget-content h5{
+  margin: 5px;
+}
+
+hr{
+  margin: 5px auto;
+}
+
+label{
+  text-decoration: underline;
+}
+
+.ui-button-container{
+  width: 100px;
+  margin: 5px auto;
+}
 .right{
   float: right;
 }
 
 .left{
   float: left;
-}
-
-a img{
-  border: none;
 }
 
 .syc_pagination {
@@ -50,8 +72,31 @@ a img{
   padding: 10px;
   font-size: .8em;
   background: #FEE;
+  margin: 5px;
+}
+
+.error_messages ul, .error_notice ul{
+  margin: 10px;
+  margin-left: 20px;
 }
 
 .field_with_errors{
   background: #FDD;
+}
+
+
+.signup{
+  margin: 5px;
+  width:200px;
+}
+ .login{
+  margin: 5px;
+  border-right: 1px solid black;
+  width: 250px;
+}
+
+/*********************** 960 Mods */
+
+.contentlearning_profile img{
+  margin: 5px;
 }

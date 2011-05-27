@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   ROLES = %w[instructor coordinator]
-  CustomSites = %w[website facebook twitter blog]
+  CustomSites = %w[website facebook twitter blog flickr]
   CustomLocations = %w[country postal_code address_line_1 address_line_2 phone_number]
 
   serialize :location, Hash
@@ -42,6 +42,10 @@ class User < ActiveRecord::Base
 
   def name
     [first_name, last_name].join(' ')
+  end
+
+  def list_name
+    [last_name, first_name].join(', ')
   end
 
   
