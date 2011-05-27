@@ -4,4 +4,5 @@ log/*.log
 tmp/
 config/database.yml
 public/system/*
-public/assets/*
+config/initializers/setup_mailer.rb
+
