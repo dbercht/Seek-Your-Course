@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.where("username = ?", params[:id]).first
+    #Restriction
     @profile = @user.profile
     @offerings = @user.coordinated_offerings.validated.future_offerings.includes(:plan, :topics, :type, :location, :coordinator, :region, :registered_artists).limit(3)
     @future_offerings = @user.offerings.validated.future_offerings.includes(:plan, :topics, :type, :location, :coordinator, :region, :registered_artists).limit(3)

@@ -160,10 +160,10 @@
 <br />
  <div id="date">
  <table>
-    <%= date_input_for(f, @offering, :registration_begins, "Registration Begins*")%>
-    <%= date_input_for(f, @offering, :registration_deadline, "Registration Deadline")%>
-    <%= date_input_for(f, @offering, :start_date, "Start Date*")%>
-    <%= date_input_for(f, @offering, :end_date, "End Date*")%>
+    <%= date_input_for(f, @offering, @offering.registration_begins, :registration_begins, "Registration Begins*")%>
+    <%= date_input_for(f, @offering, @offering.registration_deadline, :registration_deadline, "Registration Deadline")%>
+    <%= date_input_for(f, @offering, @offering.start_date, :start_date, "Start Date*")%>
+    <%= date_input_for(f, @offering, @offering.end_date, :end_date, "End Date*")%>
  </table>
  <br />
  </div>
