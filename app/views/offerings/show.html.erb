@@ -31,7 +31,7 @@
     <%= link_to(image_tag(@offering.picture_footer_right.url(:thumb)), @offering.picture_footer_right.url, :rel =>"gallery", :class => "pirobox_gall listingphotos2-3") %>
   <% end %>
 
-
+<div class="clearfix"></div>
   <% if current_admin || (current_user == @offering.coordinator) %>
     <%= link_to('Edit Offering', edit_offering_path(@offering))%>
   <% end %>
