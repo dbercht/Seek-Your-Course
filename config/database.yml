@@ -9,10 +9,10 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: seek-your-course_development 
+  database: jetgreene_syctst
   pool: 5
   username: root
-  password: leinad
+  password: syc!111
   socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -22,18 +22,15 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: seek-your-course_test
+  database: jetgreene_syctst
   pool: 5
   username: root
-  password: leinad
+  password: syc!111
   socket: /var/run/mysqld/mysqld.sock
 
 production:
   adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: seek-your-course_production
+  database: jetgreene_sycdev
   pool: 5
-  username: root
-  password: 
-  socket: /var/run/mysqld/mysqld.sock
+  username: jetgreene_sycdev
+  password: syc!111
