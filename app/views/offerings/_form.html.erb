@@ -211,7 +211,7 @@
 <% end %>
   <div class="actions">
     <div class="ui-button-container">
-     <p><%if params[:action] = "edit"%>
+     <p><%if params[:action] == "edit"%>
       <%= f.submit "Update Listing",  :onclick => "return confirm('Your listing will be pending until further administrator revision.')", :class=>"ui-button"  %>
     <% else%>
       <%=f.submit "Create Listing",  :onclick => "return alert('Your listing will be pending until further administrator revision.')", :class=>"ui-button" %>

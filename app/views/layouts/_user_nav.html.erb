@@ -19,7 +19,7 @@
       <% end %>
 
         <%= link_to "Advertise", ads_index_url, :class => "buttons-top"%>
-        <%= link_to "Contact", contact_url, :class => "buttons-top"%>
+        <%= mail_to "info@seekyourcourse.com", "Contact",  :class => "buttons-top"%>
         <%= link_to "About", about_index_url, :class => "buttons-top"%>
         <%= content_tag(:span, "Welcome #{current_user.name}", :class=>"buttons-top") if logged_in?%>
 </div>
