@@ -21,7 +21,7 @@ module OfferingsHelper
         end
       end
     end
-    if(html.size > 0)
+    if(html.length >  0)
       str = html.join(", ").html_safe
       str = str+ " | "
     end
@@ -52,17 +52,8 @@ module OfferingsHelper
     html.join(" ").html_safe
   end
 
-  def date_input_for(f, offering, attribute, attribute_label)
-    case attribute
-    when "registration_begins"
-      value_date = offering.registration_begins.strftime('%Y-%h-%d') unless offering.registration_begins.nil?
-    when "registration_deadline"
-      value_date = offering.registration_deadline.strftime('%Y-%h-%d') unless offering.registration_deadline.nil?
-    when "start_date"
-      value_date = offering.start_date.strftime('%Y-%h-%d') unless offering.start_date.nil?
-    when "end_date"
-      value_date = offering.end_date.strftime('%Y-%h-%d') unless offering.end_date.nil?
-    end
+  def date_input_for(f, offering, date, attribute, attribute_label)
+    value_date = date.strftime('%Y-%h-%d') unless date.nil?
     input = "<input type='text' id='#{attribute}' class='date' value='#{value_date}'/>".html_safe
     html = Array.new
     html << content_tag(:tr, content_tag(:td, f.label("#{attribute_label}")) << content_tag(:td, input << content_tag(:span, f.date_select(attribute), :class=>'date_select')))

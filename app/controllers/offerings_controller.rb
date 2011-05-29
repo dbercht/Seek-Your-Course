@@ -15,7 +15,7 @@ class OfferingsController < ApplicationController
     @topics = Topic.all
     if(params[:coordinated] == "true")
       logger.debug"*****************************************"
-      @offerings = current_user.coordinated_offerings.paginate(:page => params[:page], :per_page => 10)
+      @offerings = current_user.coordinated_offerings.future_offerings.paginate(:page => params[:page], :per_page => 10)
     else
       @offerings = Offering.validated(:all, :include => [:location, :coordinator, :registered_artists, :plan, :users]).paginate(:page => params[:page], :per_page => 10)
     end
@@ -27,6 +27,7 @@ class OfferingsController < ApplicationController
 
   def pending_index
     @offerings = Offering.pending(:include => [:location]).paginate(:page => params[:page], :per_page => 10)
+    
     respond_to do |format|
       format.html do
         @title = "Pending Offerings"
@@ -41,15 +42,16 @@ class OfferingsController < ApplicationController
   # GET /offerings/1.xml
   def show
     @offering = Offering.find(params[:id], :include => [:location, :region, :plan, :registered_artists, :topics, :type ])
-    unless(!@offering.validated && ((current_user == @offering.coordinator) || (current_admin)))
-     flash[:notice] = "This listing is still pending." 
-     redirect_to offerings_path
-    else 
-      respond_to do |format|
+    if(@offering.validated || ((current_user == @offering.coordinator) || (current_admin)))
+    #unless(((current_user == @offering.coordinator) || (current_admin)))
+     respond_to do |format|
         format.html # show.html.erb
         format.js {render :partial => "offering_info"}
         format.xml  { render :xml => @offering }
       end
+     else
+       flash[:notice] = "You cannot yet see this listing." 
+       redirect_to root_url 
     end  
   end
 
@@ -129,7 +131,7 @@ class OfferingsController < ApplicationController
       else
         @offering.update_attribute(:editable, false)
         if !current_admin         
-          redirect_to @offering, :notice => "Cannot edit past offerings"
+          redirect_to offerings_url(:coordinated=>true), :notice => "Cannot edit past listings."
         end
       end
     end
@@ -149,7 +151,7 @@ class OfferingsController < ApplicationController
         current_user.coordinated_offerings.find(params[:id])
       end
       rescue ActiveRecord::RecordNotFound
-        redirect_to root_url, :notice => "Cannot edit this offering"
+        redirect_to root_url, :notice => "Cannot edit this listing"
     end
 
 end
