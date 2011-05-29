@@ -195,8 +195,13 @@
 <br />
 
  <table>
+    <%=content_tag(:tr, content_tag(:td) << (content_tag(:td, image_tag( @offering.picture_main.url(:thumb))) if @offering.picture_main.exists?)) %>
     <%=content_tag(:tr, content_tag(:td, f.label(:picture_main, "Main Picture")) << content_tag(:td, f.file_field(:picture_main))) %>
+
+    <%=content_tag(:tr, content_tag(:td) << (content_tag(:td, image_tag( @offering.picture_footer_left.url(:thumb))) if @offering.picture_footer_left.exists?)) %>
     <%=content_tag(:tr, content_tag(:td, f.label(:picture_footer_left, "Left Footer Picture")) << content_tag(:td, f.file_field(:picture_footer_left)))%>
+
+    <%=content_tag(:tr, content_tag(:td) << (content_tag(:td, image_tag( @offering.picture_footer_right.url(:thumb))) if @offering.picture_footer_right.exists?)) %>
     <%=content_tag(:tr, content_tag(:td, f.label(:picture_footer_right, "Right Footer Picture")) << content_tag(:td, f.file_field(:picture_footer_right))) %>
 </table>
 
