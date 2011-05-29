@@ -24,6 +24,8 @@
       <%=h @offering.description%>
      </p>
     <p><strong>More Information</strong>: <%=link_to url_with_protocol(@offering.link), url_with_protocol(@offering.link), :target => "_blank"%></p>
+
+<div class="clearfix"></div>
 <% if @offering.picture_footer_left.exists? then %>
     <%= link_to(image_tag(@offering.picture_footer_left.url(:thumb)), @offering.picture_footer_left.url, :rel =>"gallery", :class => "pirobox_gall listingphotos2-3") %>
   <% end %>
