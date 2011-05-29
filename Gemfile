@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+gem 'rake', '~> 0.8.7'
 gem 'rails', '3.0.7.rc2'
 gem "nifty-generators", :group => :development
 
@@ -10,7 +11,7 @@ gem "bcrypt-ruby", :require => "bcrypt"
 
 gem "authlogic" 
 
-gem 'mysql2'
+gem 'mysql2', '< 0.3'
 
 gem "will_paginate", "3.0.pre2"
 
