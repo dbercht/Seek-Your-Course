@@ -28,7 +28,8 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       UserMailer.welcome_email(@user).deliver
-      redirect_to user_path(current_user), :notice => "Thank you for signing up! You are now logged in."
+      redirect_to manage_home_path
+      #redirect_to user_path(current_user), :notice => "Thank you for signing up! You are now logged in."
     else
       @locations = Location.all
       render :action => 'new'

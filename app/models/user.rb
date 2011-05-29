@@ -19,7 +19,8 @@ class User < ActiveRecord::Base
 
 
   has_one :profile, :dependent => :destroy
-
+  
+  validate :check_username
   validates_acceptance_of :terms_of_use, :on => 'create'
 
   validates_presence_of :postal_code, :country, :phone_number, :website
@@ -72,6 +73,11 @@ class User < ActiveRecord::Base
       (self.location ||= {})[method_name] = value
     end
   end
+
+  private
+    def check_username
+      errors.add(:username, "must contain only alphanumeric characters.") unless username.scan(/\W/).size.zero?
+    end
 
 
 end
