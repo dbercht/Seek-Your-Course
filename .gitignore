@@ -5,5 +5,5 @@ tmp/
 config/database.yml
 public/assets/*
 public/system/*
-config/initializers/setup_mailer.rb
+config/initializers/setup_mail.rb
 
