@@ -1,4 +1,7 @@
 class Location < ActiveRecord::Base
+  
+  default_scope order('state')
+
   belongs_to :region
   has_many :offerings, :conditions => {:validated => true}, :dependent => :destroy
   validates_presence_of :region_id, :state

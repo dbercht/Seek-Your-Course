@@ -65,6 +65,7 @@ class Offering < ActiveRecord::Base
   validates :type, :presence => true
   validates :link, :presence => true
   validates :title, :presence => true
+  validates :description, :presence => true
   validates_acceptance_of :terms_of_use, :on => 'create'
 
   validates_presence_of :start_date, :end_date, :registration_begins, :registration_deadline
