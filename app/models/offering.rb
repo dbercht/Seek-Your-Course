@@ -70,7 +70,7 @@ class Offering < ActiveRecord::Base
   validates_presence_of :start_date, :end_date, :registration_begins, :registration_deadline
   validates :registration_deadline, :date => {:after => :registration_begins}, :unless => lambda {registration_deadline.nil?}
 
-  validate :validate_length_of_description
+  validate :validate_length_of_description, :validate_online_location
 
   with_options :if => lambda {return type.category != "eCourse"} do |o|
     o.validates :specific_location, :presence => true
@@ -84,6 +84,10 @@ class Offering < ActiveRecord::Base
 
   def validate_length_of_description
     errors[:base] = "#{plan.name} only allows for #{DESCRIPTION_LENGTH_FOR_PLAN[plan.name]} words." if validate_plan_description_length?
+  end
+
+  def validate_online_location
+    errors[:base] = "Ecourses must be located online" if ((type.category == "eCourse")&&(location.state != "Online"))
   end
 
 
