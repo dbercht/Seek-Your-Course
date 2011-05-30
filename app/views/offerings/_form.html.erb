@@ -58,7 +58,7 @@
   });
 </script>
 <div class="contentlearning-profile clearfix">
-<%if params[:action]=='new'%>
+<%if ((params[:action]=='new')||(params[:action]=='create'))%>
   <h1>Create Listing</h1>
 <% else %>
   <h1>Edit Listing</h1>
