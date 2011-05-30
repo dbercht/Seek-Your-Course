@@ -100,7 +100,7 @@
 <br />
 <hr />
  <table>
-    <%=content_tag(:tr, content_tag(:td, f.label(:country, "Country*")) << content_tag(:td, grouped_collection_select(:offering, :location_id, @regions, :locations, :name, :id, :state, :prompt => true)), :id=>"country") %>
+    <%=content_tag(:tr, content_tag(:td, f.label(:country, "Country*")) << content_tag(:td, grouped_collection_select(:offering, :location_id, @regions, :locations, :name, :id, :state)), :id=>"country") %>
     <%=content_tag(:tr, content_tag(:td, f.label(:us_state, "US State")) << content_tag(:td, f.select( :us_state, [ 	
 	['Select a State', 'None'],
 	['Alabama', 'AL'], 
