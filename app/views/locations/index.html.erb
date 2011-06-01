@@ -3,11 +3,12 @@
 
 <% @locations.each do |location| %>
   
-    <%= link_to ((location.state << "<br />").html_safe, region_location_path(location.region, location)) unless location.offerings.size == 0%>
+    <%= link_to ((location.state << "<br />").html_safe, region_location_path(location.region, location))%>
     <% if current_admin %>
       | <%= link_to 'Edit', edit_region_location_path(location.region, location) %>
       | <%= link_to 'Destroy',  region_location_path(location.region, location), :confirm => 'Are you sure?', :method => :delete %>
     <%end%>
+    <br />
 <% end %>
 
 <br />
