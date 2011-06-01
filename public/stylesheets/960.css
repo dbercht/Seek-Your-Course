@@ -379,7 +379,7 @@
 
 .grid_adsright{
 	display:inline;
-	float: right;
+	float: left;
 	position: relative;
 	margin-left: 5px;
 	margin-right: 10.0px;

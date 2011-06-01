@@ -151,6 +151,10 @@ label{
 
 /*********************** 960 Mods */
 
+.wideheader a{
+	letter-spacing: 2px;
+	size: 16px;
+}
 .contentlearning_profile img{
   margin: 5px;
 }
