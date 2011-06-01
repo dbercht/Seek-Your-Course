@@ -1,3 +1,14 @@
+<script>
+  jQuery(document).ready(function(){
+    jQuery("#terms_info").hide();
+    jQuery(".ui-button").removeClass('hidden');
+    jQuery(".ui-button").click(function(){
+      jQuery("#terms_info").toggle();
+      jQuery("#show").toggle();
+    });
+  });
+</script>
+
 <%title "Manage"%>
 <div class="learning-results clearfix">
     
@@ -8,7 +19,12 @@
     <p>Your <strong>Public Profile</strong> is a way for users to see what you (or your retreat/conference) is all about even if you don't have any current listings. You can list your social media links, set it to pull in your most recent blog posts, have a gallery of images and write a short description. Your past listings will also show up there, so people can see where you have taught or what you have offered in the past.</p>
     <p><strong>If you teach at a conference or retreat</strong>, by registering you have made it possible for the coordinator of that conference or retreat to link to your Public Profile. <strong>The retreat or conference will then show up under your &quot;Upcoming&quot; teaching.</strong> This is a fantastic way to organize and publicize all the places you teach!</p>
     <p>Please use the &quot;Contact&quot; link above if you you have questions, comments or experience problems. We'd love to hear what works and what doesn't!</p>
-    <p>If you would like to refer back to the Terms of Use you read when you signed up, it is here &lt;LINK&gt;.</p>
+    <p>If you would like to refer back to the Terms of Use you read when you signed up, it is here.</p>
+    <span class="show_terms ui-button-container"><span id="show" class='ui-button hidden'>Show Terms of Use</span></span>
+    <div id="terms_info">
+      <%= render :partial => "static/terms_of_use"%>
+      <span class='ui-button hidden'>Hide Terms of Use</span>
+    </div>
 </div>
 
 <%= render :partial => "users/user_admin" %>

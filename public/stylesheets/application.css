@@ -1,3 +1,7 @@
+.hidden{
+  display: none;
+}
+
 a img, img{
   border: none;
   margin-left: 5px;
@@ -13,7 +17,7 @@ table tr td{
   padding: 5px;
 }
 
-.ui-widget-content h5{
+.ui-widget-content h5, .ui-widget-content h4, .ui-widget-content p{
   margin: 5px;
 }
 
@@ -111,6 +115,38 @@ label{
   margin: 5px;
   border-right: 1px solid black;
   width: 250px;
+}
+
+/*********************** Form Fields */
+#offering_registered_artist_ids{
+  width: 300px;
+  margin: 0px auto;
+}
+
+.field{
+ margin: 10px;
+}
+.field i{
+  font-size: .8em;
+}
+/*********************** Terms of Use */
+.terms_of_use{
+  border: 1px solid black;
+  height: 500px;
+  overflow: auto;
+  background: white;
+  padding: 5px;
+  margin: 5px;
+}
+
+.terms_of_use p{
+  font-size: .8em;
+}
+
+#acceptance{
+  margin: 5px;
+  font-size: .8em;
+  
 }
 
 /*********************** 960 Mods */

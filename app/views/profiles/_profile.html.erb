@@ -32,12 +32,14 @@
   <%= content_tag(:br, other_links_tag(@profile.other_links)) %><br />
   <%= content_tag(:br, "<strong>Blog Feed:</strong>".html_safe) if ((@profile.blog == "1") && (@profile.blog.size != 0))  %>
  <%= content_tag(:p, render(:partial => "profiles/rss_feed")) if ((@profile.blog == "1") && (@profile.blog.size != 0))  %></p>
+<div class="clearfix"></div>
 
 
             <%=content_tag(:span, link_to(image_tag(@profile.picture1.url(:regular)), @profile.picture1.url, :rel =>"gallery", :class => "pirobox_gall"), :class => 'listingphotos2-3') if @profile.picture1.exists? %> 
 
       <%=content_tag(:span, link_to(image_tag(@profile.picture2.url(:regular)), @profile.picture2.url, :rel =>"gallery", :class => "pirobox_gall"), :class => 'listingphotos2-3') if @profile.picture2.exists? %> 
 
+<div class="clearfix"></div>
       <%=content_tag(:span, link_to(image_tag(@profile.picture3.url(:regular)), @profile.picture3.url, :rel =>"gallery", :class => "pirobox_gall"), :class => 'listingphotos2-3') if @profile.picture3.exists? %> 
 
       <%=content_tag(:span, link_to(image_tag(@profile.picture4.url(:regular)), @profile.picture4.url, :rel =>"gallery", :class => "pirobox_gall"), :class => 'listingphotos2-3') if @profile.picture4.exists? %> 

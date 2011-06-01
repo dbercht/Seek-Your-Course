@@ -21,7 +21,7 @@ SeekYourCourse::Application.routes.draw do
 
   resources :user_sessions
   resources :users
-
+  match 'ads' => 'ads#create', :via => :post
   match "ads" => "static#ads", :as => 'ads_index'
   match "about" => "static#about", :as => 'about_index'
   match "contact" => "static#contact", :as => 'contact'

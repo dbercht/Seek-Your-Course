@@ -8,7 +8,9 @@
       jQuery("#specific_location").hide();
     }
     jQuery("#offering_description").keyup(function(){
-      jQuery(this).parents("tr").find(".count").html(jQuery(this).val().split(/\b[\s,\.-:;]*/).length + " out of " + + (-25*jQuery("#offering_plan_id").val() + 225*jQuery("#offering_plan_id").val() - 150*jQuery("#offering_plan_id").val()) + " words");
+    //  jQuery(this).parents("tr").find(".count").html(jQuery(this).val().split(/\b[\s,\.-:;]*/).length + " out of " + + (-25*jQuery("#offering_plan_id").val() + 225*jQuery("#offering_plan_id").val() - 150*jQuery("#offering_plan_id").val()) + " words");
+
+    jQuery(this).parents("tr").find(".count").html(jQuery(this).val().split(/\b[\s,\.-:;]*/).length + " out of 200 words");
     });
 
     jQuery("#start_date").change(function () {
@@ -65,7 +67,7 @@
 <% end %>
 </div>
 
-<div class="criteria-gallery ui-widget-content clearfix">
+<div class="contentlearning-profile clearfix ui-widget-content">
 <%= form_for(@offering, :html => {:multipart => true}) do |f| %>
   <% if @offering.errors.any? %>
     <div id="flash_error" class="error_messages">
@@ -177,8 +179,8 @@
 <br />
 <hr />
 <br />
-  <div>
-    <%= f.label :registered_artist_ids, "Registered contributing instructors" %><br /><i>Hold control on Windows or command on Mac to select multiple artists</i><br />
+  <div class="field">
+    <%= f.label :registered_artist_ids, "Registered contributing instructors" %><br /><i>Hold control on Windows or command on Mac to select multiple artists</i><br /><br />
 
     <%= f.collection_select :registered_artist_ids,
         @artists, :id, :list_name, {},
@@ -208,8 +210,12 @@
 <hr />
 <br />
 <%if @offering.new_record?%>
+  <div id='terms_of_use'>
+    <h3 style="margin:5px;">Please read the Terms of Use</h3>
+    <%= render :partial => "static/terms_of_use" %>
+  </div>
   <div id="acceptance">
-    <%= f.check_box(:terms_of_use) %>I agree with the conditions of creating an account with Seek Your Course as specified by the Terms of Use.
+    <%= f.check_box(:terms_of_use) %>I have read and agree with the Terms of Use.
   </div>
 <hr />
 <br />

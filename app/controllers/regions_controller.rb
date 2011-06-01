@@ -15,7 +15,7 @@ class RegionsController < ApplicationController
   # GET /regions/1
   # GET /regions/1.xml
   def show
-    @region = Region.where("name = ?", params[:id].gsub("-", " "))
+    @region = Region.where("name = ?", params[:id].gsub("-", " ")).first
 
     respond_to do |format|
       format.html # show.html.erb
@@ -74,7 +74,7 @@ class RegionsController < ApplicationController
   # DELETE /regions/1
   # DELETE /regions/1.xml
   def destroy
-    @region = Region.find(params[:id])
+    @region = Region.where("name = ?", params[:id].gsub("-", " ")).first
     @region.destroy
 
     respond_to do |format|
