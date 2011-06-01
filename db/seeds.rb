@@ -1,101 +1,199 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or create!d alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create!([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
-#   Mayor.create!(:name => 'Daley', :city => cities.first)
-
-Offering.destroy_all
-Type.destroy_all
-Topic.destroy_all
-Region.destroy_all
-Location.destroy_all
-Plan.destroy_all
-User.destroy_all
-
-User.create!(:username => 'artist', 
-		:password => 'seekyourcourse', 
-		:password_confirmation => 'seekyourcourse', 
-		:email => 'artist@syc.com', 
-		:is_admin => false, 
-		:name => "Artist",
-		:role => "Artist"
-)
-
-User.create!(:username => 'coordinator', 
-		:password => 'seekyourcourse', 
-		:password_confirmation => 'seekyourcourse', 
-		:email => 'coordinator@syc.com', 
-		:is_admin => false, 
-		:name => "Coordinator",
-		:role => "Coordinator"
-)
-
-User.create!(:username => 'admin', 
-		:password => 'seekyourcourse', 
-		:password_confirmation => 'seekyourcourse', 
-		:email => 'admin@syc.com', 
-		:is_admin => true, 
-		:name => "Admin",
-		:role => "Artist"
-)
-
-Type.create!(:category => "E-course")
-Type.create!(:category => "Weekend Retreat")
-
-Topic.create!(:category => "Drawing")
-Topic.create!(:category => "Sculpting")
-Topic.create!(:category => "Being Awesome")
-Topic.create!(:category => "Writing")
-Topic.create!(:category => "Education")
-
-Plan.create!(:name => "Basic")
-Plan.create!(:name => "Pro 1")
-Plan.create!(:name => "Pro 2")
-
-Region.create!(:name => "North America")
-Region.create!(:name => "Asia")
-
-60.times do |i|
-Location.create!(:state => "State#{i}", :region_id => rand(2)+ 1)
-end
-
- def random_array
-   @array = Array.new
-   @random
-   (Topic.all.size).times do |x|
-     @random = rand(2)
-     if(@random == 1)
-       if(x!=0)
-         @array << x
-       end
-     end
-   end
-   if @array == []
-     @array << Topic.all.size - 1
-   end
-   return @array
- end
-  
-   @action = ['Drawing', 'Painting', 'Yoga', 'Life', 'Lessons', 'Brushing', 'Horseback Riding', 'Coffee making']
-   @person = ['Elise', 'Alexandra', 'Tamara', 'Toby', 'Ian', 'Cassandra', 'Daniel', 'Jennifer']
-  
- 100.times do |i|
- @of = Offering.new(
-     :title => @action[rand(@action.size)] + " with " + @person[rand(@person.size)],
-     :location_id => Location.find(1 + rand(Location.all.size)).id,
-     :specific_location => 'Some city',
-     :registration_begins => Date.today + rand(50).days,
-     :registration_deadline => Date.today + (50 + rand(20)).days,
-     :start_date => Date.today + (70 + rand(50)).days,
-     :link => "www.artschool.com",
-     :description => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempor, augue quis accumsan fringilla, libero neque feugiat ligula, ac venenatis est ligula vel augue. Praesent enim lorem, feugiat nec elementum eleifend, facilisis et urna.",
-     :type_id => 1 + rand(Type.all.size),
-     :topic_ids => random_array,
-     :plan_id => 1+ rand(Plan.all.size),
-     :coordinator_id => 1 + rand(User.all.size)
-     )
-     @of.save
-  end
-    
+@region = Region.where(:name => 'Africa').first
+@region.locations.create!(:state=> 'Algeria')
+@region.locations.create!(:state=> 'Angola')
+@region.locations.create!(:state=> 'Benin')
+@region.locations.create!(:state=> 'Botswana')
+@region.locations.create!(:state=> 'Burkina')
+@region.locations.create!(:state=> 'Burundi')
+@region.locations.create!(:state=> 'Cameroon')
+@region.locations.create!(:state=> 'Cape Verde')
+@region.locations.create!(:state=> 'Central African Republic')
+@region.locations.create!(:state=> 'Chad')
+@region.locations.create!(:state=> 'Comoros')
+@region.locations.create!(:state=> 'Congo')
+@region.locations.create!(:state=> 'Congo, Democratic Republic of')
+@region.locations.create!(:state=> 'Djibouti')
+@region.locations.create!(:state=> 'Egypt')
+@region.locations.create!(:state=> 'Equatorial Guinea')
+@region.locations.create!(:state=> 'Eritrea')
+@region.locations.create!(:state=> 'Ethiopia')
+@region.locations.create!(:state=> 'Gabon')
+@region.locations.create!(:state=> 'Gambia')
+@region.locations.create!(:state=> 'Ghana')
+@region.locations.create!(:state=> 'Guinea')
+@region.locations.create!(:state=> 'Guinea-Bissau')
+@region.locations.create!(:state=> 'Ivory Coast')
+@region.locations.create!(:state=> 'Kenya')
+@region.locations.create!(:state=> 'Lesotho')
+@region.locations.create!(:state=> 'Liberia')
+@region.locations.create!(:state=> 'Libya')
+@region.locations.create!(:state=> 'Madagascar')
+@region.locations.create!(:state=> 'Malawi')
+@region.locations.create!(:state=> 'Mali')
+@region.locations.create!(:state=> 'Mauritania')
+@region.locations.create!(:state=> 'Mauritius')
+@region.locations.create!(:state=> 'Morocco')
+@region.locations.create!(:state=> 'Mozambique')
+@region.locations.create!(:state=> 'Namibia')
+@region.locations.create!(:state=> 'Niger')
+@region.locations.create!(:state=> 'Nigeria')
+@region.locations.create!(:state=> 'Rwanda')
+@region.locations.create!(:state=> 'Sao Tome and Principe')
+@region.locations.create!(:state=> 'Senegal')
+@region.locations.create!(:state=> 'Seychelles')
+@region.locations.create!(:state=> 'Sierra Leone')
+@region.locations.create!(:state=> 'Somalia')
+@region.locations.create!(:state=> 'South Africa')
+@region.locations.create!(:state=> 'Sudan')
+@region.locations.create!(:state=> 'Swaziland')
+@region.locations.create!(:state=> 'Tanzania')
+@region.locations.create!(:state=> 'Togo')
+@region.locations.create!(:state=> 'Tunisia')
+@region.locations.create!(:state=> 'Uganda')
+@region.locations.create!(:state=> 'Zambia')
+@region.locations.create!(:state=> 'Zimbabwe')
+@region = Region.where(:name => 'Asia').first
+@region.locations.create!(:state=> 'Afghanistan')
+@region.locations.create!(:state=> 'Bahrain')
+@region.locations.create!(:state=> 'Bangladesh')
+@region.locations.create!(:state=> 'Bhutan')
+@region.locations.create!(:state=> 'Brunei')
+@region.locations.create!(:state=> 'Burma (Myanmar)')
+@region.locations.create!(:state=> 'Cambodia')
+@region.locations.create!(:state=> 'China')
+@region.locations.create!(:state=> 'East Timor')
+@region.locations.create!(:state=> 'India')
+@region.locations.create!(:state=> 'Indonesia')
+@region.locations.create!(:state=> 'Iran')
+@region.locations.create!(:state=> 'Iraq')
+@region.locations.create!(:state=> 'Israel')
+@region.locations.create!(:state=> 'Japan')
+@region.locations.create!(:state=> 'Jordan')
+@region.locations.create!(:state=> 'Kazakstan')
+@region.locations.create!(:state=> 'Korea, North')
+@region.locations.create!(:state=> 'Korea, South')
+@region.locations.create!(:state=> 'Kuwait')
+@region.locations.create!(:state=> 'Kyrgyzstan')
+@region.locations.create!(:state=> 'Laos')
+@region.locations.create!(:state=> 'Lebanon')
+@region.locations.create!(:state=> 'Malaysia')
+@region.locations.create!(:state=> 'Maldives')
+@region.locations.create!(:state=> 'Mongolia')
+@region.locations.create!(:state=> 'Nepal')
+@region.locations.create!(:state=> 'Oman')
+@region.locations.create!(:state=> 'Pakistan')
+@region.locations.create!(:state=> 'Philippines')
+@region.locations.create!(:state=> 'Qatar')
+@region.locations.create!(:state=> 'Russian Federation')
+@region.locations.create!(:state=> 'Saudi Arabia')
+@region.locations.create!(:state=> 'Singapore')
+@region.locations.create!(:state=> 'Sri Lanka')
+@region.locations.create!(:state=> 'Syria')
+@region.locations.create!(:state=> 'Tajikistan')
+@region.locations.create!(:state=> 'Thailand')
+@region.locations.create!(:state=> 'Turkey')
+@region.locations.create!(:state=> 'Turkmenistan')
+@region.locations.create!(:state=> 'United Arab Emirates')
+@region.locations.create!(:state=> 'Uzbekistan')
+@region.locations.create!(:state=> 'Vietnam')
+@region.locations.create!(:state=> 'Yemen')
+@region = Region.where(:name => 'Europe').first
+@region.locations.create!(:state=> 'Albania')
+@region.locations.create!(:state=> 'Andorra')
+@region.locations.create!(:state=> 'Armenia')
+@region.locations.create!(:state=> 'Austria')
+@region.locations.create!(:state=> 'Azerbaijan')
+@region.locations.create!(:state=> 'Belarus')
+@region.locations.create!(:state=> 'Belgium')
+@region.locations.create!(:state=> 'Bosnia and Herzegovina')
+@region.locations.create!(:state=> 'Bulgaria')
+@region.locations.create!(:state=> 'Croatia')
+@region.locations.create!(:state=> 'Cyprus')
+@region.locations.create!(:state=> 'Czech Republic')
+@region.locations.create!(:state=> 'Denmark')
+@region.locations.create!(:state=> 'Estonia')
+@region.locations.create!(:state=> 'Finland')
+@region.locations.create!(:state=> 'France')
+@region.locations.create!(:state=> 'Georgia')
+@region.locations.create!(:state=> 'Germany')
+@region.locations.create!(:state=> 'Greece')
+@region.locations.create!(:state=> 'Hungary')
+@region.locations.create!(:state=> 'Iceland')
+@region.locations.create!(:state=> 'Ireland')
+@region.locations.create!(:state=> 'Italy')
+@region.locations.create!(:state=> 'Latvia')
+@region.locations.create!(:state=> 'Liechtenstein')
+@region.locations.create!(:state=> 'Lithuania')
+@region.locations.create!(:state=> 'Luxembourg')
+@region.locations.create!(:state=> 'Macedonia')
+@region.locations.create!(:state=> 'Malta')
+@region.locations.create!(:state=> 'Moldova')
+@region.locations.create!(:state=> 'Monaco')
+@region.locations.create!(:state=> 'Montenegro')
+@region.locations.create!(:state=> 'Netherlands')
+@region.locations.create!(:state=> 'Norway')
+@region.locations.create!(:state=> 'Poland')
+@region.locations.create!(:state=> 'Portugal')
+@region.locations.create!(:state=> 'Romania')
+@region.locations.create!(:state=> 'San Marino')
+@region.locations.create!(:state=> 'Serbia')
+@region.locations.create!(:state=> 'Slovakia')
+@region.locations.create!(:state=> 'Slovenia')
+@region.locations.create!(:state=> 'Spain')
+@region.locations.create!(:state=> 'Sweden')
+@region.locations.create!(:state=> 'Switzerland')
+@region.locations.create!(:state=> 'Ukraine')
+@region.locations.create!(:state=> 'United Kingdom')
+@region.locations.create!(:state=> 'Vatican City')
+@region = Region.where(:name => 'North America').first
+@region.locations.create!(:state=> 'Antigua and Barbuda')
+@region.locations.create!(:state=> 'Bahamas')
+@region.locations.create!(:state=> 'Barbados')
+@region.locations.create!(:state=> 'Belize')
+@region.locations.create!(:state=> 'Canada')
+@region.locations.create!(:state=> 'Costa Rica')
+@region.locations.create!(:state=> 'Cuba')
+@region.locations.create!(:state=> 'Dominica')
+@region.locations.create!(:state=> 'Dominican Republic')
+@region.locations.create!(:state=> 'El Salvador')
+@region.locations.create!(:state=> 'Grenada')
+@region.locations.create!(:state=> 'Guatemala')
+@region.locations.create!(:state=> 'Haiti')
+@region.locations.create!(:state=> 'Honduras')
+@region.locations.create!(:state=> 'Jamaica')
+@region.locations.create!(:state=> 'Mexico')
+@region.locations.create!(:state=> 'Nicaragua')
+@region.locations.create!(:state=> 'Panama')
+@region.locations.create!(:state=> 'Saint Kitts and Nevis')
+@region.locations.create!(:state=> 'Saint Lucia')
+@region.locations.create!(:state=> 'Saint Vincent and the Grenadines')
+@region.locations.create!(:state=> 'Trinidad and Tobago')
+@region.locations.create!(:state=> 'United States')
+@region = Region.where(:name => 'Oceania').first
+@region.locations.create!(:state=> 'Australia')
+@region.locations.create!(:state=> 'Fiji')
+@region.locations.create!(:state=> 'Kiribati')
+@region.locations.create!(:state=> 'Marshall Islands')
+@region.locations.create!(:state=> 'Micronesia')
+@region.locations.create!(:state=> 'Nauru')
+@region.locations.create!(:state=> 'New Zealand')
+@region.locations.create!(:state=> 'Palau')
+@region.locations.create!(:state=> 'Papua New Guinea')
+@region.locations.create!(:state=> 'Samoa')
+@region.locations.create!(:state=> 'Solomon Islands')
+@region.locations.create!(:state=> 'Tonga')
+@region.locations.create!(:state=> 'Tuvalu')
+@region.locations.create!(:state=> 'Vanuatu')
+@region = Region.where(:name => 'South America').first
+@region.locations.create!(:state=> 'Argentina')
+@region.locations.create!(:state=> 'Bolivia')
+@region.locations.create!(:state=> 'Brazil')
+@region.locations.create!(:state=> 'Chile')
+@region.locations.create!(:state=> 'Colombia')
+@region.locations.create!(:state=> 'Ecuador')
+@region.locations.create!(:state=> 'Guyana')
+@region.locations.create!(:state=> 'Paraguay')
+@region.locations.create!(:state=> 'Peru')
+@region.locations.create!(:state=> 'Suriname')
+@region.locations.create!(:state=> 'Uruguay')
+@region.locations.create!(:state=> 'Venezuela')
