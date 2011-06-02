@@ -1,8 +1,9 @@
 <script>
+
   jQuery(document).ready(function(){
     
     jQuery("#us_states").hide();
-    jQuery(".date_select").hide();    
+    //jQuery(".date_select").hide();    
     jQuery(".date").datepicker({minDate: new Date()});
     if(jQuery("#type").find("option:selected").text() == "eCourse"){
       jQuery("#specific_location").hide();
@@ -14,9 +15,9 @@
     });
 
     jQuery("#start_date").change(function () {
-        jQuery(this).parents("td").find(".date_select select:first").val(parseInt(jQuery(this).val().split("/")[2]));
-        jQuery(this).parents("td").find(".date_select select:first").next().val(parseInt(jQuery(this).val().split("/")[0]));
-        jQuery(this).parents("td").find(".date_select select:first").next().next().val(parseInt(jQuery(this).val().split("/")[1]));
+        jQuery(this).parents("td").find(".date_select select:first").val(parseInt(jQuery(this).val().split("/")[2].replace(/^[ 0]/g,'')));
+        jQuery(this).parents("td").find(".date_select select:first").next().val(parseInt(jQuery(this).val().split("/")[0].replace(/^[ 0]/g,'')));
+        jQuery(this).parents("td").find(".date_select select:first").next().next().val(parseInt(jQuery(this).val().split("/")[1].replace(/^[ 0]/g,'')));
         jQuery("#registration_begins").datepicker("option", "maxDate", new Date(jQuery(this).val()));
         if(jQuery("#registration_deadline") > jQuery(this).val()){
           jQuery("#registration_deadline").datepicker("option", "maxDate", new Date(jQuery(this).val()));
@@ -24,21 +25,21 @@
 	jQuery("#end_date").datepicker("option", "minDate", new Date(jQuery(this).val()));
     });
     jQuery("#registration_begins").change(function () {
-       jQuery(this).parents("td").find(".date_select select:first").val(parseInt(jQuery(this).val().split("/")[2]));
-        jQuery(this).parents("td").find(".date_select select:first").next().val(parseInt(jQuery(this).val().split("/")[0]));
-        jQuery(this).parents("td").find(".date_select select:first").next().next().val(parseInt(jQuery(this).val().split("/")[1]));
+        jQuery(this).parents("td").find(".date_select select:first").val(parseInt(jQuery(this).val().split("/")[2].replace(/^[ 0]/g,'')));
+        jQuery(this).parents("td").find(".date_select select:first").next().val(parseInt(jQuery(this).val().split("/")[0].replace(/^[ 0]/g,'')));
+        jQuery(this).parents("td").find(".date_select select:first").next().next().val(parseInt(jQuery(this).val().split("/")[1].replace(/^[ 0]/g,'')));
         jQuery("#registration_deadline").datepicker("option", "minDate", new Date(jQuery(this).val()));
         jQuery("#registration_deadline").datepicker("option", "maxDate", new Date(jQuery("#start_date").val()));
     });
     jQuery("#end_date").change(function () {
-       jQuery(this).parents("td").find(".date_select select:first").val(parseInt(jQuery(this).val().split("/")[2]));
-        jQuery(this).parents("td").find(".date_select select:first").next().val(parseInt(jQuery(this).val().split("/")[0]));
-        jQuery(this).parents("td").find(".date_select select:first").next().next().val(parseInt(jQuery(this).val().split("/")[1]));
+        jQuery(this).parents("td").find(".date_select select:first").val(parseInt(jQuery(this).val().split("/")[2].replace(/^[ 0]/g,'')));
+        jQuery(this).parents("td").find(".date_select select:first").next().val(parseInt(jQuery(this).val().split("/")[0].replace(/^[ 0]/g,'')));
+        jQuery(this).parents("td").find(".date_select select:first").next().next().val(parseInt(jQuery(this).val().split("/")[1].replace(/^[ 0]/g,'')));
     });         
     jQuery("#registration_deadline").change(function () {
-       jQuery(this).parents("td").find(".date_select select:first").val(parseInt(jQuery(this).val().split("/")[2]));
-        jQuery(this).parents("td").find(".date_select select:first").next().val(parseInt(jQuery(this).val().split("/")[0]));
-        jQuery(this).parents("td").find(".date_select select:first").next().next().val(parseInt(jQuery(this).val().split("/")[1]));
+        jQuery(this).parents("td").find(".date_select select:first").val(parseInt(jQuery(this).val().split("/")[2].replace(/^[ 0]/g,'')));
+        jQuery(this).parents("td").find(".date_select select:first").next().val(parseInt(jQuery(this).val().split("/")[0].replace(/^[ 0]/g,'')));
+        jQuery(this).parents("td").find(".date_select select:first").next().next().val(parseInt(jQuery(this).val().split("/")[1].replace(/^[ 0]/g,'')));
     })
 
     jQuery("#type").find("select").change(function() {
@@ -190,7 +191,8 @@
   </div>
 <br />
   <div class="field">
-    <%= f.label :unregistered_artists, "Unregistered contributing instructors (Comma separated)" %><br />
+    <%= f.label :unregistered_artists, "Unregistered contributing instructors (Comma separated)" %><br /><i>To add instructors who have not yet registered with SYC, type their names here. (If you have guest posts or feature a creative person in your offering, but they are not a main instructor, please add them to your listing description.) </i><br /><br />
+
     <%= f.text_area :unregistered_artists, :cols => 60, :rows => 5 %>
   </div>
 <hr />

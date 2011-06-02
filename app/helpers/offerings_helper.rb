@@ -26,6 +26,20 @@ module OfferingsHelper
       str = str+ " | "
     end
   end
+
+  def artists_for_title(offering)
+    html = Array.new
+    html << link_to(offering.coordinator.name, offering.coordinator)
+    offering.registered_artists.size.times do |i|
+      html << [link_to(offering.registered_artists[i].name, offering.registered_artists[i])]
+    end
+    if(offering.unregistered_artists.size > 0)
+      html << [offering.unregistered_artists.split(", ")]  
+    end
+     if(html.length >  0)
+      str = html.join(", ").html_safe
+    end
+  end
  
   def show_topics_for(offering)
     html = Array.new
