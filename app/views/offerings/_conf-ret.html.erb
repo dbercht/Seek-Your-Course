@@ -10,9 +10,14 @@
       <strong>Topics</strong>: 
     <%= @offering.topics.map{|k| k.category}.join(', ') %></p>
 
-    <p><strong>Instructors</strong>: <% @offering.registered_artists.each do |user| %>
-      <%= link_to(user.name, user_path(user)) %>,
-    <% end %>
+<% if !@offering.registered_artists.size.zero? || !@offering.unregistered_artists.size.zero? %>
+    <p><strong>Instructors</strong>: 
+    <% @artists = @offering.registered_artists.map{|k| link_to(k.name, user_path(k))} %>
+     <%= @artists.join(", ").html_safe%>
+    <% if !@offering.unregistered_artists.size.zero? &&  !@offering.registered_artists.size.zero? %>
+      <%= content_tag(:span, ", ")%>
+    <%end%>
+<% end %>
 
     <%= @offering.unregistered_artists %></p>
 
