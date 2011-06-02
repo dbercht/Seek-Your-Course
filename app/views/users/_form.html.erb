@@ -75,30 +75,25 @@
 <hr />
 <br />
 <table>
-    <%= f.fields_for :location do |o| %>
+      <%=content_tag(:tr, content_tag(:td, f.label(:adress_line_1, "Address Line 1*")) << content_tag(:td, f.text_field( :address_line_1))) %>
+      <%=content_tag(:tr, content_tag(:td, f.label(:address_line_2, "Address Line 2")) << content_tag(:td, f.text_field( :address_line_2))) %>
+      <%=content_tag(:tr, content_tag(:td, f.label(:postal_code, "Postal Code*")) << content_tag(:td, f.text_field( :postal_code))) %>
+      <%=content_tag(:tr, content_tag(:td, f.label(:country, "Country*")) << content_tag(:td, f.collection_select(:country, Location::COUNTRIES, :to_s, :to_s, :prompt => true ))) %>
+      <%=content_tag(:tr, content_tag(:td, f.label(:phone_number, "Phone Number*")) << content_tag(:td, f.text_field(:phone_number))) %>
 
-      <%=content_tag(:tr, content_tag(:td, o.label(:adress_line_1, "Address Line 1*")) << content_tag(:td, o.text_field( :address_line_1, :value => @user.location[:address_line_1]))) %>
-      <%=content_tag(:tr, content_tag(:td, o.label(:address_line_2, "Address Line 2")) << content_tag(:td, o.text_field( :address_line_2, :value => @user.location[:address_line_2]))) %>
-      <%=content_tag(:tr, content_tag(:td, o.label(:postal_code, "Postal Code*")) << content_tag(:td, o.text_field( :postal_code, :value => @user.location[:postal_code]))) %>
-      <%=content_tag(:tr, content_tag(:td, o.label(:country, "Country*")) << content_tag(:td, f.collection_select(:country, Location::COUNTRIES, :to_s, :to_s, :prompt => true ))) %>
-      <%=content_tag(:tr, content_tag(:td, o.label(:phone_number, "Phone Number*")) << content_tag(:td, o.text_field( :phone_number, :value => @user.location[:phone_number]))) %>
-
-  <% end %>
 </table>
 <hr />
 <br />
 <table>
-    <%= f.fields_for :websites do |o| %>
 
-      <%=content_tag(:tr, content_tag(:td, o.label(:website, "Website*")) << content_tag(:td, o.text_field( :website, :value => @user.websites[:website]))) %>
+      <%=content_tag(:tr, content_tag(:td, f.label(:website, "Website*")) << content_tag(:td, f.text_field( :website))) %>
 
-      <%=content_tag(:tr, content_tag(:td, o.label(:facebook)) << content_tag(:td, f.text_field( :facebook, :value => @user.facebook)), :class => 'facebook') %>
-      <%=content_tag(:tr, content_tag(:td, o.label(:facebook_inexistant?, "I don't have a facebook account")) << content_tag(:td, o.check_box( :facebook_inexistant?, {:checked => (@user.websites[:facebook] == ""), :class => "facebook_inexistant"}, "true", "false"))) %>
-      <%=content_tag(:tr, content_tag(:td, o.label(:twitter)) << content_tag(:td, o.text_field( :twitter, :value => @user.websites[:twitter])), :class => 'twitter') %>
-      <%=content_tag(:tr, content_tag(:td, o.label(:twitter_inexistant?, "I don't have a twitter account")) << content_tag(:td, o.check_box( :twitter_inexistant?, {:checked => (@user.websites[:twitter] == ""), :class => "twitter_inexistant"}, "true", "false"))) %>
-      <%=content_tag(:tr, content_tag(:td, o.label(:flickr, "Flickr")) << content_tag(:td, o.text_field( :flickr, :value => @user.websites[:flickr]))) %>
-      <%=content_tag(:tr, content_tag(:td, o.label(:blog, "Blog RSS Feed URL")) << content_tag(:td, o.text_field( :blog, :value => @user.websites[:blog]))) %>
-  <% end %>
+      <%=content_tag(:tr, content_tag(:td, f.label(:facebook)) << content_tag(:td, f.text_field( :facebook)), :class => 'facebook') %>
+      <%=content_tag(:tr, content_tag(:td, f.label(:facebook_inexistant?, "I don't have a facebook account")) << content_tag(:td, f.check_box( :facebook_inexistant?, {:checked => (@user.facebook == ""), :class => "facebook_inexistant"}, "true", "false"))) %>
+      <%=content_tag(:tr, content_tag(:td, f.label(:twitter)) << content_tag(:td, f.text_field( :twitter)), :class => 'twitter') %>
+      <%=content_tag(:tr, content_tag(:td, f.label(:twitter_inexistant?, "I don't have a twitter account")) << content_tag(:td, f.check_box( :twitter_inexistant?, {:checked => (@user.twitter == ""), :class => "twitter_inexistant"}, "true", "false"))) %>
+      <%=content_tag(:tr, content_tag(:td, f.label(:flickr, "Flickr")) << content_tag(:td, f.text_field( :flickr))) %>
+      <%=content_tag(:tr, content_tag(:td, f.label(:blog, "Blog RSS Feed URL")) << content_tag(:td, f.text_field( :blog, :value => @user.blog))) %>
 
 </table>
 <hr />

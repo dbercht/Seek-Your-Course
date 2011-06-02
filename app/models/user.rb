@@ -1,12 +1,7 @@
 class User < ActiveRecord::Base
   ROLES = %w[instructor coordinator]
-  CustomSites = %w[website facebook twitter blog flickr]
-  CustomLocations = %w[country postal_code address_line_1 address_line_2 phone_number]
-
-  serialize :location, Hash
-  serialize :websites, Hash
   
-  attr_accessible :last_name, :first_name, :role, :institution_name, :location, :websites
+  attr_accessible :website, :facebook, :twitter, :blog, :flickr, :country, :postal_code, :address_line_1, :address_line_2, :phone_number,:last_name, :first_name, :role, :institution_name, :twitter_inexistant, :facebook_inexistant
   attr_protected :is_admin
   acts_as_authentic
 
@@ -53,26 +48,26 @@ class User < ActiveRecord::Base
   end
 
   
-  CustomSites.each do |method_name|
-    define_method(method_name) do
-      (self.websites ||= {})[method_name]
-    end
-    
-    define_method("#{method_name}=") do |value|
-      (self.websites ||= {})[method_name] = value
-    end
-  end
+#  CustomSites.each do |method_name|
+#    define_method(method_name) do
+#      (self.websites ||= {})[method_name]
+#    end
+##    
+#    define_method("#{method_name}=") do |value|
+#      (self.websites ||= {})[method_name] = value
+#    end
+#  end
 
   
-  CustomLocations.each do |method_name|
-    define_method(method_name) do
-      (self.location ||= {})[method_name]
-    end
-    
-    define_method("#{method_name}=") do |value|
-      (self.location ||= {})[method_name] = value
-    end
-  end
+#  CustomLocations.each do |method_name|
+#    define_method(method_name) do
+#      (self.location ||= {})[method_name]
+#    end
+#    
+#    define_method("#{method_name}=") do |value|
+#      (self.location ||= {})[method_name] = value
+#    end
+#  end
 
   private
     def check_username
