@@ -1,3 +1,12 @@
+Region.create(:name=>"Africa")
+Region.create(:name=>"Asia")
+Region.create(:name=>"North America")
+Region.create(:name=>"South America")
+Region.create(:name=>"Oceania")
+Region.create(:name=>"Europe")
+
+
+
 @region = Region.where(:name => 'Africa').first
 @region.locations.create!(:state=> 'Algeria')
 @region.locations.create!(:state=> 'Angola')
