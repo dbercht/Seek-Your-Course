@@ -17,8 +17,10 @@
     <% if !@offering.unregistered_artists.size.zero? &&  !@offering.registered_artists.size.zero? %>
       <%= content_tag(:span, ", ")%>
     <%end%>
+    <%= @offering.unregistered_artists %></p>
+
 <% end %>
 
-    <%= @offering.unregistered_artists %></p>
+
 
  
