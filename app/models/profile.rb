@@ -21,7 +21,7 @@ class Profile < ActiveRecord::Base
 
   serialize :preferences, Hash  
 
-  validates_length_of :description, :maximum => 100, :tokenizer => lambda { |str| str.scan(/\w+/) }
+
   validates :description, :presence => true
   validates :focus, :length => {:maximum => 90}, :presence => true
 
@@ -37,6 +37,16 @@ class Profile < ActiveRecord::Base
   validates_attachment_size :picture4, :less_than => 5.megabyte
   validates_attachment_presence :picture
 
+  validate :validate_length_of_description
+
+  def validate_description_length?
+    description.scan(/\w+/).length > 100
+  end
+
+  def validate_length_of_description
+    errors[:base] = "Descriptiopn only allows for 100 words." if validate_description_length?
+  end
+
   CustomFields.each do |method_name|
     define_method(method_name) do
       (self.preferences ||= {})[method_name]
@@ -46,6 +56,7 @@ class Profile < ActiveRecord::Base
       (self.preferences ||= {})[method_name] = value
     end
   end
+
 
 
 end
