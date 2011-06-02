@@ -1,6 +1,9 @@
   <h2><%= @offering.title %></h2>
-	  <h5>Instructor: 
-    <%= link_to @offering.coordinator.name, user_path(@offering.coordinator)%></h5>
+	  <h5>Instructor<%=((@offering.registered_artists.size + @offering.unregistered_artists.size)>1?"s":"" )%>:
+  <%=artists_for_title(@offering)%>
+</h5>
+
+
     <p>    <% if @offering.picture_main.exists? then %>
       <span class="right"><%= link_to(image_tag(@offering.picture_main.url(:thumb)), @offering.picture_main.url, :rel =>"gallery", :class => "pirobox_gall")%></span>
     <% end %>
@@ -8,13 +11,4 @@
       <strong>Location</strong>: Online<br />
       <strong>Topics</strong>: <%= @offering.topics.map{|k| k.category}.join(', ') %></p>
 
-<% if !@offering.registered_artists.size.zero? || !@offering.unregistered_artists.size.zero? %>
-    <p><strong>Instructors</strong>: 
-    <% @artists = @offering.registered_artists.map{|k| link_to(k.name, user_path(k))} %>
-     <%= @artists.join(", ").html_safe%>
-    <% if !@offering.unregistered_artists.size.zero? &&  !@offering.registered_artists.size.zero? %>
-      <%= content_tag(:span, ", ")%>
-    <%end%>
-    <%= @offering.unregistered_artists %></p>
 
-<% end %>
