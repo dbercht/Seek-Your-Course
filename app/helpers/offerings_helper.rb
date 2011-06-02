@@ -3,7 +3,7 @@ module OfferingsHelper
     html = Array.new
     if(offering.type.category == "eCourse")
       html << link_to(offering.coordinator.name, offering.coordinator)
-    else
+    end
       if(offering.registered_artists.size == 0)
         html << [offering.unregistered_artists.split(", ")[0]]
         if(offering.unregistered_artists.split(", ").size > 1)
@@ -16,11 +16,10 @@ module OfferingsHelper
         offering.registered_artists.size.times do |i|
           html << [link_to(offering.registered_artists[i].name, offering.registered_artists[i])]
         end
-        if(offering.registered_artists.size > 2)
+        if((offering.registered_artists.size + (offering.unregistered_artists.split(", ").size)) > 2)
           html << ["Various"]
         end
       end
-    end
     if(html.length >  0)
       str = html.join(", ").html_safe
       str = str+ " | "
@@ -31,7 +30,8 @@ module OfferingsHelper
     html = Array.new
     html << link_to(offering.coordinator.name, offering.coordinator)
     offering.registered_artists.size.times do |i|
-      html << [link_to(offering.registered_artists[i].name, offering.registered_artists[i])]
+      unless (offering.registered_artists[i] == offering.coordinator)
+        html << [link_to(offering.registered_artists[i].name, offering.registered_artists[i])]  end
     end
     if(offering.unregistered_artists.size > 0)
       html << [offering.unregistered_artists.split(", ")]  
