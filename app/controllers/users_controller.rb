@@ -8,8 +8,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @user.location = Hash.new
-    @user.websites = Hash.new
     @locations = Location.all
   end
 

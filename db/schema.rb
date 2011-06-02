@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110526210845) do
+ActiveRecord::Schema.define(:version => 20110602025420) do
 
   create_table "ads", :force => true do |t|
     t.string   "url"
@@ -144,7 +144,7 @@ ActiveRecord::Schema.define(:version => 20110526210845) do
   create_table "users", :force => true do |t|
     t.string   "username"
     t.string   "email"
-    t.boolean  "is_admin",          :default => false
+    t.boolean  "is_admin",            :default => false
     t.string   "persistence_token"
     t.string   "crypted_password"
     t.string   "password_salt"
@@ -153,9 +153,19 @@ ActiveRecord::Schema.define(:version => 20110526210845) do
     t.string   "role"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "location"
     t.string   "institution_name"
-    t.string   "websites"
+    t.string   "website"
+    t.string   "facebook"
+    t.string   "twitter"
+    t.string   "blog"
+    t.string   "flickr"
+    t.string   "country"
+    t.string   "postal_code"
+    t.string   "address_line_1"
+    t.string   "address_line_2"
+    t.string   "phone_number"
+    t.boolean  "facebook_inexistant"
+    t.boolean  "twitter_inexistant"
   end
 
 end
