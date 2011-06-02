@@ -10,18 +10,18 @@
     <%= render :partial => "conf-ret"%>
   <% end %>
 
-    <p><strong>Starts</strong>: <%= @offering.start_date.strftime('%B %g, %Y') %> - 
+    <p><strong>Starts</strong>: <%= @offering.start_date.strftime('%B %d, %Y') %> - 
     <%= distance_of_time_in_words_to_now(@offering.start_date)%> until start date. <br />
-      <strong>Ends</strong>: <%= @offering.end_date.strftime('%B %g, %Y') %><br />
-      <strong>Registration Begins</strong>: <%= @offering.registration_begins.strftime('%B %g, %Y') %><br />
+      <strong>Ends</strong>: <%= @offering.end_date.strftime('%B %d, %Y') %><br />
+      <strong>Registration Begins</strong>: <%= @offering.registration_begins.strftime('%B %d, %Y') %><br />
      <%unless @offering.registration_deadline.nil? %>
         <strong>Registration Deadline:</strong>
-        <%= @offering.registration_deadline.strftime('%B %g, %Y') %> - 
+        <%= @offering.registration_deadline.strftime('%B %d, %Y') %> - 
         <%= distance_of_time_in_words_to_now(@offering.registration_deadline)%> until registration deadline.
     <%end%> </p>
 
     <p><strong>Description</strong>:<br />
-      <%=h @offering.description%>
+      <%= @offering.description%>
      </p>
     <p><strong>More Information</strong>: <%=link_to url_with_protocol(@offering.link), url_with_protocol(@offering.link), :target => "_blank"%></p>
 
