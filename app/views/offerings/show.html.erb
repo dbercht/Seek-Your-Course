@@ -10,10 +10,10 @@
     <%= render :partial => "conf-ret"%>
   <% end %>
 
-    <p><strong>Starts</strong>: <%= @offering.start_date.strftime('%d %h, %Y') %> - 
+    <p><strong>Starts</strong>: <%= @offering.start_date.strftime('%B %g, %Y') %> - 
     <%= distance_of_time_in_words_to_now(@offering.start_date)%> until start date. <br />
-      <strong>Ends</strong>: <%= @offering.end_date.strftime('%d %h, %Y') %><br />
-      <strong>Registration Begins</strong>: <%= @offering.registration_begins.strftime('%d %g, %Y') %><br />
+      <strong>Ends</strong>: <%= @offering.end_date.strftime('%B %g, %Y') %><br />
+      <strong>Registration Begins</strong>: <%= @offering.registration_begins.strftime('%B %g, %Y') %><br />
      <%unless @offering.registration_deadline.nil? %>
         <strong>Registration Deadline:</strong>
         <%= @offering.registration_deadline.strftime('%B %g, %Y') %> - 
