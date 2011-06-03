@@ -181,7 +181,7 @@
 <hr />
 <br />
   <div class="field">
-    <%= f.label :registered_artist_ids, "Registered contributing instructors" %><br /><i>Hold control on Windows or command on Mac to select multiple artists</i><br /><i>To deselect a single artist, hold control or Windows of command on Mac and click on the instructor.</i><br /><br />
+    <%= f.label :registered_artist_ids, "Registered contributing instructors" %><br /><i>Hold control on Windows or command on Mac to select multiple artists.</i><br /><i>To deselect a single artist, hold control or Windows of command on Mac and click on the instructor.</i><br /><br />
 
     <%= f.collection_select :registered_artist_ids,
         @artists, :id, :list_name, {},
