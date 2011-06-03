@@ -3,7 +3,7 @@
   jQuery(document).ready(function(){
     
     jQuery("#us_states").hide();
-    //jQuery(".date_select").hide();    
+    jQuery(".date_select").hide();    
     jQuery(".date").datepicker({minDate: new Date()});
     if(jQuery("#type").find("option:selected").text() == "eCourse"){
       jQuery("#specific_location").hide();
@@ -181,13 +181,13 @@
 <hr />
 <br />
   <div class="field">
-    <%= f.label :registered_artist_ids, "Registered contributing instructors" %><br /><i>Hold control on Windows or command on Mac to select multiple artists</i><br /><br />
+    <%= f.label :registered_artist_ids, "Registered contributing instructors" %><br /><i>Hold control on Windows or command on Mac to select multiple artists</i><br /><i>To deselect a single artist, hold control or Windows of command on Mac and click on the instructor.</i><br /><br />
 
     <%= f.collection_select :registered_artist_ids,
         @artists, :id, :list_name, {},
         :multiple => true,
         :size => 10,
-        :name => 'offering[registered_artist_ids][]' %>
+        :name => 'offering[registered_artist_ids][]', :prompt => true %>
   </div>
 <br />
   <div class="field">
