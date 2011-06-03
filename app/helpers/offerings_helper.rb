@@ -21,7 +21,7 @@ module OfferingsHelper
         end
       end
     if(html.length >  0)
-      str = html.join(", ").html_safe
+      str = html.uniq.join(", ").html_safe
       str = str+ " | "
     end
   end
