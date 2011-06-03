@@ -14,7 +14,7 @@ module OfferingsHelper
         end
       elsif(0 < offering.registered_artists.size && offering.registered_artists.size <= 2 )
         offering.registered_artists.size.times do |i|
-          html << [link_to(offering.registered_artists[i].name, offering.registered_artists[i])]
+          html << link_to(offering.registered_artists[i].name, offering.registered_artists[i])
         end
         if((offering.registered_artists.size + (offering.unregistered_artists.split(", ").size)) > 2)
           html << ["Various"]
