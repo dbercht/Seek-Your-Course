@@ -43,7 +43,9 @@
 <br />
 </p>
   <% if current_admin || (offering.coordinator == current_user) %>
-    <%= link_to 'Edit', edit_offering_path(offering) %>
+<br />
+    <p><%= link_to 'Edit Listing', edit_offering_path(offering), :class => "ui-button left" %>     <%= button_to 'Delete Listing', offering_path(offering), :method => "delete",  :onclick => "return confirm('Are you sure you want to delete this listing?')", :class => "ui-button left", :style => "font-size:.85em; display:inline;" %></p>
+<div class="clearfix"></div>
   <% end %>
   <br />
   <hr />
