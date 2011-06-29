@@ -1,5 +1,15 @@
 <%title "Offerings by Region" %>
 
+Hi
+<div id="map">
+	<div class="northAmerica"></div>
+	<div class="southAmerica"></div>
+	<div class="europe"></div>
+	<div class="oceania"></div>
+	<div class="asia"></div>
+	<div class="africa"></div>
+</div>
+
 <% @regions.each do |region| %>
     <% if region.name == "Online" %>
       <%= link_to "Online", type_path(Type.where("category = ?", "eCourse").first) %>

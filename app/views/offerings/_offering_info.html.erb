@@ -9,8 +9,7 @@
       <strong>Registration Begins</strong>: <%= @offering.registration_begins.strftime('%d %g, %Y') %><br />
      <%unless @offering.registration_deadline.nil? %>
         <strong>Registration Deadline:</strong>
-        <%= @offering.registration_deadline.strftime('%B %g, %Y') %> - 
-        <%= distance_of_time_in_words_to_now(@offering.registration_deadline)%>
+        <%= @offering.registration_deadline.strftime('%B %g, %Y') %>
     <%end%> </p>
 <br />
 

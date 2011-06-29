@@ -11,13 +11,20 @@ class OfferingsController < ApplicationController
   # GET /offerings
   # GET /offerings.xml
   def index
-    @types = Type.all
-    @topics = Topic.all
+    @types = Type.order("category").all
+    @topics = Topic.order("category").all
     if(params[:coordinated] == "true")
       logger.debug"*****************************************"
       @offerings = current_user.coordinated_offerings.future_offerings.paginate(:page => params[:page], :per_page => 10)
     else
-      @offerings = Offering.validated(:all, :include => [:location, :coordinator, :registered_artists, :plan, :users]).paginate(:page => params[:page], :per_page => 10)
+      @offerings = Offering.validated(:all, :include => [:location, :coordinator, :registered_artists, :plan, :users])
+			if(!params[:type].nil?)
+				@offerings.where("type_id=?", params[:type].to_i)
+			end
+			if(!params[:topic].nil?)
+				@offerings.where("topics_id=?", params[:topic].to_i)
+			end
+			@offerings = @offerings.paginate(:page => params[:page], :per_page => 10)
     end
     respond_to do |format|
       format.html {@title = "Offerings"} # index.html.erb

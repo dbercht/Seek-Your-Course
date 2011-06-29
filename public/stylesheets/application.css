@@ -73,13 +73,13 @@ label{
   width: 200px;
 }
 
-.error_messages, .error_notice, #flash_notice, #flash_alert{
+.error_messages, .error_notice, #flash_notice, #flash_alert, #flash_error{
   position: fixed;
   max-width: 300px;
   left: 5px;
   top: 40px;
 }
-.error_messages h2, .error_notice h2, #flash_notice h2{
+.error_messages h2, .error_notice h2, #flash_notice h2, , #flash_error h2{
   font-size: 1em;
 }
 #flash_alert, #flash_notice{
@@ -90,7 +90,7 @@ label{
   margin: 5px;
 }
 
-.error_messages, .error_notice{
+.error_messages, .error_notice, #flash_error{
   border: 1px solid red;
   padding: 10px;
   font-size: .8em;
@@ -115,6 +115,16 @@ label{
   margin: 5px;
   border-right: 1px solid black;
   width: 250px;
+}
+.forgot_password{
+	width: 160px;
+	padding: 6px;
+	margin: 0px auto;
+}
+.forgot_password a{
+	font-size: .7em;
+	text-align: center;
+	color: #3454AA;
 }
 
 /*********************** Form Fields */
@@ -149,7 +159,83 @@ label{
   
 }
 
+/*********************** Map */
+.northAmerica{
+	background: url(images/map/NorthAmerica.gif);
+width:500px;
+height:287px;
+z-index:1;
+
+position:absolute;
+}
+
+.southAmerica{
+	background: url(images/map/SouthAmerica.gif);
+width:500px;
+height:287px;
+
+position:absolute;
+}
+
+.europe{
+	background: url(images/map/Europe.gif);
+width:500px;
+height:287px;
+
+position:absolute;}
+
+.africa{
+	background: url(images/map/Africa.gif);
+width:500px;
+height:287px;
+
+position:absolute;
+}
+
+.oceania{
+	background: url(images/map/Oceania.gif);
+width:500px;
+height:287px;
+
+position:absolute;
+}
+
+.asia{
+	background: url(images/map/Asia.gif);
+width:500px;
+height:287px;
+
+position:absolute;
+}
+
+
+
+
 /*********************** 960 Mods */
+
+.grid-gallery{
+	height: 150px;
+	width:120px;
+}
+
+.grid-gallery a{
+	text-align: center;
+}
+
+.user-gallery{
+	height: 160px;
+	font-size: .8em;
+	text-align: center;
+	background: #EEE;
+}
+
+.user-gallery img{
+	margin:3px;
+	width: 110px;
+}
+
+.user-gallery a{
+}
 
 .wideheader a{
 	letter-spacing: 2px;
@@ -161,3 +247,5 @@ label{
 .grid_adsright img{
   margin-bottom: 15px;
 }
+
+

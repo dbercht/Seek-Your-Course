@@ -4,6 +4,7 @@
 </script>
 
 <div class="criteria-gallery clearfix">
+
   <% if @offering.type.category == "eCourse" %>
     <%= render :partial => "e-course"%>
   <% else %>
@@ -16,8 +17,7 @@
       <strong>Registration Begins</strong>: <%= @offering.registration_begins.strftime('%B %d, %Y') %><br />
      <%unless @offering.registration_deadline.nil? %>
         <strong>Registration Deadline:</strong>
-        <%= @offering.registration_deadline.strftime('%B %d, %Y') %> - 
-        <%= distance_of_time_in_words_to_now(@offering.registration_deadline)%> until registration deadline.
+        <%= @offering.registration_deadline.strftime('%B %d, %Y') %>
     <%end%> </p>
 
     <p><strong>Description</strong>:<br />

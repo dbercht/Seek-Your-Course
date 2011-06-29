@@ -1,5 +1,6 @@
 SeekYourCourse::Application.routes.draw do
 
+  
   resources :offerings
 
   match 'pending_offerings', :to => 'offerings#pending_index', :as => 'pending_offerings'
@@ -16,6 +17,10 @@ SeekYourCourse::Application.routes.draw do
   match 'signup' => 'users#new', :as => :signup
   match 'logout' => 'user_sessions#destroy', :as => :logout
   match 'login' => 'user_sessions#new', :as => :login
+	
+	match "recover_password" => "recover_password#new", :via => :get, :as => 'recover_password'
+  match "recover_password" => "recover_password#create", :via => :post
+
 
   resource :profiles
 
@@ -25,6 +30,7 @@ SeekYourCourse::Application.routes.draw do
   match "ads" => "static#ads", :as => 'ads_index'
   match "about" => "static#about", :as => 'about_index'
   match "contact" => "static#contact", :as => 'contact'
+
 
   resources :ads
   match "admin_ads" => "ads#index", :as => "ads"

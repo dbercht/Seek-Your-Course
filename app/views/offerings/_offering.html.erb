@@ -21,7 +21,16 @@
       </p>
     <% end %>
   <% end %>
-<p>
+	<p>
+    <strong>Offered by: </strong>
+		<% if offering.coordinator.role == User::ROLES[0] %>
+			<%= link_to offering.coordinator.name, offering.coordinator %> 
+		<% else %>
+			<%= link_to offering.coordinator.institution_name, offering.coordinator %> 
+		<% end %>
+		
+	</p>
+	<p>
     <strong>Starts: </strong>
     <%= offering.start_date.strftime('%B %e, %Y') %> | 
 
@@ -29,19 +38,19 @@
       <strong>Location:</strong>
       <%= "Online" %>
     <% else %>
-      <strong>Location:</strong>
+      <strong>Location:</strong> 
       <%= offering.specific_location %>, 
-      <%unless offering.us_state.nil? %>
+      <%if (offering.location.state == "USA") %>
        <%= offering.us_state %>,
       <% end %> 
       <%= offering.location.state %>,
       <%= offering.location.region.name %>
    <% end %>
-<br />
-   <strong>Topics: </strong>
-   <%= show_topics_for(@offering) %>
-<br />
-</p>
+		<br />
+   	<strong>Topics: </strong>
+  	 <%= show_topics_for(@offering) %>
+		<br />
+	</p>
   <% if current_admin || (offering.coordinator == current_user) %>
 <br />
     <p><%= link_to 'Edit Listing', edit_offering_path(offering), :class => "ui-button left" %>     <%= button_to 'Delete Listing', offering_path(offering), :method => "delete",  :onclick => "return confirm('Are you sure you want to delete this listing?')", :class => "ui-button left", :style => "font-size:.85em; display:inline;" %></p>

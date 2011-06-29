@@ -68,10 +68,9 @@ class Offering < ActiveRecord::Base
   validates :description, :presence => true
   validates_acceptance_of :terms_of_use, :on => 'create'
 
-  validates_presence_of :start_date, :end_date, :registration_begins, :registration_deadline
-  validates :registration_deadline, :date => {:after => :registration_begins}, :unless => lambda {registration_deadline.nil?}
+  validates_presence_of :start_date, :end_date, :registration_begins
 
-  validate :validate_length_of_description, :validate_online_location
+  validate :validate_length_of_description, :validate_online_location, :validate_registration_deadline
 
   with_options :if => lambda {return type.category != "eCourse"} do |o|
     o.validates :specific_location, :presence => true
@@ -90,6 +89,10 @@ class Offering < ActiveRecord::Base
   def validate_online_location
     errors[:base] = "Ecourses must be located online" if ((type.category == "eCourse")&&(location.state != "Online"))
   end
+
+	def validate_registration_deadline
+		errors[:base] = "Registration deadline cannot be before the registration start date." if(!registration_deadline.nil? && ((registration_deadline < registration_begins)) && (editable?))
+	end
 
 
 end

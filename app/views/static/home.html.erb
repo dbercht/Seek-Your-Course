@@ -28,9 +28,8 @@
 <body>
                 
 
-<!--
 <%=render :partial => "layouts/user_nav"%>
--->
+
 
 <% flash.each do |name, msg| %><%= content_tag :div, msg, :id => "flash_#{name}" %><% end %><!--<%= content_tag :h1, yield(:title) if show_title? %> -->
 
@@ -53,22 +52,7 @@
 </div>
 
 
-
-<div id="" class="container_12">
-
-<div id="" class="grid_12 ">
-	<div id="nav-main" class="clearfix">
-<!--		<a href="/offerings" class="buttons">Learning Opportunities </a> 
-		<a href="/users?role=instructor" class="buttons">Instructor Profiles</a>
-		<a href="/users?role=coordinator" class="buttons">Retreat &amp; Conference Profiles</a> 
-		<a href="#" class="buttons">Interviews</a>
-        <a href="#" class="buttons">Blog </a>    -->
-
-    </div>
-    
-</div>
-
-</div>
+    <%= render :partial => "layouts/user_browse" %>
 
       <div id="" class="container_12">
 
