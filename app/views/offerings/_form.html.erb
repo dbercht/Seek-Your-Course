@@ -3,7 +3,7 @@
   jQuery(document).ready(function(){
     
     jQuery("#us_states").hide();
-    jQuery(".date_select").hide();    
+   	jQuery(".date_select").hide();    
     jQuery(".date").datepicker({minDate: new Date()});
     if(jQuery("#type").find("option:selected").text() == "eCourse"){
       jQuery("#specific_location").hide();
@@ -18,18 +18,12 @@
         jQuery(this).parents("td").find(".date_select select:first").val(parseInt(jQuery(this).val().split("/")[2].replace(/^[ 0]/g,'')));
         jQuery(this).parents("td").find(".date_select select:first").next().val(parseInt(jQuery(this).val().split("/")[0].replace(/^[ 0]/g,'')));
         jQuery(this).parents("td").find(".date_select select:first").next().next().val(parseInt(jQuery(this).val().split("/")[1].replace(/^[ 0]/g,'')));
-        jQuery("#registration_begins").datepicker("option", "maxDate", new Date(jQuery(this).val()));
-        if(jQuery("#registration_deadline") > jQuery(this).val()){
-          jQuery("#registration_deadline").datepicker("option", "maxDate", new Date(jQuery(this).val()));
-        }
-	jQuery("#end_date").datepicker("option", "minDate", new Date(jQuery(this).val()));
     });
+
     jQuery("#registration_begins").change(function () {
         jQuery(this).parents("td").find(".date_select select:first").val(parseInt(jQuery(this).val().split("/")[2].replace(/^[ 0]/g,'')));
         jQuery(this).parents("td").find(".date_select select:first").next().val(parseInt(jQuery(this).val().split("/")[0].replace(/^[ 0]/g,'')));
         jQuery(this).parents("td").find(".date_select select:first").next().next().val(parseInt(jQuery(this).val().split("/")[1].replace(/^[ 0]/g,'')));
-        jQuery("#registration_deadline").datepicker("option", "minDate", new Date(jQuery(this).val()));
-        jQuery("#registration_deadline").datepicker("option", "maxDate", new Date(jQuery("#start_date").val()));
     });
     jQuery("#end_date").change(function () {
         jQuery(this).parents("td").find(".date_select select:first").val(parseInt(jQuery(this).val().split("/")[2].replace(/^[ 0]/g,'')));
@@ -40,7 +34,7 @@
         jQuery(this).parents("td").find(".date_select select:first").val(parseInt(jQuery(this).val().split("/")[2].replace(/^[ 0]/g,'')));
         jQuery(this).parents("td").find(".date_select select:first").next().val(parseInt(jQuery(this).val().split("/")[0].replace(/^[ 0]/g,'')));
         jQuery(this).parents("td").find(".date_select select:first").next().next().val(parseInt(jQuery(this).val().split("/")[1].replace(/^[ 0]/g,'')));
-    })
+    });
 
     jQuery("#type").find("select").change(function() {
       if(jQuery(this).find("option:selected").text() == "eCourse"){
@@ -82,6 +76,10 @@
   <% end %>
 <br />
   <% if current_admin%>
+		<div class="field">
+			<h3>Coordinator</h3>
+      <%=link_to @offering.coordinator.name, @offering.coordinator %>
+		</div><br />
     <div class="field">
       <%= f.label :validated %><br />
       <%= f.check_box :validated %>
@@ -105,7 +103,7 @@
  <table>
     <%=content_tag(:tr, content_tag(:td, f.label(:country, "Country*")) << content_tag(:td, grouped_collection_select(:offering, :location_id, @regions, :locations, :name, :id, :state)), :id=>"country") %>
     <%=content_tag(:tr, content_tag(:td, f.label(:us_state, "US State")) << content_tag(:td, f.select( :us_state, [ 	
-	['Select a State', 'None'],
+
 	['Alabama', 'AL'], 
 	['Alaska', 'AK'],
 	['Arizona', 'AZ'],
@@ -164,7 +162,8 @@
  <div id="date">
  <table>
     <%= date_input_for(f, @offering, @offering.registration_begins, :registration_begins, "Registration Begins*")%>
-    <%= date_input_for(f, @offering, @offering.registration_deadline, :registration_deadline, "Registration Deadline")%>
+	  <div id="default_registration_deadline"><%= date_input_for(f, @offering, @offering.registration_deadline, :registration_deadline, "Registration Deadline")%></div>
+		
     <%= date_input_for(f, @offering, @offering.start_date, :start_date, "Start Date*")%>
     <%= date_input_for(f, @offering, @offering.end_date, :end_date, "End Date*")%>
  </table>

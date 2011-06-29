@@ -76,7 +76,7 @@
 <br />
 <table>
       <%=content_tag(:tr, content_tag(:td, f.label(:adress_line_1, "Address Line 1*")) << content_tag(:td, f.text_field( :address_line_1))) %>
-      <%=content_tag(:tr, content_tag(:td, f.label(:address_line_2, "Address Line 2")) << content_tag(:td, f.text_field( :address_line_2))) %>
+      <%=content_tag(:tr, content_tag(:td, f.label(:address_line_2, "City/Town, State/County")) << content_tag(:td, f.text_field( :address_line_2))) %>
       <%=content_tag(:tr, content_tag(:td, f.label(:postal_code, "Postal Code*")) << content_tag(:td, f.text_field( :postal_code))) %>
       <%=content_tag(:tr, content_tag(:td, f.label(:country, "Country*")) << content_tag(:td, f.collection_select(:country, Location::COUNTRIES, :to_s, :to_s, :prompt => true ))) %>
       <%=content_tag(:tr, content_tag(:td, f.label(:phone_number, "Phone Number*")) << content_tag(:td, f.text_field(:phone_number))) %>

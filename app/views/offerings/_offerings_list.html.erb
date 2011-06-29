@@ -17,19 +17,8 @@
 <% if current_user %>
   <%= render :partial => 'users/user_admin' %>
 <%else%>
+
+  <%= render :partial => 'offerings/filter_results' %>
   <%= render :partial => 'offerings/browse' %>
 <% end %>
 
-<% content_for :filter_results do %>
-
-  <h2> Filter Results </h2>
-   <h3>Topic</h3>
-    <%@topics.each do |topic| %>
-      <%= link_to topic.category, (request.path + "?topic=" +topic.id.to_s) %>
-    <% end %>
-   <h3>Type</h3>
-    <%@types.each do |type| %>
-      <%= link_to type.category, (request.path + "?type=" +type.id.to_s) %>
-    <% end %>
-
-<% end %>

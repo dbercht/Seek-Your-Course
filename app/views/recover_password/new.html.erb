@@ -1,0 +1,18 @@
+<% title "Recover Password" %>
+
+<div class="contentlearning-profile clearfix ui-widget-content">
+
+	<h3>You will be sent an e-mail with your new password.</h3>
+
+<% form_tag('/recover_password') do%>	
+	<p>
+		E-mail: <br />
+		<%=text_field_tag "email"%>
+	<%= submit_tag "Reset Password", :class => "ui-button" %>
+
+	</p>
+<% end %>
+
+</div>
+
+<%= render :partial => "offerings/browse" %>

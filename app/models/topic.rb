@@ -4,4 +4,6 @@ class Topic < ActiveRecord::Base
  :url => "/assets/:class/:id/:attachment/:style.:extension",
                     :path => ":rails_root/public/assets/:class/:id/:attachment/:style.:extension"
   validates_uniqueness_of :category
+
+  default_scope order('category')
 end

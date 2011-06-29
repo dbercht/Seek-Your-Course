@@ -1,0 +1,29 @@
+<script>
+	jQuery(document).ready( function() {
+		jQuery("#filter_results").hide();
+		jQuery("#filter_results_button").click(function(){
+			if(jQuery("#filter_results").is(":hidden")){
+				jQuery("#filter_results_button").html("<strong>Browse</strong>");
+			}else{			
+				jQuery("#filter_results_button").html("<strong>Filter Results</strong>");
+			}
+			jQuery("#filter_results").toggle("blind");
+		});	
+	});
+</script>   
+  <%= content_for :filter_results do%>
+
+  <button id="filter_results_button"><strong>Filter Results</strong></button>
+<div id="filter_results">
+
+          <p><strong>Type</strong></p>
+          <%@types.each do |type| %>
+            <p><%= link_to type.category, (request.path + "?type=" +type.id.to_s) %></p>
+          <% end %>
+          <p><strong>Topic</strong></p>
+          <%@topics.each do |topic| %>
+            <p><%= link_to topic.category, (request.path + "?topic=" +topic.id.to_s) %></p>
+          <% end %>
+
+</div>
+ <%end%>
