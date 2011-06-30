@@ -16,7 +16,10 @@ class RegionsController < ApplicationController
   # GET /regions/1.xml
   def show
     @region = Region.where("name = ?", params[:id].gsub("-", " ")).first
+    @offerings = @region.offerings.paginate(:page => params[:page], :per_page => 10)
 
+    @types = Type.all
+    @topics = Topic.all
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @region }

@@ -1,9 +1,14 @@
 <%title @type.category%>
-<p id="notice"><%= notice %></p>
 
+<div class="learning-results clearfix">
+<h1>
+  TOPIC &gt; 
+  <%= @topic.category %>
+</h1>
 <%= render :partial => 'offerings/offerings_list' %>
 
 <% if current_admin %>
   <%= link_to 'Edit', edit_type_path(@type) %> |
 <% end %>
 <%= link_to 'Back', types_path %>
+</div>

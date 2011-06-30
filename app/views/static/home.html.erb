@@ -1,9 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <%= favicon_link_tag %>
-  
 <title>Seek Your Course | Navigation for Creative Learning and Living</title>
+<%= favicon_link_tag %>
   <%= stylesheet_link_tag "jquery-ui-1.8.11.custom", "pirobox", "application", "960"  %>
   <%= javascript_include_tag "jquery-1.5.1.min", "jquery-ui-1.8.11.custom.min", "pirobox_extended", :defaults %>
   <%= csrf_meta_tag %>
@@ -21,74 +20,156 @@
         bg_alpha : 0.1,
         piro_scroll : true //pirobox always positioned at the center of the page
         });
+
+				jQuery(".infoTab").mouseenter(
+					function(){
+						jQuery(".activeTab").hide("slide").removeClass("activeTab");
+						jQuery("#"+jQuery(this).attr("id") + "Info").show("slide").addClass("activeTab");
+					}
+				);
+				jQuery(".activeTab").mouseleave(
+					function(){
+						jQuery(".activeTab").hide("slide");
+					}
+				);
+				jQuery("#info_box").mouseleave(
+					function(){
+						jQuery(".activeTab").hide("slide").removeClass("activeTab");
+					}
+				);
       });
   //]]>
   </script>
 </head>
 <body>
-                
-
+          
 <%=render :partial => "layouts/user_nav"%>
+     
 
-
-<% flash.each do |name, msg| %><%= content_tag :div, msg, :id => "flash_#{name}" %><% end %><!--<%= content_tag :h1, yield(:title) if show_title? %> -->
 
 
 <div id="header2" class="container_12">
 
 <div id="" class="grid_8 ">
-<img src="images/logo-finalweb.png" alt="" width="500" height="180" />
+<img src="/images/logo-finalweb.png" alt="" width="500" height="180" />
 </div>
 
 
     <div id="" class="grid_4 ">
 	  <div id="socialmedia" class="clearfix">
-     		<a href="http://facebook.com/seekyourcourse"><img src="images/facebook_30px.png" alt="facebook" class="socialmedia" /></a>
-     		<a href="http://twitter.com/#!/seekyourcourse"><img src="images/twitter_30px.png" alt="twitter" class="socialmedia" /></a>
+     		<a href="#"><img src="/images/facebook_30px.png" alt="facebook" class="socialmedia" /></a>
+     		<a href="http://twitter.com/#!/seekyourcourse"><img src="/images/twitter_30px.png" alt="twitter" class="socialmedia" /></a>
       </div>
-      <img src="images/tagline3.png" alt="Navigation for Creative Learning and Living" />
+      <img src="/images/tagline3.png" alt="Navigation for Creative Learning and Living" />
     </div>
 
 </div>
 
 
-    <%= render :partial => "layouts/user_browse" %>
 
-      <div id="" class="container_12">
+<div id="" class="container_12">
+
+<div id="" class="grid_12 ">
+	<div id="nav-main" class="clearfix">
+		<a href="#" class="buttons">Learning Opportunities </a> 
+		<a href="#" class="buttons">Instructor Profiles</a>
+		<a href="#" class="buttons">Retreat &amp; Conference Profiles</a> 
+        <a href="#" class="buttons">Blog </a> 
+
+    </div>
+    
+</div>
+
+</div>
+
+                
+
+<div id="" class="container_12">
+  <div id="" class="grid_6 ">
+     <img src="/images/headers/explore.png" alt="explore" />
+
+   <div class="explore">
+	  <div class="browse">
+        <img src="/images/headers/browse2.png" alt="browse learning opportunities" />
+             <div class="browse-buttons"><a href="http://seekyourcourse.com/types">by TYPE</a></div>
+             <div class="browse-buttons"><a href="http://seekyourcourse.com/topics">by TOPIC</a></div>
+             <div class="browse-buttons"><a href="http://seekyourcourse.com/offerings">by START DATE</a></div>
+             <div class="browse-buttons"><a href="http://seekyourcourse.com/regions">by LOCATION</a></div>
+     		</div>
+            
+  <div class="getlisted">
+            <img src="/images/headers/getlisted.png" alt="get listed" />
+        <h5>Teach? Coordinate a Retreat or Conference?</h5>
+            <h5 class="wideheader"><a href="http://www.seekyourcourse.com/signup">SIGN UP</a> to: </h5>
+            <p>- list upcoming offerings
+            <br />- create a public profile
+    		<br />- promote your work</p>
+
+      </div>
+    
+   </div>
+
+</div>
+
+	<div id="" class="grid_6 ">
+	  <img src="/images/headers/findoutmore.png" alt="find out more" />
+
+		<div class="intro" >
+		<div id="info_box">
+			<div id="tab_box">
+				<div id="newToThis" class="newToThis infoTab clearfix">New To This</div>
+				<div id="liveCreativeLife" class="liveCreativeLife infoTab clearfix">Live Creatively</div>
+				<div id="promoteCreativity" class="promoteCreativity infoTab clearfix">Promote Creativity</div>
+			</div>
+			<div id="expand_box">
+				<div class="infoBox">
+					Seek Your Course is a database
+					and online hub for connecting
+					people with creative learning
+					opportunities online and
+					around the world.
+					"Every child is an artist.
+					The problem is how to remain an
+					artist once we grow up."
+					-Pablo Picasso
+				</div>
+				<div id="newToThisInfo" class="newToThis infoBox hidden">New To This</div>
+				<div id="liveCreativeLifeInfo" class="liveCreativeLife infoBox hidden">Live Creatively</div>
+				<div id="promoteCreativityInfo" class="promoteCreativity infoBox hidden">Promote Creativity</div>
+			</div>    
+		</div>    
+	</div>
+  
+		</div>
+    
+	</div>
+
+</div>
+
+                
+
+<div id="" class="container_12">
 
 <div id="" class="grid_4 ">
-	<div class="templeft">
-
-	  <h4>Seek Your Course is a database and online hub for connecting you with creative learning opportunities online and around the world.</h4>
-	  <h5><em>&quot;Every child is an artist. <br />
-	    The problem is how to remain an artist once we grow up.&quot; <br />
-	    -Pablo Picasso</em>	</h5>
-	  <p>&nbsp;</p>
-	  <p>&nbsp;</p>
-
-	  <h5 class="wideheader">Please <a href="http://eepurl.com/dX4_z">join the mailing list </a>to stay up-to-date!</h5>
-	</div>
+	<img src="/images/headers/blogfeed2.png" alt="the syc blog" />
+	<div class="blogfeed"></div>
 </div>
 
 <div id="" class="grid_4 ">
-	<div class="tempcenter"> <div class="wideheader">USERS:</div>
-	  <p>If you are<strong> new to the idea of creative living</strong>, we hope to inspire you to take a first step. Connect to someone's blog. Take a class. Fly around the world to an art retreat. Buy an art book.</p>
+	<img src="/images/headers/featuredlisting.png" alt="featured listing" />
+	<div class="featuredlisting">
+    	<img src="/images/spotlights/pixie-spotlight.png" alt="pixie campbell" "/>
+        <h5><a href="http://www.seekyourcourse.com/users/pixiecampbell">Pixie Campbell</a> | <a href="http://www.seekyourcourse.com/offerings/20">Wild Inner Foraging: Exploring Masculine and Feminine Archetypes with Mixed-Media</a></h5>
+        <p>Offered by: <a href="http://www.seekyourcourse.com/users/teahousestudio">Teahouse Studio</a> <br />
+		In this adventuresome two-day class, prepare to seek out the inner messages from within that teach us about balance from the inside out...</p>
 
-      <p>If you are <strong>already immersed in a creative life</strong>, our goal is to help you stay aware of the developments of new opportunities and expand your network of fellow creators. Get email updates about new classes and retreats. Find a new eCourse to mix things up. See whose blog you somehow missed. <a href="ads/"><strong>Advertise your creative business on our site.</strong></a></p>
-      <h3>COMING JULY 1, 2011</h3>
     </div>
 </div>
 
 <div id="" class="grid_4 ">
-	<div class="tempright">
-	  <div class="wideheader">INSTRUCTORS AND COORDINATORS:</div>
-
-	  <p>If you are <strong>an instructor or coordinator of an ecourse, retreat or conference</strong>, we are here to help you spread the word about what you have to offer people and increase your visibility online. Sign up for an account where you can manage your listings and create a profile page that connects people with your blog or website.</p>
-	  <p><strong>Premium Listings are free for 5 months. </strong>After <strong>December 1</strong> there will be three packages for listings, including a free level.</p>
-	  <h2 class="orange">LAUNCHED JUNE 1!</h2>
-	  <h4 class="wideheader">&gt;&gt; <%=link_to "Sign Up Here", signup_url%></h4>
-
-	</div>
+	<img src="/images/headers/featuredsponsor.png" alt="featured sponsor" />
+	<div class="featuredsponsor">
+    </div>
 </div>
 
 </div>
@@ -102,25 +183,14 @@
         <p>&copy; 2011 Seek Your Course</p> 
         
         </div>
-
     
     </div>
 
 </div>
 
 
-<%if Rails.env.production?%>
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-6966727-3']);
-  _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-<% end %>
+
             
 </body>
 </html>

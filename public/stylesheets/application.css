@@ -160,56 +160,109 @@ label{
 }
 
 /*********************** Map */
-.northAmerica{
+
+#map-links{
+font-size:.8em;
+text-align:center
+}
+#map{
+height: 300px;
+}
+
+
+
+
+.continent{
+width:500px;
+height:287px;
+position:absolute;
+}
+.NorthAmerica{
 	background: url(images/map/NorthAmerica.gif);
-width:500px;
-height:287px;
-z-index:1;
-
-position:absolute;
 }
-
-.southAmerica{
+.NorthAmericaHover{
+	background: url(images/map/NorthAmericaHover.gif);
+}
+.SouthAmerica{
 	background: url(images/map/SouthAmerica.gif);
-width:500px;
-height:287px;
-
-position:absolute;
+}
+.SouthAmericaHover{
+	background: url(images/map/SouthAmericaHover.gif);
 }
 
-.europe{
+.Europe{
 	background: url(images/map/Europe.gif);
-width:500px;
-height:287px;
-
-position:absolute;}
-
-.africa{
+}
+.EuropeHover{
+	background: url(images/map/EuropeHover.gif);
+}
+.Africa{
 	background: url(images/map/Africa.gif);
-width:500px;
-height:287px;
-
-position:absolute;
 }
-
-.oceania{
+.AfricaHover{
+	background: url(images/map/AfricaHover.gif);
+}
+.OceaniaHover{
+	background: url(images/map/OceaniaHover.gif);
+}
+.Oceania{
 	background: url(images/map/Oceania.gif);
-width:500px;
-height:287px;
-
-position:absolute;
 }
-
-.asia{
+.AsiaHover{
+	background: url(images/map/AsiaHover.gif);
+}
+.Asia{
 	background: url(images/map/Asia.gif);
-width:500px;
-height:287px;
-
-position:absolute;
 }
 
+/**************************** Main Page jQUery */
+#info_box{
+	width:400px;
+	height:200px;
+	background: #ddd;
+	margin:-8px; 
+}
 
+#tab_box{
+	width: 200px;
+	margin:0px;
+	float:left;
+}
 
+#expand_box{
+	width: 200px;
+	margin:0px;
+	float:right;
+}
+
+.infoTab{
+	width:200px;
+	height:66px;
+	margin:0px;
+	
+}
+
+.infoBox{
+
+	background-color:#124956;
+	position: absolute;
+	height:200px;
+	width: 200px;
+	margin:0px;
+}
+
+.newToThis{
+	
+	background:#00F;
+}
+
+.liveCreativeLife{
+	background:#0FF;
+}
+
+.promoteCreativity{
+	background:#F0F;
+}
 
 /*********************** 960 Mods */
 
@@ -223,10 +276,10 @@ position:absolute;
 }
 
 .user-gallery{
+	background: #EEE;
 	height: 160px;
 	font-size: .8em;
 	text-align: center;
-	background: #EEE;
 }
 
 .user-gallery img{
@@ -236,6 +289,27 @@ position:absolute;
 
 .user-gallery a{
 }
+
+.topic-gallery{
+	display:inline;
+	float:left;
+	margin-bottom:15px;
+	margin-left:0;
+	margin-right:5px;
+	position:relative;
+	width:115px;
+
+	margin-bottom: 5px;
+	font-size: .8em;
+	text-align: center;
+	margin-right: 5px;
+	
+	height:130px;
+}
+
+.topic-gallery a{
+}
+
 
 .wideheader a{
 	letter-spacing: 2px;
