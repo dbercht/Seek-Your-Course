@@ -6,15 +6,13 @@
 
   <% @topics.each do |topic| %>
 
-    <div class="grid-gallery">
+    <div class="topic-gallery">
       <span class="topic" id="<%=topic.category%>">
         <% if topic.image.exists? %>
           <%= link_to image_tag(topic.image.url(:thumb)), topic %>
-        <% else %>
-          <%= link_to 'Show', topic %>
         <% end %>
 	<br />
-          <%= topic.category %>
+          <%= link_to topic.category, topic %>
           <br  />
           <% if current_admin %> 
             <%= link_to 'Edit', edit_topic_path(topic) %>

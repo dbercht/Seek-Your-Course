@@ -1,33 +1,53 @@
 <%title "Offerings by Region" %>
+<script>
+	jQuery(document).ready(function(){
+		jQuery('.region-link').hover(
+			function(){
+				jQuery("."+(jQuery(this).attr("id"))).addClass(jQuery(this).attr("id")+"Hover").removeClass(jQuery(this).attr("id"));
+			},function(){
+				jQuery("."+(jQuery(this).attr("id"))+"Hover").addClass(jQuery(this).attr("id")).removeClass(jQuery(this).attr("id")+"Hover");
+			}			
+		);
+	});
+</script>
+<div class="learning-results clearfix">
+	<h1> Browse &gt by Regions </h1>
 
-Hi
-<div id="map">
-	<div class="northAmerica"></div>
-	<div class="southAmerica"></div>
-	<div class="europe"></div>
-	<div class="oceania"></div>
-	<div class="asia"></div>
-	<div class="africa"></div>
-</div>
-
-<% @regions.each do |region| %>
+	<div id="map-links" >
+	<% @regions.each do |region| %>
     <% if region.name == "Online" %>
-      <%= link_to "Online", type_path(Type.where("category = ?", "eCourse").first) %>
+      <%= link_to "Online", type_path(Type.where("category = ?", "eCourse").first), :class =>"region-link", :id=>"Online"  %>
     <% else %>
-      <%= link_to region.name, region_locations_path(region) %>
+      <span><%= link_to region.name, region_locations_path(region), :class =>"region-link", :id=>region.name.gsub(" ","") %></span>
     <% end %>
 
     <% if current_admin %>
       | <%= link_to 'Edit', edit_region_path(region) %>
       | <%= link_to 'Destroy', region, :confirm => 'Are you sure?', :method => :delete %>
+			<br />
     <% end %>
-    <br />
-<% end %>
+		|
+	<% end %>
+	</div>
 
-<br />
+	<br />
 
-<% if current_admin %>
-  <%= link_to 'New Region', new_region_path %>
-<% end %>
+	<div class="clearfix"></div>
+	<div id="map" class="clearfix">
+		<div class="NorthAmerica continent"></div>
+		<div class="SouthAmerica continent"></div>
+		<div class="Europe continent"></div>
+		<div class="Oceania continent"></div>
+		<div class="Asia continent"></div>
+		<div class="Africa continent"></div>
+	</div>
+
+
+
+	<% if current_admin %>
+  	<%= link_to 'New Region', new_region_path %>
+	<% end %>
+</div>
 
 <%= render :partial => 'offerings/browse' %>
+

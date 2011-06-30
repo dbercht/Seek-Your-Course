@@ -1,5 +1,7 @@
 <div class="learning-results clearfix">
-   	  <h1>RESULTS</h1>
+   	 <!--
+   <h1>RESULTS</h1>
+      -->
   
           <% @offerings.each do |@offering| %>
              <%= render :partial => @offering %>
@@ -14,11 +16,7 @@
 </div>
 
 
-<% if current_user %>
-  <%= render :partial => 'users/user_admin' %>
-<%else%>
 
   <%= render :partial => 'offerings/filter_results' %>
   <%= render :partial => 'offerings/browse' %>
-<% end %>
 

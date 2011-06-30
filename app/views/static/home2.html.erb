@@ -1,6 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
+<%= favicon_link_tag %>
 <title>Seek Your Course | Navigation for Creative Learning and Living</title>
 <%= favicon_link_tag %>
   <%= stylesheet_link_tag "jquery-ui-1.8.11.custom", "pirobox", "application", "960"  %>
@@ -20,6 +21,23 @@
         bg_alpha : 0.1,
         piro_scroll : true //pirobox always positioned at the center of the page
         });
+
+				jQuery(".infoTab").mouseenter(
+					function(){
+						jQuery(".activeTab").hide("slide").removeClass("activeTab");
+						jQuery("#"+jQuery(this).attr("id") + "Info").show("slide").addClass("activeTab");
+					}
+				);
+				jQuery(".activeTab").mouseleave(
+					function(){
+						jQuery(".activeTab").hide("slide");
+					}
+				);
+				jQuery("#info_box").mouseleave(
+					function(){
+						jQuery(".activeTab").hide("slide").removeClass("activeTab");
+					}
+				);
       });
   //]]>
   </script>
@@ -27,39 +45,7 @@
 <body>
                 
 
-<%=render :partial => "layouts/user_nav"%>
 
-<% flash.each do |name, msg| %><%= content_tag :div, msg, :id => "flash_#{name}" %><% end %><!--<%= content_tag :h1, yield(:title) if show_title? %> -->
-
-
-<div id="header2" class="container_12">
-
-<div id="" class="grid_8 ">
-<img src="images/logo-finalweb.png" alt="" width="500" height="180" />
-</div>
-
-
-    <div id="" class="grid_4 ">
-	  <div id="socialmedia" class="clearfix">
-     		<a href="http://facebook.com/seekyourcourse"><img src="images/facebook_30px.png" alt="facebook" class="socialmedia" /></a>
-     		<a href="http://twitter.com/#!/seekyourcourse"><img src="images/twitter_30px.png" alt="twitter" class="socialmedia" /></a>
-      </div>
-      <img src="images/tagline3.png" alt="Navigation for Creative Learning and Living" />
-    </div>
-
-</div>
-
-
-
-<div id="" class="container_12">
-
-<div id="" class="grid_12 ">
-
-    <%= render :partial => "layouts/user_nav" %>
-    
-</div>
-
-</div>
 
                 
 
@@ -78,9 +64,29 @@
 </div>
 
 <div id="" class="grid_9 ">
-	<div class="intro">
-    </div>
-    
+		<div id="info_box">
+			<div id="tab_box">
+				<div id="newToThis" class="newToThis infoTab clearfix">New To This</div>
+				<div id="liveCreativeLife" class="liveCreativeLife infoTab clearfix">Live Creatively</div>
+				<div id="promoteCreativity" class="promoteCreativity infoTab clearfix">Promote Creativity</div>
+			</div>
+			<div id="expand_box">
+				<div class="infoBox">
+					Seek Your Course is a database
+					and online hub for connecting
+					people with creative learning
+					opportunities online and
+					around the world.
+					"Every child is an artist.
+					The problem is how to remain an
+					artist once we grow up."
+					-Pablo Picasso
+				</div>
+				<div id="newToThisInfo" class="newToThis infoBox hidden">New To This</div>
+				<div id="liveCreativeLifeInfo" class="liveCreativeLife infoBox hidden">Live Creatively</div>
+				<div id="promoteCreativityInfo" class="promoteCreativity infoBox hidden">Promote Creativity</div>
+		</div>    
+	</div>    
 </div>
 
 </div>
@@ -108,19 +114,6 @@
 
 </div>
 
-
-<div id="" class="container_12">
-
-    <div id="" class="grid_12 ">
-    
-        <div id="footer" class="clearfix">
-        <p>&copy; 2011 Seek Your Course</p> 
-        
-        </div>
-    
-    </div>
-
-</div>
 
 <%if Rails.env.production?%>
 <script type="text/javascript">

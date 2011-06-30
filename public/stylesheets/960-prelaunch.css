@@ -497,24 +497,13 @@ a:hover {
 	font-size:12px;
 }
 
-.explore {
-	border:2px solid #99cc66;
-	height: 196px;
-	color:#333333;
-	margin-bottom: 10px;
-	
-}
 
 .browse {
-	border-right:2px solid #C4CDCD;
+	background-color:#99CC66;
 	padding: 8px;
-	height: 175px;
-	width: 175px;
-	margin: 3px;
+	height: 190px;
 	color:#333333;
-	display:inline;
-	float: left;
-
+	margin-bottom: 10px;
 	
 }
 
@@ -531,7 +520,7 @@ a:hover {
 
 
 .browse-buttons a:hover {
-	color:#BC582B;
+	color:#FFF;
 	text-decoration: none;
 }
 
@@ -553,56 +542,30 @@ a:hover {
 	margin: 0px;
 }
 
-
-.getlisted {
-	padding: 8px;
-	height: 190px;
-	width: 175px;
-	margin: 3px;
-	color:#333333;
-	display:inline;
-	float: left;
-	
+.browse p {
+	margin:10px 0px 10px 10px;
 }
-
-.getlisted p {
-	margin-top: 0px;
-	margin-left: 0px;
-	margin-right: 0px;
-	margin-bottom: 5px;
-}
-
-.getlisted h5 {
-	margin-top: 0px;
-	margin-left: 0px;
-	margin-right: 0px;
-	margin-bottom: 5px;
-}
-
-
 
 
 
 .blogfeed {
 	background-color:#FFCC67;
- 	padding: 8px;
-	height: 400px;
+	padding: 8px;
+	height: 300px;
 	color:#333333;
 	
 }
-.featuredlisting {
-	background-color:#FFCC67;
+.slideshow {
+	background-color:#CD6632;
 	padding: 8px;
-	height: 400px;
+	height: 300px;
 	color:#333333;
 	
 }
-
-
-.featuredsponsor {
+.spotlight {
 	background-color:#FFCC67;
 	padding: 8px;
-	height: 400px;
+	height: 300px;
 	color:#333333;
 	
 }
@@ -610,7 +573,7 @@ a:hover {
 .intro {
 	background-color:#124956;
 	padding: 8px;
-	height: 200px;
+	height: 190px;
 	color:#333333;
 	margin-bottom: 10px;
 	

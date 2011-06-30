@@ -27,7 +27,7 @@
   <%= content_tag(:br, link_to("Website", url_with_protocol(@user.website), :target => "_blank") ) %>
   <%= content_tag(:br, mail_to( @user.email, "E-mail me")) if ((@profile.email == "1"))  %>
   <%= content_tag(:br, link_to("Facebook", url_with_protocol(@user.facebook), :target => "_blank")) if ((@profile.facebook == "1"))  %>
-  <%= content_tag(:br, link_to("Twitter", url_with_protocol(@user.twitter), :target => "_blank")) if ((@profile.twitter == "1"))  %>
+  <%= content_tag(:br, link_to("Twitter", url_with_protocol(twitter_with_protocol(@user.twitter)), :target => "_blank")) if ((@profile.twitter == "1"))  %>
   <%= content_tag(:br, link_to("Flickr", url_with_protocol(@user.flickr), :target => "_blank")) if ((@profile.flickr == "1"))  %>
   <%= content_tag(:br, other_links_tag(@profile.other_links)) %><br />
   <%= content_tag(:br, "<strong>Blog Feed:</strong>".html_safe) if ((@profile.blog == "1") && (@profile.blog.size != 0))  %>

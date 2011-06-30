@@ -1,18 +1,20 @@
 <%content_for :browse do %>
       <div id="" class="grid_navleft">
-        <div class="filter clearfix">
-<div id="browse">
+        <div class=".browse_container clearfix">
+<div class="browse_box">
 <h3><strong>BROWSE</strong></h3>
 
-          <p><%= link_to "by type", types_path%></p>
+          <p><%= link_to "by TYPE", types_path%></p>
 
-          <p><%= link_to "by topic", topics_path%></p>
+          <p><%= link_to "by TOPIC", topics_path%></p>
 
-          <p><%= link_to "by location", regions_path%></p>
+          <p><%= link_to "by LOCATION", regions_path%></p>
 
-          <p><%= link_to "by start date", offerings_path %></p>
+          <p><%= link_to "by START DATE", offerings_path %></p>
 </div>
-          <%= yield :filter_results %>
+          <!--
+  <%= yield :filter_results %>
+					-->
         </div>
      </div>
 <% end %>
