@@ -220,7 +220,7 @@ position:absolute;
 	width:400px;
 	height:200px;
 	background: #ddd;
-	margin:-8px; 
+	margin-bottom:15px;
 }
 
 #tab_box{
@@ -265,6 +265,30 @@ position:absolute;
 }
 
 /*********************** 960 Mods */
+
+.browse_container{
+color:#333333;
+margin-bottom:10px;
+padding:8px;
+width: 142px;
+float:left;
+margin:0px;
+}
+
+.browse_box{
+	border:2px solid #99CC66;
+}
+
+.browse_box a{
+	color:#414042;
+	font-family:Arial,Helvetica,sans-serif;
+	letter-spacing:2px;
+	margin:5px;
+}
+
+.featuredlisting img{
+	margin: 0px;
+}
 
 .grid-gallery{
 	height: 150px;
