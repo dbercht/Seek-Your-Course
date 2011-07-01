@@ -2,6 +2,10 @@
   display: none;
 }
 
+body{
+
+background: url('/images/background-allotherpages.png') no-repeat 50% 0;
+}
 a img, img{
   border: none;
   margin-left: 5px;
@@ -169,53 +173,62 @@ text-align:center
 height: 300px;
 }
 
-
-
-
 .continent{
 width:500px;
 height:287px;
 position:absolute;
 }
 .NorthAmerica{
-	background: url(images/map/NorthAmerica.gif);
+	//background: url(images/map/NorthAmerica.gif);
 }
 .NorthAmericaHover{
-	background: url(images/map/NorthAmericaHover.gif);
+	background: url(images/map/NorthAmericaHover.png);
 }
 .SouthAmerica{
-	background: url(images/map/SouthAmerica.gif);
+	//background: url(images/map/SouthAmerica.gif);
 }
 .SouthAmericaHover{
-	background: url(images/map/SouthAmericaHover.gif);
+	background: url(images/map/SouthAmericaHover.png);
 }
 
 .Europe{
-	background: url(images/map/Europe.gif);
+	//background: url(images/map/Europe.gif);
 }
 .EuropeHover{
-	background: url(images/map/EuropeHover.gif);
+	background: url(images/map/EuropeHover.png);
 }
 .Africa{
-	background: url(images/map/Africa.gif);
+	//background: url(images/map/Africa.gif);
 }
 .AfricaHover{
-	background: url(images/map/AfricaHover.gif);
+	background: url(images/map/AfricaHover.png);
 }
 .OceaniaHover{
-	background: url(images/map/OceaniaHover.gif);
+	background: url(images/map/OceaniaHover.png);
 }
 .Oceania{
-	background: url(images/map/Oceania.gif);
+	//background: url(images/map/Oceania.gif);
 }
 .AsiaHover{
-	background: url(images/map/AsiaHover.gif);
+	background: url(images/map/AsiaHover.png);
 }
 .Asia{
-	background: url(images/map/Asia.gif);
+	//background: url(images/map/Asia.gif);
+}
+
+.Online{
+}
+.OnlineHover{
+	background: url(images/map/OnlineHover.png);
+}
+.Map{
+	background: url(images/map/map.png);
 }
 
 /**************************** Main Page jQUery */
+#header-image-background-main{
+}
+
 #info_box{
 	width:400px;
 	height:200px;
@@ -284,6 +297,10 @@ position:absolute;
 
 /*********************** 960 Mods */
 
+#header2{
+	height:210px;
+}
+
 .browse_container{
 color:#333333;
 margin-bottom:10px;
@@ -313,6 +330,10 @@ margin:0px;
 }
 
 .featuredlisting img{
+	margin: 0px;
+}
+
+.featuredsponsor img{
 	margin: 0px;
 }
 

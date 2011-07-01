@@ -18,7 +18,7 @@
     <% if region.name == "Online" %>
       <%= link_to "Online", type_path(Type.where("category = ?", "eCourse").first), :class =>"region-link", :id=>"Online"  %>
     <% else %>
-      <span><%= link_to region.name, region_locations_path(region), :class =>"region-link", :id=>region.name.gsub(" ","") %></span>
+      <span><%= link_to region.name, region_path(region), :class =>"region-link", :id=>region.name.gsub(" ","") %></span>
     <% end %>
 
     <% if current_admin %>
@@ -34,12 +34,14 @@
 
 	<div class="clearfix"></div>
 	<div id="map" class="clearfix">
+		<div class="Map continent"></div>
 		<div class="NorthAmerica continent"></div>
 		<div class="SouthAmerica continent"></div>
 		<div class="Europe continent"></div>
 		<div class="Oceania continent"></div>
 		<div class="Asia continent"></div>
 		<div class="Africa continent"></div>
+		<div class="Online continent"></div>
 	</div>
 
 
