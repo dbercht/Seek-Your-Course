@@ -219,14 +219,16 @@ position:absolute;
 #info_box{
 	width:400px;
 	height:200px;
-	background: #ddd;
+	background:#056571;
 	margin-bottom:15px;
+
 }
 
 #tab_box{
 	width: 200px;
 	margin:0px;
 	float:left;
+
 }
 
 #expand_box{
@@ -243,26 +245,42 @@ position:absolute;
 }
 
 .infoBox{
-
-	background-color:#124956;
+	font-size:.8em;
+	font-family:Arial,Helvetica,sans-serif;
+	background-color:#C4CDCC;
 	position: absolute;
 	height:200px;
 	width: 200px;
 	margin:0px;
 }
 
+#expand_box p{
+	font-family:Arial,Helvetica,sans-serif;
+	letter-spacing:1px;
+	margin:5px;
+	color:white;
+}
+
+#expand_box a{
+	color:white;
+	text-decoration: underline;
+}
+
 .newToThis{
-	
-	background:#00F;
+	background:#0E93A5;
 }
 
 .liveCreativeLife{
-	background:#0FF;
+	background:#117B89;
 }
 
 .promoteCreativity{
-	background:#F0F;
+	background:#056571;
 }
+
+/********************Feed Item */
+
+
 
 /*********************** 960 Mods */
 
@@ -277,6 +295,14 @@ margin:0px;
 
 .browse_box{
 	border:2px solid #99CC66;
+}
+
+.browse_box_image_container{
+	margin: 0px auto;
+	width:88px;
+}
+.browse_box_image_container img{
+	margin: 0px auto;
 }
 
 .browse_box a{
