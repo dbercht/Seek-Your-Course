@@ -163,6 +163,13 @@ label{
   
 }
 
+/*********************** Social Media */
+
+#social_connect{
+	width: 200px;
+	margin: 5px;
+}
+
 /*********************** Map */
 
 #map-links{

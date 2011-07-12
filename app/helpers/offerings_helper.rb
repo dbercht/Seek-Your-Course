@@ -2,7 +2,7 @@ module OfferingsHelper
   def artists_for_offering(offering)
     html = Array.new
 
-    if(offering.type.category == "eCourse")
+    if((offering.type.category == "eCourse") && (offering.coordinator.role == User::ROLES[0]))
       html << link_to(offering.coordinator.name, offering.coordinator)
     end
 			artist_size = 0
@@ -53,10 +53,10 @@ module OfferingsHelper
 
   def artists_for_title(offering)
     html = Array.new
-		if(offering.type == 'eCourse')
-    	html << link_to(offering.coordinator.name, offering.coordinator)
-		end
-    offering.registered_artists.size.times do |i|
+    if((offering.type.category == "eCourse") && (offering.coordinator.role == User::ROLES[0]))
+      html << link_to(offering.coordinator.name, offering.coordinator)
+    end
+		offering.registered_artists.size.times do |i|
       unless (offering.registered_artists[i] == offering.coordinator)
         html << [link_to(offering.registered_artists[i].name, offering.registered_artists[i])]  end
     end

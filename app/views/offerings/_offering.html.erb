@@ -1,5 +1,4 @@
 <div class="single-result">
-  <p id="notice"><%= notice %></p>
     <% if offering.picture_main.exists? then %>
       <%= link_to(image_tag( @offering.picture_main.url(:snippet)), offering_path(offering)<<".js", :rel =>"content-480-400", :class => "pirobox_gall result-img") %>
     <% end %>
