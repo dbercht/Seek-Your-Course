@@ -53,7 +53,9 @@ module OfferingsHelper
 
   def artists_for_title(offering)
     html = Array.new
-    html << link_to(offering.coordinator.name, offering.coordinator)
+		if(offering.type == 'eCourse')
+    	html << link_to(offering.coordinator.name, offering.coordinator)
+		end
     offering.registered_artists.size.times do |i|
       unless (offering.registered_artists[i] == offering.coordinator)
         html << [link_to(offering.registered_artists[i].name, offering.registered_artists[i])]  end
