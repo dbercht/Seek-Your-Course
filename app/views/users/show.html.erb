@@ -1,4 +1,8 @@
+<%if @user.role == User::ROLES[0]%>
 <%title( @name = @user.name) %>
+<% else %>
+<%title( @name = @user.institution_name) %>
+<% end %>
 <%= content_tag(:div, render(:partial => "user_info"), :class => "contentlearning-profile clearfix") if current_admin %>
  <%if (@user.profile.nil?) %>
     <div style="width:200px;margin:0px auto;">
