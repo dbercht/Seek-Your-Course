@@ -3,8 +3,7 @@
       <%= link_to(image_tag( @offering.picture_main.url(:snippet)), offering_path(offering)<<".js", :rel =>"content-480-400", :class => "pirobox_gall result-img") %>
     <% end %>
   <h5>
-    <%= artists_for_offering(@offering) %>
-    <%=link_to offering.title, offering_path(offering) %>
+    <%=link_to (artists_for_offering(@offering)<<offering.title), offering_path(offering) %>
   </h5>
 
   <% if offering.validated == false %>

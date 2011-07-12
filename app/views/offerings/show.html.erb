@@ -5,7 +5,8 @@
 
 <div class="criteria-gallery clearfix">
 	<div id="social_connect" class="right">
-		<iframe src="http://www.facebook.com/plugins/like.php?app_id=254781654536730&amp;href=http%3A%2F%2Fwww.seekyourcourse.com%2Fofferings%2F<%=@offering.id%>&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=arial&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:120px; height:21px;" allowTransparency="true" ></iframe>
+		<iframe src="http://www.facebook.com/plugins/like.php?app_id=254781654536730&amp;href=http%3A%2F%2Fwww.seekyourcourse.com%2Fofferings%2F<%=@offering.id%>&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=arial&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:120px; height:21px;" allowTransparency="true" ></iframe><br/>
+<a href="http://twitter.com/share" class="twitter-share-button" data-text="I just saw this great listing on Seek Your Course. Check it out!" data-count="horizontal" data-via="seekyourcourse">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 	</div>
   <% if @offering.type.category == "eCourse" %>
     <%= render :partial => "e-course"%>

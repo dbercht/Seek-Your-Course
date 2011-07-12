@@ -1,4 +1,8 @@
 <div class="contentlearning-profile clearfix">
+<div id="social_connect" class="right">
+		<iframe src="http://www.facebook.com/plugins/like.php?app_id=254781654536730&amp;href=http%3A%2F%2Fwww.seekyourcourse.com%2Fusers%2F<%=@profile.user.id%>&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=arial&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:120px; height:21px;" allowTransparency="true" ></iframe><br/>
+<a href="http://twitter.com/share" class="twitter-share-button" data-text="I was just reading this profile on Seek Your Course. Check it out!" data-count="horizontal" data-via="seekyourcourse">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+	</div>
 <% if @user.role == User::ROLES[0] %>
   <%= render :partial => 'profiles/instructor_profile' %>
 <% else %>
