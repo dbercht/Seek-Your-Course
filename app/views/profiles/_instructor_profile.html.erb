@@ -1,5 +1,7 @@
     
   <h1>Profile: <%=@name %> </h1>
+
+<div class="clearfix"></div>
    <p><%=content_tag(:span, link_to(image_tag(@profile.picture.url(:regular)), @profile.picture.url, :rel =>"gallery", :class => "pirobox_gall left")) if @profile.picture.exists? %> 
    
    <strong>Where I Live</strong>: <%= @profile.specific_location %> <%= ',' unless (@profile.specific_location == nil || @profile.specific_location.size == 0)%> <%= @user.country %> <br />

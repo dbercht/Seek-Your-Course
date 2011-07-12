@@ -1,5 +1,7 @@
 
   <h1>Profile: <%=@profile.user.institution_name %> </h1>
+
+<div class="clearfix"></div>
   <p><%=content_tag(:span, link_to(image_tag(@profile.picture.url(:regular)), @profile.picture.url, :rel =>"gallery", :class => "pirobox_gall left")) if @profile.picture.exists? %> 
     
       <strong>Type</strong>: <%= @profile.coordinating.humanize %><br />
