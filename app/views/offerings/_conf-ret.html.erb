@@ -1,5 +1,6 @@
 
   <h2> <%= @offering.title %> </h2>
+<div class="clearfix"></div>
         <p><% if @offering.picture_main.exists? then %>
 
       <span class="right"><%= link_to(image_tag(@offering.picture_main.url(:thumb)), @offering.picture_main.url, :rel =>"gallery", :class => "pirobox_gall")%></span>

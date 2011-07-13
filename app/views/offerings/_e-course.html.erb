@@ -1,4 +1,5 @@
   <h2><%= @offering.title %></h2>
+<div class="clearfix"></div>
 	  <h5>Instructor<%=((@offering.registered_artists.size + @offering.unregistered_artists.size)>1?"s":"" )%>:
   <%=artists_for_title(@offering)%>
 </h5>
