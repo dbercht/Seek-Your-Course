@@ -1,7 +1,16 @@
 <% title @offering.title%>
-<script type="text/javascript">
+<%content_for :social_media_meta do %>
 
-</script>
+	<meta property="og:title" content="<%=@offering.title%>" />
+	<meta property="og:type" content="activity" />
+	<meta property="og:url" content="<%= offering_url(@offering)%>" />
+<%if !@offering.picture_main.url.nil?%>
+	<meta property="og:image" content="http://seekyourcourse.com<%= @offering.picture_main.url %>" />
+<%end%>
+	<meta property="og:site_name" content="Seek Your Course" />
+	<meta property="fb:admins" content="1232190163" />
+<% end %>
+
 
 <div class="criteria-gallery clearfix">
 	<div id="social_connect" class="right">
