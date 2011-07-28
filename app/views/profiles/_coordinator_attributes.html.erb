@@ -7,7 +7,7 @@
     <%=content_tag(:tr, content_tag(:td, instructor.label(:location, "Location*")) << content_tag(:td, instructor.text_field( :specific_location)))%>
     <%=content_tag(:tr, content_tag(:td, instructor.label(:focus, "Focus of Retreat/Conference (Mediums/Modes of Expression)*")) << content_tag(:td, instructor.text_area( :focus, :rows => 3) << "<div class='count'></div>".html_safe))%>
     <%=content_tag(:tr, content_tag(:td, instructor.label(:description, "Description of the Retreat/Conference*")) << content_tag(:td, instructor.text_area( :description, :rows => 4) << "<div class='count'></div>".html_safe))%>
-    <%=content_tag(:tr, content_tag(:td, instructor.label(:testimonials)) << content_tag(:td, instructor.text_area( :testimonials, :rows => 5)))%>
+    <%=content_tag(:tr, content_tag(:td, instructor.label(:testimonials)) << content_tag(:td, instructor.text_area( :testimonials, :rows => 5) << "<div class='count'></div>".html_safe))%>
     <%=content_tag(:tr, content_tag(:td, "") << content_tag(:td, "To add external links to testimonials, <br />follow this guideline:<br /><pre>".html_safe << "<a href='your link'>Link text</a>"))%>
     
 </table>

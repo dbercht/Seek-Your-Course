@@ -92,10 +92,13 @@
 <br />
   <% end %>
  <table>
-    <%=content_tag(:tr, content_tag(:td, f.label(:title, "Title*")) << content_tag(:td, f.text_field( :title, :size => 20))) %>
+    <%=content_tag(:tr, content_tag(:td, f.label(:title, "Title*")) << content_tag(:td, f.text_field( :title))) %>
     <%=content_tag(:tr, content_tag(:td, f.label(:plan, "Plan*")) << content_tag(:td, collection_select(:offering, :plan_id, @plans, :id, :name)))%>
     <%=content_tag(:tr, content_tag(:td, f.label(:type, "Type of Listing*")) << content_tag(:td, collection_select(:offering, :type_id, @types, :id, :category), :id =>"type")) %>
     <%=content_tag(:tr, content_tag(:td, f.label(:topics, "Topics*"))<< content_tag(:td, list_topics(@topics, @offering))) %>
+    <%=content_tag(:tr, content_tag(:td, f.label(:topics, "Approximate Number of Participants"))<< content_tag(:td, f.text_field( :number_of_participants, :size=>10))) %>
+    <%=content_tag(:tr, content_tag(:td, f.label(:topics, ("Price Range"<<"<div class='right'>US$</div>").html_safe))<< content_tag(:td, f.text_field( :price_range, :size=>10))) %>
+
 </table>
 
 <br />

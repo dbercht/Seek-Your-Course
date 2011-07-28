@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110602025420) do
+ActiveRecord::Schema.define(:version => 20110728000435) do
 
   create_table "ads", :force => true do |t|
     t.string   "url"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20110602025420) do
     t.string   "title"
     t.string   "specific_location"
     t.string   "link"
-    t.string   "description"
+    t.text     "description"
     t.text     "note"
     t.text     "unregistered_artists"
     t.date     "registration_begins",               :default => '2011-04-28'
@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(:version => 20110602025420) do
     t.integer  "picture_footer_right_file_size"
     t.datetime "picture_footer_right_updated_at"
     t.string   "us_state"
+    t.string   "number_of_participants"
+    t.string   "price_range"
   end
 
   create_table "offerings_topics", :id => false, :force => true do |t|
@@ -96,7 +98,7 @@ ActiveRecord::Schema.define(:version => 20110602025420) do
     t.string   "preferences"
     t.string   "other_links"
     t.text     "description"
-    t.string   "testimonials"
+    t.text     "testimonials"
     t.string   "frequency"
     t.string   "specific_location"
     t.string   "picture1_file_name"

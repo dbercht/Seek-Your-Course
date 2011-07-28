@@ -1,10 +1,28 @@
 <script>
   jQuery(document).ready(function(){
     jQuery("#profile_description").keyup(function(){
-      jQuery(this).parents("tr").find(".count").html(jQuery(this).val().split(/\b[\s,\.-:;]*/).length + " out of 100 words");
+      jQuery(this).parents("tr").find(".count").html(100 - jQuery(this).val().split(/\b[\s,\.-:;]*/).length + " words left");
+			if(jQuery(this).val().split(/\b[\s,\.-:;]*/).length > 100){
+				jQuery(this).parents("tr").find(".count").addClass("exceed");
+    	}else{
+				jQuery(this).parents("tr").find(".count").removeClass("exceed");    	
+			}
     });
+    jQuery("#profile_testimonials").keyup(function(){
+      jQuery(this).parents("tr").find(".count").html(100 - jQuery(this).val().split(/\b[\s,\.-:;]*/).length + " words left");
+			if(jQuery(this).val().split(/\b[\s,\.-:;]*/).length > 100){
+				jQuery(this).parents("tr").find(".count").addClass("exceed");
+    	}else{
+				jQuery(this).parents("tr").find(".count").removeClass("exceed");    	
+			}
+	  });
     jQuery("#profile_focus").keyup(function(){
-      jQuery(this).parents("tr").find(".count").html(jQuery(this).val().length + " out of 90 characters");
+      jQuery(this).parents("tr").find(".count").html(90 - jQuery(this).val().length + " characters left");
+			if(jQuery(this).val().length>90){
+				jQuery(this).parents("tr").find(".count").addClass("exceed");
+    	}else{
+				jQuery(this).parents("tr").find(".count").removeClass("exceed");    	
+			}
     });
   });
 </script>

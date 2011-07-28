@@ -30,7 +30,19 @@
      <%unless @offering.registration_deadline.nil? %>
         <strong>Registration Deadline:</strong>
         <%= @offering.registration_deadline.strftime('%B %d, %Y') %>
-    <%end%> </p>
+    <%end%> 
+<br />
+     <%unless @offering.number_of_participants.nil? %>
+        <strong>Approximate Number of Participants:</strong>
+        <%= @offering.number_of_participants %>
+    <%end%> 
+<br />
+     <%unless @offering.price_range.nil? %>
+        <strong>Price Range:</strong>
+        <%= "US$ " <<@offering.price_range %>
+    <%end%> 
+
+</p>
 
     <p><strong>Description</strong>:<br />
       <%= @offering.description%>

@@ -143,6 +143,10 @@ label{
 .field i{
   font-size: .8em;
 }
+
+.exceed {
+	color: red;
+}
 /*********************** Terms of Use */
 .terms_of_use{
   border: 1px solid black;

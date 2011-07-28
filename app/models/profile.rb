@@ -24,6 +24,7 @@ class Profile < ActiveRecord::Base
 
   validates :description, :presence => true
   validates :focus, :length => {:maximum => 90}, :presence => true
+  validates :testimonial, :length => {:maximum => 90}, :presence => true
 
   with_options :if => lambda {return role == User::ROLES[1]} do |o|
     o.validates :type, :presence => true
@@ -43,8 +44,16 @@ class Profile < ActiveRecord::Base
     description.scan(/\w+/).length > 100
   end
 
+  def validate_testimonial_length?
+    testimonial.scan(/\w+/).length > 100
+  end
+
   def validate_length_of_description
-    errors[:base] = "Descriptiopn only allows for 100 words." if validate_description_length?
+    errors[:base] = "Description must be at most 100 words." if validate_description_length?
+  end
+
+  def validate_length_of_testimonial
+    errors[:base] = "Testimonial must be at most 100 words." if validate_testimonial_length?
   end
 
   CustomFields.each do |method_name|
