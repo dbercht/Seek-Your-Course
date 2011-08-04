@@ -24,7 +24,7 @@ class Profile < ActiveRecord::Base
 
   validates :description, :presence => true
   validates :focus, :length => {:maximum => 90}, :presence => true
-  validates :testimonial, :length => {:maximum => 90}, :presence => true
+  validates :testimonials, :length => {:maximum => 90}, :presence => true
 
   with_options :if => lambda {return role == User::ROLES[1]} do |o|
     o.validates :type, :presence => true
@@ -45,7 +45,7 @@ class Profile < ActiveRecord::Base
   end
 
   def validate_testimonial_length?
-    testimonial.scan(/\w+/).length > 100
+    testimonials.scan(/\w+/).length > 100
   end
 
   def validate_length_of_description
