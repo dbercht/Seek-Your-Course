@@ -1,8 +1,8 @@
 <script>
   jQuery(document).ready(function(){
     jQuery("#profile_description").keyup(function(){
-      jQuery(this).parents("tr").find(".count").html(100 - jQuery(this).val().split(/\b[\s,\.-:;]*/).length + " words left");
-			if(jQuery(this).val().split(/\b[\s,\.-:;]*/).length > 100){
+      jQuery(this).parents("tr").find(".count").html(200 - jQuery(this).val().split(/\b[\s,\.-:;]*/).length + " words left");
+			if(jQuery(this).val().split(/\b[\s,\.-:;]*/).length > 200){
 				jQuery(this).parents("tr").find(".count").addClass("exceed");
     	}else{
 				jQuery(this).parents("tr").find(".count").removeClass("exceed");    	

@@ -24,7 +24,6 @@ class Profile < ActiveRecord::Base
 
   validates :description, :presence => true
   validates :focus, :length => {:maximum => 90}, :presence => true
-  validates :testimonials, :length => {:maximum => 90}, :presence => true
 
   with_options :if => lambda {return role == User::ROLES[1]} do |o|
     o.validates :type, :presence => true
@@ -38,14 +37,14 @@ class Profile < ActiveRecord::Base
   validates_attachment_size :picture4, :less_than => 5.megabyte
   validates_attachment_presence :picture
 
-  validate :validate_length_of_description
+  validate :validate_length_of_description, :validate_length_of_testimonial
 
   def validate_description_length?
-    description.scan(/\w+/).length > 100
+    description.scan(/\w+/).length > 200
   end
 
   def validate_testimonial_length?
-    testimonials.scan(/\w+/).length > 100
+    (testimonials.scan(/\w+/).length > 100) unless testimonials.nil?
   end
 
   def validate_length_of_description

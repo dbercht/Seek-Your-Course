@@ -76,12 +76,6 @@ class Offering < ActiveRecord::Base
     o.validates :specific_location, :presence => true
   end
 
-
-  with_options :if => (:editable?) do |o|
-    o.validates :start_date, :date => {:after => :registration_begins}
-    o.validates :end_date, :date => {:after => :start_date}
-  end
-
   def validate_length_of_description
     errors[:base] = "#{plan.name} only allows for #{DESCRIPTION_LENGTH_FOR_PLAN[plan.name]} words." if validate_plan_description_length?
   end
