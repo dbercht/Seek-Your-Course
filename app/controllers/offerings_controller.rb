@@ -3,7 +3,7 @@ class OfferingsController < ApplicationController
   before_filter :authorize, :only => [:edit, :update]
   before_filter :load_variables, :except => [:show, :index]
   before_filter :admin_required, :only => [:pending_index]
-  before_filter :editable_offering, :only => [:edit, :update, :show]
+  before_filter :editable_offering, :only => [:edit, :update]
   
   def home
   end
