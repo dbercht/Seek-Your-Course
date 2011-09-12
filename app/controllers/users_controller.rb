@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_filter :login_required, :except => [:new, :create, :index, :show]
   before_filter :load_profile, :only => [:edit, :update]
+  before_filter :honeypot, :only => [:create]
   
   def index
     @profiles = Profile.all(:joins => :user, :conditions => ["users.role = ?",  params[:role]], :order => "users.last_name").paginate(:page => params[:page], :per_page => 12)
@@ -31,7 +32,8 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       UserMailer.welcome_email(@user).deliver
-      redirect_to manage_home_path
+      #redirect_to manage_home_path
+			redirect_to new_profiles_path
       #redirect_to user_path(current_user), :notice => "Thank you for signing up! You are now logged in."
     else
       @locations = Location.all
@@ -58,4 +60,10 @@ class UsersController < ApplicationController
     def load_profile
       @profile = current_user.profile
     end
+
+		def honeypot
+			if !(params[:user_email]=="")
+				redirect_to root_url
+			end
+		end
 end

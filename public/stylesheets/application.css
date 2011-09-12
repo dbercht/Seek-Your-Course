@@ -147,6 +147,62 @@ label{
 .exceed {
 	color: red;
 }
+#email_registration .close-icon{
+	margin: 5px;
+	padding: 0px;
+	padding-right: 10px;
+	padding-left: 25px;
+}
+#email_registration .close-icon .ui-button-text{
+	padding: 0px;
+}
+
+
+#email_registration{
+	padding: 10px;
+	background: white;
+	width:470px;
+	position: fixed;
+	right:0px;
+	top: 30px;
+	border: 2px black solid;
+}
+
+#email_registration img{
+	margin-left: -50px;
+	position:absolute;
+	z-index:1;
+}
+
+#email_registration h2{
+ margin: 0px;
+}
+
+#mc_embed_signup label{
+	width: 300px;
+}
+
+#mc_embed_signup input{
+	float: right;
+}
+
+.indicates-required{
+	text-align: right;
+}
+
+.mc-field-group{
+	width: 320px;
+	height:35px;
+}
+
+.mc-field-group ul{
+	list-style-type: none;
+}
+.mc-field-group ul li{
+	margin-bottom:10px;
+}
+
+
 /*********************** Terms of Use */
 .terms_of_use{
   border: 1px solid black;

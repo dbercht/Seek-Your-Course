@@ -48,12 +48,17 @@
   });
 </script>
 
+
 <div class="contentlearning-profile clearfix ui-widget-content">
 <%if params[:action]=='new'%>
   <h5>Already have an account? <%= link_to "Log in", login_path, :class=>'ui-button' %></h5><br/>
 <% end %>
 
 <%= form_for( @user, :html => {:multipart => true}) do |f| %>
+
+<div class="hidden">
+  <%= text_field_tag 'user_email' %>
+</div>
 
   <%= f.error_messages %>
 
