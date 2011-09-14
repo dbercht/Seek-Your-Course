@@ -61,7 +61,7 @@ class Offering < ActiveRecord::Base
     DESCRIPTION_LENGTH_FOR_PLAN[plan.name]
   end
   
-	validates :blurb, :length => {:maximum => 130 }
+	validates :blurb, :length => {:maximum => 310 }
   validates :topics, :presence => true
   validates :type, :presence => true
   validates :link, :presence => true

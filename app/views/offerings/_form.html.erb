@@ -17,8 +17,8 @@
 			}
     });
     jQuery("#offering_blurb").keyup(function(){
-      jQuery(this).parents("tr").find(".count").html(130 - jQuery(this).val().length + " characters left");
-			if(jQuery(this).val().length > 130){
+      jQuery(this).parents("tr").find(".count").html(300 - jQuery(this).val().length + " characters left");
+			if(jQuery(this).val().length > 300){
 				jQuery(this).parents("tr").find(".count").addClass("exceed");
     	}else{
 				jQuery(this).parents("tr").find(".count").removeClass("exceed");    	
