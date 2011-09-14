@@ -10,6 +10,7 @@
           <%= ad.tag %>
           <br  />
           <% if current_admin %> 
+						<%= link_to "Edit", edit_ad_path(ad) %>
             | <%= link_to 'Destroy', ad, :confirm => 'Are you sure?', :method => :delete %>
           <% end %>
         </div>

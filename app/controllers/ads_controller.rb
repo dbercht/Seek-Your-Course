@@ -35,7 +35,7 @@ class AdsController < ApplicationController
 
     respond_to do |format|
       if @ad.update_attributes(params[:ads])
-        format.html { redirect_to(ads_path, :notice => 'Topic was successfully updated.') }
+        format.html { redirect_to(ads_path, :notice => 'Ad was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
