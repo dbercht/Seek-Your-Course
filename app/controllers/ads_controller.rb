@@ -4,6 +4,14 @@ class AdsController < ApplicationController
     @ads = Ads.all
   end
 
+	def show
+		@ads = Ads.find params[:id]
+		@ads.count = @ads.count + 1
+
+		@ads.save
+		redirect_to @ads.url
+	end
+
   def new
     @ad = Ads.new
     respond_to do |format|
