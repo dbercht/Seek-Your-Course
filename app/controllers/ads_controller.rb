@@ -1,5 +1,5 @@
 class AdsController < ApplicationController
-  before_filter :admin_required, :except => [:index]
+  before_filter :admin_required, :except => [:index, :show]
   def index
     @ads = Ads.all
   end
