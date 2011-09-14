@@ -1,0 +1,36 @@
+  <%= form_for(@ad, :url => {:action => "update"}, :html => {:multipart => true}) do |f| %>
+    <% if @ad.errors.any? %>
+    <div id="flash_error" class="error_messages">
+      <h2><%= pluralize(@ad.errors.count, "error") %> prohibited this offering from being saved:</h2>
+      <ul>
+        <% @ad.errors.full_messages.each do |msg| %>
+          <p><%= msg %></p>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :tag %><br />
+    <%= f.text_field :tag %>
+  </div>
+  <div class="field">
+    <%= f.label :position %><br />
+    <%= f.collection_select( :position, Ads::POSITIONS, :to_s, :humanize) %>
+  </div>
+  <div class="field">
+    <%= f.label :height %><br />
+    <%= f.collection_select( :height, Ads::HEIGHTS, :to_i, :to_i) %>
+  </div>
+  <div class="field">
+    <%= f.label :url, "Link to Ad" %><br />
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.file_field :image %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <% end %>
+

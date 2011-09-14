@@ -205,10 +205,10 @@ rssmikle_item_podcast="icon";
 <div id="" class="grid_4 ">
 	<img src="/images/headers/featuredlisting.png" alt="featured listing" />
 	<div class="featuredlisting">
-    	<img src="/images/spotlights/2011-09/womack.png" alt="Encaustic with a Crackle Finish" />
-        <h5><a href="/offerings/76">Linda Womack | Encaustic With a Crackle Finish</a></h5>
-        <p> Starts: September 20, 2011 <br/>
-		The crackle finish is a shellac-based resist you paint onto warm wax then super heat until it cracks, leaving an elegant organic finish that would be impossible to paint by hand. What we'll cover: Using the crackle finish, safety issues, mixing custom colors, using a torch... <a href="/offerings/76">[read more]</a> 
+    	<%=image_tag(@featured.picture_footer_right.url(:thumb), :alt => @featured.title, :width=> 244, :height=> 184)%>
+	  <h5><%= link_to (artists_for_offering(@featured)<<@featured.title), @featured %></h5>
+        <p> Starts: <%= @featured.start_date.strftime('%B %e, %Y') %> <br/>
+		<%= @featured.blurb %> <%= link_to ("[Read more]", @featured) %>
 		</p>
 
     </div>

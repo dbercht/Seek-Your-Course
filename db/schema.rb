@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110728000435) do
+ActiveRecord::Schema.define(:version => 20110914201026) do
 
   create_table "ads", :force => true do |t|
     t.string   "url"
@@ -64,6 +64,9 @@ ActiveRecord::Schema.define(:version => 20110728000435) do
     t.string   "us_state"
     t.string   "number_of_participants"
     t.string   "price_range"
+    t.text     "blurb"
+    t.boolean  "featured"
+    t.date     "featured_date"
   end
 
   create_table "offerings_topics", :id => false, :force => true do |t|

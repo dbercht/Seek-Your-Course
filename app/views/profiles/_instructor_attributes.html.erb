@@ -14,8 +14,11 @@
     <%=content_tag(:hr)%>
     <h5>Ways to Contact Me:   </h5>
     <i><p>Select the checkboxes to make the information visible to viewers.</p></i>
+
 <table>
     <%=content_tag(:tr, content_tag(:td, "")<< content_tag(:td,  "(Always visible)")<< content_tag(:td, instructor.label(:website, @user.website) ) )%>
+
+
     <%=content_tag(:tr, content_tag(:td, instructor.check_box(:email)) << content_tag(:td, "E-mail: ") << content_tag(:td, @user.email))%>
     
     <%=content_tag(:tr,  content_tag(:td, instructor.check_box(:facebook)) << content_tag(:td, "Facebook: ") << content_tag(:td, @user.facebook)) unless @user.facebook.size == 0%>

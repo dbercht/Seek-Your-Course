@@ -3,6 +3,10 @@ class Profile < ActiveRecord::Base
   CoordinatorType = %w(retreat conference)
 
   belongs_to :user
+
+
+	accepts_nested_attributes_for :user
+
   has_attached_file :picture, :styles => {:thumb => ["115x115#", :png], :regular => ["200x200#", :png]},
  :url => "/assets/:class/:id/:attachment/:style.:extension",
                     :path => ":rails_root/public/assets/:class/:id/:attachment/:style.:extension"
