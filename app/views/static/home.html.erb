@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<head>
+<%= favicon_link_tag %>
+<title>Seek Your Course | Navigation for Creative Learning and Living</title>
+<%= favicon_link_tag %>
+  <%= stylesheet_link_tag "jquery-ui-1.8.11.custom", "pirobox", "application", "960"  %>
+  <%= javascript_include_tag "jquery-1.5.1.min", "jquery-ui-1.8.11.custom.min", "pirobox_extended", :defaults %>
+  <%= csrf_meta_tag %>
+  <%= yield(:head) %>
+  <script type="text/javascript">
+//<![CDATA[
+      jQuery(document).ready( function() {
+        jQuery(".ui-button").button();
+        jQuery("#flash_notice").delay(5000).hide('slide');
+        jQuery("#flash_alert").delay(5000).hide('slide');
+        jQuery(".error_messages").delay(5000).hide('slide');
+        jQuery(".error_notice").delay(5000).hide('slide');
+       jQuery().piroBox_ext({
+        piro_speed : 900,
+        bg_alpha : 0.1,
+        piro_scroll : true //pirobox always positioned at the center of the page
+        });
+
+				jQuery(".infoTab").mouseenter(
+					function(){
+						jQuery(".activeTab").hide("slide").removeClass("activeTab");
+						jQuery("#"+jQuery(this).attr("id") + "Info").show("slide").addClass("activeTab");
+					}
+				);
+				jQuery(".activeTab").mouseleave(
+					function(){
+						jQuery(".activeTab").hide("slide");
+					}
+				);
+				jQuery("#info_box").mouseleave(
+					function(){
+						jQuery(".activeTab").hide("slide").removeClass("activeTab");
+					}
+				);
+      });
+  //]]>
+  </script>
+</head>
+<body style="
+background: url('/images/background-homepage.png') no-repeat 50% 0;">
+          
+<%=render :partial => "layouts/user_nav"%>
+     
+
+
+
+<div id="header2" class="container_12">
+
+
+<div id="" class="grid_8 "> <a href="/"><img src="/images/logo-clearplaceholder.png" alt="Seek Your Course" /></a>
+</div>
+
+
+    <div id="" class="grid_4 ">
+	  <div id="socialmedia" class="clearfix">
+     		<a href="https://www.facebook.com/seekyourcourse"><img src="images/facebook_30px.png" alt="facebook" class="socialmedia" /></a>
+     		<a href="http://twitter.com/#!/seekyourcourse"><img src="images/twitter_30px.png" alt="twitter" class="socialmedia" /></a>
+      </div>
+    </div>
+
+</div>
+
+
+
+<%= render :partial => "layouts/user_browse" %>
+
+                
+
+<div id="" class="container_12">
+  <div id="" class="grid_6 ">
+     <img src="/images/headers/explore.png" alt="explore" />
+
+   <div class="explore">
+	  <div class="browse">
+        <img src="/images/headers/browse2.png" alt="browse learning opportunities" />
+             <div class="browse-buttons"><a href="/types">by TYPE</a></div>
+             <div class="browse-buttons"><a href="/topics">by TOPIC</a></div>
+             <div class="browse-buttons"><a href="/offerings">by START DATE</a></div>
+             <div class="browse-buttons"><a href="/regions">by LOCATION</a></div>
+     		</div>
+            
+  <div class="getlisted">
+            <img src="/images/headers/getlisted.png" alt="get listed" />
+        <h5>Teach? Coordinate a Retreat or Conference?</h5>
+            <h5 class="wideheader"><a href="/signup">SIGN UP</a> to: </h5>
+            <p>- list upcoming offerings
+            <br />- create a public profile
+    		<br />- promote your work</p>
+
+      </div>
+    
+   </div>
+
+</div>
+
+	<div id="" class="grid_6 ">
+	  <img src="/images/headers/findoutmore.png" alt="find out more" />
+
+		<div id="info_box">
+
+			<div id="tab_box">
+				<div id="newToThis" class="newToThis infoTab clearfix"><%=image_tag("/images/home_info/intro-new.png")%></div>
+				<div id="liveCreativeLife" class="liveCreativeLife infoTab clearfix"><%=image_tag("/images/home_info/intro-live.png")%></div>
+				<div id="promoteCreativity" class="promoteCreativity infoTab clearfix"><%=image_tag("/images/home_info/intro-promote.png")%></div>
+			</div>
+			<div id="expand_box">
+				<div class="infoBox">
+					<p style="color:black;">
+					Seek Your Course is a database
+					and online hub for connecting
+					people with creative learning
+					opportunities online and
+					around the world.
+</p><p style="color:black;">		<i>Every child is an artist.
+					The problem is how to remain an
+					artist once we grow up."<br />
+					-Pablo Picasso </i>
+</p>			
+				</div>
+				<div id="newToThisInfo" class="newToThis infoBox hidden">
+<p>If you are new to the idea of
+creative living, we hope to
+inspire you to take a first step.</p><p>
+
+<%= link_to 'Read about an instructor.', users_path(:role=>'instructor') %> Take
+an <%=link_to 'eCourse', type_path('ecourse')%>. Fly around the
+world to an <%=link_to 'art retreat', type_path('retreat')%>. Buy an
+<%=link_to 'art book', 'http://seekyourcourse.com/blog/category/book-recommendation/'%>.</p>
+</div>
+				<div id="liveCreativeLifeInfo" class="liveCreativeLife infoBox hidden"><p>If you are already living a
+creative life, our goal is to help
+you stay aware of new
+opportunities and expand
+your network.</p><p>
+
+<%=link_to 'Find a new ecourse', offerings_path %> to mix
+things up. <%= link_to 'See whose blog', users_path(:role=>'instructor') %>
+you missed. <%=link_to "Advertise", "/ads"%> your
+creative business on our site.</p></div>
+				<div id="promoteCreativityInfo" class="promoteCreativity infoBox hidden"><p>If you teach or coordinate
+creative learning
+opportunities, we are here to
+help you spread the word and
+increase your visibility online.
+</p><p>
+<%=link_to 'SIGN UP', signup_path%> for a free account
+where you can manage your
+<%= link_to 'listings', offerings_path%> and <%=link_to 'create a public
+profile.', users_path(:role=>'instructor')%></p></div>
+			</div>    
+
+		</div>
+  
+		</div>
+    
+	</div>
+
+</div>
+
+                
+
+<div id="" class="container_12">
+
+<div id="" class="grid_4 ">
+	<img src="/images/headers/blogfeed2.png" alt="the syc blog" />
+	<div class="blogfeed"><!-- start feedwind code -->
+<script type="text/javascript">
+<!--
+rssmikle_url="http://seekyourcourse.com/blog/feed/";
+rssmikle_frame_width="240";
+rssmikle_frame_height="390";
+rssmikle_target="_blank";
+rssmikle_font_size="12";
+rssmikle_border="off";
+rssmikle_css_url="";
+rssmikle_title="off";
+rssmikle_title_bgcolor="#124956";
+rssmikle_title_color="#FFFFFF";
+rssmikle_title_bgimage="http://";
+rssmikle_item_bgcolor="#FFCC67";
+rssmikle_item_bgimage="http://";
+rssmikle_item_title_length="40";
+rssmikle_item_title_color="#666666";
+rssmikle_item_border_bottom="on";
+rssmikle_item_description="on";
+rssmikle_item_description_length="140";
+rssmikle_item_description_color="#666666";
+rssmikle_item_description_tag="off";
+rssmikle_item_podcast="icon";
+//-->
+</script>
+<script type="text/javascript" src="http://feed.mikle.com/js/rssmikle.js"></script>
+<div style="font-size:10px; text-align:right;">
+<a href="http://feed.mikle.com/en/" target="_blank" style="color:#CCCCCC;">FeedWind</a>
+<!--Please display the above link in your web page according to Terms of Service.-->
+</div>
+<!-- end feedwind code --></div>
+</div>
+
+<div id="" class="grid_4 ">
+	<img src="/images/headers/featuredlisting.png" alt="featured listing" />
+	<div class="featuredlisting">
+    	<%=image_tag(@featured.picture_footer_right.url(:thumb), :alt => @featured.title, :width=> 244, :height=> 184)%>
+	  <h5><%= link_to (artists_for_offering(@featured)<<@featured.title), @featured %></h5>
+        <p> Starts: <%= @featured.start_date.strftime('%B %e, %Y') %> <br/>
+		<%= @featured.blurb %> <%= link_to ("[Read more]", @featured) %>
+		</p>
+
+    </div>
+</div>
+
+<div id="" class="grid_4 ">
+	<img src="/images/headers/featuredsponsor.png" alt="featured sponsor" />
+<div class="featuredsponsor">
+
+      <img src="/images/spotlights/2011-08/dwyl.jpg" alt="Do What You Love" />
+
+      <h5> <a href="http://seekyourcourse.com/blog/2011/08/august5/"‎>Do What You Love</a></h5>
+
+<p>Do What You Love provides tools and inspiration to do what you love, for life, through retreats and online courses. Are you ready for an adventure that will take you step-by-step on a journey towards doing what you love? <a href="http://seekyourcourse.com/blog/2011/08/august5/">[read more]</a></p> 
+ 
+
+    </div>
+
+</div>
+
+</div>
+
+
+<div id="" class="container_12">
+
+    <div id="" class="grid_12 ">
+    
+        <div id="footer" class="clearfix">
+        <p>&copy; 2011 Seek Your Course</p> 
+        
+        </div>
+    
+    </div>
+
+</div>
+
+
+<%unless current_user %>
+<%= render :partial => "email_registration" %>
+<% end %>
+</body>
+</html>
