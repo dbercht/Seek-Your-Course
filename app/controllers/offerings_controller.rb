@@ -100,6 +100,7 @@ class OfferingsController < ApplicationController
     @offering = Offering.find(params[:id])
     if(current_admin)
       @offering.validated = params[:offering][:validated]
+      @offering.featured_date = params[:offering][:featured_date]
       @offering.note = params[:offering][:note]
     else
       @offering.update_attribute(:validated, false)

@@ -9,10 +9,21 @@
       jQuery("#specific_location").hide();
     }
     jQuery("#offering_description").keyup(function(){
-    //  jQuery(this).parents("tr").find(".count").html(jQuery(this).val().split(/\b[\s,\.-:;]*/).length + " out of " + + (-25*jQuery("#offering_plan_id").val() + 225*jQuery("#offering_plan_id").val() - 150*jQuery("#offering_plan_id").val()) + " words");
-
-    jQuery(this).parents("tr").find(".count").html(jQuery(this).val().split(/\b[\s,\.-:;]*/).length + " out of 200 words");
+      jQuery(this).parents("tr").find(".count").html(200 - jQuery(this).val().split(/\b[\s,\.-:;]*/).length + " words left");
+			if(jQuery(this).val().split(/\b[\s,\.-:;]*/).length > 200){
+				jQuery(this).parents("tr").find(".count").addClass("exceed");
+    	}else{
+				jQuery(this).parents("tr").find(".count").removeClass("exceed");    	
+			}
     });
+    jQuery("#offering_blurb").keyup(function(){
+      jQuery(this).parents("tr").find(".count").html(130 - jQuery(this).val().length + " characters left");
+			if(jQuery(this).val().length > 130){
+				jQuery(this).parents("tr").find(".count").addClass("exceed");
+    	}else{
+				jQuery(this).parents("tr").find(".count").removeClass("exceed");    	
+			}
+	  });
 
     jQuery("#start_date").change(function () {
         jQuery(this).parents("td").find(".date_select select:first").val(parseInt(jQuery(this).val().split("/")[2].replace(/^[ 0]/g,'')));
@@ -87,6 +98,10 @@
     <div class="field">
       <%= f.label :note %><br />
       <%= f.text_area :note %>
+    </div>
+    <div class="field">
+      <%= f.label :featured_date %><br />
+      <%= f.date_select :featured_date, :prompt => true %>
     </div>
 <hr />
 <br />
@@ -178,6 +193,7 @@
 <table>
     <%=content_tag(:tr, content_tag(:td, f.label(:link, "Listing website*")) << content_tag(:td, f.text_field(:link))) %>
     <%=content_tag(:tr, content_tag(:td, f.label(:description, "Listing description*")) << content_tag(:td, f.text_area( :description, :rows => 3) << "<div class='count'> </div>".html_safe)) %>
+    <%=content_tag(:tr, content_tag(:td, f.label(:blurb, "Blurb (If featured *)")) << content_tag(:td, f.text_area( :blurb, :rows => 3) << "<div class='count'> </div>".html_safe)) %>
 </table>
 <br />
 <hr />

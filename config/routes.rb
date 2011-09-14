@@ -26,13 +26,16 @@ SeekYourCourse::Application.routes.draw do
 
   resources :user_sessions
   resources :users
+
   match 'ads' => 'ads#create', :via => :post
   match "ads" => "static#ads", :as => 'ads_index'
+  resources :ads
+
+
   match "about" => "static#about", :as => 'about_index'
   match "contact" => "static#contact", :as => 'contact'
 
 
-  resources :ads
   match "admin_ads" => "ads#index", :as => "ads"
 
   root :to => "static#home"

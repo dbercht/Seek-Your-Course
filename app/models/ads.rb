@@ -5,6 +5,7 @@ class Ads < ActiveRecord::Base
   validates_attachment_presence :image
   validates_presence_of :url, :tag
 
+
   POSITIONS = ['above', 'below']
   HEIGHTS = [130, 260, 390]
 end
