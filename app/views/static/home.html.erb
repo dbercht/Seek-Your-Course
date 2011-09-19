@@ -244,10 +244,10 @@ rssmikle_item_podcast="icon";
 
 </div>
 
-<!--
-<%unless current_user %>
+
+<%unless (current_user && false) %>
 <%= render :partial => "email_registration" %>
 <% end %>
--->
+
 </body>
 </html>
