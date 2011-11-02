@@ -29,7 +29,7 @@ SeekYourCourse::Application.routes.draw do
 
   match "ads" => "static#ads", :as => 'ads_index'
 	resources :ads, :except => [:show]
-  match 'ads' => 'ads#create', :via => :post
+  match 'ads' => 'ads#create', :via => :put
   match 'ads/:id' => "ads#show"
 
 
