@@ -21,7 +21,7 @@ development:
   database: seek
   pool: 5
   username: root
-  password: leinad
+  password: password
   socket: /var/run/mysqld/mysqld.sock
 
 
