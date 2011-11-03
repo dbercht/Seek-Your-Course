@@ -204,12 +204,14 @@ rssmikle_item_podcast="icon";
 
 <div id="" class="grid_4 ">
 	<img src="/images/headers/featuredlisting.png" alt="featured listing" />
-	<div class="featuredlisting">
-    	<%=image_tag(@featured.picture_footer_right.url(:thumb), :alt => @featured.title, :width=> 244, :height=> 184)%>
-	  <h5><%= link_to (artists_for_offering(@featured)<<@featured.title), @featured %></h5>
-        <p> Starts: <%= @featured.start_date.strftime('%B %e, %Y') %> <br/>
+	<% if(@featured) %>
+		<div class="featuredlisting">
+	    	<%=image_tag(@featured.picture_footer_right.url(:thumb), :alt => @featured.title, :width=> 244, :height=> 184)%>
+		  <h5><%= link_to (artists_for_offering(@featured)<<@featured.title), @featured %></h5>
+	        <p> Starts: <%= @featured.start_date.strftime('%B %e, %Y') %> <br/>
 		<%= @featured.blurb %> <%= link_to ("[Read more]", @featured) %>
 		</p>
+	<% end %>
 
     </div>
 </div>
