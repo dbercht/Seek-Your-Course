@@ -1,7 +1,7 @@
 class StaticController < ApplicationController
   def home
 		#@featured = Offering.where(:featured => true).first
-		@featured = Offering.first :conditions => ["featured_date <= ?",Date.today], :order => "featured_date"
+		@featured = Offering.first :conditions => ["featured_date <= ?",Date.today], :order => "featured_date DESC"
 		
 		#if !@potential.nil?
 	#		@potential.update_attribute(:featured, true) unless @potential.nil?
