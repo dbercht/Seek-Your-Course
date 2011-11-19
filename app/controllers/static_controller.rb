@@ -4,7 +4,7 @@ class StaticController < ApplicationController
 	#	@featured = Offering.where(" date( featured_date ) <= date( now( ) ) ORDER BY featured_date DESC LIMIT 1")
 	#	@featured = Offering.where(" date( featured_date ) <= date( now( ) )").order("date(featured_date) DESC").first
 	#	@featured = Offering.find(:all, :conditions => ["date(featured_date) < DATE(NOW())"], :order => "featured_date DESC").first
-    	@featured.find(:all, :conditions => ["featured_date <= ?", Date.today], :oder => 'featured_date DESC')  
+    	@featured.find(:all, :conditions => ["featured_date <= ?", Date.today], :order => 'featured_date DESC')  
 	
 	#if !@potential.nil?
 	#		@potential.update_attribute(:featured, true) unless @potential.nil?
