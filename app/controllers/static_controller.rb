@@ -2,7 +2,7 @@ class StaticController < ApplicationController
   def home
 		#@featured = Offering.where(:featured => true).first
 	#	@featured = Offering.where(" date( featured_date ) <= date( now( ) ) ORDER BY featured_date DESC LIMIT 1")
-		@featured = Offering.where(" date( featured_date ) <= date( now( ) )").order("date(featured_date) DESC").first
+	#	@featured = Offering.where(" date( featured_date ) <= date( now( ) )").order("date(featured_date) DESC").first
 	#	@featured = Offering.find(:all, :conditions => ["date(featured_date) < DATE(NOW())"], :order => "featured_date DESC").first
     		#@featured.find(:all, :conditions => ["featured_date <= ?", Time.now], :order => 'featured_date DESC').first
 		@featured = Offering.find_by_sql(“SELECT * FROM `offerings` WHERE date( featured_date ) <= date( now( ) ) ORDER BY featured_date DESC”).first
